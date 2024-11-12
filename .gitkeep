@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# Keep all the files needed for the Cirrus build.
+# -----------------------------------------------------------------------------
+
+.*
+build.yml
+pyproject.toml
+poetry.lock
+deploy-test.sh
