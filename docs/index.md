@@ -366,5 +366,5 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
 Once Setup is complete, you can now begin reading:
 
-- About [Cloud Native](./cn-k8s/cloud-native.md){target="_blank"}
-- Cloud Native [App Development](./cn-k8s/app-dev.md){target="_blank"}
+- About [Cloud Native](./cn/cloud-native.md){target="_blank"}
+- Cloud Native [App Development](./cn/app-dev.md){target="_blank"}

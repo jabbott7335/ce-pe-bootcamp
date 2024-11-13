@@ -192,21 +192,30 @@ nav:
     - Prepare for Installation: ocp-on-ibm-cloud/prepare.md
     - Install the Cluster: ocp-on-ibm-cloud/install-cluster.md
     - Backup etcd: ocp-on-ibm-cloud/backup-etcd.md
-  - Cloud Native and K8s:
-    - cn-k8s/index.md
-    - Lab - Docker: cn-k8s/docker.md
-    - Lab - Container Registries: cn-k8s/registries.md
-    - Lab - Pod Creation: cn-k8s/pod-creation.md
-    - Lab - Multiple Containers: cn-k8s/multi-containers.md
-    - Lab - Probes: cn-k8s/probes.md
-    - Lab - Debugging: cn-k8s/debugging.md
-    - Lab - Rolling Updates: cn-k8s/rolling-updates.md
-    - Lab - Cron Jobs: cn-k8s/cron-jobs.md
-    - Lab - Creating Services: cn-k8s/creating-services.md
-    - Lab - Network Policies: cn-k8s/network-policies.md
-    - Lab - Persistent Volumes: cn-k8s/persistent-volumes.md
-    - Lab - Ingress IKS: cn-k8s/ingress.md
-    - Lab Cheat Sheets: cn-k8s/cheats.md
+  - Cloud Native & Containers:
+    - cn/index.md
+    - Learn - Intro to Cloud Native: cn/cloud-native.md
+    - Learn - App Dev: cn/app-dev.md
+    - Learn - Containers: cn/containers.md
+    - Reference - Helpful Information: cn/reference.md
+    - Reference - Image Registries: cn/imageregistry.md
+    - Lab - Docker: cn/containers.md
+    - Lab - Container Registries: cn/ibm-registries.md
+  - K8s & OpenShift:
+    - k8s/index.md
+    - Learn - Kubernetes: k8s/openshift/index.md
+    - Lab K8s 1 - Pod Creation: k8s/pod-creation.md
+    - Lab K8s 2 - Pod Configuration: k8s/pod-config.md
+    - Lab K8s 3 - Multiple Containers: k8s/multi-containers.md
+    - Lab K8s 4 - Probes: k8s/probes.md
+    - Lab K8s 5 - Debugging: k8s/debugging.md
+    - Lab K8s 6 - Rolling Updates: k8s/rolling-updates.md
+    - Lab K8s 7 - Cron Jobs: k8s/cron-jobs.md
+    - Lab K8s 8 - Creating Services: k8s/creating-services.md
+    - Lab K8s 9 - Network Policies: k8s/network-policies.md
+    - Lab K8s 10 - Persistent Volumes: k8s/persistent-volumes.md
+    - Lab K8s 11 - Ingress IKS: k8s/ingress.md
+    - Reference - K8s Lab Solutions: k8s/cheats.md
   - Continuous Integration:
     - ci/index.md
     - Walkthrough - S2I: ci/s2i.md

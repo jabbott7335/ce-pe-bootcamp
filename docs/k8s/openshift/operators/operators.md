@@ -1,0 +1,3 @@
+# Operators
+
+Operators in Openshift are...
