@@ -19,47 +19,38 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: "Technology Pattern: Pattern Name"
-site_url: https://github.ibm.com/skol/lightspeed-template
+site_name: "CE Platform Engineer Bootcamp"
+site_url: https://github.ibm.com/skol/pe-bootcamp
 site_author: John Webb
 site_description: >-
-    Describe the overall pattern and solution in easy to understand terms.  Include the primary products and components that make up the solution.  Also describe additional (ancillary) products that may be involved in the solution.
-    
-    Describe the problem that this pattern is designed to address and the value (business and user experience improvement) that the pattern is designed to address.
-    
-    Identify the typical outcomes for the pattern implementation and describe the proof points a client may desire to experience.
-    
-    Provide a brief overview that tells the reader what a typical POX experience looks like for this pattern.
-
-# Repository
-# repo_name: skol/lightspeed-template
-# repo_url: https://github.ibm.com/skol/lightspeed-template
+    This bootcamp is designed to build on the techniques and skills for Platform Engineers during their enablement journey.  creates a merger of the previous Cloud Native Bootcamp and OCP Install Cohort experiences.
 
 # Copyright
-copyright: Copyright © 2024 IBM Client Engineering
+copyright: Copyright © 2025 IBM Client Engineering
 
 # Configuration
 theme:
   name: material
   custom_dir: material/overrides
   features:
-#    - announce.dismiss
+  #  - announce.dismiss
     - content.action.edit
     - content.action.view
     - content.code.annotate
     - content.code.copy
     - content.code.select
+    - content.footnote.tooltips
     - content.tabs.link
     - content.tooltips
-    # - header.autohide
-    - navigation.expand
-    #- navigation.footer
+    - header.autohide
+    # - navigation.expand
+    - navigation.footer
     - navigation.indexes
-    # - navigation.instant
+    - navigation.instant
     # - navigation.instant.prefetch
     # - navigation.instant.progress
     # - navigation.prune
-    - navigation.sections
+    # - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
@@ -68,46 +59,41 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
-    # - toc.integrate
+    - toc.integrate
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/toggle-switch
+        icon: material/link
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white
-      accent: black
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: blue
+      accent: indigo
       toggle:
         icon: material/toggle-switch-off
         name: Switch to system preference
-
   font:
     text: IBM Plex Sans
     code: IBM Plex Mono
   favicon: https://www.ibm.com/favicon.ico
   icon:
-   logo: material/home
-
+    logo: octicons/home-16
 
 # Plugins
 plugins:
-  # - blog
+  - blog
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
   - glightbox
-  - classify_ibm_content:
-      serve_as_persona: ibmer
-#  - lightspeed_deploy_plugin
 
 # Hooks
 hooks:
@@ -122,15 +108,19 @@ extra:
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
-  homepage: https://ibm.biz/TechnologyPatterns
+  # homepage: pe/index.md
 
-extra_css: # these will be common among tech patterns. Do not edit - they will be overwritten. 
-   - assets/stylesheets/base.css
-   - assets/stylesheets/tab.css
-   - assets/stylesheets/table.css
-   - assets/stylesheets/grid_cards.css
-   - assets/stylesheets/picture.css
-   - assets/stylesheets/colors.css
+  # social:
+  #   - icon: fontawesome/brands/github
+  #     link: https://github.com/squidfunk
+  #   - icon: fontawesome/brands/docker
+  #     link: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  #   - icon: fontawesome/brands/python
+  #     link: https://pypi.org/project/mkdocs-material/
+  #   - icon: fontawesome/brands/mastodon
+  #     link: https://fosstodon.org/@squidfunk
+  #   - icon: fontawesome/brands/x-twitter
+  #     link: https://x.com/squidfunk
 
 # Extensions
 markdown_extensions:
@@ -149,8 +139,11 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -160,8 +153,8 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+      user: skol
+      repo: ce-platform-engineering
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
@@ -184,26 +177,48 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Overview:
+  - Welcome: 
     - index.md
-  - Use Cases:
-    - use-cases/index.md
-    - Use Case One:
-      - use-cases/use-case-one/index.md
-      - Solution: use-cases/use-case-one/solution.md
-      - Client Stories: use-cases/use-case-one/client-stories.md
-      - Resources: use-cases/use-case-one/resources.md
-    - Use Case Two:
-      - use-cases/use-case-two/index.md
-      - Solution: use-cases/use-case-two/solution.md
-      - Client Stories: use-cases/use-case-two/client-stories.md
-      - Resources: use-cases/use-case-two/resources.md
-    - Use Case Three:
-      - use-cases/use-case-three/index.md
-      - Solution: use-cases/use-case-three/solution.md
-      - Client Stories: use-cases/use-case-three/client-stories.md
-      - Resources: use-cases/use-case-three/resources.md
-  - Resources:
-    - resources/index.md
-  - Enablement:
-    - enablement/index.md
+  - Deploying OpenShift on VMware: 
+    - ocp-on-vmware/index.md
+    - Prepare for Installation: ocp-on-vmware/prepare.md
+    - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
+    - Install the Cluster: ocp-on-vmware/install-cluster.md
+    - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
+    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
+    - Configure INternal Image Registry: ocp-on-vmware/config-image-registry.md
+  - Installing OpenShift on IBM Cloud: 
+    - ocp-on-ibm-cloud/index.md
+    - Prepare for Installation: ocp-on-ibm-cloud/prepare.md
+    - Install the Cluster: ocp-on-ibm-cloud/install-cluster.md
+    - Backup etcd: ocp-on-ibm-cloud/backup-etcd.md
+  - Cloud Native and K8s:
+    - cn-k8s/index.md
+    - Lab - Docker: cn-k8s/docker.md
+    - Lab - Container Registries: cn-k8s/registries.md
+    - Lab - Pod Creation: cn-k8s/pod-creation.md
+    - Lab - Multiple Containers: cn-k8s/multi-containers.md
+    - Lab - Probes: cn-k8s/probes.md
+    - Lab - Debugging: cn-k8s/debugging.md
+    - Lab - Rolling Updates: cn-k8s/rolling-updates.md
+    - Lab - Cron Jobs: cn-k8s/cron-jobs.md
+    - Lab - Creating Services: cn-k8s/creating-services.md
+    - Lab - Network Policies: cn-k8s/network-policies.md
+    - Lab - Persistent Volumes: cn-k8s/persistent-volumes.md
+    - Lab - Ingress IKS: cn-k8s/ingress.md
+    - Lab Cheat Sheets: cn-k8s/cheats.md
+  - Continuous Integration:
+    - ci/index.md
+    - Walkthrough - S2I: ci/s2i.md
+    - Lab - Tekton: ci/tekton.md
+    - Lab - Tekton on IBM Cloud: ci/tekton-ibm-cloud.md
+    - Lab - Jenkins: ci/jenkins.md
+  - Continuous Deployment:
+    - cd/index.md
+    - Walkthrough - GitOps & OCP: cd/gitops-ocp.md
+    - Walkthrough - GitOps Multi-Cluster: cd/gitops-multi-cluster.md
+    - Lab - ArgoCD: cd/argocd.md
+  - Cloud Native Challenge (Optional): 
+    - cn-challenge/index.md
+
+  
