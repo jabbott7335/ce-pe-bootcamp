@@ -8,7 +8,7 @@ hide:
 
 The following agenda is designed for a five-day bootcamp experience.
 
-## Day 1 All Day - Deploying OpenShift on VMware
+## Day 1 - Deploying OpenShift on VMware
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
@@ -99,7 +99,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Tekton](./devops/tekton/tekton.md)          | Hands-On     |
 | [ToolChain](./devops/ibm-toolchain/index.md) | Presentation |
     
-## Day 5 Afternoon - DevOps (Continued)
+## Day 5 - DevOps (Continued)
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
