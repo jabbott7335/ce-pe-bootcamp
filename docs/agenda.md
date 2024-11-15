@@ -75,35 +75,37 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Lab K8s 7 - Cron Jobs](./k8s/cron-jobs.md)                                    | Hands-On     |
     
 ## Day 4 Morning - Kubernetes & OpenShift (Continued)
-    - Learn - Networking: k8s/openshift/services-networking/index.md
-    - Learn - Services: k8s/openshift/services-networking/services.md
-    - Learn - Routes: k8s/openshift/services-networking/routes.md
-    - Lab K8s 8 - Creating Services: k8s/creating-services.md
-    - Lab K8s 9 - Network Policies: k8s/network-policies.md
-    - Learn - Ingresses: k8s/openshift/services-networking/ingress.md
-    - Lab K8s 10 - Ingress IKS: k8s/ingress.md
-    - Learn - State Persistence: k8s/openshift/state-persistence/index.md
-    - Learn - Volumes: k8s/openshift/state-persistence/volumes.md
-    - Learn - Persistent Volumes & Claims: k8s/openshift/state-persistence/pv-pvc.md
-    - Lab K8s 11 - Persistent Volumes: k8s/persistent-volumes.md
-    - Reference - K8s Lab Solutions: k8s/cheats.md
-
-## Day 4 Morning - GitOps
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
-      - DevOps & GitOps:
-    - devops/tekton/index.md
-    - Learn CI: devops/tekton/index.md
-    - Lab CI 1 - Tekton: devops/tekton/tekton.md
-    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
+| [Networking](./k8s/openshift/services-networking/index.md)                 | Presentation |
+| [Services](./k8s/openshift/services-networking/services.md)                | Presentation |
+| [Routes](./k8s/openshift/services-networking/routes.md)                    | Presentation |
+| [Creating Services](./k8s/creating-services.md)                            | Hands-On     |
+| [Network Policies](./k8s/network-policies.md)                              | Hands-On     |
+| [Ingresses](./k8s/openshift/services-networking/ingress.md)                | Presentation |
+| [Ingress IKS](./k8s/ingress.md)                                            | Hands-On     |
+| [State Persistence](./k8s/openshift/state-persistence/index.md)            | Presentation |
+| [Volumes](./k8s/openshift/state-persistence/volumes.md)                    | Presentation |
+| [Persistent Volumes & Claims](./k8s/openshift/state-persistence/pv-pvc.md) | Presentation |
+| [Persistent Volumes](./k8s/persistent-volumes.md)                          | Hands-On     |
+| [K8s Lab Solutions](./k8s/cheats.md)                                       | Reference     |
+
+## Day 4 Afternoon - DevOps
+
+| Task                              | Activity Type               |
+| :-------------------------------- | :-------------------------- |
+| [DevOps & GitOps](./devops/tekton/index.md)  | Presentation |
+| [Tekton](./devops/tekton/tekton.md)          | Hands-On     |
+| [ToolChain](./devops/ibm-toolchain/index.md) | Presentation |
     
-    
-    Day 5
-    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
-    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
-    - Learn CD: devops/argocd/index.md
-    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
-    - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
-  - Cloud Native Challenge (Optional): 
-    - cn-challenge/index.md
+## Day 5 Afternoon - DevOps (Continued)
+
+| Task                              | Activity Type               |
+| :-------------------------------- | :-------------------------- |
+| [Tekton on IBM Cloud](./devops/ibm-toolchain/ibm-toolchain.md) | Hands-On     |
+| [Jenkins](./devops/jenkins/jenkins.md)                         | Hands-On     |
+| [CD](./devops/argocd/index.md)                                 | Presentation |
+| [GitOps & OCP](./devops/gitops-ocp.md)                         | Presentation |
+| [ArgoCD](./devops/argocd/argocd.md)                            | Hands-On     |
+| [Cloud Native Challenge (Optional)](./cn-challenge/index.md)   | Presentation |
