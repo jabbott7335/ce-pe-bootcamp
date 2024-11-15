@@ -1,3 +1,8 @@
+---
+Title: Routes
+hide:
+    - toc
+---
 # Routes
 
 **_OpenShift Only_**
@@ -22,7 +27,7 @@ The new route inherits the name from the service unless you specify one using th
 
 **_Route Creation_**
 
-```
+```yaml
 apiVersion: v1
 kind: Route
 metadata:
@@ -35,7 +40,7 @@ spec:
 
 **_Secured Route Creation_**
 
-```
+```yaml
 apiVersion: v1
 kind: Route
 metadata:

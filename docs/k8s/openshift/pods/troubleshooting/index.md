@@ -1,3 +1,8 @@
+---
+Title: Debugging Applications
+hide:
+    - toc
+---
 # Debugging Applications
 
 Kubernetes provides tools to help troubleshoot and debug problems with applications.
@@ -113,7 +118,7 @@ Usually is getting familiar with how primitives objects interact with each other
 === "Kubernetes"
 
      **MacOS/Linux/Windows command:**
-     ```
+     ```bash
      kubectl apply -f https://gist.githubusercontent.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091/raw/1e2a0cca964c7b54ce3df2fc3fbf33a232511877/debugk8s-bad.yaml
      ```
 
@@ -168,11 +173,3 @@ Usually is getting familiar with how primitives objects interact with each other
      kubectl get deployment --show-labels
      ```
 
-## Activities
-
-The continuous integration activities focus around Tekton the integration platform. These labs will show you how to build pipelines and test your code before deployment.
-
-| Task                  | Description                                                      | Link                                                | Est. Time |
-| --------------------- | ---------------------------------------------------------------- | :-------------------------------------------------- | --------- |
-| **_Try It Yourself_** |                                                                  |                                                     |
-| Debugging             | Find which service is breaking in your cluster and find out why. | [Debugging](../../../debugging.md) | 30 min    |

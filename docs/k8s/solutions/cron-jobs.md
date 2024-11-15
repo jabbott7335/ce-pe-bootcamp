@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 7 - Cron Jobs Solution
+Title: Lab K8s 7 - Cron Jobs Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 7 - Cron Jobs Solution
+# Lab K8s 7 - Cron Jobs Solution
 
 ## Solution
 

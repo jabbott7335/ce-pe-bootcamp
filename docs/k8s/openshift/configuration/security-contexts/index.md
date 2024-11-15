@@ -1,3 +1,8 @@
+---
+Title: Security Contexts
+hide:
+    - toc
+---
 # Security Contexts
 
 A security context defines privilege and access control settings for a Pod or Container.
@@ -26,7 +31,7 @@ minikube ssh
 su -
 ```
 
-```
+```bash
 echo "container-user-0:x:2000:2000:-:/home/container-user-0:/bin/bash" >> /etc/passwd
 echo "container-user-1:x:2001:2001:-:/home/container-user-1:/bin/bash" >> /etc/passwd
 echo "container-group-0:x:3000:" >>/etc/group

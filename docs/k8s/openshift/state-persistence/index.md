@@ -1,3 +1,8 @@
+---
+Title: State Persistence
+hide:
+    - toc
+---
 # State Persistence
 
 State persistence in the context of Kubernetes/OpenShift refers to the ability to maintain and retain the state or data of applications even when they are stopped, restarted, or moved between nodes.
@@ -32,9 +37,4 @@ In this example, we define a PVC named _my-pvc_ with the following specification
 - _accessModes_ specify that the volume can be mounted as read-write by a single node at a time ("ReadWriteOnce")
 - _resources.requests.storage_ specifies the requested storage size for the PVC ("1Gi")
 
-## Activities
 
-| Task                          | Description                                                  | Link                                                                  |
-| ----------------------------- | ------------------------------------------------------------ | :-------------------------------------------------------------------- |
-| **_Try It Yourself_**         |                                                              |
-| Setting up Persistent Volumes | Create a Persistent Volume that's accessible from a SQL Pod. | [Setting up Persistent Volumes](../../persistent-volumes.md) |

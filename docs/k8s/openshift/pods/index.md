@@ -1,3 +1,8 @@
+---
+Title: Pods
+hide:
+    - toc
+---
 # Pods
 
 A Pod is the basic execution unit of a Kubernetes application–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster.
@@ -86,37 +91,37 @@ spec:
 
     **Create Pod using yaml file**
 
-    ```
+    ```sh
     oc apply -f pod.yaml
     ```
 
     **Get Current Pods in Project**
 
-    ```
+    ```sh
     oc get pods
     ```
 
     **Get Pods with their IP and node location**
 
-    ```
+    ```sh
     oc get pods -o wide
     ```
 
     **Get Pod's Description**
 
-    ```
+    ```sh
     oc describe pod myapp-pod
     ```
 
     **Get the logs**
 
-    ```
+    ```sh
     oc logs myapp-pod
     ```
 
     **Delete a Pod**
 
-    ```
+    ```sh
     oc delete pod myapp-pod
     ```
 
@@ -124,43 +129,36 @@ spec:
 
     **Create Pod using yaml file**
 
-    ```
+    ```sh
     kubectl apply -f pod.yaml
     ```
 
     **Get Current Pods in Project**
 
-    ```
+    ```sh
     kubectl get pods
     ```
 
     **Get Pods with their IP and node location**
 
-    ```
+    ```sh
     kubectl get pods -o wide
     ```
 
     **Get Pod's Description**
 
-    ```
+    ```sh
     kubectl describe pod myapp-pod
     ```
 
     **Get the logs**
 
-    ```
+    ```sh
     kubectl logs myapp-pod
     ```
 
     **Delete a Pod**
 
-    ```
+    ```sh
     kubectl delete pod myapp-pod
     ```
-
-## Activities
-
-| Task                  | Description                                       | Link                                                |
-| --------------------- | ------------------------------------------------- | :-------------------------------------------------- |
-| **_Try It Yourself_** |                                                   |                                                     |
-| Creating Pods         | Create a Pod YAML file to meet certain parameters | [Pod Creation](../../pod-creation.md) |

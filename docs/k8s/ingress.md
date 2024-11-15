@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 11 - Ingress Controller IBM Free K8s Cluster
+Title: Lab K8s 10 - Ingress Controller IBM Free K8s Cluster
 hide:
     - toc
 ---
 
-# Kubernetes Lab 11 - Ingress Controller IBM Free K8s Cluster
+# Lab K8s 10 - Ingress Controller IBM Free K8s Cluster
 
 The [IBM Kubernetes service](https://www.ibm.com/cloud/container-service) free clusters consist of a single worker node with 2 CPU and 4 GB of memory for experimenting with Kubernetes. Unlike the fee-based service, these clusters do not include capabilities for application load balancing using ingress out-of-the-box. 
 
@@ -16,7 +16,7 @@ The [IBM Kubernetes service](https://www.ibm.com/cloud/container-service) free c
 
 ## Components
 
-On the IKS cluster, you will install helm charts for a [nginx ingress controller](https://github.com/nginxinc/kubernetes-ingress/tree/release-1.7/deployments/helm-chart) from NGINX. This lab already provides the templated yaml files so there is no need to use helm cli.
+On the IKS cluster, you will install helm charts for a [nginx ingress controller](https://github.com/nginxinc/kubernetes-ingress/tree/release-1.7/deployments/helm-chart){target="_blank"} from NGINX. This lab already provides the templated yaml files so there is no need to use helm cli.
 
 
 ## Set up the ingress controller
@@ -26,7 +26,7 @@ On the IKS cluster, you will install helm charts for a [nginx ingress controller
 * a single worker where the cluster administrator can create pods that bind to host ports
 * no pre-existing ingress controller or application load balancer
 
-Using the following steps with a paid instance can cause issues. See the [IBM Cloud containers documentation](https://cloud.ibm.com/docs/containers?topic=containers-cs_network_planning) for information on exposing applications with the ingress/alb services for paid clusters. **You have been warned**
+Using the following steps with a paid instance can cause issues. See the [IBM Cloud containers documentation](https://cloud.ibm.com/docs/containers?topic=containers-cs_network_planning){target="_blank"} for information on exposing applications with the ingress/alb services for paid clusters. **You have been warned**
 
 1. Install the NGINX ingress controller with `helm` using a daemonset and no service resource (which will result in a single pod that binds to ports 80 and 443 on the worker node and will skip creation of a `ClusterIP, LoadBalancer, or NodePort` for the daemonset).
     ```bash

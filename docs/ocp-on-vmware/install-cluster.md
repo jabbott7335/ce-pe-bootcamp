@@ -8,25 +8,25 @@ hide:
 
 1. Create the installation directory (by convention named after the cluster).
     
-    ```
+    ```sh
     mkdir ocpinstall
     ```
 
 2. Copy the Install Config asset into the installation directory.
     
-    ```
+    ```sh
     cp install-config.yaml ocpinstall
     ```
 
 3. Create manifests.
 
-    ```
+    ```sh
     openshift-install create manifests --dir ocpinstall
     ```
 
 4. Copy the worker MachineSet manifest
 
-    ```
+    ```sh
     cp ocpinstall/openshift/99_openshift-cluster-api_worker-machineset-0.yaml \
     ocpinstall/openshift/99_openshift-cluster-api_infra-machineset-0.yaml
     ```
@@ -108,7 +108,7 @@ hide:
 
 6. Create the cluster.
     
-    ```
+    ```sh
     openshift-install create cluster --dir ocpinstall --log-level debug
     ```
 
@@ -220,7 +220,7 @@ You can start following the installation progress with the CLI after the API ser
 
 1. Log in as user `kubeadmin`.
 
-    ```
+    ```sh
     oc login -u kubeadmin https://api.ocpinstall.gym.lan:6443
     ```
 
@@ -245,7 +245,7 @@ You can start following the installation progress with the CLI after the API ser
 
 2. List the nodes.
 
-    ```
+    ```sh
     oc get nodes
     ```
 
@@ -263,7 +263,7 @@ You can start following the installation progress with the CLI after the API ser
 
 3. Display CPU and memory usage of each node.
     
-    ```
+    ```sh
     oc adm top nodes
     ```
     
@@ -281,7 +281,7 @@ You can start following the installation progress with the CLI after the API ser
 
 4. List the cluster operators.
     
-    ```
+    ```sh
     oc get clusteroperators
     ```
 
@@ -328,7 +328,7 @@ You can `ssh` into the worker and master nodes once the virtual machines have be
 
 1. Get the external IP addresses of the nodes.
     
-    ```
+    ```sh
     oc get nodes -o custom-columns=NAME:.metadata.name,EXTERNALIP:.status.addresses[0].address
     ```
 
@@ -346,7 +346,7 @@ You can `ssh` into the worker and master nodes once the virtual machines have be
     
 2. Log in to one of the nodes.
     
-    ```
+    ```sh
     ssh -i ~/.ssh/id_core core@192.168.252.132
     ```
 
@@ -368,7 +368,9 @@ You can `ssh` into the worker and master nodes once the virtual machines have be
     ```
 
 3. Check if the kubelet is active.
-    ```systemctl is-active kubelet```
+    ```sh
+    systemctl is-active kubelet
+    ```
 
     ``` title="Example Output"
     active

@@ -1,16 +1,16 @@
 ---
-title: Kubernetes Lab 1 - Pod Creation
+title: Lab K8s 1 - Pod Creation
 hide:
     - toc
 ---
 
-# Kubernetes Lab 1 - Pod Creation
+# Lab K8s 1 - Pod Creation
 
-## Problem
+## The Problem
 
 - Write a pod definition named `yoda-service-pod.yml` Then create a pod in the cluster using this definition to make sure it works.
 
-The specificationsof this pod are as follows:
+The specifications of this pod are as follows:
 
  - Use the `bitnami/nginx` container image.
  - The container needs a containerPort of `80`.

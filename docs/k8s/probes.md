@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 4 - Probes
+Title: Lab K8s 3 - Probes
 hide:
     - toc
 ---
 
-# Kubernetes Lab 4 - Probes
+# Lab K8s 3 - Probes
 
 ## Container Health Issues
 

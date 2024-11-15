@@ -1,10 +1,10 @@
 ---
-Title: IBM Container Registries
+Title: Lab CN 3 - IBM Container Registries
 hide:
     - toc
 ---
 
-# IBM Container Registries
+# Lab CN 3 - IBM Container Registries
 
 In this lab we are going to create a Container Image and store it in the [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview){target="_blank"}
 
@@ -26,26 +26,26 @@ In this lab we are going to create a Container Image and store it in the [IBM Cl
 ## Create a new Container Registry namespace
 
 1. Ensure that you're targeting the correct IBM Cloud Container Registry region. For example for Dallas region use **us-south**
-    ```
+    ```sh
     ibmcloud cr region-set us-south
     ```
 1. Choose a name for your first namespace, and create that namespace. Use this namespace for the rest of the Quick Start.Create a new Container Registry Namespace. This namespace is different from a Kubernetes/OpenShift namespace. The name needs to be all lowercase  and globaly unique within a region.
-    ```
+    ```bash
     ibmcloud cr namespace-add <my_namespace>
     ```
     Now set the environment `NAMESPACE` to be use for the rest of the lab
-    ```
+    ```bash
     export NAMESPACE=<my_namespace>
     ```
 
 ## Building and Pushing a Container Image
 1. Clone the following git repository and change directory to `1-containers`
-    ```
+    ```bash
     git clone --depth 1 https://github.com/csantanapr/think2020-nodejs.git my-app
     cd my-app/1-containers/
     ```
 1. Inspect the file `Dockerfile` it contains a multistage build, first layer builds the application, the second copies only the built files.
-    ```
+    ```bash
     cat Dockerfile
     ```
     ```Dockerfile
@@ -88,7 +88,7 @@ In this lab we are going to create a Container Image and store it in the [IBM Cl
     CMD npm run $NODE_ENV
     ```
 1. Build and push the image, if not already set replace `$NAMESPACE` with the namespace you added previously, replace `us.icr.io` if using a different region.
-    ```
+    ```bash
     ibmcloud cr build --tag us.icr.io/$NAMESPACE/my-app:1.0 ./
     ```
 
@@ -105,26 +105,26 @@ In this lab we are going to create a Container Image and store it in the [IBM Cl
 If you have a Kubernetes Cluster you can run your application image
 
 1. Get the Access token for your Kubernetes cluster, command assumes your cluster name is `mycluster`
-    ```
+    ```bash
     ibmcloud ks cluster config -c mycluster
     ```
 1. Run the following commands to create a deployment using the image we just build. If not already set replace `$NAMESPACE` with your IBM Container Registry Namespace we stored the image.
-    ```
+    ```bash
     kubectl create deployment my-app --image us.icr.io/$NAMESPACE/my-app:1.0
     kubectl rollout status deployment/my-app
     kubectl port-forward deployment/my-app 8080:8080
     ```
     If the app is connected you should see the following output
-    ```
+    ```bash
     Forwarding from 127.0.0.1:8080 -> 8080
     Forwarding from [::1]:8080 -> 8080
     ```
 1. Open a new Session and run the following command
-    ```
+    ```bash
     curl localhost:8080 -I
     ```
     You should see in the first line of output the following
-    ```
+    ```bash
     HTTP/1.1 200 OK
     ```
 1. To access the app using a browser use the IBM Cloud Shell Web Preview. Click the Web Preview Icon and select port `8080` from the drop down. The application will open in a new browser window.
@@ -136,10 +136,10 @@ If you have a Kubernetes Cluster you can run your application image
 ### Delete Deployment and Image
 
 1. Delete the app deployment
-    ```
+    ```bash
     kubectl delete deployment my-app
     ```
 1. Delete the container image, if not already set replace `$NAMESPACE` with the registry namespace
-    ```
+    ```bash
     ibmcloud cr image-rm us.icr.io/$NAMESPACE/my-app:1.0
     ```

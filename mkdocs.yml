@@ -179,6 +179,7 @@ markdown_extensions:
 nav:
   - Welcome: 
     - index.md
+    - Agenda: agenda.md
   - Deploying OpenShift on VMware: 
     - ocp-on-vmware/index.md
     - Prepare for Installation: ocp-on-vmware/prepare.md
@@ -186,47 +187,67 @@ nav:
     - Install the Cluster: ocp-on-vmware/install-cluster.md
     - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
     - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
-    - Configure INternal Image Registry: ocp-on-vmware/config-image-registry.md
+    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
   - Installing OpenShift on IBM Cloud: 
     - ocp-on-ibm-cloud/index.md
     - Prepare for Installation: ocp-on-ibm-cloud/prepare.md
     - Install the Cluster: ocp-on-ibm-cloud/install-cluster.md
     - Backup etcd: ocp-on-ibm-cloud/backup-etcd.md
-  - Cloud Native & Containers:
+  - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
     - Learn - App Dev: cn/app-dev.md
     - Learn - Containers: cn/containers.md
-    - Reference - Helpful Information: cn/reference.md
-    - Reference - Image Registries: cn/imageregistry.md
-    - Lab - Docker: cn/containers.md
-    - Lab - Container Registries: cn/ibm-registries.md
-  - K8s & OpenShift:
-    - k8s/index.md
-    - Learn - Kubernetes: k8s/openshift/index.md
+    - Container Quick Reference: cn/reference.md
+    - Lab CN 1 - Image Registries: cn/imageregistry.md
+    - Lab CN 2 - Docker: cn/docker.md
+    - Lab CN 3 - Container Registries: cn/ibm-registries.md
+  - Kubernetes & OpenShift:
+    - k8s/openshift/index.md
+    - Learn - API Primitives: k8s/openshift/core-concepts/index.md
+    - Learn - Namespaces & Projects: k8s/openshift/core-concepts/namespaces-projects/index.md
+    - Learn - Pod Basics: k8s/openshift/pods/index.md
+    - Learn - Labels-Selectors: k8s/openshift/pods/tagging/index.md
     - Lab K8s 1 - Pod Creation: k8s/pod-creation.md
-    - Lab K8s 2 - Pod Configuration: k8s/pod-config.md
-    - Lab K8s 3 - Multiple Containers: k8s/multi-containers.md
-    - Lab K8s 4 - Probes: k8s/probes.md
-    - Lab K8s 5 - Debugging: k8s/debugging.md
+    - Learn - Multi-Container: k8s/openshift/pods/multi-container/index.md
+    - Lab K8s 2 - Multiple Containers: k8s/multi-containers.md
+    - Learn - Health & Monitoring: k8s/openshift/pods/health-checks/index.md
+    - Lab K8s 3 - Probes: k8s/probes.md
+    - Learn - Troubleshooting: k8s/openshift/pods/troubleshooting/index.md
+    - Lab K8s 4 - Debugging: k8s/debugging.md
+    - Learn - Configuration: k8s/openshift/configuration/index.md
+    - Learn - Config Maps: k8s/openshift/configuration/config-map/index.md
+    - Learn - Secrets: k8s/openshift/configuration/secrets/index.md
+    - Learn - Security Contexts: k8s/openshift/configuration/security-contexts/index.md
+    - Learn - Service Accounts: k8s/openshift/configuration/service-accounts/index.md
+    - Lab K8s 5 - Pod Configuration: k8s/pod-config.md
+    - Learn - Deployments: k8s/openshift/deployments/index.md
+    - Learn - Rolling Updates: k8s/openshift/deployments/updates/index.md
     - Lab K8s 6 - Rolling Updates: k8s/rolling-updates.md
+    - Learn - Jobs & CronJobs: k8s/openshift/pods/jobs/index.md
     - Lab K8s 7 - Cron Jobs: k8s/cron-jobs.md
+    - Learn - Networking: k8s/openshift/services-networking/index.md
+    - Learn - Services: k8s/openshift/services-networking/services.md
+    - Learn - Routes: k8s/openshift/services-networking/routes.md
     - Lab K8s 8 - Creating Services: k8s/creating-services.md
     - Lab K8s 9 - Network Policies: k8s/network-policies.md
-    - Lab K8s 10 - Persistent Volumes: k8s/persistent-volumes.md
-    - Lab K8s 11 - Ingress IKS: k8s/ingress.md
+    - Learn - Ingresses: k8s/openshift/services-networking/ingress.md
+    - Lab K8s 10 - Ingress IKS: k8s/ingress.md
+    - Learn - State Persistence: k8s/openshift/state-persistence/index.md
+    - Learn - Volumes: k8s/openshift/state-persistence/volumes.md
+    - Learn - Persistent Volumes & Claims: k8s/openshift/state-persistence/pv-pvc.md
+    - Lab K8s 11 - Persistent Volumes: k8s/persistent-volumes.md
     - Reference - K8s Lab Solutions: k8s/cheats.md
-  - Continuous Integration:
-    - ci/index.md
-    - Walkthrough - S2I: ci/s2i.md
-    - Lab - Tekton: ci/tekton.md
-    - Lab - Tekton on IBM Cloud: ci/tekton-ibm-cloud.md
-    - Lab - Jenkins: ci/jenkins.md
-  - Continuous Deployment:
-    - cd/index.md
-    - Walkthrough - GitOps & OCP: cd/gitops-ocp.md
-    - Walkthrough - GitOps Multi-Cluster: cd/gitops-multi-cluster.md
-    - Lab - ArgoCD: cd/argocd.md
+  - DevOps & GitOps:
+    - devops/tekton/index.md
+    - Learn CI: devops/tekton/index.md
+    - Lab CI 1 - Tekton: devops/tekton/tekton.md
+    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
+    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
+    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
+    - Learn CD: devops/argocd/index.md
+    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
+    - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
   - Cloud Native Challenge (Optional): 
     - cn-challenge/index.md
 

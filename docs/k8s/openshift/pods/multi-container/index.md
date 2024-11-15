@@ -1,3 +1,9 @@
+---
+Title: Multi-Containers Pod
+hide:
+    - toc
+---
+
 # Multi-Containers Pod
 
 Container images solve many real-world problems with existing packaging and deployment tools, but in addition to these significant benefits, containers offer us an opportunity to fundamentally re-think the way we build distributed applications. Just as service oriented architectures (SOA) encouraged the decomposition of applications into modular, focused services, containers should encourage the further decomposition of these services into closely cooperating modular containers. By virtue of establishing a boundary, containers enable users to build their services using modular, reusable components, and this in turn leads to services that are more reliable, more scalable and faster to build than applications built from monolithic containers.
@@ -128,9 +134,3 @@ spec:
     ps ax
     ```
 
-## Activities
-
-| Task                  | Description                                     | Link                                                          |
-| --------------------- | ----------------------------------------------- | :------------------------------------------------------------ |
-| **_Try It Yourself_** |                                                 |                                                               |
-| Multiple Containers   | Build a container using legacy container image. | [Multiple Containers](../../../multi-containers.md) |

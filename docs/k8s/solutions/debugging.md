@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 5 - Debugging Solution
+Title: Lab K8s 4 - Debugging Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 5 - Debugging Solution
+# Lab K8s 4 - Debugging Solution
 
 ## Solution
    Check `STATUS` column for not Ready

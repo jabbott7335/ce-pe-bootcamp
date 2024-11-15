@@ -1,10 +1,10 @@
 ---
-title: Kubernetes Lab 1 - Pod Creation Solution
+title: Lab K8s 1 - Pod Creation Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 1 - Pod Creation Solution
+# Lab K8s 1 - Pod Creation Solution
 
 ## Solution
 

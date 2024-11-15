@@ -1,3 +1,8 @@
+---
+Title: Ingress
+hide:
+    - toc
+---
 # Ingress
 
 An API object that manages external access to the services in a cluster, typically HTTP.
@@ -73,10 +78,3 @@ spec:
     ```
     curl hello-world.info --resolve hello-world.info:80:<ADDRESS>
     ```
-
-## Activities
-
-| Task                   | Description                           | Link                                                              |
-| ---------------------- | ------------------------------------- | :---------------------------------------------------------------- |
-| **_Try It Yourself_**  |                                       |                                                                   |
-| IKS Ingress Controller | Configure Ingress on Free IKS Cluster | [Setting IKS Ingress](../../ingress.md) |

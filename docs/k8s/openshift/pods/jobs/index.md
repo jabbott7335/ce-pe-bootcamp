@@ -1,4 +1,9 @@
-# Jobs and CronJobs
+---
+Title: Jobs & CronJobs
+hide:
+    - toc
+---
+# Jobs & CronJobs
 
 **Jobs**
 
@@ -157,10 +162,3 @@ spec:
     kubectl delete cronjobs pi
     ```
 
-## Activities
-
-| Task                  | Description                                        | Link                                                      |
-| --------------------- | -------------------------------------------------- | :-------------------------------------------------------- |
-| **_Try It Yourself_** |                                                    |                                                           |
-| Rolling Updates Lab   | Create a Rolling Update for your application.      | [Rolling Updates](../../../rolling-updates.md) |
-| Cron Jobs Lab         | Using Tekton to test new versions of applications. | [Crons Jobs](../../../cron-jobs.md)      |

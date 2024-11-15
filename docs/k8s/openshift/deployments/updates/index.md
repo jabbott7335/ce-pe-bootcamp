@@ -1,4 +1,9 @@
-# Rolling Updates and Rollbacks
+---
+Title: Rolling Updates & Rollbacks
+hide:
+    - toc
+---
+# Rolling Updates & Rollbacks
 
 **Updating a Deployment**
 A Deployment’s rollout is triggered if and only if the Deployment’s Pod template (that is, .spec.template) is changed, for example if the labels or container images of the template are updated. Other updates, such as scaling the Deployment, do not trigger a rollout.

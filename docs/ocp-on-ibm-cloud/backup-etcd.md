@@ -6,7 +6,7 @@ hide:
 
 # Backup `etcd`
 
-You will be required to backup the etcd data of your OpenShift cluster to IBM Cloud Object Storage. As part of the IPI installation two buckets have been created, choose one of these as the target destination for the data.
+You will be required to backup the `etcd` data of your OpenShift cluster to IBM Cloud Object Storage. As part of the IPI installation two buckets have been created, choose one of these as the target destination for the data.
 
 Please find some references to assist with completing the exercise below.
 
@@ -20,4 +20,5 @@ Please find some references to assist with completing the exercise below.
 
     [Backing up etcd data from a Red Hat OpenShift Container Platform cluster to IBM Cloud Object Storage](https://developer.ibm.com/tutorials/backup-etcd-data-on-ocp-to-cos/){target="blank"}
 
-Still have questions?  Don't hesitate to consult with other students within your bootcamp cohort.
+!!! Tip "Still have questions?"
+    Still have questions?  Don't hesitate to consult with other students within your bootcamp cohort.

@@ -1,3 +1,8 @@
+---
+Title: Services
+hide:
+    - toc
+---
 # Services
 
 An abstract way to expose an application running on a set of Pods as a network service.
@@ -122,10 +127,3 @@ spec:
     kubectl expose deployment my-deployment --port 80 --target-port=http --selector app=nginx --name my-service-2 --type NodePort
     ```
 
-## Activities
-
-| Task                   | Description                                    | Link                                                              |
-| ---------------------- | ---------------------------------------------- | :---------------------------------------------------------------- |
-| **_Try It Yourself_**  |                                                |                                                                   |
-| Creating Services      | Create two services with certain requirements. | [Setting up Services](../../creating-services.md)        |
-| IKS Ingress Controller | Configure Ingress on Free IKS Cluster          | [Setting IKS Ingress](../../ingress.md) |

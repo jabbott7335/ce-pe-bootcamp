@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 8 - Services Solution
+Title: Lab K8s 8 - Services Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 8 - Services Solution
+# Lab K8s 8 - Services Solution
 
 ## Solution
 

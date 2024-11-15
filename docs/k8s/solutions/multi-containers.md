@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 3 - Manage Multiple Containers Solution
+Title: Lab K8s 2 - Manage Multiple Containers Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 3 - Manage Multiple Containers Solution
+# Lab K8s 2 - Manage Multiple Containers Solution
 
 ## Solution
 

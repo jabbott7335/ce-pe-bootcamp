@@ -22,7 +22,7 @@ This activities contained here require you to be proficient in working from the 
 - Edit text files (vi, vim, emacs, etc)
 - Edit environment variables ($PATH)
 
-Here is a course for learning (or brushing up) on working from the linux command line [Linux Command Line Basics](https://www.udacity.com/course/linux-command-line-basics--ud595)
+Here is a course for learning (or brushing up) on working from the linux command line [Linux Command Line Basics](https://www.udacity.com/course/linux-command-line-basics--ud595){target="_blank"}
 
 ## Prerequisite Class
 
@@ -43,13 +43,13 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
 
-    - [IBM Cloud Account](https://cloud.ibm.com): Create one if needed, make sure you can log in. 
+    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
 
-    - [O'Reilly Account](https://learning.oreilly.com/home/): The account is free and easy to create.
+    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
-    - [RedHat Account](https://www.redhat.com/en): Needed for CodeReady Containers.
+    - [RedHat Account](https://www.redhat.com/en){target="_blank"}: Needed for CodeReady Containers.
 
     ## Run System Check Script
 
@@ -73,32 +73,32 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
+        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
         ```
         curl -sL https://ibm.biz/idt-installer | bash
         ```
 
     !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. 
+        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
 
-    - [Podman Desktop](https://podman-desktop.io/): Required for building and running container images.
+    - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
 
-    - [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton
+    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
     pipelines from the command line.
         ```
             brew tap tektoncd/tools
             brew install tektoncd/tools/tektoncd-cli
         ```
 
-    - [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
+    - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
-        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
         - Used for SpringBoot content
 
 
@@ -108,17 +108,17 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
 
-    - [IBM Cloud Account](https://cloud.ibm.com): Create one if needed, make sure you can log in. 
+    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
 
-    - [O'Reilly Account](https://learning.oreilly.com/home/): The account is free and easy to create.
+    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
-    - [RedHat Account](https://www.redhat.com/en): Needed for CodeReady Containers.
+    - [RedHat Account](https://www.redhat.com/en){target="_blank"}: Needed for CodeReady Containers.
 
     ## Cloud Native VM
 
-    Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install) it comes pre-installed with kubernetes and all cloud native CLIs.
+    Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install){target="_blank"} it comes pre-installed with kubernetes and all cloud native CLIs.
 
     Is highly recommended for Windows users to use this VM.
 
@@ -126,31 +126,31 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
+        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
         ```
         curl -sL https://ibm.biz/idt-installer | bash
         ```
 
     !!! Note 
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. 
+        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
 
-    - [Podman Desktop](https://podman-desktop.io/): Required for building and running container images.
+    - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
 
-    - [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton pipelines from the command line.
+    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton pipelines from the command line.
 
 
-    - [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
+    - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
-        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
         - Used for SpringBoot content
 
-    - [OpenShift CodeReady Containers (CRC)](https://code-ready.github.io/crc/#installing-codeready-containers_gsg)
+    - [OpenShift CodeReady Containers (CRC)](https://code-ready.github.io/crc/#installing-codeready-containers_gsg){target="_blank"}
 
     <InlineNotification kind="warning">
 
@@ -163,11 +163,11 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
 
-    - [IBM Cloud Account](https://cloud.ibm.com): Create one if needed, make sure you can log in. 
+    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
 
-    - [O'Reilly Account](https://learning.oreilly.com/home/): The account is free and easy to create.
+    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
 
     ## Run System Check Script
@@ -190,36 +190,36 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
+        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
         ```
         curl -sL https://ibm.biz/idt-installer | bash
         ```
 
      !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. 
+        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
     
 
-    - [Podman Desktop](https://podman-desktop.io/): Required for building and running container images.
+    - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
 
-    - [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton
+    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
     pipelines from the command line.
         ```
             brew tap tektoncd/tools
             brew install tektoncd/tools/tektoncd-cli
         ```
 
-    - [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
+    - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
         - Used for SpringBoot content
 
-    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/): Follow the instructions for your Operating System.
+    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/){target="_blank"}: Follow the instructions for your Operating System.
 
     <InlineNotification kind="warning">
 
@@ -233,15 +233,15 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
 
-    - [IBM Cloud Account](https://cloud.ibm.com): Create one if needed, make sure you can log in. 
+    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
 
-    - [O'Reilly Account](https://learning.oreilly.com/home/): The account is free and easy to create.
+    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
     ## Cloud Native VM
 
-    Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install) it comes pre-installed with kubernetes and all cloud native CLIs.
+    Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install){target="_blank"} it comes pre-installed with kubernetes and all cloud native CLIs.
 
     Is highly recommended for Windows users to use this VM.
 
@@ -249,36 +249,36 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
+        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
         ```
         curl -sL https://ibm.biz/idt-installer | bash
         ```
 
     !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. 
+        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
 
 
-    - [Podman Desktop](https://podman-desktop.io/): Required for building and running container images.
+    - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
 
-    - [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton
+    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
     pipelines from the command line.
         ```
             brew tap tektoncd/tools
             brew install tektoncd/tools/tektoncd-cli
         ```
 
-    - [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
+    - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
-        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+        - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
         - Used for SpringBoot content
 
-    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/): Follow the instructions for your Operating System.
+    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/){target="_blank"}: Follow the instructions for your Operating System.
 
     <InlineNotification kind="warning">
 
@@ -312,7 +312,7 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
 === "CRC (MiniShift)"
 
-    Make sure CRC is installed. Check out the [CRC Page](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg) 
+    Make sure CRC is installed. Check out the [CRC Page](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg){target="_blank"} 
 
     ** Setup CRC **
     ```
@@ -324,7 +324,7 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
     ```
 === "IKS"
 
-    - Login to [IBM Cloud](https://cloud.ibm.com) with your IBM ID.
+    - Login to [IBM Cloud](https://cloud.ibm.com){target="_blank"} with your IBM ID.
 
     - Click "Create Resource" and search for "kubernetes service".
 
@@ -345,7 +345,7 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
 
     - Ask your IBM cloud account owner to provide access to an OpenShift cluster.
 
-    - In addition to the IBM Cloud CLI also install the [OpenShift Origin CLI](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc) to be able to execute all commands.
+    - In addition to the IBM Cloud CLI also install the [OpenShift Origin CLI](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc){target="_blank"} to be able to execute all commands.
 
     - Open your OpenShift web console from within your IBM cloud account, select your profile and choose "copy login command" to retrieve an access token for the login.
 
@@ -362,9 +362,9 @@ Completion Criteria:  Complete and provide evidence of passing the [DO322 Assess
     - Validate in the OpenShift web console that your project has been created (Administrator view -> Home -> Projects)
 
 
-## Get a Jump on CLoud Native Concepts
+!!! Note "Get a Jump on CLoud Native Concepts"
 
-Once Setup is complete, you can now begin reading:
+    Once Setup is complete, you can get an early jump on some of the Cloud Native topics we will hit during the bootcamp:
 
-- About [Cloud Native](./cn/cloud-native.md){target="_blank"}
-- Cloud Native [App Development](./cn/app-dev.md){target="_blank"}
+    - About [Cloud Native](./cn/cloud-native.md){target="_blank"}
+    - Cloud Native [App Development](./cn/app-dev.md)

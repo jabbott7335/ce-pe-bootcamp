@@ -1,12 +1,12 @@
 ---
-Title: Kubernetes Lab 2 - Pod Configuration
+Title: Lab K8s 5 - Pod Configuration
 hide:
     - toc
 ---
 
-# Kubernetes Lab 2 - Pod Configuration
+# Lab K8s 5 - Pod Configuration
 
-## Problem
+## The Problem
 
 - Create a pod definition named `yoda-service-pod.yml`, and then create a pod in the cluster using this definition to make sure it works.
 
@@ -26,7 +26,7 @@ The specifications are as follows:
 
 To verify your setup is complete, check `/etc/yoda-service` for the `yoda.cfg` file and use the `cat` command to check it's contents.
 
-```
+```bash
 kubectl exec -it yoda-service /bin/bash
 cd /etc/yoda-service
 cat yoda.cfg

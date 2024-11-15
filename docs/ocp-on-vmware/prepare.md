@@ -20,9 +20,7 @@ To ensure seamless operation, OpenShift Container Platform relies on a fully fun
     dig +short api.ocpinstall.gym.lan -x 192.168.252.3
     ```
     
-    **Example Output**
-    
-    ```
+    ```title="Example Output"
     192.168.252.3
     api.ocpinstall.gym.lan
     ```
@@ -32,10 +30,8 @@ To ensure seamless operation, OpenShift Container Platform relies on a fully fun
     ```
     dig +short foo.apps.ocpinstall.gym.lan
     ```
-
-    **Example Output**
     
-    ```
+    ```title="Example Output"
     192.168.252.4
     ```
 
@@ -53,31 +49,31 @@ To complete the installation of an OpenShift Container Platform cluster, you wil
 
 2. Download the vCenter root CA certificates.
     
-    ```
+    ```sh
     curl -kL https://${VCENTER_HOSTNAME}/certs/download.zip -o download.zip
     ```
 
 3. Extract the certificates.
     
-    ```
+    ```sh
     unzip download.zip
     ```
 
 4. Add the certificates to the CA trust store.
     
-    ```
+    ```sh
     sudo cp certs/lin/* /etc/pki/ca-trust/source/anchors
     ```
 
 5. Update the CA trust store.
     
-    ```
+    ```sh
     sudo update-ca-trust extract
     ```
 
 6. Clean up.
     
-    ```
+    ```sh
     rm -fr download.zip certs/
     ```
 
@@ -91,32 +87,30 @@ The version of the OpenShift installer will dictate the initial version of the O
     OI_VERSION=stable-4.15
     ```
 
-    ```
+    ```sh
     curl -Lo openshift-install-linux.tar.gz \
     https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${OI_VERSION}/openshift-install-linux.tar.gz
     ```
 
 2. Extract the installer.
     
-    ```
+    ```sh
     tar xf openshift-install-linux.tar.gz openshift-install
     ```
 
 3. Copy it to a directory in $PATH.
     
-    ```
+    ```sh
     sudo install openshift-install /usr/local/bin
     ```
 
 4. Verify that the installer is executable.
     
-    ```
+    ```sh
     openshift-install version
     ```
     
-    **You should see output similar to the following:**
-    
-    ```
+    ```title="You should see output similar to the following"
     openshift-install 4.15.5
     built from commit 4edfd0e16bc637dc2f593afbb28bba9799023892
     release image quay.io/openshift-release-dev/ocp-release@sha256:b17bc935bfb0fb250e738733af5d3d4ea1f27065de8e2622890782780b36320c
@@ -124,7 +118,7 @@ The version of the OpenShift installer will dictate the initial version of the O
     ```
 
 5. Clean up.
-    ```
+    ```sh
     rm openshift-install-linux.tar.gz openshift-install
     ```
 
@@ -135,38 +129,36 @@ The version of the OpenShift installer will dictate the initial version of the O
     OC_VERSION=stable-4.15
     ```
 
-    ```
+    ```sh
     curl -Lo openshift-client-linux.tar.gz \
     https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${OC_VERSION}/openshift-client-linux.tar.gz
     ```
 2. Extract the CLI.
     
-    ```
+    ```sh
     tar xf openshift-client-linux.tar.gz oc
     ```
 
 3. Copy it to a directory in $PATH.
 
-    ```
+    ```sh
     sudo install oc /usr/local/bin
     ```
 
 4. Verify that the CLI is executable.
     
-    ```
+    ```sh
     oc version
     ```
     
-    **You should see output similar to the following**
-    
-    ```
+    ```title="You should see output similar to the following"
     Client Version: 4.15.5
     Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
     ```
     
 5. Clean up.
     
-    ```
+    ```sh
     rm openshift-client-linux.tar.gz oc
     ```
 
@@ -176,15 +168,12 @@ During an OpenShift Container Platform installation, you can provide an SSH publ
 
 If you want to SSH in to your cluster nodes to perform installation debugging or disaster recovery, you must provide the SSH public key during the installation process. The openshift-install gather command also requires the SSH public key to be in place on the cluster nodes.
 
-**Run ssh-keygen:**
 
-```
+```sh title="Run ssh-keygen"
 ssh-keygen -t ed25519 -N '' -f ~/.ssh/id_core
 ```
 
-**Example output**
-
-```
+```bash title="Example Output"
 Generating public/private ed25519 key pair.
 Your identification has been saved in /home/admin/.ssh/id_core.
 Your public key has been saved in /home/admin/.ssh/id_core.pub.

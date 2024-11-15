@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 11 - Ingress Controller IBM Free K8s Cluster
+Title: Lab K8s 10 - Ingress Controller IBM Free K8s Cluster
 hide:
     - toc
 ---
 
-# Kubernetes Lab 11 - Ingress Controller IBM Free K8s Cluster
+# Lab K8s 10 - Ingress Controller IBM Free K8s Cluster
 
 The [IBM Kubernetes service](https://www.ibm.com/cloud/container-service) free clusters consist of a single worker node with 2 CPU and 4 GB of memory for experimenting with Kubernetes. Unlike the fee-based service, these clusters do not include capabilities for application load balancing using ingress out-of-the-box. 
 

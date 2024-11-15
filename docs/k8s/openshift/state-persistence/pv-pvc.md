@@ -1,4 +1,9 @@
-# PersistentVolumes and Claims
+---
+Title: Persistent Volumes & Claims
+hide:
+    - toc
+---
+# Persistent Volumes & Claims
 
 Managing storage is a distinct problem from managing compute instances. The PersistentVolume subsystem provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed.
 

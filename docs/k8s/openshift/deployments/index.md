@@ -1,3 +1,8 @@
+---
+Title: Deployments
+hide:
+    - toc
+---
 # Deployments
 
 A Deployment provides declarative updates for Pods and ReplicaSets.
@@ -110,9 +115,3 @@ spec:
     kubectl delete deployment my-deployment
     ```
 
-## Activities
-
-| Task                  | Description                                  | Link                                                   |
-| --------------------- | -------------------------------------------- | :----------------------------------------------------- |
-| **_Try It Yourself_** |                                              |                                                        |
-| Rolling Updates Lab   | Create a Rolling Update for your application | [Rolling Updates](../../rolling-updates.md) |

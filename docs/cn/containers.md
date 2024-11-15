@@ -1,20 +1,18 @@
 ---
-Title: Containers Introduction
+Title: Containers
 hide:
     - toc
 ---
 
-# Containers Introduction
+# Containers
 
 You wanted to run your application on different computing environments. It may be your laptop, test environment, staging environment or production environment.
 
-So, when you run it on these different environments, will your application work reliably ?
-
-What if some underlying software changes ? What if the security policies are different ? or something else changes ?
+- When you run it on these different environments, will your application work reliably?
+- What happens if something changes with the underlying software?
+- What if the security policies are different? or something else changes?
 
 To solve this problems, we need Containers.
-
-## Containers
 
 Containers are a standard way to package an application and all its dependencies so that it can be moved between environments and run without change. They work by hiding the differences between applications inside the container so that everything outside the container can be standardized.
 
@@ -29,7 +27,7 @@ For example, Docker created standard way to create images for Linux Containers.
 ## Why containers ?
 
 - We can run them anywhere.
-- They are lightweight .
+- Containers are lightweight.
 - Isolate your application from others.
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/muTkqVewJMI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

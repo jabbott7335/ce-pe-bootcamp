@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 4 - Probes Solution
+Title: Lab K8s 3 - Probes Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 4 - Probes Solution
+# Lab K8s 3 - Probes Solution
 
 ## Solution 
 

@@ -1,12 +1,12 @@
 ---
-Title: Kubernetes Lab 9 - Network Policies
+Title: Lab K8s 9 - Network Policies
 hide:
     - toc
 ---
 
-# Kubernetes Lab 9 - Network Policies
+# Lab K8s 9 - Network Policies
 
-## Problem
+## The Problem
 
 Setup minikube
 

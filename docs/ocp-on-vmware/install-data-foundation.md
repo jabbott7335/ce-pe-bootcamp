@@ -30,11 +30,11 @@ The OpenShift web console provides an easy way to install the ODF operator and c
 
 11. Detailed progress monitoring can be done on the command line.
     
-    ```
+    ```sh
     oc login -u admin
     ```
 
-    ```
+    ```sh
     watch oc -n openshift-storage get storagecluster,pods
     ```
 
@@ -92,7 +92,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
 
 12. Verify that the OpenShift Data Foundation storage classes are available.
     
-    ```
+    ```sh
     oc get sc
     ```
 
@@ -129,7 +129,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
         
     Check if the PVC is bound to a PersistentVolume.
             
-    ```
+    ```sh
     oc get pvc test
     ```
 
@@ -140,6 +140,6 @@ The OpenShift web console provides an easy way to install the ODF operator and c
             
     Delete the test PVC.
             
-    ```
+    ```sh
     oc delete pvc test
     ```

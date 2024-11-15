@@ -12,7 +12,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
 
 1. Validate that the `managementState` of the image registry operator is `Removed`.
     
-    ```
+    ```sh
     oc get config.image/cluster -ojsonpath='{.spec.managementState}{"\n"}'
     ```
 
@@ -22,7 +22,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
 
 2. Create an object bucket claim (OBC) named image-registry in the openshift-image-registry namespace.
     
-    ```
+    ```sh
     oc apply -f - <<EOF
     apiVersion: objectbucket.io/v1alpha1
     kind: ObjectBucketClaim
@@ -37,19 +37,20 @@ For this project the developers will leverage source-to-image (S2I), one of the 
 
 3. Save the name of the OBC in a shell variable.
     
-    ```
+    ```sh
     bucket_name=$(oc -n openshift-image-registry get obc image-registry -o jsonpath='{.spec.bucketName}')
     ```
 
 4. Save the credentials in shell variables.
     
-    ```AWS_ACCESS_KEY_ID=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_ACCESS_KEY_ID:" | head -n1 | awk '{print $2}' | base64 --decode)
+    ```sh
+    AWS_ACCESS_KEY_ID=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_ACCESS_KEY_ID:" | head -n1 | awk '{print $2}' | base64 --decode)
     AWS_SECRET_ACCESS_KEY=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_SECRET_ACCESS_KEY:" | head -n1 | awk '{print $2}' | base64 --decode)
     ```
 
 5. Create the secret named `image-registry-private-configuration-user`.
     
-    ```
+    ```sh
     oc -n openshift-image-registry create secret generic image-registry-private-configuration-user \
       --from-literal=REGISTRY_STORAGE_S3_ACCESSKEY=${AWS_ACCESS_KEY_ID} \
       --from-literal=REGISTRY_STORAGE_S3_SECRETKEY=${AWS_SECRET_ACCESS_KEY}
@@ -57,26 +58,26 @@ For this project the developers will leverage source-to-image (S2I), one of the 
 
 6. Save the s3 route's hostname into a shell variable.
     
-    ```
+    ```sh
     s3_hostname=$(oc -n openshift-storage get route s3 -o=jsonpath='{.spec.host}')
     ```
 
 7. Copy the Ingress CA bundle into a ConfigMap named `image-registry-s3-bundle`.
     
-    ```
+    ```sh
     oc -n openshift-ingress extract secret/router-certs-default --confirm
     oc -n openshift-config create configmap image-registry-s3-bundle --from-file=ca-bundle.crt=./tls.crt
     ```
     
 8. Patch the `config.imageregistry/cluster`.
     
-    ```
+    ```sh
     oc patch config.image/cluster -p '{"spec":{"managementState":"Managed","replicas":2,"storage":{"managementState":"Unmanaged","s3":{"bucket":'\"${bucket_name}\"',"region":"us-east-1","regionEndpoint":'\"https://${s3_hostname}\"',"virtualHostedStyle":false,"encrypt":true,"trustedCA":{"name":"image-registry-s3-bundle"}}}}}' --type=merge
     ```
 
 9. Check the image registry Pods.
     
-    ```
+    ```sh
     oc -n openshift-image-registry get pods -l docker-registry=default
     ```
 
@@ -90,19 +91,19 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     
     Ensure the `git` command is available on the bastion host.
     
-    ```
+    ```sh
     sudo yum install -y git-core
     ```
 
     Create a project.
     
-    ```
+    ```sh
     oc new-project validate-s2i
     ```
     
     Use S2I to create a `hello-world` application.
     
-    ```
+    ```sh
     oc new-app \
         --name hello-world \
         https://github.com/RedHatTraining/DO280-apps \
@@ -111,7 +112,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     
     Follow the build logs.
     
-    ```
+    ```sh
     oc logs -f buildconfig/hello-world
     ```
 
@@ -124,7 +125,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
 
     Clean up.
     
-    ```
+    ```sh
     oc delete project validate-s2i
     ```
     

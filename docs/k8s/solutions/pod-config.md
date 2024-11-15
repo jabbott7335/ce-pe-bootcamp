@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 2 - Pod Configuration Solution
+Title: Lab K8s 5 - Pod Configuration Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 2 - Pod Configuration Solution
+# Lab K8s 5 - Pod Configuration Solution
 ---
 
 ## Solution

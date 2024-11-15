@@ -1,3 +1,8 @@
+---
+Title: Secrets
+hide:
+    - toc
+---
 # Secrets
 
 Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a Pod definition or in a container image.
@@ -99,26 +104,26 @@ spec:
 
     **Create files needed for rest of example**
 
-    ```
+    ```bash
     echo -n 'admin' > ./username.txt
     echo -n '1f2d1e2e67df' > ./password.txt
     ```
 
     **Creating Secret from files**
 
-    ```
+    ```bash
     oc create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
     ```
 
     **Getting Secret**
 
-    ```
+    ```bash
     oc get secrets
     ```
 
     **Gets the Secret's Description**
 
-    ```
+    ```bash
     oc describe secrets/db-user-pass
     ```
 

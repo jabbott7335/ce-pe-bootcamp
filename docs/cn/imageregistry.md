@@ -1,10 +1,10 @@
 ---
-Title: Image Registries
+Title: Lab CN 1 - Image Registries
 hide:
     - toc
 ---
 
-# Image Registries
+# Lab CN 1 - Image Registries
 
 A registry is a repository used to store and access container images. Container registries can support container-based application development, often as part of DevOps processes.
 

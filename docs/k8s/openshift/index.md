@@ -1,5 +1,10 @@
+---
+Title: Kubernetes & OpenShift Overview
+hide:
+    - toc
+---
+
 # Kubernetes & OpenShift Overview
-## Introduction
 
 Kubernetes is an open source container orchestration platform that automates deployment, management and scaling of applications. Learn how Kubernetes enables cost-effective cloud native development.
 

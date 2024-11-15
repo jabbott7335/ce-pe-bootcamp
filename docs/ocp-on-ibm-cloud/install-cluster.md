@@ -24,37 +24,37 @@ The components created by the installer are depicted in the diagram below.
     Set shell variables.
 
 
-    ```
+    ```sh
     INSTALL_DIR=<your_install_dir>
     CLUSTER_NAME=<your_cluster_name>
     ```
 
     Destroy the cluster.
 
-    ```
+    ```sh
     openshift-install destroy cluster --dir ${INSTALL_DIR}
     ```
 
     Delete the cloud credentials.
 
-    ```
+    ```sh
     ccoctl ibmcloud delete-service-id --credentials-requests-dir ${INSTALL_DIR}/creds --name ${CLUSTER_NAME}
     ```
     
     Remove the installation directory.
 
-    ```
+    ```sh
     rm -fr ${INSTALL_DIR}
     ```
 
     Remove the hidden files in `${HOME}`.
 
-    ```
+    ```sh
     rm ${HOME}/.openshift_install*
     ```
 
     Remove `install-config.yaml`
 
-    ```
+    ```sh
     rm ${HOME}/install-config.yaml
     ```

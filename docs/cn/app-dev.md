@@ -152,8 +152,8 @@ Application tracing is always important and make sure it is a part of your cloud
 
 We discussed the cloud-native application design, implementations of cloud native patterns, and application life cycle. We also saw how we can design our cloud native applications using the twelve factor methodology. Along with this, we also explored what we need to include in our cloud naive application while building it.
 
-## References
+!!! Note "References"
 
-- [Justin Garrison, Kris Nova, (2018). Managing cloud native applications. Publisher: O'Reilly Media, Inc.](https://learning.oreilly.com/library/view/managing-cloud-native/9781492037071/){target="_blank"}
-- [Piyum Zonooz, Erik Farr, Kamal Arora, Tom Laszewski, 2018. Cloud Native Architectures. Publisher: Packt Publishing](https://learning.oreilly.com/library/view/cloud-native-architectures/9781787280540/){target="_blank"}
-- [12factor.net](https://12factor.net/codebase){target="_blank"}
+    - [Justin Garrison, Kris Nova, (2018). Managing cloud native applications. Publisher: O'Reilly Media, Inc.](https://learning.oreilly.com/library/view/managing-cloud-native/9781492037071/){target="_blank"}
+    - [Piyum Zonooz, Erik Farr, Kamal Arora, Tom Laszewski, 2018. Cloud Native Architectures. Publisher: Packt Publishing](https://learning.oreilly.com/library/view/cloud-native-architectures/9781787280540/){target="_blank"}
+    - [12factor.net](https://12factor.net/codebase){target="_blank"}

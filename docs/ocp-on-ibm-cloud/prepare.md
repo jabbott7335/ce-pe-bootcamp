@@ -18,39 +18,39 @@ hide:
     
     Extract the `ccoctl` application.
         
-    ```
+    ```sh
     RELEASE_IMAGE=$(openshift-install version | awk '/release image/ {print $3}')
     ```
     
-    ```
+    ```sh
     CCO_IMAGE=$(oc adm release info --image-for='cloud-credential-operator' ${RELEASE_IMAGE} -a ~/.pull-secret)
     ```
     
-    ```
+    ```sh
     oc image extract ${CCO_IMAGE} --file="/usr/bin/ccoctl" -a ~/.pull-secret
     ```
         
     Ensure the application is executable.
         
-    ```
+    ```sh
     chmod 775 ccoctl
     ```
 
     Copy it to a directory in `$PATH`.
     
-    ```
+    ```sh
     sudo install ccoctl /usr/local/bin
     ```
 
     Verify `ccoctl` is executable.
         
-    ```
+    ```sh
     ccoctl ibmcloud -h
     ```
         
     You should see output similar to the following:
         
-    ```
+    ```sh
     Creating/deleting cloud credentials objects for IBM Cloud
 
     Usage:
@@ -69,7 +69,7 @@ hide:
 
     Clean up.
     
-    ```
+    ```sh
     rm ccoctl
     ```
 

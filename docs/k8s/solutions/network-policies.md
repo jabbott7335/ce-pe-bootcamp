@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 9 - Network Policies Solution
+Title: Lab K8s 9 - Network Policies Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 9 - Network Policies Solution
+# Lab K8s 9 - Network Policies Solution
 
 ## Solution
 

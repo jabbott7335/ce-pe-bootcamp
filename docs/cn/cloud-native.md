@@ -1,26 +1,14 @@
 ---
-Title: Cloud Native Introduction
+Title: Cloud Native
 hide:
     - toc
 ---
 
 # Cloud Native
 
-## Introduction
-
-Cloud is everywhere. Today, many companies want to migrate their
-applications on to cloud. For this migration to be done, the
-applications must be re-architected in a way that they fully utilize the
-advantages of the cloud.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fp9_ubiKqFU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-## Presentations
-
-[Cloud-Native Presentation :fontawesome-regular-file-pdf:](./materials/01-What-Is-Cloud-Native.pdf){ .md-button target=_blank}
+We begin with this [Cloud-Native Presentation :fontawesome-regular-file-pdf:](./materials/01-What-Is-Cloud-Native.pdf){ .md-button target=_blank}
 
 ## What is Cloud-Native?
-
 
 Cloud-native is about how we build and run applications taking full
 advantage of cloud computing rather than worrying about where we deploy
@@ -368,12 +356,9 @@ platforms etc from the cloud-native landscapes.
 
 Also, if you are interesting in knowing more, we have [Cloud-Native: A Complete Guide](https://www.ibm.com/cloud/learn/cloud-native). Feel free to check this out.
 
-## References
+!!! Note "References"
 
--   [Learn Cloud-native](https://www.ibm.com/cloud/learn/cloud-native){target="_blank"}
-
--   [John Gilbert, (2018). Cloud Native Development Patterns and Best Practices. Publisher: Packt Publishing](https://learning.oreilly.com/library/view/cloud-native-development/9781788473927/){target="_blank"}
-
--   [CNCF Landscape](https://github.com/cncf/landscape){target="_blank"}
-
--   [CNCF Definition](https://github.com/cncf/toc/blob/master/DEFINITION.md){target="_blank"}
+    - [Learn Cloud-native](https://www.ibm.com/cloud/learn/cloud-native){target="_blank"}
+    - [John Gilbert, (2018). Cloud Native Development Patterns and Best Practices. Publisher: Packt Publishing](https://learning.oreilly.com/library/view/cloud-native-development/9781788473927/){target="_blank"}
+    - [CNCF Landscape](https://github.com/cncf/landscape){target="_blank"}
+    - [CNCF Definition](https://github.com/cncf/toc/blob/master/DEFINITION.md){target="_blank"}

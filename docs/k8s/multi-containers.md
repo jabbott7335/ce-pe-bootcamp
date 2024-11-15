@@ -1,12 +1,12 @@
 ---
-Title: Kubernetes Lab 3 - Manage Multiple Containers
+Title: Lab K8s 2 - Manage Multiple Containers
 hide:
     - toc
 ---
 
-# Kubernetes Lab 3 - Manage Multiple Containers
+# Lab K8s 2 - Manage Multiple Containers
 
-## Problem
+## The Problem
 
 This service has already been packaged into a container image, but there is one special requirement:
  - The legacy app is hard-coded to only serve content on port `8989`, but the team wants to be able to access the service using the standard port `80`.
@@ -31,7 +31,7 @@ This setup will need to meet the following specifications:
 - The HAProxy config should be provided to the ambassador container using a volume mount that places the data from the ConfigMap in a file at /usr/local/etc/haproxy/haproxy.cfg.
 haproxy.cfg should contain the following configuration data:
 
-```
+```bash
 global
     daemon
     maxconn 256
@@ -75,7 +75,7 @@ kubectl exec busybox -- curl $(kubectl get pod vader-service -o=custom-columns=I
 
 If the service is working, you should get a message that the hyper drive of the millennium falcon needs repair.
 
-*Relevant Documentation:*
-- [Kubernetes Sidecar Logging Agent](https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent)
-- [Shared Volumes](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)
-- [Distributed System Toolkit Patterns](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/)
+!!! Information "Related Documentation"
+    - [Kubernetes Sidecar Logging Agent](https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent){target="_blank"}
+    - [Shared Volumes](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/){target="_blank"}
+    - [Distributed System Toolkit Patterns](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/){target="_blank"}

@@ -1,3 +1,8 @@
+---
+Title: Config Maps
+hide:
+    - toc
+---
 # Config Maps
 
 ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.

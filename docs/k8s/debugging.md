@@ -1,12 +1,12 @@
 ---
-Title: Kubernetes Lab 5 - Debugging
+Title: Lab K8s 4 - Debugging
 hide:
     - toc
 ---
 
-# Kubernetes Lab 5 - Debugging
+# Lab K8s 4 - Debugging
 
-## Problem
+## The Problem
 
 The Hyper Drive isn't working and we need to find out why. Let's debug the `hyper-drive` deployment so that we can reach light speed again.
 
@@ -20,13 +20,13 @@ Here are some tips to help you solve the Hyper Drive:
 - To fix the deployment, save then modify the yaml file for redeployment.
 
 Reset the environment:
-```
+```bash
 minikube delete
 minikube start
 ```
 
 Setup the environment:
-```
+```bash
 kubectl apply -f https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/lab-setup/lab-5-debug-k8s-setup.yaml
 ```
 
@@ -34,6 +34,6 @@ kubectl apply -f https://raw.githubusercontent.com/ibm-cloud-architecture/learni
 
 Once you get the Hyper Drive working again. Verify it by checking the endpoints.
 
-```
+```bash
 kubectl get ep hyper-drive
 ```

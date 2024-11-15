@@ -174,5 +174,5 @@ We will use the create `install-config` wizard to create the install config asse
     #...
     ```
 
-!!! Stop "Hold on!" 
+!!! Warning "Hold on!" 
     Where are the infrastructure nodes dear instructors? Good catch! Infrastructure nodes currently can not be specified in the install config asset, we will ensure they are created in the next section.

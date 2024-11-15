@@ -1,10 +1,10 @@
 ---
-Title: Kubernetes Lab 6 - Rolling Updates Solution
+Title: Lab K8s 6 - Rolling Updates Solution
 hide:
     - toc
 ---
 
-# Kubernetes Lab 6 - Rolling Updates Solution
+# Lab K8s 6 - Rolling Updates Solution
 
 ## Solution
 

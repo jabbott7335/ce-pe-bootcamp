@@ -1,3 +1,8 @@
+---
+Title: Service Accounts
+hide:
+    - toc
+---
 # Service Accounts
 
 A service account provides an identity for processes that run in a Pod.

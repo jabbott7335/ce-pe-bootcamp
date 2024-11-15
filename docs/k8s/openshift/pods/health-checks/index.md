@@ -1,3 +1,8 @@
+---
+Title: Health and Monitoring
+hide:
+    - toc
+---
 # Health and Monitoring
 
 ## Liveness and Readiness Probes
@@ -289,7 +294,7 @@ spec:
 
 === "OpenShift"
 
-    ```
+    ```bash
     oc get projects
     oc api-resources -o wide
     oc api-resources -o name
@@ -321,9 +326,3 @@ spec:
 
 </Tabs>
 
-## Activities
-
-| Task                  | Description                                                          | Link                                             |
-| --------------------- | -------------------------------------------------------------------- | :----------------------------------------------- |
-| **_Try It Yourself_** |                                                                      |                                                  |
-| Probes                | Create some Health & Startup Probes to find what's causing an issue. | [Probes](../../../probes.md) |
