@@ -1,0 +1,20 @@
+language: python
+python: 3.11
+branches: main
+  
+install:
+- pip install -r requirements.txt
+
+script: true
+before_deploy:
+# - mkdocs build --verbose --clean --strict
+- mkdocs build --verbose --clean
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $IBM_GITHUB_TOKEN
+  keep-history: true
+  local_dir: site
+  github_url: github.ibm.com
+  on:
+    branch: main
