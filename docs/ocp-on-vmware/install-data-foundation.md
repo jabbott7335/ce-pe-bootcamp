@@ -12,7 +12,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
 
 2. Click **Operators > OperatorHub**.
 
-3. Scroll or type `OpenShift Data Foundation` into the Filter by keyword box to find the OpenShift Data Foundation Operator.
+3. Scroll or type `odf` into the Filter by keyword box to find the **OpenShift Data Foundation** Operator.
 
 4. Select the OpenShift Data Foundation operator, click **Install**, leave the values at their default, and click **Install**.
 
@@ -20,7 +20,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
 
 6. Click **Create StorageSystem**.
 
-7. In the Backing storage page, leave the values at their default and click **Next**.
+7. In the Backing storage page, Check *Use Ceph RBD as the default StorageClass* and leave the remaining values at their default and click **Next**.
 
 8. Set the Requested capacity to 0.5 TiB, notice that the infrastructure nodes have been preselected, and click **Next**.
 
@@ -38,9 +38,9 @@ The OpenShift web console provides an easy way to install the ODF operator and c
     watch oc -n openshift-storage get storagecluster,pods
     ```
 
-    ``` title="Wait until the StorageCluster reaches phase Ready"
+    ```{.text .no-copy title="Wait until the StorageCluster reaches phase Ready"}
     NAME                                                 AGE     PHASE   EXTERNAL   CREATED AT             VERSION
-    storagecluster.ocs.openshift.io/ocs-storagecluster   6m37s   Ready              2024-03-25T12:42:21Z   4.15.1
+    storagecluster.ocs.openshift.io/ocs-storagecluster   6m37s   Ready              2024-11-18T12:42:21Z   4.17.3
 
     NAME                                                                  READY   STATUS      RESTARTS   AGE
     pod/csi-addons-controller-manager-79589c64b9-7nrnx                    2/2     Running     0          7m22s
@@ -96,7 +96,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
     oc get sc
     ```
 
-    ``` title="Example output"
+    ```{.text .no-copy title="Example Output"}
     NAME                          PROVISIONER                             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
     ocs-storagecluster-ceph-rbd   openshift-storage.rbd.csi.ceph.com      Delete          Immediate              true                   106s
     ocs-storagecluster-ceph-rgw   openshift-storage.ceph.rook.io/bucket   Delete          Immediate              false                  4m55s
@@ -133,7 +133,7 @@ The OpenShift web console provides an easy way to install the ODF operator and c
     oc get pvc test
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS                  AGE
     test   Bound    pvc-419958c8-1126-4601-ba3f-4f2c14bfb88c   1Gi        RWO            ocs-storagecluster-ceph-rbd   6s
     ```
