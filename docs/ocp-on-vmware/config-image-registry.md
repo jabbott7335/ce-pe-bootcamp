@@ -8,7 +8,7 @@ hide:
 
 On platforms that do not provide shareable object storage, vSphere without VSAN for example, the OpenShift image registry operator bootstraps itself as `Removed`. This allows the installer to complete on these platform types.
 
-For this project the developers will leverage source-to-image (S2I), one of the things S2I does is push container images the internal image registry so it needs storage. Let's configure the internal image registry so it uses NooBaa, an object storage type provided by OpenShift Data Foundation.
+For this project the clients developers will leverage source-to-image (S2I). One of the things that S2I does is push container images to the internal image registry. To enable this, we'll need to configure the internal image registry with storage. Let's configure the internal image registry so it uses NooBaa, an object storage type provided by OpenShift Data Foundation.
 
 1. Validate that the `managementState` of the image registry operator is `Removed`.
     
@@ -16,7 +16,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     oc get config.image/cluster -ojsonpath='{.spec.managementState}{"\n"}'
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     Removed
     ```
 
@@ -81,7 +81,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     oc -n openshift-image-registry get pods -l docker-registry=default
     ```
 
-    ```title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME                              READY   STATUS    RESTARTS   AGE
     image-registry-7b555754d6-5cjqg   1/1     Running   0          2m15s
     image-registry-7b555754d6-k8hn7   1/1     Running   0          2m15s
@@ -116,7 +116,7 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     oc logs -f buildconfig/hello-world
     ```
 
-    ```title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     #...
     Writing manifest to image destination
     Successfully pushed image-registry.openshift-image-registry.svc:5000/validate-s2i/hello-world@sha256:a6cabaa667cd38a5d90220faab76881b0cf24232709fefdc309bee9b31492cd4
@@ -128,5 +128,5 @@ For this project the developers will leverage source-to-image (S2I), one of the 
     ```sh
     oc delete project validate-s2i
     ```
-    
-Congratulations the deployment is complete!
+
+Congratulations the deployment is complete! You have created a platform for the client project team to work on, the application modernization journey can start.
