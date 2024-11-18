@@ -4,22 +4,26 @@ hide:
     - toc
 ---
 
-#  OpenShift of VMware Overview
+# Deploying OpenShift on VMware
 
-The objective for this exercise is to learn how to install an OpenShift cluster in a VMware virtualized environment.
+In this exercise, you will learn how to deploy an OpenShift cluster on a VMware virtualized environment using Installer Provisioned Infrastructure (IPI), also known as full-stack automation. By the end, you will have gained hands-on experience in installing and configuring an OpenShift cluster ready for IBM Client Engineering Pilots.
 
 ## Outcomes
 
-- Install OpenShift on vSphere1 using Installer Provisioned Infrastructure (IPI). IPI is also known as full-stack automation.
-- Configure the identity provider for htpasswd authentication.
-- Install Red Hat OpenShift Data Foundation (ODF).
-- Configure ODF storage for the internal image registry.
+Upon completion of this exercise, you will be able to:
+
+- *Install OpenShift on vSphere[^1]* : Deploy an OpenShift cluster using IPI, which automates the installation process from scratch.
+- *Configure Identity Provider for htpasswd Authentication* : Set up identity provider authentication for your OpenShift cluster using htpasswd.
+- *Install Red Hat OpenShift Data Foundation (ODF)* : Deploy ODF, a software-defined storage solution that supports both read-write many (RWX) and read-write once (RWO) storage classes.
+- *Configure ODF Storage for Internal Image Registry* : Configure ODF to provide persistent storage for your internal image registry.
+
+[^1]: Collective term for VMware's cloud computing virtualization platform which includes vCenter, ESXi and more. The term is also used in the official OpenShift documentation from Red Hat.
 
 ## Scenario
 
-A modernization project involves containerizing existing applications, requiring an OpenShift cluster. Unfortunately, the client lacks the necessary human resources to build the cluster and has requested that our IBM team construct one on their behalf.
+A modernization project requires containerizing existing applications using OpenShift, but the client lacks the necessary human resources to build the cluster. As part of our IBM team, you have been tasked with constructing an OpenShift cluster on their behalf.
 
-The cluster requires a total of eight nodes, comprising three control plane nodes, two compute nodes, and three infrastructure nodes, which must meet the specifications listed below.
+The required cluster configuration consists of eight nodes:
 
 | Node type	     | vCPU | Memory in GiB | Disk size in GB |
 | :------------- | :--: | :-----------: | :-------------: |
@@ -27,9 +31,14 @@ The cluster requires a total of eight nodes, comprising three control plane node
 | Compute        | 8 | 16 | 120 |
 | Infrastructure | 16 | 64 | 120 |
 
-In addition, we require a software-defined storage (SDS) solution that supports both read-write many (RWX) and read-write once (RWO) storage classes. Specifically, we have chosen Red Hat OpenShift Data Foundation to meet this need.
+In addition, you will need to deploy a software-defined storage (SDS) solution that meets the following requirements:
 
-As a reference point, please recall that DO322 featured an illustration of the IPI installation process on vSphere, as shown below.
+- Supports both RWX and RWO storage classes
+- Meets the specifications outlined above
+
+We have chosen Red Hat OpenShift Data Foundation (ODF) as our SDS solution. ODF is a highly scalable and flexible storage platform that supports various use cases, including persistent storage for applications and internal image registries.
+
+For reference purposes, please recall the illustration of the IPI installation process on vSphere from DO322:
 
 ![IPI installation process on vSphere](./images/ipi-installation-vSphere.svg){target="_blank"}
 
@@ -37,7 +46,7 @@ As a reference point, please recall that DO322 featured an illustration of the I
 
 1. Navigate to the [OpenShift Installation Cohort](https://techzone.ibm.com/collection/openshift-installation-cohort){target="_blank"} collection in TechZone.
 
-2. On the left hand side click **Environments** and then click the **Reserve** button on the **OCP Gymnasium** tile.
+2. On the left hand side click **Environments** and then click the **Reserve it** button on the **OCP Gymnasium** tile.
     
     ![reserve-gym](./images/reserve-gym.png){target="_blank"}
 
@@ -49,12 +58,20 @@ As a reference point, please recall that DO322 featured an illustration of the I
 
 5. Click **Submit**. Provisioning approximately takes 30 minutes.
 
-6. Once your environment has been provisioned you will receive an e-mail from noreply@techzone.ibm.com with your reservation details.  Open your reservation details by clicking the URL under Reservation ID.
+6. Once your VMware vSphere environment has been successfully provisioned, you will receive an email notification from noreply@techzone.ibm.com with your reservation details. To access your provisioned environment, click on the URL provided under Reservation ID to access your reservation details.
 
-    1. If you want to use Guacamole click the **Open your IBM Cloud environment** button.  Expand the **ALL CONNECTIONS** section and test to make sure you can open the Remote Desktop and SSH sessions. If both are working your environment has been provisioned and is ready for install.
-        ![gym-guacamole](./images/gym-guacamole.png){target="_blank"}
+## Verifying Environment Provisioning
 
-    2. If you want to use WireGuard click the **Download WireGuard VPN** config button and use that configuration file to start the VPN tunnel. The bastion's IP address is `192.168.252.2`, the username is `admin` and the password is at the top of your reservation.
+To confirm that your VMware vSphere environment has been successfully provisioned, follow these steps:
+
+1. If you want to use Guacamole to access your environment, click on the Open your IBM Cloud environment button. Next, expand the ALL CONNECTIONS section and test both Remote Desktop and SSH sessions by attempting to establish connections. If both connections are successful, it indicates that your environment has been provisioned and is ready for installation.
+
+    ![gym-guacamole](./images/gym-guacamole.png){target="_blank"}
+
+2. If you prefer to use WireGuard to establish a secure connection to your environment, click on the **Download WireGuard VPN** config button.
+     1. Bastion's IP address: `192.168.252.2`
+     2. Username: `admin`
+     3. Password: Refer to the top of your reservation for this information
 
 !!! Information "DNS and WireGuard on MacOS"
     The DNS server (192.168.253.1) configured in the WireGuard client might not be queried. The Cisco Secure Client enables the DNS Proxy and Transparent Proxy by default. Disabling the proxies is a work around, when you disable them they enable themselves automatically. It might take up to 10 tries to get them in the desired state, disabled.

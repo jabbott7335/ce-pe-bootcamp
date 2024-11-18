@@ -4,20 +4,20 @@ hide:
     - toc
 ---
 
-# Create the Install Config Asset
+# Creating the Install Config Asset
 
-The OpenShift installer uses a YAML configuration file to set the parameters for the installation, this file is also known as the install config asset.
+The OpenShift installer uses a YAML configuration file, known as the install config asset, to set the parameters for the installation process.
 
 ## Collect Install Config Asset Information
 
-The provisioning process for the OCP Gymnasium created the file `/home/admin/vmware-ipi.yaml` on the bastion host. That file contains many of the bits of information you will need for the install config asset.
+During the provisioning process for the OCP Gymnasium, a YAML file named `vmware-ipi.yaml` was created in the `/home/admin` directory on the bastion host. This file contains essential information that will be used to create the install config asset.
 
-``` title="/home/admin/vmware-ipi.yaml"
+```{ .yaml .no-copy linenums="1" title="Contents of /home/admin/vmware-ipi.yaml similar to the following" }
 ---
 vsphere_username: gymuser-f6ckcc6o@techzone.ibm.local
 vsphere_password: FokZLqZ6
 vsphere_hostname: ocpgymwdc-vc.techzone.ibm.local
-vsphere_datastore: gym-50vmycg18b-f6ckcc6o-storage
+vsphere_datastore: /IBMCloud/datastore/gym-50vmycg18b-f6ckcc6o-storage
 vsphere_cluster: ocpgym-wdc
 vsphere_network: gym-50vmycg18b-f6ckcc6o-segment
 vsphere_datacenter: IBMCloud
@@ -34,11 +34,11 @@ ocp_custom_openshift_installer_url: http://10.185.220.3/pub/openshift-v4/clients
 
 We will use the create `install-config` wizard to create the install config asset. You will need to check the provided template file for the values. Additionally, the template file has some parameters which are not requested by the wizard, you need to identify these from the template file.
 
-1. Copy your pull secret from the Red [Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret){target="_blank"}.
+1. Copy your pull secret from the Red [Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret){target="_blank"}.dir 
 
 2. Launch the installation wizard.
     
-    ```
+    ```sh
     openshift-install create install-config
     ```
 
@@ -46,7 +46,7 @@ We will use the create `install-config` wizard to create the install config asse
 
     For this exercise, the cluster must be named ocpinstall; each participant uses their own instance of the OCP Gymnasium and each participant is completely isolated from the others, so this does not cause a problem.
 
-    ``` title="Example"
+    ```{ .text .no-copy title="Example" }
     ? SSH Public Key /home/admin/.ssh/id_core.pub
     ? Platform vsphere
     ? vCenter ocpgymwdc-vc.techzone.ibm.local
@@ -66,11 +66,11 @@ We will use the create `install-config` wizard to create the install config asse
     INFO Install-Config created in: .
     ```
 
-## Complement the install config asset
+## Update the install config asset
 
-1. Review / compare the parameters with the openshift-install.yaml template below.
+1. Review the `install-config.yaml` created by the wizard and compare the parameters created with the openshift-install.yaml template below.
 
-    ```yaml title="Reference install-config.yaml"
+    ```{ .yaml .no-copy title="Reference install-config.yaml" }
     additionalTrustBundlePolicy: Proxyonly
     apiVersion: v1
     baseDomain: gym.lan
@@ -135,6 +135,7 @@ We will use the create `install-config` wizard to create the install config asse
     sshKey: |
       ssh-ed25519 AAAA...
     ```
+
     !!! Question 
         Which parameters does the template have that were missing from the survey?
         Which values does the template have pre-populated from the survey?
@@ -174,5 +175,5 @@ We will use the create `install-config` wizard to create the install config asse
     #...
     ```
 
-!!! Warning "Hold on!" 
+!!! Warning "Hold on!"
     Where are the infrastructure nodes dear instructors? Good catch! Infrastructure nodes currently can not be specified in the install config asset, we will ensure they are created in the next section.

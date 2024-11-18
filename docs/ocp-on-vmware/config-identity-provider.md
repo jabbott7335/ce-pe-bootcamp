@@ -6,9 +6,14 @@ hide:
 
 # Configure the Identity Provider
 
-The developers need to be able to log in the cluster hence the need for an identity provider. Next to that requirement, it is a good / best practice to delete user `kubeadmin`. OpenShift supports many identity providers, we will use the HTPasswd provider.
+To enable the clients developers to log into the cluster and meet the security requirements, an Identity Provider (IdP) must be configured. The primary purpose of an IdP is to provide a centralized authentication mechanism for users accessing the cluster. This ensures that only authorized individuals can gain access to the cluster.
+
+Although OpenShift supports many IdP's, for this example, we will use the HTPasswd provider, which is a popular and widely-supported option. The HTPasswd provider uses a password file to store user credentials, making it easy to manage access to the cluster.
+
+It is also a best practice to delete the built-in `kubeadmin` user after configuring the IdP. This ensures that the only users able to log into the cluster are those who have been explicitly authorized by the administrators.
 
 1. Ensure the `htpasswd` command is available on the bastion host.
+
     ```sh
     sudo dnf install -y httpd-tools
     ```
@@ -19,10 +24,10 @@ The developers need to be able to log in the cluster hence the need for an ident
     htpasswd -Bbc /tmp/htpasswd admin OCP4all!
     ```
 
-3. Add the developers.
+3. Add the clients developers.
     
     ```sh
-    for dev in rob ken robert
+    for dev in abbott ben webb
     do
         htpasswd -b /tmp/htpasswd ${dev} OCP4all!
     done
@@ -61,12 +66,13 @@ The developers need to be able to log in the cluster hence the need for an ident
     oc replace -f /tmp/oauth.yaml
     ```
 
-8. Monitor the Pods in namespace `openshift-authentication`, they must restart, the rollout is not instant.
+8. Monitor the Pods in namespace `openshift-authentication`, they will restart, the rollout is not instant, so please be patient.
+
     ```sh
     watch oc -n openshift-authentication get pods
     ```
 
-9. Assign cluster-admin privileges to user admin.
+9.  Assign cluster-admin privileges to user admin.
     
     ```sh
     oc adm policy add-cluster-role-to-user cluster-admin admin
@@ -84,7 +90,7 @@ The developers need to be able to log in the cluster hence the need for an ident
     oc auth can-i get nodes
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     Warning: resource 'nodes' is not namespace scoped
 
     yes
@@ -93,14 +99,14 @@ The developers need to be able to log in the cluster hence the need for an ident
 12. Log in as one of the developers and verify the use of get nodes.
     
     ```sh
-    oc login -u rob
+    oc login -u ben
     ```
     
     ```sh
     oc auth can-i get nodes
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     Warning: resource 'nodes' is not namespace scoped
 
     no
@@ -124,10 +130,10 @@ The developers need to be able to log in the cluster hence the need for an ident
     oc get users
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME    UID                                    FULL NAME   IDENTITIES
     admin   a7cfbf3a-0892-40e0-9dcb-7ba37ecc1824               localusers:admin
-    rob     0e3884e4-529b-4b5f-a7e6-2e333796d03a               localusers:rob
+    ben     0e3884e4-529b-4b5f-a7e6-2e333796d03a               localusers:ben
     ```
 
 !!! Note 
