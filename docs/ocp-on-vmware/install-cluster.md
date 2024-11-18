@@ -24,7 +24,7 @@ hide:
     openshift-install create manifests --dir ocpinstall
     ```
 
-4. Copy the worker MachineSet manifest
+4. Copy the worker MachineSet manifest to create an Infrastructure MachineSet
 
     ```sh
     cp ocpinstall/openshift/99_openshift-cluster-api_worker-machineset-0.yaml \
@@ -33,18 +33,18 @@ hide:
 
 5. Edit `ocpinstall/openshift/99_openshift-cluster-api_infra-machineset-0.yaml` and make the following changes:
     
-    - Add labels to the nodes:
-        - `cluster.ocs.openshift.io/openshift-storage=""`
-        - `node-role.kubernetes.io/infra=""`
+    - Add labels to the nodes, within the `spec.template.spec.metadata.labels` section:
+        - `cluster.ocs.openshift.io/openshift-storage: ""`
+        - `node-role.kubernetes.io/infra: ""`
     - Add taint `node.ocs.openshift.io/storage="true"` with effect `NoSchedule` to the nodes.
     - Change all values with postfix `-worker-0` to `-infra-0`.
     - Change the replicas to `3`.
-    - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-typ`e to `infra`.
+    - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-type` to `infra`.
     - Change `memoryMiB` to `65536`.
     - Change `numCPUs` to `16`.
     - Change `numCoresPerSocket` to `2`.
     
-    ``` yaml title="Reference infrastructure MachineSet"
+    ```{.text .no-copy title="Reference infrastructure MachineSet"}
     apiVersion: machine.openshift.io/v1beta1
     kind: MachineSet
     metadata:
@@ -117,7 +117,7 @@ hide:
 
     Wait for the installation to complete.
 
-    ```title="Example output"
+    ```{.text .no-copy title="Example output"}
     #...
     INFO All cluster operators have completed progressing
     INFO Checking to see if there is a route at openshift-console/console...
@@ -186,11 +186,15 @@ You can start following the installation progress with the CLI after the API ser
 
 2. Set up `system:admin` access for the cluster.
     
-    ```export KUBECONFIG=${HOME}/ocpinstall/auth/kubeconfig```
+    ```sh
+    export KUBECONFIG=${HOME}/ocpinstall/auth/kubeconfig
+    ```
 
 3. Issue the following watch command.
     
-    ```watch oc get nodes,clusteroperators,clusterversion```
+    ```sh
+    watch oc get nodes,clusteroperators,clusterversion
+    ```
 
     !!! Tip
         - During the installation it is normal for the status field to occasionally show errors.
@@ -200,9 +204,7 @@ You can start following the installation progress with the CLI after the API ser
 
 ### Access the OpenShift Web console
 
-1. Open [https://console-openshift-console.apps.ocpinstall.gym.lan](https://console-openshift-console.apps.ocpinstall.gym.lan){target="_blank"} in a browser.
-    
-    Accept the self-signed certificates.
+1. Open [https://console-openshift-console.apps.ocpinstall.gym.lan](https://console-openshift-console.apps.ocpinstall.gym.lan){target="_blank"} in a browser and accept the self-signed certificates.
 
 2. Log in using the credentials (available from the OpenShift installer output).
 
@@ -221,14 +223,10 @@ You can start following the installation progress with the CLI after the API ser
 1. Log in as user `kubeadmin`.
 
     ```sh
-    oc login -u kubeadmin https://api.ocpinstall.gym.lan:6443
+    oc login -u kubeadmin https://api.ocpinstall.gym.lan:6443 --insecure-skip-tls-verify=true
     ```
 
-    ``` title="Example Output"
-    The server uses a certificate signed by an unknown authority.
-    You can bypass the certificate check, but any data you send to the server could be intercepted by others.
-    Use insecure connections? (y/n): y
-
+    ```{.text .no-copy title="Example Output"}
     WARNING: Using insecure TLS client config. Setting this option is not supported!
 
     Console URL: https://api.ocpinstall.gym.lan:6443/console
@@ -237,10 +235,9 @@ You can start following the installation progress with the CLI after the API ser
     Password: 
     Login successful.
 
-    You have access to 69 projects, the list has been suppressed. You can list all projects with 'oc projects'
+    You have access to 70 projects, the list has been suppressed. You can list all projects with 'oc projects'
 
     Using project "default".
-    Welcome! See 'oc help' to get started.
     ```
 
 2. List the nodes.
@@ -249,7 +246,7 @@ You can start following the installation progress with the CLI after the API ser
     oc get nodes
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME                              STATUS   ROLES                  AGE   VERSION
     ocpinstall-ntfsr-infra-0-5bfqj    Ready    infra,worker           18m   v1.28.6+6216ea1
     ocpinstall-ntfsr-infra-0-cscfp    Ready    infra,worker           18m   v1.28.6+6216ea1
@@ -267,7 +264,7 @@ You can start following the installation progress with the CLI after the API ser
     oc adm top nodes
     ```
     
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME                              CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
     ocpinstall-ntfsr-infra-0-5bfqj    112m         0%     2071Mi          3%
     ocpinstall-ntfsr-infra-0-cscfp    109m         0%     2091Mi          3%
@@ -285,54 +282,54 @@ You can start following the installation progress with the CLI after the API ser
     oc get clusteroperators
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
-    authentication                             4.15.2    True        False         False      10m     
-    baremetal                                  4.15.2    True        False         False      61m     
-    cloud-controller-manager                   4.15.2    True        False         False      69m     
-    cloud-credential                           4.15.2    True        False         False      92m     
-    cluster-autoscaler                         4.15.2    True        False         False      61m     
-    config-operator                            4.15.2    True        False         False      63m     
-    console                                    4.15.2    True        False         False      15m     
-    control-plane-machine-set                  4.15.2    True        False         False      61m     
-    csi-snapshot-controller                    4.15.2    True        False         False      63m     
-    dns                                        4.15.2    True        False         False      59m     
-    etcd                                       4.15.2    True        False         False      25m     
-    image-registry                             4.15.2    True        False         False      52m     
-    ingress                                    4.15.2    True        False         False      18m     
-    insights                                   4.15.2    True        False         False      55m     
-    kube-apiserver                             4.15.2    True        False         False      56m     
-    kube-controller-manager                    4.15.2    True        False         False      56m     
-    kube-scheduler                             4.15.2    True        False         False      56m     
-    kube-storage-version-migrator              4.15.2    True        False         False      63m     
-    machine-api                                4.15.2    True        False         False      18m     
-    machine-approver                           4.15.2    True        False         False      61m     
-    machine-config                             4.15.2    True        False         False      25m     
-    marketplace                                4.15.2    True        False         False      61m     
-    monitoring                                 4.15.2    True        False         False      11m     
-    network                                    4.15.2    True        False         False      64m     
-    node-tuning                                4.15.2    True        False         False      16m     
-    openshift-apiserver                        4.15.2    True        False         False      25m     
-    openshift-controller-manager               4.15.2    True        False         False      56m     
-    openshift-samples                          4.15.2    True        False         False      56m     
-    operator-lifecycle-manager                 4.15.2    True        False         False      61m     
-    operator-lifecycle-manager-catalog         4.15.2    True        False         False      61m     
-    operator-lifecycle-manager-packageserver   4.15.2    True        False         False      55m     
-    service-ca                                 4.15.2    True        False         False      63m     
-    storage                                    4.15.2    True        False         False      25m 
+    authentication                             4.17.3    True        False         False      10m     
+    baremetal                                  4.17.3    True        False         False      61m     
+    cloud-controller-manager                   4.17.3    True        False         False      69m     
+    cloud-credential                           4.17.3    True        False         False      92m     
+    cluster-autoscaler                         4.17.3    True        False         False      61m     
+    config-operator                            4.17.3    True        False         False      63m     
+    console                                    4.17.3    True        False         False      15m     
+    control-plane-machine-set                  4.17.3    True        False         False      61m     
+    csi-snapshot-controller                    4.17.3    True        False         False      63m     
+    dns                                        4.17.3    True        False         False      59m     
+    etcd                                       4.17.3    True        False         False      25m     
+    image-registry                             4.17.3    True        False         False      52m     
+    ingress                                    4.17.3    True        False         False      18m     
+    insights                                   4.17.3    True        False         False      55m     
+    kube-apiserver                             4.17.3    True        False         False      56m     
+    kube-controller-manager                    4.17.3    True        False         False      56m     
+    kube-scheduler                             4.17.3    True        False         False      56m     
+    kube-storage-version-migrator              4.17.3    True        False         False      63m     
+    machine-api                                4.17.3    True        False         False      18m     
+    machine-approver                           4.17.3    True        False         False      61m     
+    machine-config                             4.17.3    True        False         False      25m     
+    marketplace                                4.17.3    True        False         False      61m     
+    monitoring                                 4.17.3    True        False         False      11m     
+    network                                    4.17.3    True        False         False      64m     
+    node-tuning                                4.17.3    True        False         False      16m     
+    openshift-apiserver                        4.17.3    True        False         False      25m     
+    openshift-controller-manager               4.17.3    True        False         False      56m     
+    openshift-samples                          4.17.3    True        False         False      56m     
+    operator-lifecycle-manager                 4.17.3    True        False         False      61m     
+    operator-lifecycle-manager-catalog         4.17.3    True        False         False      61m     
+    operator-lifecycle-manager-packageserver   4.17.3    True        False         False      55m     
+    service-ca                                 4.17.3    True        False         False      63m     
+    storage                                    4.17.3    True        False         False      25m 
     ```
 
 ### Access Cluster Nodes
 
-You can `ssh` into the worker and master nodes once the virtual machines have been created. The user to SSH with is named core. The SSH key you use will be the private half of the key pair of which the public half you provided in the `install-config.yaml` file.
+You can `ssh` into the worker and master nodes once the virtual machines have been created. The user to SSH with is named `core`. The SSH key you use will be the private half of the key pair of which the public half you provided in the `install-config.yaml` file.
 
 1. Get the external IP addresses of the nodes.
-    
+
     ```sh
     oc get nodes -o custom-columns=NAME:.metadata.name,EXTERNALIP:.status.addresses[0].address
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     NAME                              EXTERNALIP
     ocpinstall-ntfsr-infra-0-5bfqj    192.168.252.139
     ocpinstall-ntfsr-infra-0-cscfp    192.168.252.135
@@ -343,41 +340,42 @@ You can `ssh` into the worker and master nodes once the virtual machines have be
     ocpinstall-ntfsr-worker-0-mzsp6   192.168.252.136
     ocpinstall-ntfsr-worker-0-n747f   192.168.252.138
     ```
-    
+
 2. Log in to one of the nodes.
-    
+
     ```sh
     ssh -i ~/.ssh/id_core core@192.168.252.132
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     The authenticity of host '192.168.252.132 (192.168.252.132)' can't be established.
     ED25519 key fingerprint is SHA256:39TmjFLNRRmncEWcvEuLV75DTuFVPWQI0G5p0BHTmKA.
     This key is not known by any other names
     Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
     Warning: Permanently added '192.168.252.132' (ED25519) to the list of known hosts.
-    Red Hat Enterprise Linux CoreOS 415.92.202403061641-0
-      Part of OpenShift 4.15, RHCOS is a Kubernetes native operating system
+    Red Hat Enterprise Linux CoreOS 417.94.202410211619-0
+      Part of OpenShift 4.17, RHCOS is a Kubernetes native operating system
       managed by the Machine Config Operator (`clusteroperator/machine-config`).
 
     WARNING: Direct SSH access to machines is not recommended; instead,
     make configuration changes via `machineconfig` objects:
-      https://docs.openshift.com/container-platform/4.15/architecture/architecture-rhcos.html
+      https://docs.openshift.com/container-platform/4.17/architecture/architecture-rhcos.html
 
     ---
     ```
 
 3. Check if the kubelet is active.
+
     ```sh
     systemctl is-active kubelet
     ```
 
-    ``` title="Example Output"
+    ```{.text .no-copy title="Example Output"}
     active
     ```
 
 4. Log out.
-    
-    ```
+
+    ```sh
     exit
     ```
