@@ -12,10 +12,12 @@ In this exercise, you will learn how to deploy an OpenShift cluster on a VMware 
 
 Upon completion of this exercise, you will be able to:
 
-- **Install OpenShift on vSphere** : Deploy an OpenShift cluster using IPI, which automates the installation process from scratch.
-- **Configure Identity Provider for htpasswd Authentication** : Set up identity provider authentication for your OpenShift cluster using htpasswd.
-- **Install Red Hat OpenShift Data Foundation (ODF)** : Deploy ODF, a software-defined storage solution that supports both read-write many (RWX) and read-write once (RWO) storage classes.
-- **Configure ODF Storage for Internal Image Registry** : Configure ODF to provide persistent storage for your internal image registry.
+- *Install OpenShift on vSphere[^1]* : Deploy an OpenShift cluster using IPI, which automates the installation process from scratch.
+- *Configure Identity Provider for htpasswd Authentication* : Set up identity provider authentication for your OpenShift cluster using htpasswd.
+- *Install Red Hat OpenShift Data Foundation (ODF)* : Deploy ODF, a software-defined storage solution that supports both read-write many (RWX) and read-write once (RWO) storage classes.
+- *Configure ODF Storage for Internal Image Registry* : Configure ODF to provide persistent storage for your internal image registry.
+
+[^1]: Collective term for VMware's cloud computing virtualization platform which includes vCenter, ESXi and more. The term is also used in the official OpenShift documentation from Red Hat.
 
 ## Scenario
 
@@ -56,12 +58,20 @@ For reference purposes, please recall the illustration of the IPI installation p
 
 5. Click **Submit**. Provisioning approximately takes 30 minutes.
 
-6. Once your environment has been provisioned you will receive an e-mail from noreply@techzone.ibm.com with your reservation details.  Open your reservation details by clicking the URL under Reservation ID.
+6. Once your VMware vSphere environment has been successfully provisioned, you will receive an email notification from noreply@techzone.ibm.com with your reservation details. To access your provisioned environment, click on the URL provided under Reservation ID to access your reservation details.
 
-    1. If you want to use Guacamole, click the **Open your IBM Cloud environment** button.  Expand the **ALL CONNECTIONS** section and test to make sure you can open the Remote Desktop and SSH sessions. If both are working your environment has been provisioned and is ready for install.
-        ![gym-guacamole](./images/gym-guacamole.png){target="_blank"}
+## Verifying Environment Provisioning
 
-    2. If you want to use WireGuard click the **Download WireGuard VPN** config button and use that configuration file to start the VPN tunnel. The bastion's IP address is `192.168.252.2`, the username is `admin` and the password is at the top of your reservation.
+To confirm that your VMware vSphere environment has been successfully provisioned, follow these steps:
+
+1. If you want to use Guacamole to access your environment, click on the Open your IBM Cloud environment button. Next, expand the ALL CONNECTIONS section and test both Remote Desktop and SSH sessions by attempting to establish connections. If both connections are successful, it indicates that your environment has been provisioned and is ready for installation.
+
+    ![gym-guacamole](./images/gym-guacamole.png){target="_blank"}
+
+2. If you prefer to use WireGuard to establish a secure connection to your environment, click on the **Download WireGuard VPN** config button.
+     1. Bastion's IP address: `192.168.252.2`
+     2. Username: `admin`
+     3. Password: Refer to the top of your reservation for this information
 
 !!! Information "DNS and WireGuard on MacOS"
     The DNS server (192.168.253.1) configured in the WireGuard client might not be queried. The Cisco Secure Client enables the DNS Proxy and Transparent Proxy by default. Disabling the proxies is a work around, when you disable them they enable themselves automatically. It might take up to 10 tries to get them in the desired state, disabled.
