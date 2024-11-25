@@ -62,13 +62,14 @@ Please note that completing the prerequisite class is not only a necessary step 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    
+    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
     - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
 
+    <!-- 
     - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
-
-    - [RedHat Account](https://www.redhat.com/en){target="_blank"}: Needed for CodeReady Containers.
-
+    --->
     ## Run System Check Script
 
     Run the following command in your terminal to check which tools need to be installed.
@@ -127,12 +128,10 @@ Please note that completing the prerequisite class is not only a necessary step 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    
+    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
     - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
-    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
-
-    - [RedHat Account](https://www.redhat.com/en){target="_blank"}: Needed for CodeReady Containers.
 
     ## Cloud Native VM
 
@@ -182,10 +181,8 @@ Please note that completing the prerequisite class is not only a necessary step 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
-
+    
     - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
-    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
 
     ## Run System Check Script
@@ -252,10 +249,8 @@ Please note that completing the prerequisite class is not only a necessary step 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
-
+    
     - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
-    - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
 
     ## Cloud Native VM
 
