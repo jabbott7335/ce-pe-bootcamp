@@ -192,7 +192,16 @@ nav:
     - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
     - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
     - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
-  - Installing OpenShift on IBM Cloud: 
+  - Deploying Air-Gapped OpenShift on VMware:
+    - ocp-on-vmware-airgapped/index.md
+    - Setup the mirror host: ocp-on-vmware-airgapped/mirror-host.md
+    - Mirror OpenShift Content: ocp-on-vmware-airgapped/mirror.md
+    - Prepare the Installation: ocp-on-vmware-airgapped/prepare-installation.md
+    - Disable Internet access: ocp-on-vmware-airgapped/disable-internet.md
+    - Create Install Config: ocp-on-vmware-airgapped/install-config.md
+    - Install the Cluster: ocp-on-vmware-airgapped/install-cluster.md
+    - Install ODF: ocp-on-vmware-airgapped/install-odf.md
+  - Deploying OpenShift on IBM Cloud: 
     - ocp-on-ibm-cloud/index.md
     - Prepare for Installation: ocp-on-ibm-cloud/prepare.md
     - Install the Cluster: ocp-on-ibm-cloud/install-cluster.md
