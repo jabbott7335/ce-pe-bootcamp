@@ -65,11 +65,10 @@ Please note that completing the prerequisite class is not only a necessary step 
     
     - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
-    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
     <!-- 
     - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
     --->
+
     ## Run System Check Script
 
     Run the following command in your terminal to check which tools need to be installed.
@@ -88,38 +87,26 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     After the script is run, make sure to install any missing tools.
 
+    !!! Note
+        Ignore the requirement for the Docker CLI, IBM Software Policies prohibit the use of the Docker CLI and encourages the use of Podman CLI instead.
+
     ## Install CLIs and tools
 
     The following is a list of desktop tools required to help with installation and development.
 
     - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
-        ```
-        curl -sL https://ibm.biz/idt-installer | bash
-        ```
-
-    !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud
 
     - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
-
-    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
-    pipelines from the command line.
-        ```
-            brew tap tektoncd/tools
-            brew install tektoncd/tools/tektoncd-cli
-        ```
 
     - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: *Optional* installed on your local machine
         - Used for SpringBoot content
-
 
 === "Openshift (Windows)"
 
@@ -131,8 +118,6 @@ Please note that completing the prerequisite class is not only a necessary step 
     
     - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
-    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
     ## Cloud Native VM
 
     Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install){target="_blank"} it comes pre-installed with kubernetes and all cloud native CLIs.
@@ -143,31 +128,19 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
-        ```
-        curl -sL https://ibm.biz/idt-installer | bash
-        ```
-
-    !!! Note 
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud
 
     - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
-
-    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton pipelines from the command line.
-
 
     - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: *Optional* installed on your local machine
         - Used for SpringBoot content
-
-    - [OpenShift CodeReady Containers (CRC)](https://code-ready.github.io/crc/#installing-codeready-containers_gsg){target="_blank"}
 
     <InlineNotification kind="warning">
 
@@ -182,9 +155,6 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
     
-    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
-
     ## Run System Check Script
 
     Run the following command in your terminal to check which tools need to be installed.
@@ -201,46 +171,26 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     After the script is run, make sure to install any missing tools.
 
+    !!! Note
+        Ignore the requirement for the Docker CLI, IBM Software Policies prohibit the use of the Docker CLI and encourages the use of Podman CLI instead.
+
     ## Install CLIs and tools
 
     The following is a list of desktop tools required to help with installation and development.
 
     - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
-        ```
-        curl -sL https://ibm.biz/idt-installer | bash
-        ```
-
-     !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
-    
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud.
 
     - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
-
-    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
-    pipelines from the command line.
-        ```
-            brew tap tektoncd/tools
-            brew install tektoncd/tools/tektoncd-cli
-        ```
 
     - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: *Optional* installed on your local machine
         - Used for SpringBoot content
-
-    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/){target="_blank"}: Follow the instructions for your Operating System.
-
-    <InlineNotification kind="warning">
-
-    **Warning:** Make sure you have Cisco VPN turned off when using minikube.
-
-    </InlineNotification>
 
 === "Kubernetes (Windows)"
 
@@ -250,8 +200,6 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
     
-    - [IBM Cloud Account](https://cloud.ibm.com){target="_blank"}: Create one if needed, make sure you can log in. 
-
     ## Cloud Native VM
 
     Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install){target="_blank"} it comes pre-installed with kubernetes and all cloud native CLIs.
@@ -264,105 +212,78 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-        - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli){target="_blank"}, install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt){target="_blank"}
-        ```
-        curl -sL https://ibm.biz/idt-installer | bash
-        ```
-
-    !!! Note
-        If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id){target="_blank"} for logging into the CLI. 
-
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud 
 
     - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
-
-    - [Tekton CLI](https://github.com/tektoncd/cli){target="_blank"}: Used to help control Tekton
-    pipelines from the command line.
-        ```
-            brew tap tektoncd/tools
-            brew install tektoncd/tools/tektoncd-cli
-        ```
 
     - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: _Optional_ installed on your local machine
+    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: *Optional* installed on your local machine
         - Used for SpringBoot content
 
-    - [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/){target="_blank"}: Follow the instructions for your Operating System.
+## Environment Setup
+
+=== "OpenShift Local"
+
+    Ensure OpenShift Local is installed. Check out the  [OpenShift Local](https://docs.redhat.com/en/documentation/red_hat_openshift_local/2.44/html/getting_started_guide/index){target="_blank"} Page.
+
+    - Setup OpenShift Local
+
+        ```bash
+        crc setup
+        ```
+    
+    - Start OpenShift Local
+
+        ```bash
+        crc start
+        ```
 
     <InlineNotification kind="warning">
-
-    **Warning:** Make sure you have Cisco VPN turned off when using minikube.
-
+    **Warning:** Make sure you have Cisco VPN turned off when using OpenShift Local.
     </InlineNotification>
-
-## Environment Setup 
 
 === "MiniKube"
 
-    - Verify your cluster has 4GB+ memory, and kubernetes 1.16+
+    Ensure Minikube is installed. Check out the [Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fhomebrew){target="_blank"} Page.
+
+    - Verify your `driver` is set for `podman`     
+
+        ```bash
+        minikube config set driver podman
         ```
-        minikube config view
-        ```
-    - Verify your `vm-driver` is set for `hyperkit`
-        ```
-        minikube config set vm-driver hyperkit
-        ```
+
+    - Start minikube
+
+        ```bash
+        minikube start --driver=podman --container-runtime=cri-o
+        ``` 
+
     - In case memory is not set, or need to increase set the memory and recreate the VM
-        ```
+
+        ```bash
         minikube config set memory 4096
-        minikube config set kubernetes-version v1.16.6
         minikube delete
-        minikube start
+        minikube start --driver=podman --container-runtime=cri-o
         ```
-    - Kubernetes should be v1.15+
-        ```
+
+    - Kubernetes should be v1.31+
+
+        ```bash
         kubectl version
         ```
-
-=== "CRC (MiniShift)"
-
-    Make sure CRC is installed. Check out the [CRC Page](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.0/html/getting_started_guide/getting-started-with-codeready-containers_gsg){target="_blank"} 
-
-    ** Setup CRC **
-    ```
-    crc setup
-    ```
-    ** Start CRC **
-    ```
-    crc start
-    ```
-=== "OpenShift on IBM Cloud (4.x)"
-
-    - In this approach you share an OpenShift cluster on IBM Cloud with other bootcamp attendees.
-
-    - Considering 10-15 attendees we recommend a cluster with 3 worker nodes (each 8 vCPUs + 32GB RAM - b3c.8x32).
-
-    - Ask your IBM cloud account owner to provide access to an OpenShift cluster.
-
-    - In addition to the IBM Cloud CLI also install the [OpenShift Origin CLI](https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli#cli_oc){target="_blank"} to be able to execute all commands.
-
-    - Open your OpenShift web console from within your IBM cloud account, select your profile and choose "copy login command" to retrieve an access token for the login.
-
-    - Login with your OpenShift Origin CLI.
-        ```
-        oc login --token=<token> --server=<server-url>:<server-port>
-        ```
-
-    - Create your own project / namespace in OpenShift that you will leverage across all labs.
-        ```
-        oc new-project <dev-your_initials>
-        ```
-
-    - Validate in the OpenShift web console that your project has been created (Administrator view -> Home -> Projects)
+    
+    <InlineNotification kind="warning">
+    **Warning:** Make sure you have Cisco VPN turned off when using Minikube.
+    </InlineNotification>
 
 
-!!! Note "Get a Jump on CLoud Native Concepts"
+!!! Note "Get a Jump on Cloud Native Concepts"
 
     Once Setup is complete, you can get an early jump on some of the Cloud Native topics we will hit during the bootcamp:
 
     - About [Cloud Native](./cn/cloud-native.md){target="_blank"}
-    - Cloud Native [App Development](./cn/app-dev.md)
+    - Cloud Native [App Development](./cn/app-dev.md){target="_blank"}
