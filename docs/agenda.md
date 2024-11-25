@@ -49,7 +49,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | :-------------------------------- | :-------------------------- |
 | [Intro to Cloud Native](./cn/cloud-native.md)        | Presentation |
 | [App Dev](./cn/app-dev.md)                           | Presentation |
-| [Containers](./cn/containers.md                      | Presentation |
+| [Containers](./cn/containers.md)                      | Presentation |
 | [Image Registries](./cn/imageregistry.md)            | Hands-On |
 | [Docker](./cn/docker.md)                             | Hands-On |
 | [Container Registries](./cn/ibm-registries.md)       | Hands-On |
