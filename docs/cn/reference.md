@@ -8,33 +8,34 @@ hide:
 
 Containers are a standard way to package an application and all its dependencies so that it can be moved between environments and run without change. They work by hiding the differences between applications inside the container so that everything outside the container can be standardized.
 
-For example, Docker created standard way to create images for Linux Containers.
+For example, Podman created standard way to create images for Linux Containers.
 
-## Basic Docker Commands
+## Basic Podman Commands
 
 | Action                      | Command                                     |
 | --------------------------- | ------------------------------------------- |
-| Get Docker version          | `docker version`                            |
-| Run `hello-world` Container | `docker run hello-world`                    |
-| List Running Containers     | `docker ps`                                 |
-| Stop a container            | `docker stop <container-name/container-id>` |
-| List Docker Images          | `docker images`                            |
-| Login into registry         | `docker login`                              |
-| Build an image              | `docker build -t <image_name>:<tag> .`      |
-| Inspect a docker object     | `docker inspect <name/id>`                 |
-| Inspect a docker image      | `docker inspect image <name/id>`           |
-| Pull an image               | `docker pull <image_name>:<tag>`           |
-| Push an Image               | `docker push <image_name>:<tag>`           |
-| Remove a container          | `docker rm <container-name/container-id>`  |
+| Get Podman version          | `podman version`                            |
+| Run `hello-world` Container | `podman run hello-world`                    |
+| List Running Containers     | `podman ps`                                 |
+| Stop a container            | `podman stop <container-name/container-id>` |
+| List container Images          | `podman images`                            |
+| Login into registry         | `podman login`                              |
+| Build an image              | `podman build -t <image_name>:<tag> .`      |
+| Inspect a container object     | `podman inspect <name/id>`                 |
+| Inspect a container image      | `podman inspect image <name/id>`           |
+| Pull an image               | `podman pull <image_name>:<tag>`           |
+| Push an Image               | `podman push <image_name>:<tag>`           |
+| Remove a container          | `podman rm <container-name/container-id>`  |
 
-## Running Docker
+## Running Podman
 
-=== "Local Docker"
+=== "Local Podman"
 
-    1. Install Docker Desktop
+    1. Install Podman Desktop
 
     2. Test it out
 
+<!---
 === "IBM Cloud"
 
     1. Install ibmcloud CLI
@@ -56,6 +57,7 @@ For example, Docker created standard way to create images for Linux Containers.
     ``` bash
     ibmcloud cr login --client docker
     ```
+--->
 <!---
 === "Docker on Kubernetes/OpenShift"
 
