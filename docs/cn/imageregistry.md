@@ -14,7 +14,7 @@ Container registries save developers valuable time in the creation and delivery 
 
 === "Tutorial"
 
-      Make sure you have Docker Desktop installed and up and running.
+      Make sure you have Podman Desktop installed and up and running. You may need to first visit [Quay.io](https://quay.io){target="_blank"} and set up a username. Use the Red Hat account you created earlier.
 
       ``` Bash title="Login to Quay"
       docker login quay.io
@@ -25,23 +25,23 @@ Container registries save developers valuable time in the creation and delivery 
 
       First we'll create a container with a single new file based off of the busybox base image: 
       ``` Bash title="Create a new container"
-      docker run busybox echo "fun" > newfile
+      podman run busybox echo "fun" > newfile
       ```
       The container will immediately terminate, so we'll use the command below to list it:
       ```
-      docker ps -l
+      podman ps -l
       ```
       The next step is to commit the container to an image and then tag that image with a relevant name so it can be saved to a respository.
 
       Replace "container_id" with your container id from the previous command.
       ``` Bash title="Create a new image"
-      docker commit container_id quay.io/your_username/repository_name
+      podman commit container_id quay.io/your_username/repository_name
       ```
       Be sure to replace "your_username" with your quay.io username and "respository_name" with a unique name for your repository.
 
       Now that we've tagged our image with a repository name, we can push the respository to Quay Container Registry:
       ``` Bash title="Push the image to Quay"
-      docker push quay.io/your_username/repository_name
+      podman push quay.io/your_username/repository_name
       ```
       Your respository has now been pushed to Quay Container Registry!
 
