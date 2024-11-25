@@ -13,7 +13,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
 | Introductions                     |                             |
-| Hands-On Exercise Introduction    |                             |
+| [Hands-On Exercise Introduction](./ocp-on-vmware/index.md)                     |          |
 | [Prepare for Installation](./ocp-on-vmware/prepare.md)                          | Hands-On |
 | [Create the Install Config Asset](./ocp-on-vmware/create-install-config.md)     | Hands-On |
 | [Install the Cluster](ocp-on-vmware/./install-cluster.md)                       | Hands-On |
@@ -21,16 +21,29 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Install OpenShift Data Foundation](./ocp-on-vmware/install-data-foundation.md) | Hands-On |
 | [Configure Internal Image Registry](./ocp-on-vmware/config-image-registry.md)   | Hands-On |
 
-## Day 2 Morning - Installing OpenShift on IBM Cloud
+## Day 2 - Deploying Air-Gapped OpenShift on VMware
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
-| Hands-On Exercise Introduction    | Presentation                |
+| [Hands-On Exercise Introduction](./ocp-on-vmware-airgapped/index.md)           |          |
+| [Setup the mirror host](./ocp-on-vmware-airgapped/mirror-host.md)              | Hands-On |
+| [Mirror OpenShift Content](./ocp-on-vmware-airgapped/mirror.md)                | Hands-On |
+| [Prepare the Installation](./ocp-on-vmware-airgapped/prepare-installation.md)  | Hands-On |
+| [Disable Internet Access](./ocp-on-vmware-airgapped/disable-internet.md)       | Hands-On |
+| [Create Install Config](./ocp-on-vmware-airgapped/install-config.md)           | Hands-On |
+| [Install the Cluster](./ocp-on-vmware-airgapped/install-cluster.md)            | Hands-On |
+| [Install ODF](./ocp-on-vmware-airgapped/install-odf.md)                        | Hands-On |
+
+## Day 3 Morning - Deploying OpenShift on IBM Cloud
+
+| Task                              | Activity Type               |
+| :-------------------------------- | :-------------------------- |
+| [Hands-On Exercise Introduction](./ocp-on-ibm-cloud/index.md)    | Presentation            |
 | [Prepare for Installation](./ocp-on-ibm-cloud/prepare.md)                       | Hands-On |
 | [Install the Cluster](./ocp-on-ibm-cloud/install-cluster.md)                    | Hands-On |
 | [Backup etcd](./ocp-on-ibm-cloud/backup-etcd.md)                                | Hands-On |
 
-## Day 2 Afternoon - Cloud Native
+## Day 3 Afternoon - Cloud Native
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
@@ -41,7 +54,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Docker](./cn/docker.md)                             | Hands-On |
 | [Container Registries](./cn/ibm-registries.md)       | Hands-On |
 
-## Day 3 Morning - Kubernetes & OpenShift
+## Day 4 Morning - Kubernetes & OpenShift
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
@@ -58,7 +71,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Troubleshooting](./k8s/openshift/pods/troubleshooting/index.md)                    | Presentation |
 | [Debugging](./k8s/debugging.md)                                                     | Hands-On     | 
 
-## Day 3 Afternoon - Kubernetes & OpenShift (Continued)
+## Day 4 Afternoon - Kubernetes & OpenShift (Continued)
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
@@ -74,7 +87,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Jobs & CronJobs](./k8s/openshift/pods/jobs/index.md)                          | Presentation |
 | [Lab K8s 7 - Cron Jobs](./k8s/cron-jobs.md)                                    | Hands-On     |
     
-## Day 4 Morning - Kubernetes & OpenShift (Continued)
+## Day 5 Morning - Kubernetes & OpenShift (Continued)
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
@@ -91,18 +104,13 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Persistent Volumes](./k8s/persistent-volumes.md)                          | Hands-On     |
 | [K8s Lab Solutions](./k8s/cheats.md)                                       | Reference     |
 
-## Day 4 Afternoon - DevOps
+## Day 5 Afternoon - DevOps
 
 | Task                              | Activity Type               |
 | :-------------------------------- | :-------------------------- |
 | [DevOps & GitOps](./devops/tekton/index.md)  | Presentation |
 | [Tekton](./devops/tekton/tekton.md)          | Hands-On     |
 | [ToolChain](./devops/ibm-toolchain/index.md) | Presentation |
-    
-## Day 5 - DevOps (Continued)
-
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
 | [Tekton on IBM Cloud](./devops/ibm-toolchain/ibm-toolchain.md) | Hands-On     |
 | [Jenkins](./devops/jenkins/jenkins.md)                         | Hands-On     |
 | [CD](./devops/argocd/index.md)                                 | Presentation |
