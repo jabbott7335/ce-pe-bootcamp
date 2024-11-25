@@ -17,7 +17,7 @@ Container registries save developers valuable time in the creation and delivery 
       Make sure you have Podman Desktop installed and up and running. You may need to first visit [Quay.io](https://quay.io){target="_blank"} and set up a username. Use the Red Hat account you created earlier.
 
       ``` Bash title="Login to Quay"
-      docker login quay.io
+      podman login quay.io
       Username: your_username
       Password: your_password
       Email: your_email

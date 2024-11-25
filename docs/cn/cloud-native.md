@@ -306,7 +306,7 @@ distribution based on your requirements.
     applications. This helps your application to run in any computing
     environment. Basically, all your code and dependencies are packaged
     up together in to a single unit here. Among different container
-    platforms available, Docker is a preferred one.
+    platforms available, Podman is a preferred one.
 
 -   To bring all the changes in the code to container automatically, it
     is nice to set up a CI/CD pipeline which does that. There are many

@@ -106,7 +106,7 @@ If you keep deploying new services without cleaning up the old ones which are in
 
 Your applications must be isolated from the operating system. You should be able to run them any where. This allows you to run multiple applications on same server and also allows to control their dependencies and resources.
 
-One way to achieve this is containerization. Among the different container options, Docker is popular. Container is nothing but a way to package your application and run it in an isolated environment. While developing the applications, also make sure all the dependencies are declared in your application before packaging it.
+One way to achieve this is containerization. Among the different container options, Podman is popular. Container is nothing but a way to package your application and run it in an isolated environment. While developing the applications, also make sure all the dependencies are declared in your application before packaging it.
 
 **Resource Allocation and Scheduling**
 
