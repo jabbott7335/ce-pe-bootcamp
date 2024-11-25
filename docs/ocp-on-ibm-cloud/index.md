@@ -6,47 +6,42 @@ hide:
 
 #  OpenShift on IBM Cloud (IPI)
 
-This exercise helps prepare you for installing OpenShift on hyperscalers by deploying into IBM Cloud Infrastructure.
+This exercise is designed to prepare you for installing a self-managed OpenShift cluster on IBM Cloud Infrastructure, leveraging the Installer Provisioned Infrastructure (IPI) tool. As an alternative to managed OpenShift offerings from hyperscalers such as Red Hat OpenShift Kubernetes Service (ROKS), AWS Red Hat OpenShift Service on AWS (ROSA), and Microsoft Azure Red Hat OpenShift (ARO), this guide focuses on the installation process for a self-managed OpenShift cluster.
 
-Most hyperscalers offer managed OpenShift. IBM offers Red Hat OpenShift Kubernetes Service (ROKS), AWS offers Red Hat OpenShift Service on AWS (ROSA) and Microsoft offers Azure Red Hat OpenShift (ARO).  When it comes to installing OpenShift clusters, what these managed OpenShift offerings have in common is that installation is not performed using the openshift-install command. Instead, hyperscalers provide their specific command-line interfaces and integrate cluster installation into their web consoles.
+Managed OpenShift offerings from hyperscalers provide a simplified experience for deploying OpenShift clusters. However, these services require you to use their specific command-line interfaces and web consoles to install and manage clusters. In contrast, this exercise will guide you through the installation of a self-managed OpenShift cluster using IPI.
 
-In this scenario, we have decided not to include managed OpenShift instead the experience is to install self-managed OpenShift.
+Before proceeding with the installation process, it is essential to understand the common concepts and services used in hyperscalers:
 
-Common concepts / services in the context of hyperscalers:
-
-- **Region:** A geographic location where a cloud provider offers its services, with one or more data centers located within it.
-- **Virtual Private Cloud:** A logical isolation of resources within the cloud.
-- **Availability Zone:** Isolated or separated data center(s) located within specific regions.
-- **Security Group:** A virtual firewall that controls incoming and outgoing traffic to and from instances within the VPC.
-- **Application Load Balancer:** A type of load balancer designed to handle HTTP and HTTPS traffic.
-- **Application Gateway:** A device or system that connects two different networks or systems together, allowing data to be exchanged between them.
-- **Object Storage:** Object storage is a type of cloud storage that stores data as objects, providing a cost-effective, scalable, and highly available solution.
-
+- **Region:** A geographic location where a cloud provider offers its services, typically consisting of one or more data centers.
+- **Virtual Private Cloud (VPC):** A logical isolation of resources within the cloud, providing a secure environment for your applications.
+- **Availability Zone:** Isolated or separated data center(s) located within specific regions, offering high availability and scalability.
+- **Security Group:** A virtual firewall that controls incoming and outgoing traffic to and from instances within the VPC, ensuring security and access control.
+- **Application Load Balancer:** A type of load balancer designed to handle HTTP and HTTPS traffic, distributing workloads across multiple instances.
+- **Application Gateway:** A device or system that connects two different networks or systems together, enabling data exchange between them.
+- **Object Storage:** A type of cloud storage that stores data as objects, providing a cost-effective, scalable, and highly available solution.
 
 ## Outcomes
 
-- The ability to install a self-managed OpenShift cluster on IBM Cloud with confidence using IPI.
-Outcomes
-- Install OpenShift on IBM Cloud using Installer Provisioned Infrastructure (IPI).
-- Backup the etcd database to IBM Cloud object storage.
+Upon completing this exercise, you will have the ability to:
 
+- Install a self-managed OpenShift cluster on IBM Cloud using IPI.
+- Backup the etcd database to IBM Cloud Object Storage.
 
 ## Scenario
 
-You need to create a five node OpenShift cluster with 3 control plane nodes and 2 compute nodes with the specifications outlined below.
+To demonstrate the installation process, we will create a five-node OpenShift cluster with three control plane nodes and two compute nodes, each meeting the specified requirements:
 
 | Node type	     | vCPU | Memory in GiB | Disk size in GB |
 | :------------- | :--: | :-----------: | :-------------: |
 | Control Plane  | 4 | 16 | 100 |
 | Compute        | 8 | 32 | 100 |
 
-This installation requires the Cloud Credential Operator.
-
-!!! Information "Credential Operator"
-    Would you like to learn more about the Credential Operator?  Check out the OpenShift Documentation for the [Cloud Credential Operator](https://docs.openshift.com/container-platform/4.15/authentication/managing_cloud_provider_credentials/about-cloud-credential-operator.html){target="_blank"}
+The Cloud Credential Operator is required for this installation. If you would like to learn more about the Cloud Credential Operator, please refer to the [Cloud Credential Operator](https://docs.openshift.com/container-platform/4.17/authentication/managing_cloud_provider_credentials/about-cloud-credential-operator.html){target="_blank"} documentation.
 
 ## Provision the lab environment
 
 1. Navigate to the [OpenShift Installation Cohort](https://techzone.ibm.com/collection/openshift-installation-cohort){target="_blank"} collection in TechZone.
 
 2. Reserve the "Virtual Server on VPC" environment.
+
+Once you have completed these steps, you will be ready to proceed with installing your self-managed OpenShift cluster using IPI.
