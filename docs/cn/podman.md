@@ -1,31 +1,44 @@
 ---
-Title: Lab CN 2 - Docker Containers
+Title: Lab CN 2 - Podman Containers
 hide:
     - toc
 ---
 
-# Lab CN 2 - Docker Containers
+# Lab CN 2 - Podman Containers
 
-In this lab, you will learn about how to use docker and how to run applications using docker. This lab will not explicitly give you the commands to progress through these exercises, but will show you a similar expected output.
+In this lab, you will learn about how to use podman and how to run applications using podman. This lab will not explicitly give you the commands to progress through these exercises, but will show you a similar expected output.
 
 **It's your goal to create the commands needed (shown as < command > at each step) to complete the lab.**
 
 ## Prerequisites
 
 - Create a [Quay account](https://quay.io/){target="_blank"}. This account is needed to push images to a container registry. Follow the [tutorial](https://quay.io/tutorial/){target="_blank"} to get familiar with interacting with Quay
-- You need to install [Docker](https://www.docker.com/){target="_blank"} in your environment. Follow the instructions [here](https://docs.docker.com/docker-for-mac/install/){target="_blank"} to install it on Mac and [here](https://docs.docker.com/docker-for-windows/install/){target="_blank"} to install it on Windows.
+- You need to install [Podman Desktop](https://podman-desktop.io/){target="_blank"} in your environment. Follow the instructions [here](https://podman-desktop.io/docs/installation/macos-install){target="_blank"} to install it on MacOS and [here](https://podman-desktop.io/docs/installation/windows-install){target="_blank"} to install it on Windows.
 
-## Working with docker
+## Working with podman
 
-Before proceeding, make sure docker is properly installed on your system.
+Before proceeding, make sure podman is properly installed on your system.
 
-1. Please verify your Docker by looking up the version.
+1. Please verify your Podman by looking up the version.
 
 If it is installed, you will see a version number something similar to below.
 
 ```bash
 $ <command>
-Docker version 19.03.0-beta3, build c55e026
+Client:       Podman Engine
+Version:      5.3.0
+API Version:  5.3.0
+Go Version:   go1.23.3
+Git Commit:   874bf2c301ecf0ba645f1bb45f81966cc755b7da
+Built:        Wed Nov 13 03:10:17 2024
+OS/Arch:      darwin/amd64
+
+Server:       Podman Engine
+Version:      5.2.2
+API Version:  5.2.2
+Go Version:   go1.22.6
+Built:        Wed Aug 21 10:00:00 2024
+OS/Arch:      linux/amd64
 ```
 
 ** Running a hello-world container **
@@ -38,48 +51,46 @@ If it is successfully run, you will see something like below.
 
 ```bash
 $ <command>
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-1b930d010525: Pull complete
-Digest: sha256:41a65640635299bab090f783209c1e3a3f11934cf7756b09cb2f1e02147c6ed8
-Status: Downloaded newer image for hello-world:latest
+Trying to pull quay.io/podman/hello:latest...
+Getting image source signatures
+Copying blob sha256:81df7ff16254ed9756e27c8de9ceb02a9568228fccadbf080f41cc5eb5118a44
+Copying config sha256:5dd467fce50b56951185da365b5feee75409968cbab5767b9b59e325fb2ecbc0
+Writing manifest to image destination
+!... Hello Podman World ...!
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+         .--"--.           
+       / -     - \         
+      / (O)   (O) \        
+   ~~~| -=(,Y,)=- |         
+    .---. /`  \   |~~      
+ ~/  o  o \~~~~.----. ~~   
+  | =(X)= |~  / (O (O) \   
+   ~~~~~~~  ~| =(Y_)=-  |   
+  ~~~~    ~~~|   U      |~~ 
 
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (amd64)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
+Project:   https://github.com/containers/podman
+Website:   https://podman.io
+Desktop:   https://podman-desktop.io
+Documents: https://docs.podman.io
+YouTube:   https://youtube.com/@Podman
+X/Twitter: @Podman_io
+Mastodon:  @Podman_io@fosstodon.org
 ```
 
-Since, `hello-world` image is not existing locally, it is pulled from `library/hello-world`. But if it is already existing, docker will not pull it every time but rather use the existing one.
+Since, `hello-world` image is not existing locally, it is pulled from `podman/hello`. But if it is already existing, podman will not pull it every time but rather use the existing one.
 
-This image is pulled from https://hub.docker.com/_/hello-world. Docker hub is a repository used to store docker images. Similarly, you can use your own registries to store images. For example, IBM Cloud provides you a container registry.
+This image is pulled from https://quay.io/repository/podman/hello?. Quay.io is a repository used to store container images. Similarly, you can use your own registries to store images.
 
 **Verifying the hello-world image**
 
-3. Now verify if an image is existing in your system locally.
+1. Now verify if an image is existing in your system locally.
 
 You will then see something like below.
 
 ```bash
 $ <command>
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-hello-world         latest              fce289e99eb9        5 months ago        1.84kB
+REPOSITORY                              TAG         IMAGE ID      CREATED       SIZE
+quay.io/podman/hello                    latest      5dd467fce50b  6 months ago  787 kB
 ```
 
 ## Get the sample application
@@ -94,11 +105,11 @@ git clone https://github.com/ibm-cloud-architecture/cloudnative_sample_app.git
 cd cloudnative_sample_app/
 ```
 
-## Run the application on Docker
+## Run the application on Podman
 
-### Build the docker image
+### Build the container image
 
-Let's take look at the docker file before building it.
+Let's take look at the Containerfile, sometimes referred to as a Dockerfile before building it.
 
 ```sh
 FROM maven:3.3-jdk-8 as builder
@@ -115,11 +126,11 @@ RUN springBootUtility thin \
     --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
 ```
 
-- Using the `FROM` instruction, we provide the name and tag of an image that should be used as our base. This must always be the first instruction in the Dockerfile.
+- Using the `FROM` instruction, we provide the name and tag of an image that should be used as our base. This must always be the first instruction in the Containerfile.
 - Using `COPY` instruction, we copy new contents from the source filesystem to the container filesystem.
 - `RUN` instruction executes the commands.
 
-This Dockerfile leverages multi-stage builds, which lets you create multiple stages in your Dockerfile to do certain tasks.
+This Containerfile leverages multi-stage builds, which lets you create multiple stages in your Dockerfile to do certain tasks.
 
 In our case, we have two stages.
 
@@ -128,17 +139,16 @@ In our case, we have two stages.
 
 The advantage of using the multi-stage builds approach is that the resulting image only uses the base image of the last stage. Meaning that in our case, we will only end up with the `openliberty/open-liberty:springBoot2-ubi-min` as our base image, which is much tinier than having an image that has both Maven and the JRE.
 
-By using the multi-stage builds approach when it makes sense to use it, you will end up with much lighter and easier to maintain images, which can save you space on your Docker Registry. Also, having tinier images usually means less resource consumption on your worker nodes, which can result cost-savings.
+By using the multi-stage builds approach when it makes sense to use it, you will end up with much lighter and easier to maintain images, which can save you space on your Container Registry. Also, having tinier images usually means less resource consumption on your worker nodes, which can result cost-savings.
 
-Once, you have the docker file ready, the next step is to build it. The `build` command allows you to build a docker image which you can later run as a container.
+Once, you have the Containerfile ready, the next step is to build it. The `build` command allows you to build a image which you can later run as a container.
 
-1. Build the docker file with the `image_name` of `greeting` and give it a `image_tag` of `v1.0.0` and build it using the current context.
+1. Build the Containerfile with the `image_name` of `greeting` and give it a `image_tag` of `v1.0.0` and build it using the current context.
 
 You will see something like below:
 
 ```bash
 $ <command>
-Sending build context to Docker daemon  22.17MB
 Step 1/6 : FROM maven:3.3-jdk-8 as builder
  ---> 9997d8483b2f
 Step 2/6 : COPY . .
@@ -181,17 +191,18 @@ The output will be as follows.
 
 ```bash
 $ <command>
-REPOSITORY                           TAG                   IMAGE ID            CREATED             SIZE
-greeting                             v1.0.0                89bd7032fdee        51 seconds ago      537MB
-openliberty/open-liberty             springBoot2-ubi-min   bcfcb2c5ce16        6 days ago          480MB
-hello-world                          latest                f9cad508cb4c        5 months ago        1.84kB
+REPOSITORY                              TAG                  IMAGE ID      CREATED         SIZE
+quay.io/benswinney-ibm/greeting         v1.0.0               7674fa09c091  8 seconds ago   542 MB
+quay.io/podman/hello                    latest               5dd467fce50b  6 months ago    787 kB
+docker.io/openliberty/open-liberty      springBoot2-ubi-min  021530b0b3cb  5 years ago     486 MB
+docker.io/library/maven                 3.3-jdk-8            9997d8483b2f  7 years ago     669 MB
 ```
 
-### Run the docker container
+### Run the podman container
 
-Now let's try running the docker container. Run it with the following parameters:
+Now let's try running the podman container. Run it with the following parameters:
 
-3. Expose port `9080`. Run it in the background in detached mode. Give the container the name of `greeting`.
+1. Expose port `9080`. Run it in the background in detached mode. Give the container the name of `greeting`.
 
 Once done, you will have something like below.
 
@@ -200,12 +211,12 @@ $ <command>
 bc2dc95a6bd1f51a226b291999da9031f4443096c1462cb3fead3df36613b753
 ```
 
-Also, docker cannot create two containers with the same name. If you try to run the same container having the same name again, you will see something like below.
+Also, podman cannot create two containers with the same name. If you try to run the same container having the same name again, you will see something like below.
 
 ```bash
 $ <command>
-docker: Error response from daemon: Conflict. The container name "/greeting" is already in use by container "a74b91789b29af6e7be92b30d0e68eef852bfb24336a44ef1485bb58becbd664". You have to remove (or rename) that container to be able to reuse that name.
-See 'docker run --help'.
+podman: Error response from daemon: Conflict. The container name "/greeting" is already in use by container "a74b91789b29af6e7be92b30d0e68eef852bfb24336a44ef1485bb58becbd664". You have to remove (or rename) that container to be able to reuse that name.
+See 'podman run --help'.
 ```
 
 It is a good practice to name your containers. Naming helps you to discover your service easily.
@@ -229,28 +240,35 @@ If we consider our container, it is as follows. You can see lot of information a
 ```json
 $ <command>
 [
-    {
-        "Id": "bc2dc95a6bd1f51a226b291999da9031f4443096c1462cb3fead3df36613b753",
-        "Created": "2019-08-30T16:56:40.2081539Z",
-        "Path": "/opt/ol/helpers/runtime/docker-server.sh",
-        "Args": [
-            "/opt/ol/wlp/bin/server",
-            "run",
-            "defaultServer"
-        ],
-        "State": {
-            "Status": "running",
-            "Running": true,
-            "Paused": false,
-            "Restarting": false,
-            "OOMKilled": false,
-            "Dead": false,
-            "Pid": 27548,
-            "ExitCode": 0,
-            "Error": "",
-            "StartedAt": "2019-08-30T16:56:41.0927889Z",
-            "FinishedAt": "0001-01-01T00:00:00Z"
-        },
+     {
+          "Id": "7674fa09c09194abc3641e913b8ef9127658921e01a07cccbd26e74031f30784",
+          "Digest": "sha256:ef292f1f1e573e46b140cce57a4da269c231f7bba4352a4c066bc6313edabb7c",
+          "RepoTags": [
+               "quay.io/benswinney-ibm/greeting:v1.0.0"
+          ],
+          "RepoDigests": [
+               "quay.io/benswinney-ibm/greeting@sha256:ef292f1f1e573e46b140cce57a4da269c231f7bba4352a4c066bc6313edabb7c"
+          ],
+          "Parent": "08b3dcd861a5b3a854cf9361120f6f68f0608ef855027108c8f67e2b7db06d09",
+          "Comment": "Imported from -",
+          "Created": "2024-11-25T05:31:04.216084457Z",
+          "Config": {
+               "User": "1001",
+               "ExposedPorts": {
+                    "9080/tcp": {},
+                    "9443/tcp": {}
+               },
+               "Env": [
+                    "PATH=/opt/ol/wlp/bin:/opt/ol/docker/:/opt/ol/helpers/build:/opt/ibm/java/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "container=oci",
+                    "JAVA_VERSION=1.8.0_sr5fp40",
+                    "JAVA_HOME=/opt/ibm/java/jre",
+                    "IBM_JAVA_OPTIONS=-Xshareclasses:name=liberty,nonfatal,cacheDir=/output/.classCache/ -XX:+UseContainerSupport",
+                    "LOG_DIR=/logs",
+                    "WLP_OUTPUT_DIR=/opt/ol/wlp/output",
+                    "WLP_SKIP_MAXPERMSIZE=true",
+                    "RANDFILE=/tmp/.rnd"
+               ],
         ..........
         ..........
         ..........
@@ -364,9 +382,9 @@ docker.io/<repository_name>/greeting:v1.0.0
 
 You have successfully completed this lab! Let's take a look at what you learned and did today:
 
-- Learned about Dockerfile.
-- Learned about docker images.
-- Learned about docker containers.
-- Learned about multi-stage docker builds.
-- Ran the Greetings service on Docker.
+- Learned about the Containerfile.
+- Learned about podman images.
+- Learned about podman containers.
+- Learned about multi-stage podman builds.
+- Ran the Greetings service on Podman.
 
