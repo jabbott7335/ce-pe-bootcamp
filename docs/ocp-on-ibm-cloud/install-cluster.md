@@ -6,7 +6,7 @@ hide:
 
 # Install the OpenShift Cluster
 
-There are no step-by-step instructions provided here, you should use the official [Red Hat documentation](https://docs.openshift.com/container-platform/4.15/installing/installing_ibm_cloud_public/preparing-to-install-on-ibm-cloud.html){target="_blank"} and your experience from the prior installation labs to determine the proper steps for this installation. The installation method you need to follow is "Installing a cluster on IBM Cloud with customizations".
+There are no step-by-step instructions provided here, you should use the official [Red Hat documentation](https://docs.openshift.com/container-platform/4.17/installing/installing_ibm_cloud/preparing-to-install-on-ibm-cloud.html){target="_blank"} and your experience from the prior installation labs to determine the proper steps for this installation. The installation method you need to follow is [Installing a cluster on IBM Cloud with customizations](https://docs.openshift.com/container-platform/4.17/installing/installing_ibm_cloud/installing-ibm-cloud-customizations.html).
 
 !!! Important
     
