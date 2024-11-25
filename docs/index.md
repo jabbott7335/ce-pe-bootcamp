@@ -340,21 +340,6 @@ Please note that completing the prerequisite class is not only a necessary step 
     ```
     crc start
     ```
-=== "IKS"
-
-    - Login to [IBM Cloud](https://cloud.ibm.com){target="_blank"} with your IBM ID.
-
-    - Click "Create Resource" and search for "kubernetes service".
-
-    - Select the tile for "Kubernetes Service" and do the following:
-    - Select the "Free Cluster" plan.
-    - Name your cluster.
-    - Select "Create" at the bottom right of the screen.
-
-    - Once the Cluster is provisioned, Click on the "Connect via CLI" in the top right corner.
-
-    - Follow the instructions to connect and you are set to go.
-
 === "OpenShift on IBM Cloud (4.x)"
 
     - In this approach you share an OpenShift cluster on IBM Cloud with other bootcamp attendees.
