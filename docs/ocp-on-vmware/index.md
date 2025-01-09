@@ -13,6 +13,7 @@ In this exercise, you will learn how to deploy an OpenShift cluster on a VMware 
 Upon completion of this exercise, you will be able to:
 
 - *Install OpenShift on vSphere[^1]* : Deploy an OpenShift cluster using IPI, which automates the installation process from scratch.
+    - Install with customization that will create the Infrastructure nodes for ODF.
 - *Configure Identity Provider for htpasswd Authentication* : Set up identity provider authentication for your OpenShift cluster using htpasswd.
 - *Install Red Hat OpenShift Data Foundation (ODF)* : Deploy ODF, a software-defined storage solution that supports both read-write many (RWX) and read-write once (RWO) storage classes.
 - *Configure ODF Storage for Internal Image Registry* : Configure ODF to provide persistent storage for your internal image registry.
@@ -25,11 +26,11 @@ A modernization project requires containerizing existing applications using Open
 
 The required cluster configuration consists of eight nodes:
 
-| Node type	     | vCPU | Memory in GiB | Disk size in GB |
-| :------------- | :--: | :-----------: | :-------------: |
-| Control Plane  | 4 | 16 | 120 |
-| Compute        | 8 | 16 | 120 |
-| Infrastructure | 16 | 64 | 120 |
+ | Node type      | vCPU | Memory in GiB | Disk size in GB |
+ |:---------------|:----:|:-------------:|:---------------:|
+ | Control Plane  | 4    | 16            | 120             |
+ | Compute        | 8    | 16            | 120             |
+ | Infrastructure | 16   | 64            | 120             |
 
 In addition, you will need to deploy a software-defined storage (SDS) solution that meets the following requirements:
 

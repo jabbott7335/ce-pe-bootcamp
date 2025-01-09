@@ -4,7 +4,7 @@ hide:
     - toc
 ---
 
-# Install the OpenShift Cluster
+# Customize and Install the OpenShift Cluster
 
 1. Create the installation directory (by convention named after the cluster).
     
@@ -44,7 +44,7 @@ hide:
     - Change `numCPUs` to `16`.
     - Change `numCoresPerSocket` to `2`.
     
-    ```{.text .no-copy title="Reference infrastructure MachineSet"}
+    ```{.text .no-copy title="Reference infrastructure MachineSet" linenums=1 hl_lines="7 14 19-21 24-31 39 45-46"} 
     apiVersion: machine.openshift.io/v1beta1
     kind: MachineSet
     metadata:
@@ -140,7 +140,8 @@ hide:
     ```
 
     !!! Tip
-        When using WireGuard ensure your laptop does not go to sleep and that the SSH session remains open, otherwise this can interrupt the installer.
+        - When using WireGuard ensure your laptop does not go to sleep and that the SSH session remains open, otherwise this can interrupt the installer.
+        - Consider installing and using tmux to minimize network disruptions and timeouts.
 
 ## Monitor Progress During Installation
 
