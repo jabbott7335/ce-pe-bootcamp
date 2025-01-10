@@ -5,7 +5,7 @@ hide:
 ---
 
 
-# Welcome to the Client Engineering Platform Engineer Bootcamp
+# Welcome to the Client Engineering Platform Engineer (PE) Bootcamp
 
 **Welcome Platform Engineers!**
 
