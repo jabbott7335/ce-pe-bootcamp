@@ -38,14 +38,14 @@ For this project the clients developers will leverage source-to-image (S2I). One
 3. Save the name of the OBC in a shell variable.
     
     ```sh
-    bucket_name=$(oc -n openshift-image-registry get obc image-registry -o jsonpath='{.spec.bucketName}')
+    export bucket_name=$(oc -n openshift-image-registry get obc image-registry -o jsonpath='{.spec.bucketName}')
     ```
 
 4. Save the credentials in shell variables.
     
     ```sh
-    AWS_ACCESS_KEY_ID=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_ACCESS_KEY_ID:" | head -n1 | awk '{print $2}' | base64 --decode)
-    AWS_SECRET_ACCESS_KEY=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_SECRET_ACCESS_KEY:" | head -n1 | awk '{print $2}' | base64 --decode)
+    export AWS_ACCESS_KEY_ID=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_ACCESS_KEY_ID:" | head -n1 | awk '{print $2}' | base64 --decode)
+    export AWS_SECRET_ACCESS_KEY=$(oc -n openshift-image-registry get secret image-registry -o yaml | grep -w "AWS_SECRET_ACCESS_KEY:" | head -n1 | awk '{print $2}' | base64 --decode)
     ```
 
 5. Create the secret named `image-registry-private-configuration-user`.
@@ -59,7 +59,7 @@ For this project the clients developers will leverage source-to-image (S2I). One
 6. Save the s3 route's hostname into a shell variable.
     
     ```sh
-    s3_hostname=$(oc -n openshift-storage get route s3 -o=jsonpath='{.spec.host}')
+    export s3_hostname=$(oc -n openshift-storage get route s3 -o=jsonpath='{.spec.host}')
     ```
 
 7. Copy the Ingress CA bundle into a ConfigMap named `image-registry-s3-bundle`.

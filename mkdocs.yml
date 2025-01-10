@@ -192,6 +192,7 @@ nav:
     - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
     - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
     - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
+    - Add IBM Software Entitlement: ocp-on-vmware/update-golbal-pull-secret.md
   - Deploying Air-Gapped OpenShift on VMware:
     - ocp-on-vmware-airgapped/index.md
     - Setup the mirror host: ocp-on-vmware-airgapped/mirror-host.md

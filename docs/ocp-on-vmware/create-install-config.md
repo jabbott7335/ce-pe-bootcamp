@@ -70,7 +70,7 @@ We will use the create `install-config` wizard to create the install config asse
 
 1. Review the `install-config.yaml` created by the wizard and compare the parameters created with the openshift-install.yaml template below.
 
-    ```{ .yaml .no-copy title="Reference install-config.yaml" }
+    ```{ .yaml linenums="1" hl_lines="8-12 17-20 24 30 37 39-59" .no-copy title="Reference install-config.yaml" }
     additionalTrustBundlePolicy: Proxyonly
     apiVersion: v1
     baseDomain: gym.lan
