@@ -9,26 +9,25 @@ hide:
 The OpenShift installer uses a YAML configuration file, known as the install config asset, to set the parameters for the installation process.
 
 !!! Tip "Collecting Install Config Asset Information"
+    During the provisioning process for the OCP Gymnasium, a YAML file named `vmware-ipi.yaml` was created in the `/home/admin` directory on the bastion host. This file contains essential information that will be used to create the install config asset.  This information can be found in other locations as well such as by examining the VMware environment from within vSphere.
 
-  During the provisioning process for the OCP Gymnasium, a YAML file named `vmware-ipi.yaml` was created in the `/home/admin` directory on the bastion host. This file contains essential information that will be used to create the install config asset.  This information can be found in other locations as well such as by examining the VMware environment from within vSphere.
-
-  ```{ .yaml .no-copy linenums="1" title="Contents of /home/admin/vmware-ipi.yaml similar to the following" }
-  ---
-  vsphere_username: gymuser-f6ckcc6o@techzone.ibm.local
-  vsphere_password: FokZLqZ6
-  vsphere_hostname: ocpgymwdc-vc.techzone.ibm.local
-  vsphere_datastore: /IBMCloud/datastore/gym-50vmycg18b-f6ckcc6o-storage
-  vsphere_cluster: ocpgym-wdc
-  vsphere_network: gym-50vmycg18b-f6ckcc6o-segment
-  vsphere_datacenter: IBMCloud
-  vsphere_folder: /IBMCloud/vm/ocpgym-wdc/gym-50vmycg18b-f6ckcc6o
-  vsphere_resource_pool: /IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-50vmycg18b-f6ckcc6o
-  vsphere_api_vip: 192.168.252.3
-  vsphere_ingress_vip: 192.168.252.4
-  base_domain: gym.lan
-  cluster_name: ocpinstall
-  ocp_custom_openshift_installer_url: http://10.185.220.3/pub/openshift-v4/clients/ocp/
-  ```
+    ```{ .yaml .no-copy linenums="1" title="Contents of /home/admin/vmware-ipi.yaml similar to the following" }
+    ---
+    vsphere_username: gymuser-f6ckcc6o@techzone.ibm.local
+    vsphere_password: FokZLqZ6
+    vsphere_hostname: ocpgymwdc-vc.techzone.ibm.local
+    vsphere_datastore: /IBMCloud/datastore/gym-50vmycg18b-f6ckcc6o-storage
+    vsphere_cluster: ocpgym-wdc
+    vsphere_network: gym-50vmycg18b-f6ckcc6o-segment
+    vsphere_datacenter: IBMCloud
+    vsphere_folder: /IBMCloud/vm/ocpgym-wdc/gym-50vmycg18b-f6ckcc6o
+    vsphere_resource_pool: /IBMCloud/host/ocpgym-wdc/Resources/Cluster Resource Pool/Gym Member Resource Pool/gym-50vmycg18b-f6ckcc6o
+    vsphere_api_vip: 192.168.252.3
+    vsphere_ingress_vip: 192.168.252.4
+    base_domain: gym.lan
+    cluster_name: ocpinstall
+    ocp_custom_openshift_installer_url: http://10.185.220.3/pub/openshift-v4/clients/ocp/
+    ```
 
 ## Run the Wizard
 
@@ -137,43 +136,43 @@ We will use the create `install-config` wizard to create the install config asse
     ```
 
 !!! Hint "Which parameters need changes?"
-  Which parameters does the template have that were missing from the survey?
-  Which values does the template have pre-populated from the survey?
-  
-  At a minimum, the platform and network sections require modification and some of this information is unique to YOUR environment.
+    Which parameters does the template have that were missing from the survey?
+    Which values does the template have pre-populated from the survey?
 
-    ```yaml
-    #...
-    compute:
-    - architecture: amd64
-      hyperthreading: Enabled
-      name: worker
+    At a minimum, the platform and network sections require modification and some of this information is unique to YOUR environment.
+
+      ```yaml
+      #...
+      compute:
+      - architecture: amd64
+        hyperthreading: Enabled
+        name: worker
+        platform:
+          vsphere:
+            cpus: 8
+            memoryMB: 16384
+        replicas: 2
+      #...
+      networking:
+        #...
+      machineNetwork:
+        - cidr: 192.168.252.0/24
+        #...
       platform:
         vsphere:
-          cpus: 8
-          memoryMB: 16384
-      replicas: 2
-    #...
-    networking:
-      #...
-      machineNetwork:
-      - cidr: 192.168.252.0/24
-      #...
-    platform:
-      vsphere:
-        #...
-        failureDomains:
-        - name: YOUR_VSPHERE_CLUSTER
-          region: IBMCloud
           #...
-          topology:
+          failureDomains:
+          - name: YOUR_VSPHERE_CLUSTER
+            region: IBMCloud
             #...
-            folder: YOUR_VSPHERE_FOLDER
-            #...
-            resourcePool: YOUR_VSPHERE_RESOURCE_POOL
-          zone: YOUR_VSPHERE_CLUSTER
-    #...
-    ```
+            topology:
+              #...
+              folder: YOUR_VSPHERE_FOLDER
+              #...
+              resourcePool: YOUR_VSPHERE_RESOURCE_POOL
+            zone: YOUR_VSPHERE_CLUSTER
+      #...
+      ```
 
 !!! Warning "Hold on!"
     Where are the infrastructure nodes dear instructors? Good catch! Infrastructure nodes currently can not be specified in the install config asset, we will ensure they are created in the next section.
