@@ -94,18 +94,18 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     The following is a list of desktop tools required to help with installation and development.
 
-    - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
+    - [Git Client](https://git-scm.com/downloads){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
     - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud
 
-    - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
+    - [Podman Desktop](https://podman-desktop.io/downloads){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
 
     - [Visual Studio Code](https://code.visualstudio.com/download){target="_blank"}: A popular code editor
         - You will be required to edit some files, having a good quality editor is always best practice
         - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line){target="_blank"}
 
-    - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html){target="_blank"}: *Optional* installed on your local machine
+    - [JDK 21](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/){target="_blank"}: *Optional* installed on your local machine
         - Used for SpringBoot content
 
 === "Openshift (Windows)"
@@ -228,7 +228,7 @@ Please note that completing the prerequisite class is not only a necessary step 
 
 === "OpenShift Local"
 
-    Ensure OpenShift Local is installed. Check out the  [OpenShift Local](https://docs.redhat.com/en/documentation/red_hat_openshift_local/2.44/html/getting_started_guide/index){target="_blank"} Page.
+    Ensure OpenShift Local is installed. Check out the  [OpenShift Local](https://console.redhat.com/openshift/create/local){target="_blank"} Page.
 
     - Setup OpenShift Local
 
