@@ -8,6 +8,9 @@ hide:
 
 A registry is a repository used to store and access container images. Container registries can support container-based application development, often as part of DevOps processes.
 
+!!! Tip "Associate your quay.io account with your Red Hat account!"
+    If you haven't used quay.io in a while and already have an account, you may need to associate quay.io and Red Hat logins.  [See this article](https://access.redhat.com/articles/5363231){target="_blank"} for help.
+
 Container registries save developers valuable time in the creation and delivery of cloud-native applications, acting as the intermediary for sharing container images between systems. They essentially act as a place for developers to store container images and share them out via a process of uploading (pushing) to the registry and downloading (pulling) into another system, like a Kubernetes cluster.
 
 [Learn More :fontawesome-solid-globe:](https://www.redhat.com/en/topics/cloud-native-apps/what-is-a-container-registry){ .md-button target="_blank"}
@@ -20,7 +23,6 @@ Container registries save developers valuable time in the creation and delivery 
       podman login quay.io
       Username: your_username
       Password: your_password
-      Email: your_email
       ```
 
       First we'll create a container with a single new file based off of the busybox base image: 
@@ -29,19 +31,23 @@ Container registries save developers valuable time in the creation and delivery 
       ```
       The container will immediately terminate, so we'll use the command below to list it:
       ```
-      podman ps -l
+      podman ps -a
       ```
-      The next step is to commit the container to an image and then tag that image with a relevant name so it can be saved to a respository.
+      The next step is to commit the container to an image and then tag that image with a relevant name so it can be saved to a repository.
 
-      Replace "container_id" with your container id from the previous command.
+      In the below command you must replace:
+      
+      - <container_id> with your container id from the previous command
+      - <namespace> with a namespace of your choice
+      - <repository_name> with a name for the repository
+
       ``` Bash title="Create a new image"
-      podman commit container_id quay.io/your_username/repository_name
+      podman commit <container_id> quay.io/<namespace>/<repository_name>
       ```
-      Be sure to replace "your_username" with your quay.io username and "respository_name" with a unique name for your repository.
 
-      Now that we've tagged our image with a repository name, we can push the respository to Quay Container Registry:
+      Now that we've tagged our image with a repository name, we can push the repository to Quay Container Registry:
       ``` Bash title="Push the image to Quay"
-      podman push quay.io/your_username/repository_name
+      podman push quay.io/<namespace>/<repository_name>
       ```
       Your respository has now been pushed to Quay Container Registry!
 
