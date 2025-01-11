@@ -8,7 +8,7 @@ hide:
 
 On platforms that do not provide shareable object storage, vSphere without VSAN for example, the OpenShift image registry operator bootstraps itself as `Removed`. This allows the installer to complete on these platform types.
 
-For this project the clients developers will leverage source-to-image (S2I). One of the things that S2I does is push container images to the internal image registry. To enable this, we'll need to configure the internal image registry with storage. Let's configure the internal image registry so it uses NooBaa, an object storage type provided by OpenShift Data Foundation.
+For this project the client's developers will leverage source-to-image (S2I). One of the things that S2I does is push container images to the internal image registry. To enable this, we'll need to configure the internal image registry with storage. Let's configure the internal image registry so it uses NooBaa, an object storage type provided by OpenShift Data Foundation.
 
 1. Validate that the `managementState` of the image registry operator is `Removed`.
     
