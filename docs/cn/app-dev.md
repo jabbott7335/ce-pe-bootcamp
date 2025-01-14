@@ -134,13 +134,13 @@ We usually have such capabilities in any of the orchestration platform we use. F
 
 **Monitoring and logging**
 
-Monitoring and logging should be a part of the cloud-native application. Dynamically monitoring all the services of the application is important. It keeps checking the entire application and is used for debugging purposes when required. Also, make sure your logging system should be able to collect all the logs and consolidate them together based on application, environments, tags etc.
+Monitoring and logging should be a part of the cloud-native application. Dynamically monitoring all the services of the application is important. It keeps checking the entire application and is used for debugging purposes when required. Also, make sure your logging system is capable of collecting and consolidating all logs together based on application, environments, tags etc.
 
 **Metrics**
 
 Cloud-native applications must include metrics as a part of their code. All the telemetry data needed will be provided by the metrics. This helps you to know whether your application is meeting the service-level objectives.
 
-Metrics are collected at instance level and later aggregated together to provide the complete view of the application. Once the application provides metrics, underlying infrastructure will scrape them out and use them for analysis.
+Metrics are collected at instance level and later aggregated together to provide the complete view of the application. Once the application provides the metrics, underlying infrastructure will scrape them out and use them for analysis.
 
 **Debugging and tracing**
 

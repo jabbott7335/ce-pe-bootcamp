@@ -12,20 +12,20 @@ For example, Podman created standard way to create images for Linux Containers.
 
 ## Basic Podman Commands
 
-| Action                      | Command                                     |
-| --------------------------- | ------------------------------------------- |
-| Get Podman version          | `podman version`                            |
-| Run `hello-world` Container | `podman run hello-world`                    |
-| List Running Containers     | `podman ps`                                 |
-| Stop a container            | `podman stop <container-name/container-id>` |
-| List container Images          | `podman images`                            |
-| Login into registry         | `podman login`                              |
-| Build an image              | `podman build -t <image_name>:<tag> .`      |
-| Inspect a container object     | `podman inspect <name/id>`                 |
-| Inspect a container image      | `podman inspect image <name/id>`           |
-| Pull an image               | `podman pull <image_name>:<tag>`           |
-| Push an Image               | `podman push <image_name>:<tag>`           |
-| Remove a container          | `podman rm <container-name/container-id>`  |
+ | Action                      | Command                                     |
+ |-----------------------------|---------------------------------------------|
+ | Get Podman version          | `podman version`                            |
+ | Run `hello-world` Container | `podman run hello-world`                    |
+ | List Running Containers     | `podman ps`                                 |
+ | Stop a container            | `podman stop <container-name/container-id>` |
+ | List container Images       | `podman images`                             |
+ | Login into registry         | `podman login`                              |
+ | Build an image              | `podman build -t <image_name>:<tag> .`      |
+ | Inspect a container object  | `podman inspect <name/id>`                  |
+ | Inspect a container image   | `podman inspect image <name/id>`            |
+ | Pull an image               | `podman pull <image_name>:<tag>`            |
+ | Push an Image               | `podman push <image_name>:<tag>`            |
+ | Remove a container          | `podman rm <container-name/container-id>`   |
 
 ## Running Podman
 

@@ -15,6 +15,10 @@ hide:
 4. Copy your pull secret from the [Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret){target="_blank"} and save it in file `~/.pull-secret`.
 
 5. Install the Cloud Credential Operator utility.
+
+    !!! Tip
+        To complete the steps documented below to obtain the ```ccoctl``` command. Administrator access to an OpenShift cluster is required.  This command is also available for download from Redhat.  [Download the ```ccoctl```command](https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/) 
+
     
     Extract the `ccoctl` application.
         
