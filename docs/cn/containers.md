@@ -38,7 +38,7 @@ There are many different container standards available today. Some of them are a
 
 **Docker** - The most common standard, made Linux containers usable by the masses.
 
-**Rocket (rkt)** - An emerging container standard from CoreOS, the company that developed etcd.
+**Rocket[^1] (rkt)** - An emerging container standard from CoreOS, the company that developed etcd.
 
 **Garden** - The format Cloud Foundry builds using buildpacks.
 
@@ -46,7 +46,7 @@ Among them, Docker was one of the most popular mainstream container software too
 
 ***Open Container Initiative (OCI)***
 
-A Linux Foundation project developing a governed container standard. Docker and Rocket are OCI-compliant. But, Garden is not.
+A Linux Foundation project developing a governed container standard. Docker and Rocket[^1] are OCI-compliant. But, Garden is not.
 
 ## Benefits
 
@@ -119,4 +119,4 @@ The registry stores, distributes, and shares container images. It is available i
     - [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io){target="_blank"}
     - [Demystifying the Open Container Initiative (OCI) Specifications](https://blog.docker.com/2017/07/demystifying-open-container-initiative-oci-specifications){target="_blank"}
 
-
+[^1]: CoreOS and its Rocket technology was acquired by Red Hat.  [Press Release](https://www.redhat.com/en/about/press-releases/red-hat-acquire-coreos-expanding-its-kubernetes-and-containers-leadership), this acquisition facilitated the creation of Red Hat CoreOS which is the Linux operating system that powers Red Hat OpenShift.
