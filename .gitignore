@@ -22,6 +22,11 @@
 # Node, TypeScript, Python
 # -----------------------------------------------------------------------------
 
+# dbailey - hide some vscode files
+
+.cspell
+.vscode
+
 # Dependencies
 node_modules
 __pycache__
