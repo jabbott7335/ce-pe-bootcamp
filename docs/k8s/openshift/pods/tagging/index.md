@@ -23,7 +23,7 @@ You can use either labels or annotations to attach metadata to Kubernetes object
 
           Read about the descriptions and example commands for OpenShift CLI (`oc`) developer commands.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.13/cli_reference/openshift_cli/developer-cli-commands.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/developer-cli-commands.html){ target="_blank"}
 
     </div>
 

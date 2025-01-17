@@ -1,9 +1,7 @@
 ---
-Title: Welcome
 hide:
     - toc
 ---
-
 
 # Welcome to the Client Engineering Platform Engineer (PE) Bootcamp
 
@@ -61,7 +59,7 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
     
     - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
@@ -114,7 +112,7 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
     
     - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
@@ -153,7 +151,7 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
     
     ## Run System Check Script
 
@@ -198,7 +196,7 @@ Please note that completing the prerequisite class is not only a necessary step 
 
     You'll need these accounts to use the Developer Tools environment.
 
-    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+    - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
     
     ## Cloud Native VM
 
@@ -279,7 +277,6 @@ Please note that completing the prerequisite class is not only a necessary step 
     <InlineNotification kind="warning">
     **Warning:** Make sure you have Cisco VPN turned off when using Minikube.
     </InlineNotification>
-
 
 !!! Note "Get a Jump on Cloud Native Concepts"
 

@@ -47,7 +47,7 @@ One of the most common runtime dependency's is the exposure of a container's spe
 
 Another runtime dependency is file storage for saving the application state.  Kubernetes offers Pod-level storage utilities that are capable of surviving container restarts.  Applications needing to read or write to these storage mechanisms will require nodes that is provided the type of volume required by the application.  If there is no nodes available with the required volume type, then the pod will not be scheduled to be deployed at all.
 
-A different kind of dependency is configurations.  ConfigMaps are used by Kubernetes to strategically plan out how to consume it's settings through either environment variables or the filesystem.  Secrets are consumed the same was as a ConfigMap in Kubernetes.  Secrets are a more secure way to distribute environment-specific configurations to containers within the pod. 
+A different kind of dependency is configurations.  ConfigMaps are used by Kubernetes to strategically plan out how to consume it's settings through either environment variables or the filesystem.  Secrets are consumed the same way as a ConfigMaps in Kubernetes.  Secrets are a more secure way to distribute environment-specific configurations to containers within the pod. 
 
 
 ### Resource Profiles
@@ -56,24 +56,26 @@ Resource Profiles are definitions for the compute resources required for a conta
 
 Every application needs to have a specified minimum and maximum amount of resources that are needed.  The minimum amount is called "requests" and the maximum is the "limits".  The scheduler uses the requests to determine the assignment of pods to nodes ensuring that the node will have enough capacity to accommodate the pod and all of it's containers required resources.  An example of defined resource limits is below:
 
+### Quality of Service Levels
+
 Different levels of Quality of Service (QoS) are offered based on the specified requests and limits.
 
-3. Quality of Service Levels
-Best Effort;;
-    Lowest priority pod with no requests or limits set for it's containers. These pods will be the first of any pods killed if resources run low.
-Burstable;;
-    Limits and requests are defined but they are not equal.  The pod will use the minimum amount of resources, but will consume more if needed up to the limit.  If the needed resources become scarce then these pods will be killed if no Best Effort pods are left.
-Guaranteed;;
-    Highest priority pods with an equal amount of requests and limits. These pods will be the last to be killed if resources run low and no Best Effort or Burstable pods are left. 
+`Best Effort`
+:     Lowest priority pod with no requests or limits set for it's containers. These pods will be the first of any pods evicted if resources are low.
+
+`Burstable`
+:     Limits and requests are defined but they are not equal.  The pod will use the minimum amount of resources, but will consume more if needed up to the limit.  If the needed resources become scarce then these pods will be evicted if no **Best Effort** pods remain on a node.
+
+`Guaranteed`
+:     Highest priority pods with an equal amount of requests and limits. These pods will be the last to be evicted if resources run low and no **Best Effort** or **Burstable** pods remain to be evicted. 
 
 ### Pod Priority
 
 The priority of pods can be defined through a PriorityClass object. The PriorityClass object allows developers to indicate the importance of a pod relative to the other pods in the cluster.  The higher the priority number then the higher the priority of the pod. The scheduler looks at a pods priorityClassName to populate the priority of new pods.  As pods are being placed in the scheduling queue for deployment, the scheduler orders them from highest to lowest.
 
-Another key feature for pod priority is the Preemption feature.  The Preemption feature occurs when there are no nodes with enough capacity to place a pod.  If this occurs the scheduler can preempt (remove) lower-priority Pods from nodes to free up resources and place Pods with higher priority.  This effectively allows system administrators the ability to control which critical pods get top priority for resources in the cluster as well as controlling which critical workloads are able to be run on the cluster first. If a pod can not be scheduled due to constraints it will continue on with lower-priority nodes.
+Another key feature for pod priority is the Preemption feature.  The Preemption feature occurs when there are no nodes with enough capacity to place a pod.  If this occurs the scheduler can preempt (remove) lower-priority Pods from nodes to free up resources and place Pods with higher priority.  This effectively allows system administrators the ability to control which critical pods get top priority for resources in the cluster as well as controlling which critical workloads are able to be run on the cluster first. If a pod can not be scheduled due to constraints it will continue on with lower-priority pods.
 
-Pod Priority should be used with caution for this gives users the ability to control over the kubernetes scheduler and ability to place or kill pods that may interrupt the cluster's critical functions.  New pods with higher priority than others can quickly evict pods with lower priority that may be critical to a container's performance.  ResourceQuota and PodDisruptionBudget are two tools that help combat this from happening read more here.
-
+Pod Priority should be used with caution for this gives users the ability to control over the kubernetes scheduler and ability to place or kill pods that may interrupt the cluster's critical functions.  New pods with higher priority than others can quickly evict pods with lower priority that may be critical to a container's performance.  ResourceQuota and PodDisruptionBudget are two tools that help combat this from happening read more [here](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/){ target=_blank }.
 
 ## Declarative Deployment Pattern
 
@@ -139,7 +141,7 @@ The Managed Lifecycle pattern describes how containers need to adapt their lifec
 
 ### SIGTERM
 
-The SIGTERM is a signal that is sent from the managing platform to a container or pod that instructs the pod or container to shutdown or restart.  This signal can be sent due to a failed liveness test or a failure inside the container.  SIGKILL allows the container to cleaning and properly shut itself down versus SIGKILL, which we will get to next. Once received, the application will shutdown as quickly as it can, allowing other processes to stop properly and cleaning up other files.  Each application will have a different shutdown time based on the tasks needed to be done.
+The SIGTERM is a signal that is sent from the managing platform to a container or pod that instructs the pod or container to shutdown or restart.  This signal can be sent due to a failed liveness test or a failure inside the container.  SIGTERM allows the container to cleaning and properly shut itself down versus SIGKILL, which we will get to next. Once received, the application will shutdown as quickly as it can, allowing other processes to stop properly and cleaning up other files.  Each application will have a different shutdown time based on the tasks needed to be done.
 
 ### SIGKILL
 
