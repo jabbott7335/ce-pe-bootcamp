@@ -23,5 +23,7 @@ The specifications of this pod are as follows:
 
 When you have completed this lab, use the following commands to validate your solution. The 'get pods' command will 
 
-`kubectl get pods -n web`
-`kubectl describe pod nginx -n web`
+```bash
+kubectl get pods -n web
+kubectl describe pod nginx -n web
+```
