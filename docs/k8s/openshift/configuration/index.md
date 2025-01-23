@@ -9,7 +9,7 @@ hide:
 
 When you create a Pod, you can define a command and arguments for the containers that run in the Pod.
 
-The command and arguments that you define in the configuration file override the default command and arguments provided by the container image
+The command and arguments that you define in the configuration override the default command and arguments provided by the container file.
 
 - Dockerfile vs Kubernetes
 - Dockerfile Entrypoint -> k8s command
@@ -19,7 +19,7 @@ The command and arguments that you define in the configuration file override the
 
 When you create a Pod, you can specify the port number the container exposes, as best practice is good to put a `name`, this way a service can specify targetport by name reference.
 
-### Environment Variable
+### Environment Variables
 
 When you create a Pod, you can set environment variables for the containers that run in the Pod. To set environment variables, include the env or envFrom field in the container configuration
 
@@ -37,7 +37,7 @@ A Pod can use environment variables to expose information about itself to Contai
 
 ### References
 
-```yaml
+```{ .yaml linenums="1" hl_lines="9" title="Simple Command, No Arguments" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -50,7 +50,7 @@ spec:
   restartPolicy: Never
 ```
 
-```yaml
+```{ .yaml linenums="1" hl_lines="9-10" title="Simple Command With Arguments" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -64,7 +64,7 @@ spec:
   restartPolicy: Never
 ```
 
-```yaml
+```{ .yaml linenums="1" hl_lines="9-10" title="Expose a Network Port" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -77,7 +77,7 @@ spec:
         - containerPort: 8080
 ```
 
-```yaml
+```{ .yaml linenums="1" hl_lines="10-14" title="Use Environment Variables as Arguments" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -94,7 +94,7 @@ spec:
       args: ["$(DEMO_GREETING)"]
 ```
 
-```yaml
+```{ .yaml linenums="1" hl_lines="12-29" title="Use Environment Variables AND Name Exposed Port" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -142,7 +142,7 @@ CPU and memory are each a resource type. A resource type has a base unit. CPU is
 
 ### References
 
-```yaml
+```{ .yaml linenums="1" hl_lines="11-17" title="Pod Specific Resources" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -162,9 +162,8 @@ spec:
           cpu: "500m"
 ```
 
-_Namespaced defaults mem_
 
-```yaml
+```{ .yaml linenums="1" hl_lines="4 6-11" title="Namespaced Defaults Memory" .copy }
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -178,9 +177,7 @@ spec:
       type: Container
 ```
 
-_Namespaced defaults mem_
-
-```yaml
+```{ .yaml linenums="1" hl_lines="4 6-11" title="Namespaced Defaults CPU" .copy }
 apiVersion: v1
 kind: LimitRange
 metadata:

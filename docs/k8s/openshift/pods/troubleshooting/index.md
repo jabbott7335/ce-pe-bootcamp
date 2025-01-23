@@ -1,9 +1,9 @@
 ---
-Title: Debugging Applications
+Title: Troubleshooting Applications
 hide:
     - toc
 ---
-# Debugging Applications
+# Troubleshooting Applications
 
 Kubernetes provides tools to help troubleshoot and debug problems with applications.
 

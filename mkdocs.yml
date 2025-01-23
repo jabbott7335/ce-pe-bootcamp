@@ -228,7 +228,7 @@ nav:
     - Learn - Health & Monitoring: k8s/openshift/pods/health-checks/index.md
     - Lab K8s 3 - Probes: k8s/probes.md
     - Learn - Troubleshooting: k8s/openshift/pods/troubleshooting/index.md
-    - Lab K8s 4 - Debugging: k8s/debugging.md
+    - Lab K8s 4 - Troubleshooting: k8s/debugging.md
     - Learn - Configuration: k8s/openshift/configuration/index.md
     - Learn - Config Maps: k8s/openshift/configuration/config-map/index.md
     - Learn - Secrets: k8s/openshift/configuration/secrets/index.md

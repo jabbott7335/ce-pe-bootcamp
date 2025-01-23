@@ -7,7 +7,7 @@ hide:
 
 ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
 
-You can data from a ConfigMap in 3 different ways.
+An application can consume data from a ConfigMap in 3 different ways.
 
 - As a single environment variable specific to a single key
 - As a set of environment variables from all keys
@@ -17,7 +17,7 @@ You can data from a ConfigMap in 3 different ways.
 
 === "OpenShift"
 
-    [Mapping Volumes :fontawesome-solid-map:](https://docs.openshift.com/container-platform/4.13/nodes/containers/nodes-containers-projected-volumes.html){ .md-button target="_blank"}
+    [ConfigMaps with Applications :fontawesome-solid-map:](https://docs.openshift.com/container-platform/4.16/applications/config-maps.html){ .md-button target="_blank"}
 
 === "Kubernetes"
 
