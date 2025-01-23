@@ -9,7 +9,7 @@ hide:
 - [Lab K8s 1 - Pod Creation](./solutions/pod-creation.md){target="_blank"}
 - [Lab K8s 2 - Multiple Containers](./solutions/multi-containers.md){target="_blank"}
 - [Lab K8s 3 - Probes](./solutions/probes.md){target="_blank"}
-- [Lab K8s 4 - Debugging](./solutions/debugging.md){target="_blank"}
+- [Lab K8s 4 - Troubleshooting](./solutions/debugging.md){target="_blank"}
 - [Lab K8s 5 - Pod Configuration](./solutions/pod-config.md){target="_blank"}
 - [Lab K8s 6 - Rolling Updates](./solutions/rolling-updates.md){target="_blank"}
 - [Lab K8s 7 - Cron Jobs](./solutions/cron-jobs.md){target="_blank"}

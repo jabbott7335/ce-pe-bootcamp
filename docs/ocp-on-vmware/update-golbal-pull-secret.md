@@ -10,7 +10,7 @@ This procedure will update the global pull secret for the OpenShift cluster to a
 
 1. Retrieve IBM Software Entitlement Key
 
-    [Retrieve Software Entitlement Key](https://myibm.ibm.com/products-services/containerlibrary)
+    [IBM Software Entitlement Key](https://myibm.ibm.com/products-services/containerlibrary)
 
 2. Save the contents of the key in an environment variable
 

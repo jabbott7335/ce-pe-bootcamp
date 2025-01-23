@@ -15,7 +15,7 @@ A Probe is a diagnostic performed periodically by the kubelet on a Container. To
 
 **_HTTPGetAction_**: Performs an HTTP Get request against the Container’s IP address on a specified port and path. The diagnostic is considered successful if the response has a status code greater than or equal to 200 and less than 400.
 
-The kubelet can optionally perform and react to three kinds of probes on running Containers:
+The kubelet can optionally perform and react to two kinds of probes on running Containers:
 
 **_livenessProbe_**: Indicates whether the Container is running. Runs for the lifetime of the Container.
 
@@ -33,7 +33,7 @@ The kubelet can optionally perform and react to three kinds of probes on running
 
           A health check periodically performs diagnostics on a running container using any combination of the readiness, liveness, and startup health checks.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.14/applications/application-health.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/applications/application-health.html){ target="_blank"}
 
       -   :fontawesome-solid-vr-cardboard:{ .lg .middle } __Virtual Machine Health__
 
@@ -41,7 +41,7 @@ The kubelet can optionally perform and react to three kinds of probes on running
 
           Use readiness and liveness probes to detect and handle unhealthy virtual machines (VMs).
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.14/virt/monitoring/virt-monitoring-vm-health.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/virt/monitoring/virt-monitoring-vm-health.html){ target="_blank"}
 
     </div>
 
@@ -125,7 +125,7 @@ Kubernetes provides no native storage solution for log data, but you can integra
 
           Read about the descriptions and example commands for OpenShift CLI (`oc`) developer commands.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.13/cli_reference/openshift_cli/developer-cli-commands.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/developer-cli-commands.html){ target="_blank"}
 
       -   :fontawesome-solid-circle-nodes:{ .lg .middle } __Cluster Logging__
 
@@ -133,7 +133,7 @@ Kubernetes provides no native storage solution for log data, but you can integra
 
           As a cluster administrator, you can deploy logging on an OpenShift Container Platform cluster, and use it to collect and aggregate node system audit logs, application container logs, and infrastructure logs.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.13/logging/cluster-logging.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/logging/cluster-logging.html){ target="_blank"}
 
       -   :fontawesome-solid-file-lines:{ .lg .middle } __Logging Collector__
 
@@ -141,7 +141,7 @@ Kubernetes provides no native storage solution for log data, but you can integra
 
           The collector collects log data from each node, transforms the data, and forwards it to configured outputs.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.13/observability/logging/cluster-logging.html#logging-architecture-overview_cluster-logging){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/observability/logging/cluster-logging.html#logging-architecture-overview_cluster-logging){ target="_blank"}
 
     </div>
 
@@ -218,7 +218,7 @@ Prometheus, a CNCF project, can natively monitor Kubernetes, nodes, and Promethe
 
           OpenShift Container Platform applications have a number of options to detect and handle unhealthy containers.
 
-          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.13/applications/application-health.html){ target="_blank"}
+          [:octicons-arrow-right-24: Learn more](https://docs.openshift.com/container-platform/4.16/applications/application-health.html){ target="_blank"}
 
     </div>
 
