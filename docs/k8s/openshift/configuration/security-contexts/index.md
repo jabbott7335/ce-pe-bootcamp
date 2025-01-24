@@ -13,7 +13,7 @@ To specify security settings for a Pod, include the securityContext field in the
 
 === "OpenShift"
 
-    [Managing Security Contexts :fontawesome-solid-shield-halved:](https://docs.openshift.com/container-platform/4.13/authentication/managing-security-context-constraints.html){ .md-button target="_blank"}
+    [Managing Security Contexts :fontawesome-solid-shield-halved:](https://docs.openshift.com/container-platform/4.16/authentication/managing-security-context-constraints.html){ .md-button target="_blank"}
 
 === "Kubernetes"
 

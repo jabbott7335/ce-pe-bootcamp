@@ -10,8 +10,8 @@ ConfigMaps allow you to decouple configuration artifacts from image content to k
 An application can consume data from a ConfigMap in 3 different ways.
 
 - As a single environment variable specific to a single key
-- As a set of environment variables from all keys
 - As a set of files, each key represented by a file on mounted volume
+- As a set of environment variables from all keys
 
 ## Resources
 
@@ -25,7 +25,7 @@ An application can consume data from a ConfigMap in 3 different ways.
 
 ## References
 
-```yaml
+```{ .yaml linenums="1" title="ConfigMap" .copy }
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -35,7 +35,7 @@ data:
   location: naboo
 ```
 
-```yaml
+```{ .yaml linenums="1" title="Environment Variable Single Key" hl_lines="11-17" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -55,7 +55,9 @@ spec:
               key: color
 ```
 
-```yaml
+![Console Output Single Keys](../../images/cm_single_variable.png)
+
+```{ .yaml linenums="1" title="Keys Represented by a File" hl_lines="16-22" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -80,7 +82,9 @@ spec:
         name: my-cm
 ```
 
-```yaml
+![Console Output Mounted Keys](../../images/cm_mount.png)
+
+```{ .yaml linenums="1" title="Environment Variables From All Keys" hl_lines="16-22" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
@@ -96,3 +100,6 @@ spec:
             name: my-cm
   restartPolicy: Never
 ```
+
+![Console Output Environment Variables from All Keys](../../images/cm_pod_environment_variables.png)
+
