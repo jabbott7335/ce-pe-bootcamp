@@ -9,7 +9,7 @@ hide:
 
 ## Solution
 
-```yaml
+```{ .yaml linenums="1" title="ConfigMap" .copy }
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -20,7 +20,7 @@ data:
     yoda.strength=10
 ```
 
-```yaml
+```{ .yaml linenums="1" title="ServiceAccount" .copy }
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -28,7 +28,7 @@ metadata:
 
 ```
 
-```yaml
+```{ .yaml linenums="1" title="Secret" .copy }
 apiVersion: v1
 kind: Secret
 metadata:
@@ -37,7 +37,7 @@ stringData:
   password: 0penSh1ftRul3s!
 ```
 
-```yaml
+```{ .yaml linenums="1" title="Pod" .copy }
 apiVersion: v1
 kind: Pod
 metadata:
