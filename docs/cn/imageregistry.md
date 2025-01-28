@@ -8,8 +8,8 @@ hide:
 
 A registry is a repository used to store and access container images. Container registries can support container-based application development, often as part of DevOps processes.
 
-!!! Tip "Associate your quay.io account with your Red Hat account!"
-    If you haven't used quay.io in a while and already have an account, you may need to associate quay.io and Red Hat logins.  [See this article](https://access.redhat.com/articles/5363231){target="_blank"} for help.
+!!! Tip "Associate your Quay.io account with your Red Hat account!"
+    If you haven't used Quay.io in a while and already have an account, you may need to associate Quay.io and Red Hat logins.  [See this article](https://access.redhat.com/articles/5363231){target="_blank"} for help.
 
 Container registries save developers valuable time in the creation and delivery of cloud-native applications, acting as the intermediary for sharing container images between systems. They essentially act as a place for developers to store container images and share them out via a process of uploading (pushing) to the registry and downloading (pulling) into another system, like a Kubernetes cluster.
 
