@@ -41,7 +41,7 @@ Built:        Wed Aug 21 10:00:00 2024
 OS/Arch:      linux/amd64
 ```
 
-** Running a hello-world container **
+**Running a hello-world container**
 
 Let us start with a `hello-world` container.
 
@@ -107,6 +107,8 @@ cd cloudnative_sample_app/
 
 ## Run the application on Podman
 
+> :warning: If you are looking to build this application on Apple Silicon, these instructions **will not work**! Look out for this symbol - :apple: - in the below instructions if you get stuck!
+
 ### Build the container image
 
 Let's take look at the Containerfile, sometimes referred to as a Dockerfile before building it.
@@ -147,45 +149,73 @@ Once, you have the Containerfile ready, the next step is to build it. The `build
 
 You will see something like below:
 
-```bash
-$ <command>
-Step 1/6 : FROM maven:3.3-jdk-8 as builder
- ---> 9997d8483b2f
-Step 2/6 : COPY . .
- ---> c198e3e54023
-Step 3/6 : RUN mvn clean install
- ---> Running in 24378df7f87b
-[INFO] Scanning for projects...
-.
-.
-.
-[INFO] Installing /target/cloudnativesampleapp-1.0-SNAPSHOT.jar to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.jar
-[INFO] Installing /pom.xml to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.pom
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 44.619 s
-[INFO] Finished at: 2020-04-06T16:07:04+00:00
-[INFO] Final Memory: 38M/385M
-[INFO] ------------------------------------------------------------------------
-Removing intermediate container 24378df7f87b
- ---> cc5620334e1b
-Step 4/6 : FROM openliberty/open-liberty:springBoot2-ubi-min as staging
- ---> 021530b0b3cb
-Step 5/6 : COPY --chown=1001:0 --from=builder /target/cloudnativesampleapp-1.0-SNAPSHOT.jar /config/app.jar
- ---> dbc81e5f4691
-Step 6/6 : RUN springBootUtility thin     --sourceAppPath=/config/app.jar     --targetThinAppPath=/config/dropins/spring/thinClinic.jar     --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
- ---> Running in 8ea80b5863cb
-Creating a thin application from: /config/app.jar
-Library cache: /opt/ol/wlp/usr/shared/resources/lib.index.cache
-Thin application: /config/dropins/spring/thinClinic.jar
-Removing intermediate container 8ea80b5863cb
- ---> a935a129dcb2
-Successfully built a935a129dcb2
-Successfully tagged greeting:v1.0.0
+```
+    $ <command>
+    Step 1/6 : FROM maven:3.3-jdk-8 as builder
+    ---> 9997d8483b2f
+    Step 2/6 : COPY . .
+    ---> c198e3e54023
+    Step 3/6 : RUN mvn clean install
+    ---> Running in 24378df7f87b
+    [INFO] Scanning for projects...
+    .
+    .
+    .
+    [INFO] Installing /target/cloudnativesampleapp-1.0-SNAPSHOT.jar to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.jar
+    [INFO] Installing /pom.xml to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.pom
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 44.619 s
+    [INFO] Finished at: 2020-04-06T16:07:04+00:00
+    [INFO] Final Memory: 38M/385M
+    [INFO] ------------------------------------------------------------------------
+    Removing intermediate container 24378df7f87b
+    ---> cc5620334e1b
+    Step 4/6 : FROM openliberty/open-liberty:springBoot2-ubi-min as staging
+    ---> 021530b0b3cb
+    Step 5/6 : COPY --chown=1001:0 --from=builder /target/cloudnativesampleapp-1.0-SNAPSHOT.jar /config/app.jar
+    ---> dbc81e5f4691
+    Step 6/6 : RUN springBootUtility thin     --sourceAppPath=/config/app.jar     --targetThinAppPath=/config/dropins/spring/thinClinic.jar     --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
+    ---> Running in 8ea80b5863cb
+    Creating a thin application from: /config/app.jar
+    Library cache: /opt/ol/wlp/usr/shared/resources/lib.index.cache
+    Thin application: /config/dropins/spring/thinClinic.jar
+    Removing intermediate container 8ea80b5863cb
+    ---> a935a129dcb2
+    Successfully built a935a129dcb2
+    Successfully tagged greeting:v1.0.0
 ```
 
-2. Next, verify your newly built image
+---
+**:apple: (Apple Silicon only) My build failed!**
+
+If running on M1, you will encounter the following error(s) while building this container image:
+```bash
+[1/2] STEP 1/3: FROM maven:3.3-jdk-8 AS builder
+WARNING: image platform (linux/amd64) does not match the expected platform (linux/arm64)
+
+<output continues...>
+
+[2/2] STEP 1/3: FROM openliberty/open-liberty:springBoot2-ubi-min AS staging
+Resolving "openliberty/open-liberty" using unqualified-search registries (/etc/containers/registries.conf.d/999-podman-machine.conf)
+Trying to pull docker.io/openliberty/open-liberty:springBoot2-ubi-min...
+Error: creating build container: choosing an image from manifest list docker://openliberty/open-liberty:springBoot2-ubi-min: no image found in manifest list for architecture "arm64", variant "v8", OS "linux"
+```
+In the output above, podman is telling us that the build fails as the base image used by this Containerfile does not support arm64 architectures. 
+
+Try to fix the error yourself. Here are a couple of tips:
+1. Base images quickly become outdated and stale. [Try searching `Dockerhub`](https://hub.docker.com/){target="_blank"}
+2. If you are unfamiliar with running a Java `.jar` file (lucky you!), have a look at this blog: https://spring.io/guides/gs/spring-boot-docker
+
+If you are **really** stuck, [here](https://github.com/SamChinellato/cloudnative_sample_app){target="_blank"} is repository with an updated Dockerfile.
+
+**Apple Silicon only END**
+
+---
+
+
+1. Next, verify your newly built image
 
 The output will be as follows.
 
@@ -310,6 +340,19 @@ This shows that the Spring Boot application is successfully started.
 ### Access the application
 
 - To access the application, open the browser and access http://localhost:9080/greeting?name=John.
+
+--- 
+**:apple: (Apple silicon only) My application isn't working!**
+
+If you used the Apple Silicon Dockerfile provided, your application is not running on port 9080. Look at application logs and expose the right port, or...
+<details><summary><b>Cheat and get the answer now</b></summary>
+Port 8080
+</details>
+
+
+**Apple Silicon only END**
+
+---
 
 You will see something like below.
 
