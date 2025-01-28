@@ -38,7 +38,7 @@ Container registries save developers valuable time in the creation and delivery 
       In the below command you must replace:
       
       - <container_id> with your container id from the previous command
-      - <namespace> with a namespace of your choice
+      - <namespace> with a namespace of your choice. For a personal account this will be: name_surname_ibm
       - <repository_name> with a name for the repository
 
       ``` Bash title="Create a new image"

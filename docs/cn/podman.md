@@ -204,10 +204,10 @@ Error: creating build container: choosing an image from manifest list docker://o
 In the output above, podman is telling us that the build fails as the base image used by this Containerfile does not support arm64 architectures. 
 
 Try to fix the error yourself. Here are a couple of tips:
-1. Base images quickly become outdated and stale. Try searching `Dockerhub` for a newer base image: https://hub.docker.com/
+1. Base images quickly become outdated and stale. [Try searching `Dockerhub`](https://hub.docker.com/){target="_blank"}
 2. If you are unfamiliar with running a Java `.jar` file (lucky you!), have a look at this blog: https://spring.io/guides/gs/spring-boot-docker
 
-If you are **really** stuck, [here](https://github.com/SamChinellato/cloudnative_sample_app) is repository with an updated Dockerfile.
+If you are **really** stuck, [here](https://github.com/SamChinellato/cloudnative_sample_app){target="_blank"} is repository with an updated Dockerfile.
 
 **Apple Silicon only END**
 
