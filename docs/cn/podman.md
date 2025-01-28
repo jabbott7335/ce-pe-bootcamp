@@ -41,7 +41,7 @@ Built:        Wed Aug 21 10:00:00 2024
 OS/Arch:      linux/amd64
 ```
 
-** Running a hello-world container **
+**Running a hello-world container**
 
 Let us start with a `hello-world` container.
 
@@ -106,6 +106,8 @@ cd cloudnative_sample_app/
 ```
 
 ## Run the application on Podman
+
+> :warning: If you are looking to build this application on Apple Silicon, these instructions **will not work**! Look out for this symbol - :apple: - in the below instructions if you get stuck!
 
 ### Build the container image
 
@@ -184,8 +186,35 @@ Removing intermediate container 8ea80b5863cb
 Successfully built a935a129dcb2
 Successfully tagged greeting:v1.0.0
 ```
+---
+**:apple: (Apple Silicon only) My build failed!**
 
-2. Next, verify your newly built image
+If running on M1, you will encounter the following error(s) while building this container image:
+```bash
+[1/2] STEP 1/3: FROM maven:3.3-jdk-8 AS builder
+WARNING: image platform (linux/amd64) does not match the expected platform (linux/arm64)
+
+<output continues...>
+
+[2/2] STEP 1/3: FROM openliberty/open-liberty:springBoot2-ubi-min AS staging
+Resolving "openliberty/open-liberty" using unqualified-search registries (/etc/containers/registries.conf.d/999-podman-machine.conf)
+Trying to pull docker.io/openliberty/open-liberty:springBoot2-ubi-min...
+Error: creating build container: choosing an image from manifest list docker://openliberty/open-liberty:springBoot2-ubi-min: no image found in manifest list for architecture "arm64", variant "v8", OS "linux"
+```
+In the output above, podman is telling us that the build fails as the base image used by this Containerfile does not support arm64 architectures. 
+
+Try to fix the error yourself. Here are a couple of tips:
+1. Base images quickly become outdated and stale. Try searching `Dockerhub` for a newer base image: https://hub.docker.com/
+2. If you are unfamiliar with running a Java `.jar` file (lucky you!), have a look at this blog: https://spring.io/guides/gs/spring-boot-docker
+
+If you are **really** stuck, [here](https://github.com/SamChinellato/cloudnative_sample_app) is repository with an updated Dockerfile.
+
+**Apple Silicon only END**
+
+---
+
+
+1. Next, verify your newly built image
 
 The output will be as follows.
 
@@ -310,6 +339,19 @@ This shows that the Spring Boot application is successfully started.
 ### Access the application
 
 - To access the application, open the browser and access http://localhost:9080/greeting?name=John.
+
+--- 
+**:apple: (Apple silicon only) My application isn't working!**
+
+If you used the Apple Silicon Dockerfile provided, your application is not running on port 9080. Look at application logs and expose the right port, or...
+<details><summary><b>Cheat and get the answer now</b></summary>
+Port 8080
+</details>
+
+
+**Apple Silicon only END**
+
+---
 
 You will see something like below.
 
