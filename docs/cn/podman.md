@@ -149,43 +149,44 @@ Once, you have the Containerfile ready, the next step is to build it. The `build
 
 You will see something like below:
 
-```bash
-$ <command>
-Step 1/6 : FROM maven:3.3-jdk-8 as builder
- ---> 9997d8483b2f
-Step 2/6 : COPY . .
- ---> c198e3e54023
-Step 3/6 : RUN mvn clean install
- ---> Running in 24378df7f87b
-[INFO] Scanning for projects...
-.
-.
-.
-[INFO] Installing /target/cloudnativesampleapp-1.0-SNAPSHOT.jar to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.jar
-[INFO] Installing /pom.xml to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.pom
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 44.619 s
-[INFO] Finished at: 2020-04-06T16:07:04+00:00
-[INFO] Final Memory: 38M/385M
-[INFO] ------------------------------------------------------------------------
-Removing intermediate container 24378df7f87b
- ---> cc5620334e1b
-Step 4/6 : FROM openliberty/open-liberty:springBoot2-ubi-min as staging
- ---> 021530b0b3cb
-Step 5/6 : COPY --chown=1001:0 --from=builder /target/cloudnativesampleapp-1.0-SNAPSHOT.jar /config/app.jar
- ---> dbc81e5f4691
-Step 6/6 : RUN springBootUtility thin     --sourceAppPath=/config/app.jar     --targetThinAppPath=/config/dropins/spring/thinClinic.jar     --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
- ---> Running in 8ea80b5863cb
-Creating a thin application from: /config/app.jar
-Library cache: /opt/ol/wlp/usr/shared/resources/lib.index.cache
-Thin application: /config/dropins/spring/thinClinic.jar
-Removing intermediate container 8ea80b5863cb
- ---> a935a129dcb2
-Successfully built a935a129dcb2
-Successfully tagged greeting:v1.0.0
 ```
+    $ <command>
+    Step 1/6 : FROM maven:3.3-jdk-8 as builder
+    ---> 9997d8483b2f
+    Step 2/6 : COPY . .
+    ---> c198e3e54023
+    Step 3/6 : RUN mvn clean install
+    ---> Running in 24378df7f87b
+    [INFO] Scanning for projects...
+    .
+    .
+    .
+    [INFO] Installing /target/cloudnativesampleapp-1.0-SNAPSHOT.jar to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.jar
+    [INFO] Installing /pom.xml to /root/.m2/repository/projects/cloudnativesampleapp/1.0-SNAPSHOT/cloudnativesampleapp-1.0-SNAPSHOT.pom
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 44.619 s
+    [INFO] Finished at: 2020-04-06T16:07:04+00:00
+    [INFO] Final Memory: 38M/385M
+    [INFO] ------------------------------------------------------------------------
+    Removing intermediate container 24378df7f87b
+    ---> cc5620334e1b
+    Step 4/6 : FROM openliberty/open-liberty:springBoot2-ubi-min as staging
+    ---> 021530b0b3cb
+    Step 5/6 : COPY --chown=1001:0 --from=builder /target/cloudnativesampleapp-1.0-SNAPSHOT.jar /config/app.jar
+    ---> dbc81e5f4691
+    Step 6/6 : RUN springBootUtility thin     --sourceAppPath=/config/app.jar     --targetThinAppPath=/config/dropins/spring/thinClinic.jar     --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
+    ---> Running in 8ea80b5863cb
+    Creating a thin application from: /config/app.jar
+    Library cache: /opt/ol/wlp/usr/shared/resources/lib.index.cache
+    Thin application: /config/dropins/spring/thinClinic.jar
+    Removing intermediate container 8ea80b5863cb
+    ---> a935a129dcb2
+    Successfully built a935a129dcb2
+    Successfully tagged greeting:v1.0.0
+```
+
 ---
 **:apple: (Apple Silicon only) My build failed!**
 
