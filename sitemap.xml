@@ -29,10 +29,6 @@
          <lastmod>2025-01-29</lastmod>
     </url>
     <url>
-         <loc>https://github.ibm.com/skol/pe-bootcamp/cn/ibm-registries/</loc>
-         <lastmod>2025-01-29</lastmod>
-    </url>
-    <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/cn/imageregistry/</loc>
          <lastmod>2025-01-29</lastmod>
     </url>
@@ -42,6 +38,10 @@
     </url>
     <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/cn/reference/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/cn/running-containers/</loc>
          <lastmod>2025-01-29</lastmod>
     </url>
     <url>
