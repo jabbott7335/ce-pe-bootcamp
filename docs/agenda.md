@@ -52,7 +52,7 @@ The following agenda is designed for a five-day bootcamp experience.
 | [Containers](./cn/containers.md)                      | Presentation |
 | [Image Registries](./cn/imageregistry.md)            | Hands-On |
 | [Podman](./cn/podman.md)                             | Hands-On |
-| [Container Registries](./cn/ibm-registries.md)       | Hands-On |
+| [Running a Container Locally](./cn/running-containers.md)       | Hands-On |
 
 ## Day 4 Morning - Kubernetes & OpenShift
 

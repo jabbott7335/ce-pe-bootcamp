@@ -1,10 +1,10 @@
 ---
-Title: Lab CN 3 - Running a Container on OpenShift Local or Minikube
+Title: Lab CN 3 - Running a Container Locally
 hide:
     - toc
 ---
 
-# Lab CN 3 - IBM Container Registries
+# Lab CN 3 - Running a Container Locally
 
 In this lab we are going to build on what you completed in Lab 2 and deploy the greeting container image on either OpenShift Local or MiniKube (depending on your setup)
 

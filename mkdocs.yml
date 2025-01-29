@@ -201,7 +201,7 @@ nav:
     - Container Quick Reference: cn/reference.md
     - Lab CN 1 - Image Registries: cn/imageregistry.md
     - Lab CN 2 - Podman: cn/podman.md
-    - Lab CN 3 - Container Registries: cn/ibm-registries.md
+    - Lab CN 3 - Running a Container Locally: cn/running-containers.md
   - Kubernetes & OpenShift:
     - k8s/openshift/index.md
     - Learn - API Primitives: k8s/openshift/core-concepts/index.md
