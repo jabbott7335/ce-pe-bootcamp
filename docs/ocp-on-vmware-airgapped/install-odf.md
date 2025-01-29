@@ -31,9 +31,9 @@ The infrastructure nodes were not created during cluster installation so we are 
 1. Edit `infra-machineset.json`.
 
     - Add labels to the nodes:
-        - `cluster.ocs.openshift.io/openshift-storage=""`
-        - `node-role.kubernetes.io/infra=""`
-    - Add taint `node.ocs.openshift.io/storage="true"` to the nodes.
+        - `cluster.ocs.openshift.io/openshift-storage: ""`
+        - `node-role.kubernetes.io/infra: ""`
+    - Add taint `node.ocs.openshift.io/storage: "true"` to the nodes.
     - Change all values with postfix `-worker-0` to `-infra-0`.
     - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-type` to `infra`.
     - Change `memoryMiB` to `65536`.
@@ -137,15 +137,15 @@ The infrastructure nodes were not created during cluster installation so we are 
     ```
     ```{ .text .no-copy title="Wait until the infrastructure nodes reach status Ready"}
     NAME                              STATUS   ROLES                  AGE     VERSION
-    ocpinstall-btcjq-infra-0-2ncmd    Ready    infra,worker           2m47s   v1.28.7+f1b5f6c
-    ocpinstall-btcjq-infra-0-tdxvc    Ready    infra,worker           2m45s   v1.28.7+f1b5f6c
-    ocpinstall-btcjq-infra-0-trwwg    Ready    infra,worker           2m45s   v1.28.7+f1b5f6c
-    ocpinstall-btcjq-master-0         Ready    control-plane,master   123m    v1.28.7+f1b5f6c
-    ocpinstall-btcjq-master-1         Ready    control-plane,master   123m    v1.28.7+f1b5f6c
-    ocpinstall-btcjq-master-2         Ready    control-plane,master   123m    v1.28.7+f1b5f6c
-    ocpinstall-btcjq-worker-0-56vmd   Ready    worker                 110m    v1.28.7+f1b5f6c
-    ocpinstall-btcjq-worker-0-sdtg6   Ready    worker                 110m    v1.28.7+f1b5f6c
-    ocpinstall-btcjq-worker-0-zv829   Ready    worker                 110m    v1.28.7+f1b5f6c
+    ocpinstall-btcjq-infra-0-2ncmd    Ready    infra,worker           2m47s   v1.30.5
+    ocpinstall-btcjq-infra-0-tdxvc    Ready    infra,worker           2m45s   v1.30.5
+    ocpinstall-btcjq-infra-0-trwwg    Ready    infra,worker           2m45s   v1.30.5
+    ocpinstall-btcjq-master-0         Ready    control-plane,master   123m    v1.30.5
+    ocpinstall-btcjq-master-1         Ready    control-plane,master   123m    v1.30.5
+    ocpinstall-btcjq-master-2         Ready    control-plane,master   123m    v1.30.5
+    ocpinstall-btcjq-worker-0-56vmd   Ready    worker                 110m    v1.30.5
+    ocpinstall-btcjq-worker-0-sdtg6   Ready    worker                 110m    v1.30.5
+    ocpinstall-btcjq-worker-0-zv829   Ready    worker                 110m    v1.30.5
     ```
 
 1. Install the ODF operator and create a SmallScale (0.5 TiB) StorageSystem.

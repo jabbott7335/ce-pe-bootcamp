@@ -1,161 +1,113 @@
 For mirroring OpenShift content, Red Hat provides the `oc-mirror` command-line interface. What content is mirrored is configured by defining an `ImageSetConfiguration` in a file.
 
-The bastion host, after provisioning, runs RHEL 8.7. The latest `stable-4.15` version of `oc-mirror` does not run on RHEL 8.x. An attempt to do so results in the error below.
+## Install the OpenShift CLI and the oc-mirror plugin
 
-```
-oc-mirror: /lib64/libc.so.6: version `GLIBC_2.33' not found (required by oc-mirror)
-oc-mirror: /lib64/libc.so.6: version `GLIBC_2.34' not found (required by oc-mirror)
-oc-mirror: /lib64/libc.so.6: version `GLIBC_2.32' not found (required by oc-mirror)
-```
+1. Install the OpenShift CLI. Repeat this step from the VMware week exercise.
 
-!!! warning "Attention please!"
-
-    The instructors are aware that on April 15th 2024, Red Hat made two version of `oc-mirror` available, one for RHEL 8 and one for RHEL 9. However, we have experienced in practice that operating systems are not always at the latest level and that this type of operating system library conflicts are a reality. So, we decided to leave the instructions as is.
-
-How to solve this operating system library conflict? Build a container image with the required operating system libraries and the `oc-mirror` command is the way to go.
-
-## Build the `oc-mirror` container image
-
-1. Set shell variables.
+1. Download the plugin.
 
     ```sh
-    OC_VERSION=stable-4.15
+    OCP_VERSION=stable-4.17
     ```
-
-1. Download the archive.
-
     ```sh
     curl -Lo oc-mirror.tar.gz \
-        https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/${OC_VERSION}/oc-mirror.rhel9.tar.gz
+        https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/${OCP_VERSION}/oc-mirror.tar.gz
     ```
 
-1. Create the directory that will hold the mirrored content.
+1. Extract the plugin.
 
     ```sh
-    mkdir -p ${HOME}/mirrored-content
+    tar xf oc-mirror.tar.gz oc-mirror
     ```
 
-1. Copy your pull secret from the [Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret){: target="_blank" .external} and save it in file `${HOME}/mirrored-content/.pull-secret`.
-
-1. Build the image.
+1. Move the plugin to `/usr/local/bin`.
 
     ```sh
-    podman image build --authfile ${HOME}/mirrored-content/.pull-secret -t oc-mirror:4.15 . -f - <<EOF
-    FROM registry.redhat.io/ubi9/ubi:9.3-1610
-    ADD oc-mirror.tar.gz /usr/local/bin
-    RUN chmod +x /usr/local/bin/oc-mirror
-    WORKDIR /mnt
-    ENTRYPOINT ["/usr/local/bin/oc-mirror"]
-    EOF
+    chmod +x oc-mirror
+    sudo install oc-mirror /usr/local/bin
     ```
 
-1. Create a shell alias named `oc-mirror`.
+1. Verify.
 
     ```sh
-    echo "alias oc-mirror='podman container run --rm -it \
-    -v ${HOME}/mirrored-content:/mnt:Z \
-    -v ${HOME}/mirrored-content/.pull-secret:/root/.docker/config.json oc-mirror:4.15'" \
-    | tee -a ${HOME}/.bashrc
-    ```
-
-1. Test the alias
-
-    ```sh
-    source ${HOME}/.bashrc
-    ```
-    ```sh
-    oc-mirror version
+    oc mirror version
     ```
     ``` {.text .no-copy title="Example output"}
     WARNING: This version information is deprecated and will be replaced with the output from --short. Use --output=yaml|json to get the full version.
-    Client Version: version.Info{Major:"", Minor:"", GitVersion:"4.15.0-202403220516.p0.g9621d8f.assembly.stream.el9-9621d8f",    GitCommit:"9621d8f72ecc7a0a13e40b9709b5e19cc621117b", GitTreeSta
-    te:"clean", BuildDate:"2024-03-22T09:55:53Z", GoVersion:"go1.20.12 X:strictfipsruntime", Compiler:"gc", Platform:"linux/amd64"}
+    Client Version: version.Info{Major:"", Minor:"", GitVersion:"4.17.0-202410112132.p0.g07714b7.assembly.stream.el9-07714b7", GitCommit:"07714b7c836ec3ad1b776f25b44c3b2c2f083aa2", GitTreeState:"clean", BuildDate:"2024-10-12T03:10:41Z", GoVersion:"go1.22.7 (Red Hat 1.22.7-1.module+el8.10.0+22325+dc584f75) X:strictfipsruntime", Compiler:"gc", Platform:"linux/amd64"}
+    ```
+
+1. Clean up.
+
+    ```sh
+    rm oc-mirror.tar.gz oc-mirror
     ```
 
 ## Collect information for the mirror operation
 
 In order to limit the size of the mirrored content you specify minimal versions of both the platform and operator images.
 
-1. List all OpenShift versions for channel stable-4.15.
+1. Copy your pull secret from the [Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret) and save it in file `${XDG_RUNTIME_DIR}/containers/auth.json`.
+
+1. List all OpenShift versions for channel stable-4.17.
 
     ```sh
-    oc-mirror list releases --channel stable-4.15
+    oc mirror list releases --channel stable-4.17
     ```
     ``` {.text .no-copy title="Example output"}
     Listing stable channels. Use --channel=<channel-name> to filter.
     Use oc-mirror list release --channels to discover other channels.
 
-    Channel: stable-4.15
+    Channel: stable-4.17
     Architecture: amd64
-    4.14.0
-    4.14.1
-    4.14.2
-    4.14.3
-    4.14.4
-    4.14.5
-    4.14.6
-    4.14.7
-    4.14.8
-    4.14.9
-    4.14.10
-    4.14.11
-    4.14.12
-    4.14.13
-    4.14.14
-    4.14.15
-    4.14.16
-    4.14.17
-    4.14.18
-    4.14.19
-    4.14.20
-    4.15.0
-    4.15.2
-    4.15.3
-    4.15.5
-    4.15.6
-    4.15.8
+    #...
+    4.17.0
+    4.17.1
+    4.17.2
+    4.17.3
     ```
 
-1. List available OpenShift OperatorHub catalogs for version 4.15.
+1. List available OpenShift OperatorHub catalogs for version 4.17.
 
     ```sh
-    oc-mirror list operators --catalogs --version=4.15
+    oc mirror list operators --catalogs --version=4.17
     ```
+    **Note:** You may find that this command hangs and/or times out. During testing the instructors have found this as well, but it does not affect the subsequent steps. We believe this is an issue on the Red Hat side, or because of configuration in Tech Zone (for example, traffic shaping).
+
     ``` {.text .no-copy title="Example output"}
     Available OpenShift OperatorHub catalogs:
-    OpenShift 4.15:
-    registry.redhat.io/redhat/redhat-operator-index:v4.15
-    registry.redhat.io/redhat/certified-operator-index:v4.15
-    registry.redhat.io/redhat/community-operator-index:v4.15
-    registry.redhat.io/redhat/redhat-marketplace-index:v4.15
+    OpenShift 4.17:
+    registry.redhat.io/redhat/redhat-operator-index:v4.17
+    registry.redhat.io/redhat/certified-operator-index:v4.17
+    registry.redhat.io/redhat/community-operator-index:v4.17
+    registry.redhat.io/redhat/redhat-marketplace-index:v4.17
     ```
 
-1. List the OpenShift Data Foundation operators in catalog `registry.redhat.io/redhat/redhat-operator-index:v4.15`.
+1. List the OpenShift Data Foundation operators in catalog `registry.redhat.io/redhat/redhat-operator-index:v4.17`.
 
     ```sh
-    oc-mirror list operators \
-        --catalog registry.redhat.io/redhat/redhat-operator-index:v4.15 \
+    oc mirror list operators \
+        --catalog registry.redhat.io/redhat/redhat-operator-index:v4.17 \
         | grep -E 'ocs-operator|odf-operator|mcg-operator|odf-csi-addons-operator'
     ```
     ``` {.text .no-copy title="Example output"}
-    mcg-operator                                  NooBaa Operator                                          stable-4.15
-    ocs-operator                                  OpenShift Container Storage                              stable-4.15
-    odf-csi-addons-operator                       CSI Addons                                               stable-4.15
-    odf-operator                                  OpenShift Data Foundation                                stable-4.15
+    mcg-operator                                                stable-4.17
+    ocs-operator                                                stable-4.17
+    odf-csi-addons-operator                                     stable-4.17
+    odf-operator                                                stable-4.17
     ```
 
-1. List all versions in channel `stable-4.15` for package `odf-operator`.
+1. List all versions in channel `stable-4.17` for package `odf-operator`.
 
     ```sh
-    oc-mirror list operators \
-      --catalog registry.redhat.io/redhat/redhat-operator-index:v4.15 \
+    oc mirror list operators \
+      --catalog registry.redhat.io/redhat/redhat-operator-index:v4.17 \
       --package odf-operator \
-      --channel stable-4.15
+      --channel stable-4.17
     ```
     ``` {.text .no-copy title="Example output"}
     VERSIONS
-    4.15.0-rhodf
-    4.15.1-rhodf
+    4.17.0-rhodf
     ```
     Repeat this step for operators `ocs-operator`, `mcg-operator` and `odf-csi-addons-operator`.
 
@@ -166,7 +118,7 @@ Although the mirror registry runs on the same host, the destination (storageConf
 1. Create the `ImageSetConfiguration` file.
 
     ```sh
-    cat <<EOF > ${HOME}/mirrored-content/isc-platform-odf.yaml
+    cat <<EOF > ${HOME}/isc-platform-odf.yaml
     kind: ImageSetConfiguration
     apiVersion: mirror.openshift.io/v1alpha2
     storageConfig:
@@ -175,41 +127,44 @@ Although the mirror registry runs on the same host, the destination (storageConf
     mirror:
       platform:
         channels:
-        - name: stable-4.15
+        - name: stable-4.17
           type: ocp
-          minVersion: 4.15.8
+          minVersion: 4.17.12
         graph: true
       operators:
-      - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.15
+      - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.17
         packages:
         - name: odf-operator
           channels:
-          - name: stable-4.15
-          minVersion: '4.15.1-rhodf'
+          - name: stable-4.17
+          minVersion: '4.17.0-rhodf'
         - name: ocs-operator
           channels:
-          - name: stable-4.15
-          minVersion: '4.15.1-rhodf'
+          - name: stable-4.17
+          minVersion: '4.17.0-rhodf'
         - name: odf-csi-addons-operator
           channels:
-          - name: stable-4.15
-          minVersion: '4.15.1-rhodf'
+          - name: stable-4.17
+          minVersion: '4.17.0-rhodf'
         - name: mcg-operator
           channels: 
-          - name: stable-4.15
-          minVersion: '4.15.1-rhodf'
+          - name: stable-4.17
+          minVersion: '4.17.0-rhodf'
     EOF
     ```
 
 1. Initiate the mirroring.
 
     ```sh
-    oc-mirror --config=/mnt/isc-platform-odf.yaml file:///mnt/ocp-4.15
+    oc mirror --config=${HOME}/isc-platform-odf.yaml file://ocp-4.17
     ```
+
+    **Note:** you may find that this stage fails. In this case issue the command again. During testing the instructors have found this as well, but it does not affect the subsequent steps. We believe this is an issue on the Red Hat side, or because of configuration in Tech Zone (for example, traffic shaping).
+
     ``` {.text .no-copy title="Example output"}
     #...
-    info: Mirroring completed in 3m2.56s (165.8MB/s)
-    Creating archive /mnt/ocp-4.15/mirror_seq1_000000.tar
+    info: Mirroring completed in 2m51.18s (192.9MB/s)
+    Creating archive /home/admin/ocp-4.17/mirror_seq1_000000.tar
     ```
 
 ## Copy the mirrored content to the mirror registry
@@ -217,19 +172,19 @@ Although the mirror registry runs on the same host, the destination (storageConf
 1. Log in.
 
     ```sh
-    podman login 192.168.252.2:8443 --authfile ${HOME}/mirrored-content/.pull-secret --tls-verify=false
+    podman login 192.168.252.2:8443 --tls-verify=false
     ```
 
 1. Copy the content.
 
     ```sh
-    oc-mirror --from /mnt/ocp-4.15/mirror_seq1_000000.tar docker://192.168.252.2:8443/ocp4 --dest-skip-tls
+    oc mirror --from ocp-4.17/mirror_seq1_000000.tar docker://192.168.252.2:8443/ocp4 --dest-skip-tls
     ```
     ``` {.text .no-copy title="Example output"}
     #...
-    Rendering catalog image "192.168.252.2:8443/ocp4/redhat/redhat-operator-index:v4.15" with file-based catalog
-    Writing image mapping to oc-mirror-workspace/results-1711288703/mapping.txt
-    Writing UpdateService manifests to oc-mirror-workspace/results-1711288703
-    Writing CatalogSource manifests to oc-mirror-workspace/results-1711288703
-    Writing ICSP manifests to oc-mirror-workspace/results-1711288703
+    Rendering catalog image "192.168.252.2:8443/ocp4/redhat/redhat-operator-index:v4.17" with file-based catalog
+    Writing image mapping to oc-mirror-workspace/results-1731338801/mapping.txt
+    Writing UpdateService manifests to oc-mirror-workspace/results-1731338801
+    Writing CatalogSource manifests to oc-mirror-workspace/results-1731338801
+    Writing ICSP manifests to oc-mirror-workspace/results-1731338801
     ```

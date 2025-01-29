@@ -1,5 +1,22 @@
 The aliases and firewall rules for this exercise are available in the Box folder. When prompted to select a file in the steps below, choose the file with the name that matches the data center of your environment.
 
+1. Validate that the bastion can currently access the internet.
+
+    ```
+    ping ibm.com
+    ```
+
+    The result will show that the bastion server can access the host.
+
+    ``` {.text .no-copy title="Example output"}
+    [admin@bastion ~]$ ping ibm.com
+    PING ibm.com (104.69.122.4) 56(84) bytes of data.
+    64 bytes from a104-69-122-4.deploy.static.akamaitechnologies.com (104.69.122.4): icmp_seq=1 ttl=52 time=1.69 ms
+    64 bytes from a104-69-122-4.deploy.static.akamaitechnologies.com (104.69.122.4): icmp_seq=2 ttl=52 time=1.91 ms
+    64 bytes from a104-69-122-4.deploy.static.akamaitechnologies.com (104.69.122.4): icmp_seq=3 ttl=52 time=1.85 ms
+    ```
+
+
 1. Open a browser and navigate to https://pfsense.gym.lan{: target="_blank" .external }.
 
     Login as user `admin` with the password from the "Shared Reservation" section of your reservation.
@@ -34,5 +51,22 @@ The aliases and firewall rules for this exercise are available in the Box folder
 
         <figure markdown="span">
             <figcaption>Reference Firewall Rules for pfsense</figcaption>
-            ![eference Firewall Rules for pfsense](images/firewall-rules.png)
+            ![Reference Firewall Rules for pfsense](../assets/images/firewall-rules.png)
         </figure>
+
+1. Validate that the bastion can no longer access the internet.
+
+    ```
+    ping -w 10 ibm.com
+    ```
+
+    The result will show that the bastion server can access the host.
+    
+    ``` {.text .no-copy title="Example output"}
+    [admin@bastion ~]$ ping -w 10 ibm.com
+    PING ibm.com (104.69.122.4) 56(84) bytes of data.
+
+    --- ibm.com ping statistics ---
+    10 packets transmitted, 0 received, 100% packet loss, time 9245ms
+    
+    ```
