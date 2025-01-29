@@ -51,7 +51,7 @@ The aliases and firewall rules for this exercise are available in the Box folder
 
         <figure markdown="span">
             <figcaption>Reference Firewall Rules for pfsense</figcaption>
-            ![Reference Firewall Rules for pfsense](../assets/images/firewall-rules.png)
+            ![Reference Firewall Rules for pfsense](../images/firewall-rules.png)
         </figure>
 
 1. Validate that the bastion can no longer access the internet.
