@@ -1,3 +1,5 @@
+## Deploy Air-Gapped OpenShift Cluster on VMware
+
 This week, we will install an OpenShift cluster using IPI in an air-gapped environment, also referred to as restricted or disconnected networks. Specifically, this type of environment is defined as follows:
 
 *An air-gapped computer or network is one that has no network interfaces, either wired or wireless, connected to outside networks.*

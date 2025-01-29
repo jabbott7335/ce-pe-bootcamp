@@ -55,6 +55,9 @@ To complete this task, follow these steps:
     ```sh
     curl -kL https://${VCENTER_HOSTNAME}/certs/download.zip -o download.zip
     ```
+    ``` {.text .no-copy title="Example with your hostname"}
+    curl -kL https://ocpgym-vc.techzone.ibm.local/certs/download.zip -o download.zip
+    ```
 
 3. Extract the certificates.
    
