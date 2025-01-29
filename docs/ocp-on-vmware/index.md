@@ -65,7 +65,9 @@ For reference purposes, please recall the illustration of the IPI installation p
 
 To confirm that your VMware vSphere environment has been successfully provisioned, follow these steps:
 
-1. If you want to use Guacamole to access your environment, click on the Open your IBM Cloud environment button. Next, expand the ALL CONNECTIONS section and test both Remote Desktop and SSH sessions by attempting to establish connections. If both connections are successful, it indicates that your environment has been provisioned and is ready for installation.
+1. If you want to use Guacamole (Recommended for first timers) to access your environment, click on the **Open your IBM Cloud environment** button. Next, expand the ALL CONNECTIONS section and test both Remote Desktop and SSH sessions by attempting to establish connections. If both connections are successful, it indicates that your environment has been provisioned and is ready for installation.
+
+    > HINT: To paste in the Linux environment with your keyboard use Shift + CTRL + V
 
     ![gym-guacamole](./images/gym-guacamole.png){target="_blank"}
 
