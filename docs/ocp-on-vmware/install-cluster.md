@@ -34,9 +34,9 @@ hide:
 5. Edit `ocpinstall/openshift/99_openshift-cluster-api_infra-machineset-0.yaml` and make the following changes:
     
     - Add labels to the nodes, within the `spec.template.spec.metadata.labels` section:
-        - `cluster.ocs.openshift.io/openshift-storage: ""`
-        - `node-role.kubernetes.io/infra: ""`
-    - Add taint `node.ocs.openshift.io/storage="true"` with effect `NoSchedule` to the nodes.
+        - `cluster.ocs.openshift.io/openshift-storage: ''`
+        - `node-role.kubernetes.io/infra: ''`
+    - Add taint `node.ocs.openshift.io/storage` with value of `true` and effect `NoSchedule` to the nodes.
     - Change all values with postfix `-worker-0` to `-infra-0`.
     - Change the replicas to `3`.
     - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-type` to `infra`.
