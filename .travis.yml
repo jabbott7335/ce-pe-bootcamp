@@ -1,7 +1,10 @@
 language: python
 python: 3.11
 branches: main
-  
+
+before_install:
+  - rm ~/.netrc
+
 install:
 - pip install -r requirements.txt
 
