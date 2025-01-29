@@ -1,145 +1,168 @@
 ---
-Title: Lab CN 3 - IBM Container Registries
+Title: Lab CN 3 - Running a Container on OpenShift Local or Minikube
 hide:
     - toc
 ---
 
 # Lab CN 3 - IBM Container Registries
 
-In this lab we are going to create a Container Image and store it in the [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_overview){target="_blank"}
+In this lab we are going to build on what you completed in Lab 2 and deploy the greeting container image on either OpenShift Local or MiniKube (depending on your setup)
 
 ## Prerequisites
-- IBM Cloud Account
+- Completed Cloud Native Lab 1 and 2
+- OpenShift Local or MiniKube installed on your machine
+- The Openshift Client CLI (`oc`) or `kubectl` installed on your machine
+- Greeting container image pushed to your personal Quay registry.
 
-### Login into IBM Cloud
-
-#### Using the IBM Cloud Shell
-
-1. Login into [IBM Cloud](https://cloud.ibm.com/){target="_blank"}
-1. Select correct account from top right drop down if your IBM id is associated with multiple accounts
-1. Click the IBM Cloud Shell Icon on the top right corner of the IBM Cloud Console
-    ![ibm cloud shell icon](./images/ibmcloud-shell-button.png)
-1. This opens a new browser window with command linux terminal prompt.
-    ![ibm cloud shell prompt](./images/ibmcloud-shell-prompt.png)
+## Start Your Local Cluster
 
 
-## Create a new Container Registry namespace
+=== "OpenShift Local"
 
-1. Ensure that you're targeting the correct IBM Cloud Container Registry region. For example for Dallas region use **us-south**
-    ```sh
-    ibmcloud cr region-set us-south
-    ```
-1. Choose a name for your first namespace, and create that namespace. Use this namespace for the rest of the Quick Start.Create a new Container Registry Namespace. This namespace is different from a Kubernetes/OpenShift namespace. The name needs to be all lowercase  and globaly unique within a region.
+    1. Refer to the [OpenShift Local docs](https://developers.redhat.com/products/openshift-local/overview) to ensure OpenShift Local is running on your local machine.
+
+    > **:information:** OpenShift local requires 10GB of memory to run. Make sure that you have that amount of memory available on the system as you start the install.
+
+    2. Once `OpenShift Local` has started, follow the instructions printed to the terminal to log in via the cli. Then check the node is running happily:
+
     ```bash
-    ibmcloud cr namespace-add <my_namespace>
+    oc get nodes
     ```
-    Now set the environment `NAMESPACE` to be use for the rest of the lab
+
+    Expected output:
+
     ```bash
-    export NAMESPACE=<my_namespace>
+    NAME   STATUS   ROLES                         AGE   VERSION
+    crc    Ready    control-plane,master,worker   21d   v1.30.7
     ```
 
-## Building and Pushing a Container Image
-1. Clone the following git repository and change directory to `1-containers`
+=== "MiniKube"
+
+    Refer to the [MiniKube docs](https://minikube.sigs.k8s.io/docs/) to start MiniKube. 
+
+    1. Once MiniKube has started, check the node is running and the right context is set in `kubectl`:
+
     ```bash
-    git clone --depth 1 https://github.com/csantanapr/think2020-nodejs.git my-app
-    cd my-app/1-containers/
-    ```
-1. Inspect the file `Dockerfile` it contains a multistage build, first layer builds the application, the second copies only the built files.
-    ```bash
-    cat Dockerfile
-    ```
-    ```Dockerfile
-    FROM registry.access.redhat.com/ubi8/nodejs-12 as base
-
-    FROM base as builder
-
-    WORKDIR /opt/app-root/src
-
-    COPY package*.json ./
-
-    RUN npm ci
-
-    COPY public public 
-    COPY src src 
-
-    RUN npm run build
-
-    FROM base
-
-    WORKDIR /opt/app-root/src
-
-    COPY --from=builder  /opt/app-root/src/build build
-
-    COPY package*.json ./
-
-    RUN npm ci --only=production
-
-    COPY --chown=1001:0 server server
-    RUN chmod -R g=u server
-
-    ENV PORT=8080
-
-    LABEL com.example.source="https://github.com/csantanapr/think2020-nodejs"
-    LABEL com.example.version="1.0"
-
-    ARG ENV=production
-    ENV NODE_ENV $ENV
-    ENV NODE_VERSION $NODEJS_VERSION
-    CMD npm run $NODE_ENV
-    ```
-1. Build and push the image, if not already set replace `$NAMESPACE` with the namespace you added previously, replace `us.icr.io` if using a different region.
-    ```bash
-    ibmcloud cr build --tag us.icr.io/$NAMESPACE/my-app:1.0 ./
+    kubectl get nodes
     ```
 
-## Explore the Container Registry on the IBM Cloud Console
-1. Explore the container image details using the IBM Cloud Console. Go to the Main Menu->Kubernetes->Registry you can use the tabs `Namespaces`, `Repository`, `Images`
-    ![cr namespace](./images/cr-namespaces.png)
-    ![cr namespace](./images/cr-repositories.png)
-    ![cr namespace](./images/cr-images.png)
-    ![cr namespace](./images/cr-settings.png)
+Expected output:
+
+```bash
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   60s   v1.32.0
+```
 
 
-## Extra Credit (Run Imge on Kubernetes)
 
-If you have a Kubernetes Cluster you can run your application image
+## Run the application as a pod
 
-1. Get the Access token for your Kubernetes cluster, command assumes your cluster name is `mycluster`
-    ```bash
-    ibmcloud ks cluster config -c mycluster
-    ```
-1. Run the following commands to create a deployment using the image we just build. If not already set replace `$NAMESPACE` with your IBM Container Registry Namespace we stored the image.
-    ```bash
-    kubectl create deployment my-app --image us.icr.io/$NAMESPACE/my-app:1.0
-    kubectl rollout status deployment/my-app
-    kubectl port-forward deployment/my-app 8080:8080
-    ```
-    If the app is connected you should see the following output
-    ```bash
-    Forwarding from 127.0.0.1:8080 -> 8080
-    Forwarding from [::1]:8080 -> 8080
-    ```
-1. Open a new Session and run the following command
-    ```bash
-    curl localhost:8080 -I
-    ```
-    You should see in the first line of output the following
-    ```bash
-    HTTP/1.1 200 OK
-    ```
-1. To access the app using a browser use the IBM Cloud Shell Web Preview. Click the Web Preview Icon and select port `8080` from the drop down. The application will open in a new browser window.
-    ![ibm cloud shell web preview select](./images/ibmcloud-shell-preview.png)
-    ![web app](./images/web-app.png)
+This lab will not be covering Kubernetes in detail, but we are going to cover a very simple deployment. 
 
-1. To stop the application on the terminal with the `kubectl port-forward` command quit by pressing Ctrl+C in **Session 1*
+>:information: You can use `oc` and `kubectl` interchangeably for this section of the lab 
 
-### Delete Deployment and Image
 
-1. Delete the app deployment
-    ```bash
-    kubectl delete deployment my-app
-    ```
-1. Delete the container image, if not already set replace `$NAMESPACE` with the registry namespace
-    ```bash
-    ibmcloud cr image-rm us.icr.io/$NAMESPACE/my-app:1.0
-    ```
+1. A pod is the smallest deployable unit in Kubernetes. You can deploy the greeting application from lab 2 with the following command:
+
+```bash
+kubectl run greeting --image quay.io/<repository_name>/greeting:<tag>
+```
+
+2. Check the pod is up and running:
+   
+```bash
+kubectl get pods
+```
+
+Expected output: 
+
+```bash
+NAME       READY   STATUS    RESTARTS   AGE
+greeting   1/1     Running   0          106s
+```
+
+3. You can find more information on the pod using the `describe` command:
+
+```bash
+kubectl describe pod greeting
+```
+Expected ouptut:
+
+```bash
+Name:             greeting
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 29 Jan 2025 13:27:27 +1100
+Labels:           run=greeting
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.4
+IPs:
+  IP:  10.244.0.4
+Containers:
+  greeting:
+    Container ID:   docker://866d0711b4c08b461421f9a22aa9702f9c37c33c3e185a68d806b4158577c094
+    Image:          quay.io/samuele_chinellato_ibm/greeting:v0.0.1
+    Image ID:       docker-pullable://quay.io/samuele_chinellato_ibm/greeting@sha256:e540f501125ae9030bcadfbc20a7b2d7d18b766112e76fd5b08f94fe7c56798e
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Wed, 29 Jan 2025 13:28:02 +1100
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8xqq6 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  kube-api-access-8xqq6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  6m11s  default-scheduler  Successfully assigned default/greeting to minikube
+  Normal  Pulling    6m11s  kubelet            Pulling image "quay.io/samuele_chinellato_ibm/greeting:v0.0.1"
+  Normal  Pulled     5m37s  kubelet            Successfully pulled image "quay.io/samuele_chinellato_ibm/greeting:v0.0.1" in 33.663s (33.663s including waiting). Image size: 146552052 bytes.
+  Normal  Created    5m37s  kubelet            Created container: greeting
+  Normal  Started    5m37s  kubelet            Started container greeting
+```
+
+4. Once your pod enters a `running` state, run the following command to access the application from your machine:
+
+```bash
+kubectl port forward pod/greeting 9080:9080
+```
+
+Expected output:
+
+```
+Forwarding from 127.0.0.1:8082 -> 8080
+Forwarding from [::1]:8082 -> 8080
+```
+
+
+
+5. Open http://localhost:9080/greeting?name=world in your browser. You should see a message from your greeting app!
+
+
+> **:apple: Apple Silicon Only** replace 9080 with 8080 in the above commands
+
+---
+
+This lab concludes the Cloud Native section of the Platform Engineering BootCamp. You are now ready to move on to [Kubernetes and OpenShift](../k8s/openshift/index.md)
