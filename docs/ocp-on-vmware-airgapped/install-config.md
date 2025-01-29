@@ -14,13 +14,13 @@
     {"auths":{"192.168.252.2:8443":{"auth":"YWRtaW46UXVheUZvckFsbCE=","email":"admin@quay.io"}}}
     ```
 
-1. Calculate the the checksum for the Red Hat CoreOS OVA image.
+1. Calculate the checksum for the Red Hat CoreOS OVA image.
 
     ```sh
-    sha256sum /var/www/html/images/rhcos-vmware.x86_64.ova
+    sha256sum /var/www/html/rhcos-vmware.x86_64.ova
     ```
     ``` {.text .no-copy title="Example output"}
-    9b3d5a598928ec52b0d32092d0a9a41f0ec8a238eb9fff8563266b9351919e20  /var/www/html/images/rhcos-vmware.x86_64.ova
+    312a12cac8c2ba7b73fdb1b0b7abada8f8048901f304fac95b0819d3058dbdca  /var/www/html/rhcos-vmware.x86_64.ova
     ```
 
 ## Run the wizard
@@ -89,7 +89,7 @@
       vsphere:
         apiVIPs:
         - 192.168.252.3
-        clusterOSImage: http://192.168.252.2/images/rhcos-vmware.x86_64.ova?sha256=9b3d5a598928ec52b0d32092d0a9a41f0ec8a238eb9fff8563266b9351919e20
+        clusterOSImage: http://192.168.252.2/rhcos-vmware.x86_64.ova?sha256=312a12cac8c2ba7b73fdb1b0b7abada8f8048901f304fac95b0819d3058dbdca
         failureDomains:
         - name: ocpgym-wdc
           region: IBMCloud
@@ -184,7 +184,7 @@
     platform:
       vsphere:
         #...
-        clusterOSImage: http://192.168.252.2/images/rhcos-vmware.x86_64.ova?sha256=b0370d100060de01cec3ca7442f9d86d6dcb5a496aee060ac80b92847ccedbc9
+        clusterOSImage: http://192.168.252.2/rhcos-vmware.x86_64.ova?sha256=312a12cac8c2ba7b73fdb1b0b7abada8f8048901f304fac95b0819d3058dbdca
     #...
     additionalTrustBundle: |
       YOUR_QUAY_CERTIFICATE
@@ -215,4 +215,6 @@
       source: quay.io/openshift-release-dev/ocp-release
     ```
 
-    The `imageDigestSources` should be copied from `${HOME}/mirrored-content/oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml`.
+    The `imageDigestSources` should be copied from `${HOME}/oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml`.
+
+    You should update the sha value of `clusterOSImage` to match the one returned by step 2.

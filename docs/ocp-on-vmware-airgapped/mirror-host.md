@@ -4,7 +4,7 @@ The mirror registry will be installed on the bastion host. Mirroring OpenShift p
 
 1. Log into the vSphere console.
 
-    Use the vCenter Console URL, username and password from your reservation and log into the vSphere console.
+    Use the vCenter Console URL, username and password from your reservation.
 
 1. Add a 100GB disk to the bastion virtual machine.
 
@@ -94,20 +94,29 @@ To ensure secure communication with image registries, which require HTTPS, we mu
         -addext "subjectAltName = DNS:registry.gym.lan,IP:192.168.252.2"
     ```
 
-1. Download the archive.
+1. Create a temporary directory
 
     ```sh
     MIRROR_DIR=$(mktemp -d)
     ```
+
+1. Download the archive.
+
     ```sh
     curl -Lo ${MIRROR_DIR}/mirror-registry.tar.gz \
-        https://developers.redhat.com/content-gateway/rest/mirror2/pub/openshift-v4/clients/mirror-registry/latest/mirror-registry.tar.gz
+        https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz
+    ```
+
+1. Get into the temporary directory
+
+    ```sh
+    cd ${MIRROR_DIR}
     ```
 
 1. Extract the archive.
 
     ```sh
-    tar xf ${MIRROR_DIR}/mirror-registry.tar.gz
+    tar xf mirror-registry.tar.gz
     ```
 
 1. Run the install command.
@@ -116,6 +125,12 @@ To ensure secure communication with image registries, which require HTTPS, we mu
     ./mirror-registry install --quayHostname 192.168.252.2 \
         --initUser admin --initPassword QuayForAll! \
         --sslKey /home/admin/quay.key --sslCert /home/admin/quay.crt
+    ```
+
+1. Return to the home directory
+
+    ```sh
+    cd
     ```
 
 1. Ensure the mirror registry is accessible on port `8443`.
@@ -148,7 +163,7 @@ To ensure secure communication with image registries, which require HTTPS, we mu
 
 ## Make the RHCOS VMware OVA available
 
-During an IPI installation, the OpenShift installer typically downloads the Red Hat CoreOS VMware OVA from the internet by default. However, you must obtain the OVA image and make it accessible via HTTP (HTTPS is not required) for the installation to proceed.
+When installing OpenShift using IPI, by default the installer downloads the Red Hat CoreOS VMware OVA from the internet. To complete an air-gapped installation, you must first obtain the OVA image and make it accessible via HTTP (HTTPS is not necessary).
 
 1. Install the `httpd` package.
 
@@ -156,13 +171,10 @@ During an IPI installation, the OpenShift installer typically downloads the Red 
     sudo dnf install -y httpd
     ```
 
-1. Create the target directory for the Red Hat CoreOS OVA image.
+1. Start and enable the service.
 
     ```sh
-    sudo mkdir -pv /var/www/html/images
-    ```
-    ```{.text .no-copy title="Example output"}
-    mkdir: created directory '/var/www/html/images'
+    sudo systemctl enable httpd --now
     ```
 
 1. Ensure the http port is accessible.
@@ -172,24 +184,25 @@ During an IPI installation, the OpenShift installer typically downloads the Red 
     sudo firewall-cmd --reload
     ```
 
-1. Start and enable the service.
-
-    ```sh
-    sudo systemctl enable httpd --now
-    ```
-
 1. Download the OVA.
 
     ```sh
-    OCP_VERSION=4.15
+    RHCOS_VERSION=4.17
     ```
     ```sh
-    curl -Lo ${MIRROR_DIR}/rhcos-vmware.x86_64.ova \
-        https://mirror.openshift.com/pub/openshift-v4/amd64/dependencies/rhcos/${OCP_VERSION}/latest/rhcos-vmware.x86_64.ova
+    curl -Lo rhcos-vmware.x86_64.ova \
+        https://mirror.openshift.com/pub/openshift-v4/amd64/dependencies/rhcos/${RHCOS_VERSION}/latest/rhcos-vmware.x86_64.ova
     ```
 
-1. Move the OVA into `/var/www/html/images`.
+1. Move the OVA into `/var/www/html`.
 
     ```sh
-    sudo mv ${MIRROR_DIR}/rhcos-vmware.x86_64.ova /var/www/html/images
+    sudo mv rhcos-vmware.x86_64.ova /var/www/html
+    ```
+
+
+1. Restore the default SELinux context on the directory so that the httpd service can access the ova.
+
+    ```
+    sudo restorecon -Rv /var/www/html
     ```

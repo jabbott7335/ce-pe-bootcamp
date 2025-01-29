@@ -10,27 +10,6 @@
     cp install-config.yaml ocpinstall
     ```
 
-1. Create the manifest files.
-
-    ```sh
-    openshift-install create manifests --dir ocpinstall
-    ```
-
-1. Set the `managementState` of the cluster samples operator to `Removed`.
-
-    ```sh
-    cat <<EOF > ocpinstall/openshift/99_openshift_samples.yaml
-    apiVersion: samples.operator.openshift.io/v1
-    kind: Config
-    metadata:
-      name: cluster
-    spec:
-      architectures:
-      - x86_64
-      managementState: Removed
-    EOF
-    ```
-
 1. Create the cluster.
 
     ```sh
@@ -39,7 +18,7 @@
     Wait for the installation to complete.
     ``` {.text .no-copy title="Example output"}
     #...
-    DEBUG Obtaining RHCOS image file from 'http://192.168.252.2/images/rhcos-vmware.x86_64.ova?sha256=9b3d5a598928ec52b0d32092d0a9a41f0ec8a238eb9fff8563266b9351919e20'
+    DEBUG Obtaining RHCOS image file from 'http://192.168.252.2/rhcos-vmware.x86_64.ova?sha256=9b3d5a598928ec52b0d32092d0a9a41f0ec8a238eb9fff8563266b9351919e20'
     #...
     INFO All cluster operators have completed progressing
     INFO Checking to see if there is a route at openshift-console/console...
@@ -61,6 +40,8 @@
     INFO Time elapsed: 37m17s
     ```
 
+## Post installation configuration
+
 1. Set the `KUBECONFIG` variable.
 
     ```sh
@@ -77,12 +58,12 @@
 1. Add the mirrored OperatorHub catalog source 
 
     ```sh
-    oc apply -f ./mirrored-content/oc-mirror-workspace/results-*/catalogSource-cs-redhat-operator-index.yaml
+    oc apply -f ${HOME}/oc-mirror-workspace/results-*/catalogSource-cs-redhat-operator-index.yaml
     ```
 
 1. Add release signatures.
     ```sh
-    oc apply -f ./mirrored-content/oc-mirror-workspace/results-*/release-signatures/
+    oc apply -f ${HOME}/oc-mirror-workspace/results-*/release-signatures/
     ```
 
 1. Verify there is a Pod named `cs-redhat-operator-index-*****` in namespace `openshift-marketplace`
