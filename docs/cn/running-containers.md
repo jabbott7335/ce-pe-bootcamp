@@ -46,12 +46,12 @@ In this lab we are going to build on what you completed in Lab 2 and deploy the 
     kubectl get nodes
     ```
 
-Expected output:
-
-```bash
-NAME       STATUS   ROLES           AGE   VERSION
-minikube   Ready    control-plane   60s   v1.32.0
-```
+    Expected output:
+    
+    ```bash
+    NAME       STATUS   ROLES           AGE   VERSION
+    minikube   Ready    control-plane   60s   v1.32.0
+    ```
 
 
 
