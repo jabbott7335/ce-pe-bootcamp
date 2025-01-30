@@ -193,6 +193,10 @@ nav:
     - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
     - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
     - Add IBM Software Entitlement: ocp-on-vmware/update-golbal-pull-secret.md
+  - IBM Concert:
+    - concert/index.md
+  - Integration:
+    - integration/index.md
   - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
@@ -264,5 +268,3 @@ nav:
       - Create Install Config: ocp-on-vmware-airgapped/install-config.md
       - Install the Cluster: ocp-on-vmware-airgapped/install-cluster.md
       - Install ODF: ocp-on-vmware-airgapped/install-odf.md
-
-  
