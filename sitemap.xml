@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/old-agenda/</loc>
+         <lastmod>2025-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/blog/</loc>
          <lastmod>2025-01-30</lastmod>
          <changefreq>daily</changefreq>
@@ -61,6 +66,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/concert/</loc>
+         <lastmod>2025-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/devops/</loc>
          <lastmod>2025-01-30</lastmod>
          <changefreq>daily</changefreq>
@@ -102,6 +112,11 @@
     </url>
     <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/devops/tekton/tekton/</loc>
+         <lastmod>2025-01-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/</loc>
          <lastmod>2025-01-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
