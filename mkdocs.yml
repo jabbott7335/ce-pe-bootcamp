@@ -184,6 +184,7 @@ nav:
   - Welcome: 
     - index.md
     - Agenda: agenda.md
+    - Workstation Setup: workstation-setup.md
   - Deploying OpenShift on VMware: 
     - ocp-on-vmware/index.md
     - Prepare for Installation: ocp-on-vmware/prepare.md
