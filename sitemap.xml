@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/workstation-setup/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/blog/</loc>
          <lastmod>2025-02-03</lastmod>
          <changefreq>daily</changefreq>
@@ -112,6 +117,41 @@
     </url>
     <url>
          <loc>https://github.ibm.com/skol/pe-bootcamp/integration/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/01-prereqs/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/02-base-deploy/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/03-apic/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/04-event-automation/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/05-mq/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/06-ace/</loc>
+         <lastmod>2025-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.ibm.com/skol/pe-bootcamp/integration/07-demo-config/</loc>
          <lastmod>2025-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
