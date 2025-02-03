@@ -103,42 +103,42 @@ Deploy Designer Authoring instance with support for Callable Flows
       ```bash
       oc get integrationruntimes -n tools
       ```
-      !!! Info "While you are waiting ..."
-                  Lets look at a sample ACE integration deployment.  Note where it pulls in the BAR file.  This BAR file provides the configuration for what the instance actually is doing:
+!!! Info "While you are waiting ..."
+      Lets look at a sample ACE integration deployment.  Note where it pulls in the BAR file.  This BAR file provides the configuration for what the instance actually is doing:
 
-                  ```{ .yaml linenums="1" hl_lines="28" .no-copy title="11-ace-is-mqapi-dflt-instance.yaml" }
-                  apiVersion: appconnect.ibm.com/v1beta1
-                  kind: IntegrationRuntime
-                  metadata:
-                  name: jgr-mqapi-dflt
-                  labels:
-                  backup.appconnect.ibm.com/component: integrationruntime
-                  assembly.integration.ibm.com/tools.jgr-demo: 'true'
-                  spec:
-                  license:
-                  accept: true
-                  license: L-KPRV-AUG9NC
-                  use: CloudPakForIntegrationNonProduction
-                  template:
-                  spec:
-                        containers:
-                        - name: runtime
-                        resources:
-                              limits:
-                              cpu: 500m
-                              memory: 512Mi
-                              requests:
-                              cpu: 500m
-                              memory: 512Mi
-                  replicas: 1
-                  version: '13.0'
-                  barURL: 
-                  - >-
-                        https://github.com/gomezrjo/cp4idemo/raw/main/barfiles/jgr-cp4i-mqapi-dflt.bar
-                  configurations:
-                  - github-barauth
-                  - ace-qmgr-demo-policy
-                  ```
+      ```{ .yaml linenums="1" hl_lines="28" .no-copy title="11-ace-is-mqapi-dflt-instance.yaml" }
+      apiVersion: appconnect.ibm.com/v1beta1
+      kind: IntegrationRuntime
+      metadata:
+      name: jgr-mqapi-dflt
+      labels:
+      backup.appconnect.ibm.com/component: integrationruntime
+      assembly.integration.ibm.com/tools.jgr-demo: 'true'
+      spec:
+      license:
+      accept: true
+      license: L-KPRV-AUG9NC
+      use: CloudPakForIntegrationNonProduction
+      template:
+      spec:
+            containers:
+            - name: runtime
+            resources:
+                  limits:
+                  cpu: 500m
+                  memory: 512Mi
+                  requests:
+                  cpu: 500m
+                  memory: 512Mi
+      replicas: 1
+      version: '13.0'
+      barURL: 
+      - >-
+            https://github.com/gomezrjo/cp4idemo/raw/main/barfiles/jgr-cp4i-mqapi-dflt.bar
+      configurations:
+      - github-barauth
+      - ace-qmgr-demo-policy
+      ```
 ### Configure Sales Force Connector (Optional)
 The Sales Force integration is a very typical example used to learn and demo ACE.  If you followed the prerequisites to create your SF account you can configure that here.
 1. Set Environment Variables:  
@@ -249,10 +249,12 @@ Feel free to experiment with additional integration runtime instances below.
 
 
 ### Deploy Integration Runtime instances with fry approach (Optional)
-      ```bash
-      oc apply -f instances/${CP4I_VER}/18a-ace-is-aceivt-instance-fry.yaml -n tools
-      oc apply -f instances/${CP4I_VER}/18b-ace-is-aceivt-instance-fry.yaml -n tools
-      ```
+
+```bash
+oc apply -f instances/${CP4I_VER}/18a-ace-is-aceivt-instance-fry.yaml -n tools
+oc apply -f instances/${CP4I_VER}/18b-ace-is-aceivt-instance-fry.yaml -n tools
+```
+
 ### Deploy Integration Runtime instance with bake approach (Optional)
 
 ```bash
