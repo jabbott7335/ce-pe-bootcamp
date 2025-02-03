@@ -54,8 +54,11 @@ For reference purposes, please recall the illustration of the IPI installation p
 3. Select **Reserve now**.
 
 4. Fill out the reservation form adding your information where relevant (use the screenshot below for guidance).
+
+!!! Warning "Deploy with VPN"
+        Be sure to deploy with the VPN Access **Enabled**.
     
-    ![gym-reservation](./images/gym-reservation.png){target="_blank"}
+![gym-reservation](./images/gym-reservation.png){target="_blank"}
 
 5. Click **Submit**. Provisioning approximately takes 30 minutes.
 
