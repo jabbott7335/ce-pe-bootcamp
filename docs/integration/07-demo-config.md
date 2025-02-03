@@ -1,12 +1,12 @@
 ---
+Title: Additional Demo Config
 hide:
     - toc
 ---
 
+# Additional Configuration Steps for the CP4I Demo
 
-<details>
-<summary>
-O) Configure APIC for demo: 
+## Configure APIC for Demo
 </summary>
 
 1. Publish draft assets:
@@ -33,13 +33,8 @@ O) Configure APIC for demo:
    ```
    scripts/14f-apic-ptl-access-info.sh
    ```
-</details>
-&nbsp; 
 
-
-<details>
-<summary>
-Q) Enable Aspera (optional): 
+## Enable Aspera (Optional)
 </summary>
 
 1. Install Redis Catalog Source:
@@ -78,13 +73,8 @@ Q) Enable Aspera (optional):
    ```
    Succeeded
    ```
-</details>
-&nbsp; 
 
-<details>
-<summary>
-R) Install License Service (optional): 
-</summary>
+## Install License Service (Optional): 
 
 1. Install License Service Catalog Source:
    ```
@@ -170,13 +160,8 @@ R) Install License Service (optional):
    ```
    scripts/99-lsr-console-access-info.sh
    ```
-</details>
-&nbsp; 
 
-<details>
-<summary>
-S) Install Serverless (optional): 
-</summary>
+## Install Serverless (Optional)
 
 1. Create Kafka Topics and User:
    ```
@@ -371,16 +356,12 @@ S) Install Serverless (optional):
       ++ SinkProvided            7s 
       ++ OIDCIdentityCreated     7s authentication-oidc feature disabled ()
       ```
-</details>
-&nbsp; 
 
-<details>
-<summary>
-T) Install KEDA (optional): 
+## Install KEDA (Optional)
 </summary>
 
 1. Install KEDA using the deployment YAML files:
-      \
+      
       Note: At the moment we can not use the Operator **Custom Metrics Autoscaler** provided by RedHat because it is using v2.14 which does not support self-signed certificates, so instead we need to use v2.16 from the [KEDA](https://keda.sh/) community project that already supports self-signed certificates. Once the RedHat Operator supports v2.16 I'll update the instructions.
       ```
       oc apply --server-side -f https://github.com/kedacore/keda/releases/download/v2.16.1/keda-2.16.1.yaml
@@ -439,4 +420,3 @@ T) Install KEDA (optional):
    ```
    True
    ```
-</details>

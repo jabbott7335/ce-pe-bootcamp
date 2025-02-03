@@ -135,26 +135,32 @@ Create a Provider Organization for admin user:
 scripts/07g-apic-new-porg-cs.sh
 ```
 
-Create a Provider Organization for user in local registry (optional):
-   1. Set environment variables:
-      ```
-      export USER_NAME=<your-user-name>
-      export USER_EMAIL=<your-email-address>
-      export USER_FNAME=<your-first-name>
-      export USER_LNAME=<your-last-name>
-      export USER_PWD=<your-personal-password>
-      ```
-   2. Create Provide Organization:
-      ```
-      scripts/07h-apic-new-porg-lur.sh
-      ```
+### Create an API Provider Organization
 
-Set API Key for post deployment configuration:
-      1. Get API Key following instructions listed [here](https://www.ibm.com/docs/en/api-connect/10.0.x?topic=applications-managing-platform-rest-api-keys#taskcapim_mng_apikeys__steps__1){target="_blank"}
-      2. Set environment variable for API Key:
-         ```
-         export APIC_API_KEY=<my-apic-api-key>
-         ```
+Create a Provider Organization for user in local registry (optional):
+
+Set environment variables:
+```bash
+export USER_NAME=<your-user-name>
+export USER_EMAIL=<your-email-address>
+export USER_FNAME=<your-first-name>
+export USER_LNAME=<your-last-name>
+export USER_PWD=<your-personal-password>
+```
+
+Create Provide Organization:
+```bash
+scripts/07h-apic-new-porg-lur.sh
+```
+
+### Set API Key for post deployment configuration:
+
+1. Get API Key following instructions listed [here](https://www.ibm.com/docs/en/api-connect/10.0.x?topic=applications-managing-platform-rest-api-keys#taskcapim_mng_apikeys__steps__1){target="_blank"}
+2. Set environment variable for API Key:
+```
+export APIC_API_KEY=<my-apic-api-key>
+```
+
 Create secret for Assemblies (optional):
 ```bash
 scripts/07i-apic-secret-cp4i-alt.sh
@@ -171,53 +177,3 @@ You should get responses like these:
 ```
 Running
 ```
-
-Enable WebUI for extra API Gateway (optional):
-      1. Attach to the API Gateway pod:
-         ```
-         oc attach -it gwv6-0 -n cp4i-dp
-         ```
-      2. Enter credentials to log into the virtiual appliance:
-         ```
-         user: admin
-         password: admin
-         ```
-      3. Enter `config` when you see "idg#"
-      4. Enter `web-mgmt` when you see "idg(config)#"
-      5. Enter `admin-state enabled` when you see "idg(config web-mgmt)#"
-      6. Enter `exit`
-      7. Enter `write mem` when you see "idg(config)#"
-      8. Enter `top` when you see "idg(config)#"
-      9. Enter `exit` when you see "idg#"
-      10. Get the DP Gateway Web UI URL:
-         ```
-         echo "https://"$(oc get route dpwebui-route -n cp4i-dp -o jsonpath='{.spec.host}')
-         ```
-      11. Go to your favorite browser and enter the URL.
-         *Note*: This is ONLY for demo purposes and show the Web UI but you shouldn't be making changes to a DP Gateway running on containers via the Web UI.
-
-Post extra gateway deploy configuration (optional):
-      1. Get the required info:
-         ```bash
-         scripts/07g-apic-extra-dp-info.sh
-         ```
-      2. Navigate to the APIC CMC clicking on the instance name as shown below: 
-         ![APIC CMC Image 0](images/APIC_CMC_Access.png)
-      3. Select the `Cloud Pak User Registry` as shown below:
-         ![APIC CMC Image 1](images/APIC_CMC_Login.png)
-      4. Click on the `Configure Topology` tile as shown below:
-         ![APIC CMC Image 2](images/APIC_CMC_Config_Topology.png)
-      5. Click the `Register Service` button as shown below:
-         ![APIC CMC Image 3](images/APIC_CMC_Reg_Service.png)
-      6. Select the `DataPower API Gateway` tile as shown below:
-         ![APIC CMC Image 4](images/APIC_CMC_Config_Service.png)
-      7. Type the name of the service in the `Title` box, for instance "api-rgw-service" as shown below:
-         ![APIC CMC Image 5](images/APIC_CMC_Serv_Details_1.png)
-      8. Scroll dowm and paste the `Management Endpoint URL` you got from the first step under the "Service endpoint configuration" section as shown below:
-         ![APIC CMC Image 6](images/APIC_CMC_Serv_Details_2.png)
-      9. Scroll down and paste the `API Endpoint Base URL` you got from the first step under the "API invocation endpoint" section and click the `Save` button as shown below:
-         ![APIC CMC Image 7](images/APIC_CMC_Serv_Details_3.png)
-      10. The screen shows the new API Gateway Service in the Topology as shown below:
-         ![APIC CMC Image 8](images/APIC_CMC_DP_Registered.png)
-         Note you can associate the new API Gateway with the Analytics Service on your own if needed.
-
