@@ -81,7 +81,7 @@ It is also a best practice to delete the built-in `kubeadmin` user after configu
 10. Ensure user admin can log in.
     
     ```sh
-    oc login -u admin
+    oc login --insecure-skip-tls-verify=true -u admin
     ```
 
 11. Verify user admin has cluster role cluster-admin, only users with this role are authorized to use get nodes.
@@ -99,7 +99,7 @@ It is also a best practice to delete the built-in `kubeadmin` user after configu
 12. Log in as one of the developers and verify the use of get nodes.
     
     ```sh
-    oc login -u ben
+    oc login --insecure-skip-tls-verify=true -u ben
     ```
     
     ```sh
@@ -115,7 +115,7 @@ It is also a best practice to delete the built-in `kubeadmin` user after configu
 13. Switch back to user `admin` and delete `kubeadmin`.
     
     ```sh
-    oc login -u admin
+    oc login --insecure-skip-tls-verify=true -u admin
     ```
 
 14. Delete user `kubeadmin`.
