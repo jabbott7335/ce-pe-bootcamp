@@ -5,6 +5,12 @@ hide:
 
 # Event Automation
 
+Helpful Links:
+
+- Event Automation [Demo Video](https://ibm.seismic.com/Link/Content/DC2TPdFG6bb3M87XXTh3DMP2M8BP){target="_blank"}
+- Event Automation [Sales Kit](https://ibm.seismic.com/Link/Content/DC7gPV7jbcWJ682HW3JGCmCJJWJj)
+- Client Engineering Event Automation Playbook **Coming Soon**
+
 ## Deploy Event Streams
 
 Install Event Streams Catalog Source:

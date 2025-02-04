@@ -133,6 +133,7 @@ Succeeded
 ```
 
 Deploy an instance of the Platform UI:
+
 ```bash
 scripts/03a-platform-navigator-inst-deploy.sh
 ```
@@ -164,6 +165,17 @@ You should get a response like this:
 ```
 Ready
 ```
+
+!!! Note "Install Flow"
+      You will notice a repeating pattern as you install the Cloud Pak for Integration capabilities.
+
+      - Configure a **Catalog Source**
+      - Install (subscribe) the **Operator(s)**
+      - Create / Prepare a **namespace**
+      - **Deploy an instance** of the capability
+
+      We have provided scripts to streamline these steps.  These scripts and `yaml` can be valuable references when you deploy some of these features within your Pilots.
+      
 
 Once the Platform UI instance is up and running get the access info:
 ```bash

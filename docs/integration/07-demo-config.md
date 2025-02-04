@@ -6,6 +6,9 @@ hide:
 
 # Additional Configuration Steps for the CP4I Demo
 
+!!! Warning "Extra Configuration"
+      You have completed the bootcamp deployment of CP4I and some components.  The below configuration scripts add Demo components.  Proceed if you would like to explore the Cloud Pak in Action!
+
 ## Configure APIC for Demo
 </summary>
 
