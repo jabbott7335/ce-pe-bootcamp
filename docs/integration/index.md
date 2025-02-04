@@ -4,12 +4,19 @@ hide:
     - toc
 ---
 
-# IBM Cloud Pak for Integration end to end demonstration
+# Cloud Pak for Integration
+
+Helpful Links:
+
+- Cloud Pak for Integration [Sales Kit](https://ibm.seismic.com/Link/Content/DC3H4ChgBf72q8FChBXT34X3PQcd){target="_blank"}
+- [CP4I Overview and Use Case Video](https://ibm.seismic.com/Link/Content/DCc83WqbPCXqdGFJ3pHb7JjJ8Q7j){target="_blank"}
+
+## IBM Cloud Pak for Integration end to end demonstration
 
 This document describes multiple use cases that highlight the multi-style integration patterns needed by an Integration Specialist to implement a digital transformation initiative that showcase the value Cloud Pak for Integration can provide.  
 
 !!! Note "About this Exercise"
-    The steps within this section are taken directly from the [IBM Cloud Pak for Integration end to end demonstration](https://github.ibm.com/joel-gomez/cp4i-demo) repository maintained by @Joel-Gomez.  Additional explanations have been provided to create additional clarity during certain steps.  Refer back to original repository for the latest code and deployment steps.
+    The steps within this section are taken directly from the [IBM Cloud Pak for Integration end to end demonstration](https://github.ibm.com/joel-gomez/cp4i-demo){target="_blank"} repository maintained by @Joel-Gomez.  Additional explanations have been provided to create additional clarity during certain steps.  Refer back to original repository for the latest code and deployment steps.
 
 ## The Scenario
 

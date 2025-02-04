@@ -6,12 +6,14 @@ hide:
 
 # CP4I Demo Prerequisites
 
-Based on where you have deployed your OCP cluster you will need to set up an environment variable to use the proper `storage classes` when deploying the instances. The two option available at the moment are ROKS and ODF. Note that if you use a cluster in TechZone, you need to make sure to use ODF otherwise you may end up with a cluster using NFS that is NOT supported and you will need to recreate your cluster.
+For the purpose of the PE Bootcamp, we installed and ODF storage cluster and will use those options when performing the exercise.
+
+!!! Tip "Choosing Storage"
+      Based on where you have deployed your OCP cluster you will need to set up an environment variable to use the proper `storage classes` when deploying the instances. The two option available at the moment are ROKS and ODF. Note that if you use a cluster in TechZone, you need to make sure to use ODF otherwise you may end up with a cluster using NFS that is NOT supported and you will need to recreate your cluster.
 
 ## Getting the Code
 
-Do not forget to clone repo `cp4i-ace-artifacts` to your workstation alongside with this repo. The repo is located [here](https://github.ibm.com/joel-gomez/cp4i-ace-artifacts){target="_blank"}
-```bash, it includes the App Connect Integrations. And check the list of pre-requisites before using this guide using the following command:
+Do not forget to clone repo `cp4i-ace-artifacts` to your workstation alongside with this repo. The repo is located [here](https://github.ibm.com/joel-gomez/cp4i-ace-artifacts){target="_blank"}, it includes the App Connect Integrations. Check the list of pre-requisites before using this guide using the following command:
 
 !!! Tip "New to cloning GitHub repositories?"
       If you are new to GitHub and need help with basic commands, GitHub provides very easy to follow tutorials such as [this one for cloning repos](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository){target="_blank"}
@@ -181,8 +183,8 @@ Another optional step within this exercise is using ArgoCD.  We will cover CD / 
 
 ## Install Instana (Optional)
 
-!!! Tip "Instana and Integration"
-      Although we are not teaching Instana as part of the bootcamp, Instana and IBM Integration make a great story together.  The end-to-end tracing feature alone makes it a compelling story that can be added to your Pilots.
+!!! Warning "Instana and Integration"
+      Although we are not teaching Instana as part of the bootcamp, Instana and IBM Integration make a great story together.  The end-to-end tracing feature alone makes it a compelling story that can be added to your Pilots.  To enable your Integration for Instana you must have an Instana deployment already running.  If you have that available, follow the below steps to add an agent to your cluster.
 
 1. Install Instana Agent Operator:
    ```bash

@@ -5,6 +5,12 @@ hide:
 
 # Deploy APIC
 
+Helpful Links:
+
+- Recorded [API Connect Demo](https://ibm.seismic.com/Link/Content/DCMJhGFHMVbpD8QMCfBPmcDjXMCP){target="_blank"}
+- API Connect [Sales Kit](https://ibm.seismic.com/Link/Content/DCq968bc9p2qhGCJQ24JHWPGMC83){target="_blank"}
+- Client Engineering API Management Playbook **Comming Soon**
+
 ## Install Mail Server (mailpit):
 
 As part of API Management, the tooling sends different personae notifications.  Using this simple Mail Server, allows this to happen as part of a Pilot or Demo environment.
@@ -117,6 +123,10 @@ Note this will take almost 30 minutes, so be patient, and at the end you should 
 ```
 Ready
 ```
+
+!!! Tip "APIC is up and running"
+   The optional steps below provide some basic configuration for the demo, but at this point you could use the APIC cluster to explore creating, publishing, consuming and managing APIs.  As part of the bootcamp we do not need to perform all of the optional configuration.
+
 
 ## APIC Optional Configuration Steps
 
