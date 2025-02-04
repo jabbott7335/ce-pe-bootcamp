@@ -5,6 +5,13 @@ hide:
 
 # Deploy App Connect 
 
+Helpful Links:
+
+- App Connect [Sales Kit](https://ibm.seismic.com/Link/Content/DCg2mJmTR6gCJG7MqgMGDC4Fb4Hj){target="_blank"}
+- API Led Integration with [App Connect Video](https://youtu.be/BpK2Kc7Fg9Q){target="_blank"}
+- App Connect [201 Client Presentation](https://ibm.seismic.com/Link/Content/DCXH6qJcW6V4hGQWq8MG6dbcfPhP){target="_blank"}
+
+
 ## Configure the Catalog Source and Operator
 
 Install App Connect Catalog Source:
@@ -52,33 +59,35 @@ Ready
 ## Deploy Designer
 
 Deploy Designer Authoring instance with support for Callable Flows
-   1. Deploy Switch Server instance:
-      ```bash
-      scripts/09b-ace-switch-server-inst-deploy.sh
-      ```
 
-      Confirm the instance has been deployed successfully before moving to the next step running the following command:
-      ```bash
-      oc get switchserver ace-switch-server -n tools -o jsonpath='{.status.phase}';echo
-      ```
+Deploy Switch Server instance:
+```bash
+scripts/09b-ace-switch-server-inst-deploy.sh
+```
 
-      Note this will take few minutes, but at the end you should get a response like this:
-      ```
-      Ready
-      ```
-   2. Deploy Designer Authoring instance
+Confirm the instance has been deployed successfully before moving to the next step running the following command:
+```bash
+oc get switchserver ace-switch-server -n tools -o jsonpath='{.status.phase}';echo
+```
 
-      ```bash
-      scripts/09c-ace-designer-inst-deploy.sh
-      ```
-      Confirm the instance has been deployed successfully before moving to the next step running the following command:
-      ```bash
-      oc get designerauthoring ace-designer-ai -n tools -o jsonpath='{.status.phase}';echo
-      ```
-      Note this will take few minutes, but at the end you should get a response like this:
-      ```
-      Ready
-      ```
+Note this will take few minutes, but at the end you should get a response like this:
+```
+Ready
+```
+Deploy Designer Authoring instance
+
+```bash
+scripts/09c-ace-designer-inst-deploy.sh
+```
+Confirm the instance has been deployed successfully before moving to the next step running the following command:
+```bash
+oc get designerauthoring ace-designer-ai -n tools -o jsonpath='{.status.phase}';echo
+```
+Note this will take few minutes, but at the end you should get a response like this:
+```
+Ready
+```
+
 ## Create BAR Auth Configuration
 
 !!! Info "What is a BAR?"
@@ -139,6 +148,10 @@ Deploy Designer Authoring instance with support for Callable Flows
       - github-barauth
       - ace-qmgr-demo-policy
       ```
+
+!!! Warning "You are ready to explore App Connect"
+      The rest of the configuration steps below are optional, but may be of interest during your exploration of App Connect.  Some of these configurations may provide value during your Pilot deployments.
+
 ### Configure Sales Force Connector (Optional)
 The Sales Force integration is a very typical example used to learn and demo ACE.  If you followed the prerequisites to create your SF account you can configure that here.
 1. Set Environment Variables:  

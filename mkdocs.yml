@@ -205,6 +205,17 @@ nav:
     - Messaging: integration/05-mq.md
     - App Connect: integration/06-ace.md
     - Additional Steps: integration/07-demo-config.md
+    - Other Integration Prereqs: integration/tech-jam-labs/prereq-general.md
+    - Optional Lab - MQ: integration/tech-jam-labs/mq.md
+    - Optional Lab - Event Streams: integration/tech-jam-labs/event-streams.md
+    - Optional Lab - ACE Prereqs: integration/tech-jam-labs/prereq-ace-toolkit.md
+    - Optional Lab - ACE & MQ Node: integration/tech-jam-labs/ace-mq.md
+    - Optional Lab - ACE & Kafka: integration/tech-jam-labs/ace-es.md
+    - Optional Lab - APIC for Dev: integration/tech-jam-labs/apic-prep.md
+    - Optional Lab - APIC Develop: integration/tech-jam-labs/apic-dev.md
+    - Optional Lab - APIC Consume: integration/tech-jam-labs/apic-consume.md
+    - Optional Lab - APIC Analyze: integration/tech-jam-labs/apic-analyze.md
+ 
   - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
