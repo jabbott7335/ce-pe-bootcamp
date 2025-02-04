@@ -146,14 +146,14 @@ Events:
 4. Once your pod enters a `running` state, run the following command to access the application from your machine:
 
 ```bash
-kubectl port forward pod/greeting 9080:9080
+kubectl port-forward pod/greeting 9080:9080
 ```
 
 Expected output:
 
 ```
-Forwarding from 127.0.0.1:8082 -> 8080
-Forwarding from [::1]:8082 -> 8080
+Forwarding from 127.0.0.1:9080 -> 9080
+Forwarding from [::1]:9080 -> 9080
 ```
 
 

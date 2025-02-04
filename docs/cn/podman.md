@@ -313,6 +313,7 @@ It helps you to access the logs of your container. It allows you to debug the co
 At the end, you will see something like below.
 
 ```bash
+$ <command>
 .   ____          _            __ _ _
 /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
