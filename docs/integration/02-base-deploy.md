@@ -84,7 +84,7 @@ Use the provided script to create namespaces with the corresponding entitlement 
 Set your entitlement key:
 
 !!! Question "Where do I get my entitlement key?"
-      Remember from the IPI exercise ... Locate **YOUR** pull secret from Red Hat :fontawesome-brands-redhat:.  You can copy your pull secret from the [Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/pull-secret){target="_blank"} web page.
+       You can copy your entitlement key from the [My IBM Entitlement Key](https://myibm.ibm.com/products-services/containerlibrary){target="_blank"} web page.
 
 ```bash
 export ENT_KEY=<my-key>
