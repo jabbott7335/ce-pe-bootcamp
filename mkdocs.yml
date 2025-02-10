@@ -271,6 +271,8 @@ nav:
     - Learn CD: devops/argocd/index.md
     - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
+  - Terraform:
+    - Terraform 101:  terraform/index.md
   - Challenge Exercises (Optional): 
     - Cloud Native Challenge: cn-challenge/index.md
     - Deploying OpenShift on IBM Cloud: 

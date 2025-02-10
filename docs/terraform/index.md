@@ -7,7 +7,8 @@ Describe the vSphere Environment
 Create the VM Template from Bastion
 
 ## Download Terraform
-Either Bastion laptop
+
+### Linux Bastion
 
 ```
 # sudo yum install -y yum-utils
@@ -16,6 +17,13 @@ Either Bastion laptop
 # terraform version
 Terraform v1.10.5
 on linux_amd64
+```
+
+### MacOS
+
+```
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
 
@@ -96,16 +104,30 @@ resource "vsphere_virtual_machine" "vm" {
 
 ```
 
-# Terraform initialize
+# Terraform Workflow
 
-# Terraform plan
-Review the changes that will make if applied
+## Terraform initialize
 
-# Terraform apply
+```terraform initialize``
+
+## Terraform plan
+
+Review the changes that will make when applied
+
+```terraform plan```
+
+## Terraform apply
+
 Apply the changes. 
 
+```terraform apply```
 
-# Terrafrom Destroy
+**Note:** To `apply` the changes when prompted must type 'yes'.
 
 
-# Terraform Stat Files
+## Terrafrom Destroy
+
+```terraform destroy```
+
+
+### Terraform Stat Files
