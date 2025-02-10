@@ -567,6 +567,7 @@ spec:
             requests:
               storage: 1Gi
           volumeMode: Filesystem
+          storageClassName: ocs-storagecluster-cephfs
         status: {}
 ```
 

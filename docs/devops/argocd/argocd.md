@@ -1,370 +1,532 @@
-# ArgoCD Lab
+# Deploying an Application to OpenShift
 
-=== "OpenShift"
-    ## OpenShift
+## Description
 
-    ### Pre-requisites
+This workshop covers containerising an application and deploying it to OpenShift both manually and using a CI/CD pipeline with OpenShift-Pipelines (Tekton) and OpenShift GitOps (ArgoCD).
 
-    Make sure your environment is setup properly for the lab.
+We will be building the following Pipeline to deploy our cloud native application:
 
-    Check the [Environment Setup](../../index.md#environment-setup) page for your setup.
 
-    ### ArgoCD Installation
+![ArgoCD Pipeline Diagram](../images/argocd-lab.jpg)
 
-    - Create the namespace `argocd` to install argocd
-        ```bash
-        oc new-project argocd
-        ```
-    - Install ArgoCD as follows.
-        ```
-        oc apply --filename https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/argo-lab/argocd-operator.yaml
-        ```
-    - When installing the tutorial, make sure you wait until the argocd-operator is finished before installing the argocd-cr..or it will fail. You can do this:
-        ```bash
-        oc get ClusterServiceVersion -n argocd
-        NAME                                   DISPLAY                        VERSION   REPLACES   PHASE
-        argocd-operator.v0.0.8                 Argo CD                        0.0.8                Succeeded
-        ```
-        and wait for the "succeeded" to come up before proceeding.
-        ```
-        oc apply --filename https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/argo-lab/argocd-cr.yaml
-        ```
-        and wait for the argocd server Pod to be running
-        ```
-        oc get pods -n argocd -l app.kubernetes.io/name=example-argocd-server
-        ```
-        ```
-        NAME                                     READY   STATUS    RESTARTS   AGE
-        example-argocd-server-57c4fd5c45-zf4q6   1/1     Running   0          115s
-        ```
-    - Install the `argocd` CLI, for example on OSX use brew
-        ```bash
-        brew tap argoproj/tap
-        brew install argoproj/tap/argocd
-        ```
-    - Set an environment variable `ARGOCD_URL` using the `EXTERNAL-IP`
-        ```bash
-        export ARGOCD_NAMESPACE="argocd"
-        export ARGOCD_SERVER=$(oc get route example-argocd-server -n $ARGOCD_NAMESPACE -o jsonpath='{.spec.host}')
-        export ARGOCD_URL="https://$ARGOCD_SERVER"
-        echo ARGOCD_URL=$ARGOCD_URL
-        echo ARGOCD_SERVER=$ARGOCD_SERVER
-        ```
+1. The pipeline starts by cloning the application source code from a git repository
+2. It builds the application image
+3. It updates deployment YAML manifests using [kustomize](https://github.com/kubernetes-sigs/kustomize)
+4. It pushes updated manifests to a gitops repository
+5. [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) then reconciles manifests to OpenShift
 
-    ### Deploying the app
+## Prerequisites
 
-    - Login into the UI.
-        ```bash
-        open $ARGOCD_URL
-        ```
-    - Use `admin` as the username and get the password with the following command
-        ```bash
-        oc get secret example-argocd-cluster -n $ARGOCD_NAMESPACE -o jsonpath='{.data.admin\.password}' | base64 -d
-        ```
-        For example the output is similar to this:
-        ```
-        tyafMb7BNvO0kP9eizx3CojrK8pYJFQq
-        ```
+* Access to the OpenShift cluster Deployed during the OpenShift Install Lab
+* ODF installed successfully
+* The OpenShift internal registry deployed successfully
+* Pipelines Lab completed successfully
 
-    ![ArgoCD Login](../images/argocd_login.png)
 
-    - Now go back to the ArgoCD home and click on `NEW APP`.
-    - Add the below details:
-    - Application Name: `sample`
-    - Project - `default`
-    - SYNC POLICY: `Manual`
-    - REPO URL: `https://github.com/ibm-cloud-architecture/cloudnative_sample_app_deploy`
-    - Revision: `HEAD`
-    - Path: `openshift`
+!!! note "Copying to clipboard"
 
-    ![app details one](../images/app_argo_1.png)
+    This lab guide uses the `pbcopy` command to reduce mistakes copying to the clipboard. The `pbcopy` command comes by default on MacOS. If you are following the lab on RHEL, you can achieve the same by running these commands: 
 
-    - Cluster - Select the default one `https://kubernetes.default.svc` to deploy in-cluster
-    - Namespace - `default`
-    - Click Create to finish
+    ```bash
+    sudo yum install xclip -y 
+    ```
 
-    ![app details two](../images/app_argo_2.png)
+    ```bash
+    alias pbcopy='xclip -selection clipboard'
+    ```
 
-    - You will now see the available apps.
 
-    ![sampleapp create](../images/sampleapp_create.png)
+## Guide
 
-    - Initially, the app will be out of sync. It is yet to be deployed. You need to sync it for deploying.
+## Fork the Cloud Native Application Template
 
-    To sync the application, click `SYNC` and then `SYNCHRONIZE`.
+Navigate to the following github repository: https://github.com/platformengineers-xyz/cloud_native_sample_app
 
-    ![out of sync](../images/out_of_sync.png)
+1. Select `Use this template`
+2. Select `Create a new repository`
+3. Make sure to create the application in your personal github space
+4. Name your new repository `cloud_native_sample_app`
+5. Set visibility to Private
+4. Select `Create`
 
-    - Wait till the app is deployed.
+## Configuring SSH Access for Tekton
 
-    ![synched app](../images/synched_app.png)
 
-    - Once the app is deployed, click on it to see the details.
+Generate an SSH key to clone the repository with. We will use this both for the bastion and Tekton:
 
-    ![sample app deployed](../images/sample_app_deployed.png)
+```bash
+ssh-keygen -t ed25519 -N '' -f ~/.ssh/tekton
+```
 
-    ![sample app full deployment](../images/sample_app_full_deployment.png)
+Copy it to your clipboard:
+```bash
+cat ~/.ssh/tekton.pub | pbcopy
+```
 
-    ### Verifying the deployment
+## Add the SSH Key to your Repo
 
-    - Access the app to verify if it is correctly deployed.
-    - List the cloudnativesampleapp-service route
-        ```
-        oc get route
-        ```
-        It should have an IP under `EXTERNAL-IP` column
-        ```
-        NAME                 HOST/PORT                                     PATH   SERVICES                       PORT   TERMINATION   WILDCARD
-        cloudnative-sample   cloudnative-sample-default.apps-crc.testing          cloudnativesampleapp-service   9080                 None
-        ```
-    - Set an environment variable `APP_URL` using the `EXTERNAL-IP`
-        ```
-        export APP_URL="http://$(oc get route cloudnative-sample -o jsonpath='{.status.ingress[0].host}')"
-        echo ARGOCD_SERVER=$APP_URL
-        ```
-    - Access the url using `curl`
-        ```
-        curl "$APP_URL/greeting?name=Carlos"
-        ```
-        ```
-        {"id":2,"content":"Welcome to Cloudnative bootcamp !!! Hello, Carlos :)"}
-        ```
+1. Navigate to your copy of `cloud_native_sample_app`
+2. Select `Settings`
+3. Select `Deploy Keys`
+4. Select `Add deploy key`
+5. Paste in the Tekton key
+6. Give the key a title and click `Add Key`
 
-    ### Using the ArgoCD CLI
+## Set up a Secret to clone from Github Enterprise repo with an SSH key for OpenShift Pipelines
 
-    - Login using the cli.
-    - Use `admin` as the username and get the password with the following command
-        ```bash
-        export ARGOCD_PASSWORD=$(oc get secret example-argocd-cluster -n $ARGOCD_NAMESPACE -o jsonpath='{.data.admin\.password}' | base64 -d)
-        echo $ARGOCD_PASSWORD
-        ```
-    - Now login as follows.
-        ```bash
-        argocd login --username admin --password $ARGOCD_PASSWORD $ARGOCD_SERVER
-        ```
-        ```
-        WARNING: server certificate had error: x509: cannot validate certificate for 10.97.240.99 because it doesn't contain 
-        any IP SANs. Proceed insecurely (y/n)? y
 
-        'admin' logged in successfully
-        Context 'example-argocd-server-argocd.apps-crc.testing' updated
-        ```
-    - List the applications
-        ```bash
-        argocd app list
-        ```
-        ```
-        NAME    CLUSTER                         NAMESPACE  PROJECT  STATUS  HEALTH   SYNCPOLICY  CONDITIONS  REPO                                                                     PATH   TARGET
-        sample  https://kubernetes.default.svc  default    default  Synced  Healthy  <none>      <none>      https://github.com/ibm-cloud-architecture/cloudnative_sample_app_deploy  openshift  HEAD
-        ```
-    - Get application details
-        ```bash
-        argocd app get sample
-        ```
-        ```
-        Name:               sample
-        Project:            default
-        Server:             https://kubernetes.default.svc
-        Namespace:          default
-        URL:                https://10.97.240.99/applications/sample
-        Repo:               https://github.com/ibm-cloud-architecture/cloudnative_sample_app_deploy
-        Target:             HEAD
-        Path:               openshift
-        SyncWindow:         Sync Allowed
-        Sync Policy:        <none>
-        Sync Status:        Synced to HEAD (9684037)
-        Health Status:      Healthy
+Copy the private key to your clipboard.
 
-        GROUP  KIND        NAMESPACE  NAME                             STATUS  HEALTH   HOOK  MESSAGE
-            Service     default    cloudnativesampleapp-service     Synced  Healthy        service/cloudnativesampleapp-service created
-        apps   Deployment  default    cloudnativesampleapp-deployment  Synced  Healthy        deployment.apps/cloudnativesampleapp-deployment created
-        ```
-    - Show application deployment history
-        ```bash
-        argocd app history sample
-        ```
-        ```
-        ID  DATE                           REVISION
-        0   2020-02-12 21:10:32 -0500 EST  HEAD (9684037)
-        ```
-    ### References
+```
+cat /home/admin/.ssh/tekton | pbcopy
+```
 
-    - [ArgoCD](https://argoproj.github.io/argo-cd/)
+Set your namespace:
 
-=== "Kubernetes"
-    
-    ## Kubernetes
-    
-    ### Pre-requisites
+```bash
+NAMESPACE=tekton-demo
+```
 
-    Make sure your environment is setup properly for the lab.
+Add the private key to OpenShift as a Secret in the `tekton-demo` Project:
 
-    Check the [Environment Setup](../../index.md#environment-setup) page for your setup.
+```bash
+MY_HOMEPATH=$(echo ~)
+```
 
-    ### ArgoCD Installation
+```bash
+oc create secret generic -n $NAMESPACE github-ssh-key  --from-file=ssh-privatekey=$MY_HOMEPATH/.ssh/tekton --type=kubernetes.io/ssh-auth
+```
 
-    - Create the namespace `argocd` to install argocd
-        ```bash
-        kubectl create namespace argocd
-        export ARGOCD_NAMESPACE=argocd
-        ```
-    - Create RBAC resources
-        ```bash
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/service_account.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/role.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/role_binding.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/argo-lab/argo-clusteradmin.yaml
-        ```
+Annotate the Secret:
 
-    - Install CRDs
-        ```bash
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/argo-cd/argoproj.io_applications_crd.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/argo-cd/argoproj.io_appprojects_crd.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/crds/argoproj.io_argocdexports_crd.yaml
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/crds/argoproj.io_argocds_crd.yaml
-        ```
-        Verify CRDs
-        ```bash
-        kubectl get crd -n argocd
-        ```
-        ```
-        NAME                        CREATED AT
-        applications.argoproj.io    2020-05-15T02:05:55Z
-        appprojects.argoproj.io     2020-05-15T02:05:56Z
-        argocdexports.argoproj.io   2020-05-15T02:08:21Z
-        argocds.argoproj.io         2020-05-15T02:08:21Z
-        ```
-    - Deploy Operator
-        ```bash
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/deploy/operator.yaml
-        ```
-    - Deploy ArgoCD CO
-        ```bash
-        kubectl create -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/v0.0.8/examples/argocd-lb.yaml
-        ```
-        Verify that ArgoCD Pods are running
-        ```bash
-        kubectl get pods -n argocd
-        ```
-        ```
-        NAME                                                     READY   STATUS    RESTARTS   AGE
-        argocd-operator-5f7d8cf7d8-486vn                         1/1     Running   0          3m46s
-        example-argocd-application-controller-7dc5fcb75d-xkk5h   1/1     Running   0          2m3s
-        example-argocd-dex-server-bb9df96cb-ndmhl                1/1     Running   0          2m3s
-        example-argocd-redis-756b6764-sb2gt                      1/1     Running   0          2m3s
-        example-argocd-repo-server-75944fcf87-zmh48              1/1     Running   0          2m3s
-        example-argocd-server-747b684c8c-xhgl9                   1/1     Running   0          2m3s
-        ```
-        Verify that the other ArgoCD resources are created
-        ```
-        kubectl get cm,secret,svc,deploy -n argocd
-        ```
-    - List the argocd-server service
-        ```bash
-        kubectl get svc example-argocd-server -n argocd
-        ```
 
-    - From the script, the Argo Server service has a `type` of `LoadBalancer`. If the `ExternalIP` is in a `pending` state, then there is no loadBalancer for your cluster, so we only need the the ArgoCD server's `NodePort`. Otherwise use the `ExternalIP` and `NodePort` to access Argo.
-        ```
-        NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                      AGE
-        example-argocd-server   LoadBalancer   10.105.73.245   <pending>   80:31138/TCP,443:31932/TCP   5m3s
-        ```
+```bash
+oc annotate secret -n $NAMESPACE github-ssh-key tekton.dev/git-0=github.com
+```
 
-    - To access the service we need the `Node's External IP` and the `NodePort`. Let's set an environment variable `ARGOCD_URL` with `NODE_EXTERNAL_IP`:`NodePort`.
-        ```bash
-        export NODE_EXTERNAL_IP="$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="ExternalIP")].address}')"
-        export ARGOCD_NODEPORT="$(kubectl get svc example-argocd-server -n $ARGOCD_NAMESPACE -o jsonpath='{.spec.ports[0].nodePort}')"
-        export ARGOCD_URL="https://$NODE_EXTERNAL_IP:$ARGOCD_NODEPORT"
-        echo ARGOCD_URL=$ARGOCD_URL
-        ```
+Add `known_hosts` to the secret:
 
-    - If you can't access the NodePort from your computer and only http/80 then edit the argocd-server and add the flag `--insecure`
-        ```bash
-        kubectl edit -n argocd deployment example-argocd-server
-        ```
-        Use the kube api to proxy into the argocd server using `kubectl port-forward`
-        ```
-        kubectl port-forward service/example-argocd-server 8080:80 -n argocd
-        ```
-        Then you can access the argocd server locally on port 8080 [http://localhost:8080](http://localhost:8080)
+```bash
+known_hosts_value=$(ssh-keyscan github.com | base64 -w 0) && oc patch secret github-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
+```
 
-    ### Deploying the app
+Once complete, your secret should look as follows:
 
-    - Login using the Browser into the UI using `$ARGOCD_URL` or `localhost:8080` if using port-forward
-    - Use `admin` as the username and get the password with the following command
-        ```bash
-        kubectl get secret example-argocd-cluster -n $ARGOCD_NAMESPACE -o jsonpath='{.data.admin\.password}' | base64 -d
-        ```
-        For example the output is similar to this:
-        ```
-        tyafMb7BNvO0kP9eizx3CojrK8pYJFQq
-        ```
+```bash
+oc get secret github-ssh-key -n $NAMESPACE -o yaml
+```
 
-    ![ArgoCD Login](../images/argocd_login.png)
+```YAML
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gihthub-ssh-key
+  annotations:
+    tekton.dev/git-0: github.com
+data:
+  ssh-privatekey: <private-key>
+  known_hosts: <your-known-hosts>
+type: kubernetes.io/ssh-auth
+```
 
-    - Now go back to the ArgoCD home and click on `NEW APP`.
-    - Add the below details:
-    - Application Name: `sample`
-    - Project - `default`
-    - SYNC POLICY: `Manual`
-    - REPO URL: `https://github.com/ibm-cloud-architecture/cloudnative_sample_app_deploy`
-    - Revision: `HEAD`
-    - Path: `kubernetes`
+Add the secret to your Pipeline Service Account:
 
-    ![app details one](../images/app_argo_1.png)
+```
+oc secrets link pipeline -n $NAMESPACE github-ssh-key
+```
 
-    - Cluster - Select the default one `https://kubernetes.default.svc` to deploy in-cluster
-    - Namespace - `default`
-    - Click Create to finish
+## Install OpenShift GitOps
 
-    ![app details two](../images/app_argo_2.png)
+- Search for the Red Hat Openshift GitOps operator within the OperatorHub.
 
-    - You will now see the available apps.
+- Click the install button in the top left hand corner.
 
-    ![sampleapp create](../images/sampleapp_create.png)
+- Leave the defaults for the update channel, installation mode, installed namespace and update approval.
+  
 
-    - Initially, the app will be out of sync. It is yet to be deployed. You need to sync it for deploying.
+### Edit The app-build pipeline
 
-    To sync the application, click `SYNC` and then `SYNCHRONIZE`.
+!!! note "Prerequisite"
+    Make sure you have completed the [Tekton Lab](../tekton/tekton.md) as it is a prerequisite to this section!
 
-    ![out of sync](../images/out_of_sync.png)
+Create a GitOps Task:
 
-    - Wait till the app is deployed.
+```YAML
 
-    ![synched app](../images/synched_app.png)
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: gitops
+spec:
+  params:
+    - name: directory
+      type: string
+    - name: gitops-repo
+      type: string
+  steps:
+    - args:
+        - |-
+          echo "Cloning Repo"
+          git clone -b main $(params.gitops-repo) gitops 
+          git config --global user.email "tekton@ibmcloud.com" 
+          git config --global user.name "Tekton Pipeline" 
+          cd gitops/
+          mkdir -p $(params.directory)
+          cp ../k8s/manifests.yaml $(params.directory)/
+          git add .
+          git commit -m "Updating image name" --allow-empty 
+          git push
+      command:
+        - /bin/bash
+        - '-c'
+      image: docker.io/csantanapr/helm-kubectl-curl-git-jq-yq
+      name: gitops
+      resources: {}
+      workingDir: $(workspaces.source.path)
+  workspaces:
+    - name: source
+```
 
-    - Once the app is deployed, click on it to see the details.
+Create a `kustomize` task. `kustomize` lets you customize raw, template-free YAML files for multiple purposes. [You can learn more about it here](https://kubectl.docs.kubernetes.io/references/kustomize/):
 
-    ![sample app deployed](../images/sample_app_deployed.png)
+```YAML
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: kustomize-build
+spec:
+  params:
+    - description: the name of the app
+      name: app-name
+      type: string
+    - description: namespace that deployment will be tested in
+      name: app-namespace
+      type: string
+    - description: 'contains the full image take in image:tag format'
+      name: image-with-tag
+      type: string
+  steps:
+    - image: 'quay.io/upslopeio/kustomize:latest'
+      name: kustomize-build
+      resources: {}
+      script: |
+        #!/bin/sh
+        set -e
+        echo "image-with-tag: $(params.image-with-tag)"
+        cd k8s
+        kustomize edit set image "*=$(params.image-with-tag)"
+        kustomize edit set label "app:$(params.app-name)"
+        kustomize edit set label "app.kubernetes.io/instance:$(params.app-name)"
+        kustomize edit set label "app.kubernetes.io/name:$(params.app-name)"
+        kustomize build > manifests.yaml
 
-    ![sample app full deployment](../images/sample_app_full_deployment.png)
+        if [ -f manifests.yaml ]; then
+          echo "manifests.yaml successfully generated"
+          echo "contents of manifests is:"
+          cat manifests.yaml
+          cp manifests.yaml ../manifests.yaml
+        else
+          echo "ERROR: manifests.yaml not generated"
+          exit 1
+        fi
+      workingDir: $(workspaces.source.path)
+  workspaces:
+    - description: contains the cloned git repo
+      name: source
+```
 
-    ### Verifying the deployment
+Update the pipeline to include those tasks:
 
-    - Access the app to verify if it is correctly deployed.
-    - List the cloudnativesampleapp-service service
-        ```bash
-        kubectl get svc cloudnativesampleapp-service
-        ```
-        It will have the `NodePort` for the application. In this case, it is `30499`. 
-        ```
-        NAME                           TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-        cloudnativesampleapp-service   NodePort   172.21.118.165   <none>        9080:30499/TCP   20s
-        ```
-    - Set an environment variable `APP_URL` using the `Node's IP` and `NodePort` values
-        ```bash
-        export APP_NODE_PORT="$(kubectl get svc cloudnativesampleapp-service -n default -o jsonpath='{.spec.ports[0].nodePort}')"
-        export APP_URL="$NODE_EXTERNAL_IP:$APP_NODE_PORT"
-        echo Application=$APP_URL
-        ```
-    - Access the url using `curl`
-        ```bash
-        curl "$APP_URL/greeting?name=Carlos"
-        ```
-        ```
-        {"id":2,"content":"Welcome to Cloudnative bootcamp !!! Hello, Carlos :)"}
-        ```
+```YAML
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: app-build
+spec:
+  params:
+    - description: ssh url for gitops-repo
+      name: gitops-repo
+      type: string
+    - name: source-repo
+      type: string
+    - name: image_registry
+      type: string
+    - description: Application name
+      name: app-name
+      type: string
+  tasks:
+    - name: clone-repository
+      params:
+        - name: url
+          value: $(params.source-repo)
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: source
+    - name: buildah-build
+      params:
+        - name: IMAGE
+          value: $(params.image_registry):$(tasks.clone-repository.results.commit)
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: FORMAT
+          value: oci
+        - name: BUILD_EXTRA_ARGS
+          value: ''
+        - name: PUSH_EXTRA_ARGS
+          value: ''
+        - name: SKIP_PUSH
+          value: 'false'
+        - name: TLS_VERIFY
+          value: 'true'
+        - name: VERBOSE
+          value: 'false'
+      runAfter:
+        - clone-repository
+      taskRef:
+        kind: Task
+        name: buildah-build
+      workspaces:
+        - name: source
+          workspace: source
+    - name: kustomize-build
+      params:
+        - name: app-name
+          value: $(params.app-name)
+        - name: app-namespace
+          value: $(context.pipelineRun.namespace)
+        - name: image-with-tag
+          value: $(params.image_registry):$(tasks.clone-repository.results.commit)
+      runAfter:
+        - buildah-build
+      taskRef:
+        kind: Task
+        name: kustomize-build
+      workspaces:
+        - name: source
+          workspace: source
+    - name: gitops
+      params:
+        - name: directory
+          value: '$(params.app-name)'
+        - name: gitops-repo
+          value: '$(params.gitops-repo)'
+      runAfter:
+        - kustomize-build
+      taskRef:
+        kind: Task
+        name: gitops
+      workspaces:
+        - name: source
+          workspace: source
+  workspaces:
+    - name: source
+```
 
-    ### References
+### Run Your Pipeline (CI)
 
-    - [ArgoCD](https://argoproj.github.io/argo-cd/)
+Update the PipelineRun yaml to point to your GitOps and Source repo:
+
+```yaml
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: app-build-pipeline-
+spec:
+  serviceAccountName: pipeline
+  taskRunSpecs:
+    - pipelineTaskName: gitops
+      taskServiceAccountName: gitops
+  params:
+    - name: source-repo
+      value: git@github.com:<UPDATE-ME>/cloud_native_sample_app.git
+    - name: gitops-repo
+      value: git@github.com:<UPDATE-ME>/pe-bootcamp-gitops.git
+    - name: image_registry
+      value: image-registry.openshift-image-registry.svc:5000/tekton-demo/cloud-native-sample-app
+    - name: app-name
+      value: cloud-native-app
+  pipelineRef:
+    name: app-build
+  timeout: 1h0m0s
+  workspaces:
+    - name: source
+      volumeClaimTemplate:
+        metadata:
+          creationTimestamp: null
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+```
+
+Create the PipelineRun:
+
+```bash
+oc create -n $NAMESPACE -f pipelinerun.yaml
+```
+
+> To monitor the pipeline, head to the console `Pipelines  > Pipelines > pipeline`. The `gitops` task __should__ fail at this stage.
+
+### Enable CD in your application
+
+## Create a Github Repository for your GitOps Resources
+
+GitOps Applications are designed to deploy applications from a git repository. We are now going to create a repository for our Gitops manifests. Navigate to `github.com/<YOUR-USERNAME>?tab=repositories`:
+
+1. Select `New`
+2. Name your new repository `pe-bootcamp-gitops`
+3. Make sure to create the application in your personal github space
+4. Select `Add a README file`. This will make GitHub create a `main` branch for us.
+5. Set the repository to `Private`
+6. Select `Create`
+
+#### Login to Your Openshift GitOps Instance
+
+On the OpenShift console navigate to the `openshift-gitops` project and open the url in `Networking > Routes > openshift-gitops-server`, or run:
+
+```bash
+echo https://$(oc get route -n openshift-gitops openshift-gitops-server -ojsonpath="{.spec.host}")
+```
+
+Your username is `admin` and the password can be found in the Secret called `openshift-gitops-cluster` in the `openshift-gitops` namespace
+
+#### Connect Your GitOps repo to OpenShift GitOps
+
+
+Create an SSH Key with Write access
+
+```bash
+ssh-keygen -t ed25519 -a 100 -f ~/.ssh/argo -N ''
+```
+
+Copy the private key:
+
+```bash
+cat ~/.ssh/argo | pbcopy
+```
+
+Back in the Argo UI, navigate to `Settings > Repositories > Connect Repo`:
+
+* Name: `pe-bootcamp-gitops`
+* Project: `default`
+* Repository URL: `git@github.com:YOUR-USER/pe-bootcamp-gitops.git`
+* Paste the SSH key
+* Click Connect
+
+Copy your public key:
+
+```
+cat ~/.ssh/argo.pub | pbcopy
+```
+
+Add the public key as a `Deploy` key to the pe-bootcamp-gitops Github Repo, make sure to check `Allow write access` this time (Setting > Deploy keys)
+
+
+
+### Authenticating our Pipeline to work with a GitOps Account
+
+Create a GitOps Service Account to run the GitOps Task.
+
+```bash
+oc create -n $NAMESPACE serviceaccount gitops
+```
+
+Create a source secret names `gitops-ssh-key` just as you did before for the `github-ssh-key`
+
+```bash
+MY_HOMEPATH=$(echo ~)
+```
+
+```bash
+oc create secret generic -n $NAMESPACE gitops-ssh-key --from-file=ssh-privatekey=$MY_HOMEPATH/.ssh/argo --type=kubernetes.io/ssh-auth
+```
+
+Add `known_hosts` to your secret:
+
+```bash
+known_hosts_value=$(ssh-keyscan github.com | base64 -w 0) && oc patch secret gitops-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
+```
+
+Annotate the secret for OpenShift Pipelines:
+```bash
+oc annotate secret -n $NAMESPACE gitops-ssh-key tekton.dev/git-0=github.com
+```
+
+Once complete, the secret should look like this:
+```YAML
+apiVersion: v1
+data:
+  ssh-privatekey: <your-key>
+  known_hosts: <your-hosts>
+kind: Secret
+metadata:
+  annotations:
+    tekton.dev/git-0: github.com
+  name: gitops-ssh-key
+  namespace: nextjs
+type: kubernetes.io/ssh-auth
+```
+
+Add the gitops-ssh-key secret to the gitops service account:
+
+```bash
+oc secrets -n link gitops gitops-ssh-key
+```
+
+Give the Service Account permissions required to run:
+
+```bash
+oc policy add-role-to-user -n $NAMESPACE edit -z gitops
+```
+
+!!! Note "What does this command do?"
+    This command is adding edit permissions to the `gitops` service account. [Find out more about OpenShift RBAC permissions here](https://www.redhat.com/en/blog/rbac-openshift-role)
+
+```bash
+oc policy add-role-to-user -n $NAMESPACE pipelines-scc-clusterrole -z gitops
+```
+
+Allow OpenShift GitOps to deploy into the nextjs Project:
+
+```bash
+oc policy add-role-to-user -n $NAMESPACE edit system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+```
+
+Rerun the `app-build` pipeline. This time it should complete without any issues!
+
+
+### Deploy your Application
+
+!!! Note "Prerequisites"
+    Ensure the app-build pipeline has run successfully
+
+In ArgoCD go to `Applications > New App`
+
+Add the following settings and everything else on the default options
+
+> - Application Name: cloud-native-app
+> - SYNC POLICY: Automatic
+> - :ballot_box_with_check: Prune Resources
+> - :ballot_box_with_check: Self Heal
+> - Path: cloud-native-sample-app
+> - Namespace: tekton-demo
+
+
+You have successfully completed the lab once your Argo application looks like below, and you can access the application via the route:
+
+![Argo Sync Success](../images/argo-sync-success.png)
+
+## Acknowledgements
+
+This lab was inspired by, and borrowed heavily from https://github.ibm.com/TechnologyGarageUKI/openshift-workshop
+
+---
