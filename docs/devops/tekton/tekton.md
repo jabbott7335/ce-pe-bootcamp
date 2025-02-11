@@ -1,3 +1,9 @@
+---
+Title: Lab CI 1 - Tekton
+hide:
+    - toc
+---
+
 ## Prerequisites
 
 Make sure your OpenShift environment is properly setup.
