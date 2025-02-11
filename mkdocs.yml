@@ -271,6 +271,12 @@ nav:
     - Learn CD: devops/argocd/index.md
     - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
+  - UPDATED DevOps & GitOps:
+    - devops/tekton_argocd/overview.md
+    - devops/tekton_argocd/gitops-lab.md
+    - devops/tekton_argocd/gitops-solution.md
+    - devops/tekton_argocd/pipelines-lab.md
+    - devops/tekton_argocd/pipelines-solution.md
   - Terraform:
     - Terraform 101:  terraform/index.md
   - Challenge Exercises (Optional): 
