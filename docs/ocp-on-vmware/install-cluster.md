@@ -38,7 +38,6 @@ hide:
         - `node-role.kubernetes.io/infra: ''`
     - Add taint `node.ocs.openshift.io/storage` with value of `true` and effect `NoSchedule` to the nodes.
     - Change all values with postfix `-worker-0` to `-infra-0`.
-    - Change the replicas to `3`.
     - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-type` to `infra`.
     - Change `memoryMiB` to `65536`.
     - Change `numCPUs` to `16`.
