@@ -7,10 +7,10 @@
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
-    
-    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
 
-    <!-- 
+    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely.
+
+    <!--
     - [O'Reilly Account](https://learning.oreilly.com/home/){target="_blank"}: The account is free and easy to create.
     --->
 
@@ -55,13 +55,13 @@
 
 === "Openshift (Windows)"
 
-    ## Create accounts
+    ## Create accounts (Windows)
 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
-    
-    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely. 
+
+    - [Red Hat Account](https://w3.ibm.com/w3publisher/redhat/nfr){target="_blank"}: Request a Red Hat Partner Subscription. Ensure to follow the instructions closely.
 
     ## Cloud Native VM
 
@@ -69,7 +69,7 @@
 
     Is highly recommended for Windows users to use this VM.
 
-    ## Install CLIs and tools
+    ## Install CLIs and tools (Windows)
 
     The following is a list of desktop tools required to help with installation and development.
 
@@ -94,12 +94,12 @@
     </InlineNotification>
 
 === "Kubernetes (MacOS/Linux)"
-    ## Create accounts
+    ## Create accounts (MacOS/Linux)
 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
-    
+
     ## Run System Check Script
 
     Run the following command in your terminal to check which tools need to be installed.
@@ -119,7 +119,7 @@
     !!! Note
         Ignore the requirement for the Docker CLI, IBM Software Policies prohibit the use of the Docker CLI and encourages the use of Podman CLI instead.
 
-    ## Install CLIs and tools
+    ## Install CLIs and tools (MacOS/Linux)
 
     The following is a list of desktop tools required to help with installation and development.
 
@@ -139,25 +139,25 @@
 
 === "Kubernetes (Windows)"
 
-    ## Create accounts
+    ## Create accounts (Kubernetes (Windows))
 
     You'll need these accounts to use the Developer Tools environment.
 
     - [GitHub account](http://github.com){target="_blank"} (public, not enterprise): Create one if you do not have one already. If you have not logged in for a while, make sure your login is working.
-    
-    ## Cloud Native VM
+
+    ## Cloud Native VM (Kubernetes (Windows))
 
     Use the [Cloud Native VM](https://github.com/csantanapr/vagrant-cloud-native#install){target="_blank"} it comes pre-installed with kubernetes and all cloud native CLIs.
 
     Is highly recommended for Windows users to use this VM.
 
-    ## Install CLIs and tools
+    ## Install CLIs and tools (Kubernetes (Windows))
 
     The following is a list of desktop tools required to help with installation and development.
 
     - [Git Client](https://git-scm.com/){target="_blank"}: Needs to be installed in your development operating system, it comes as standard for Mac OS
 
-    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud 
+    - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started){target="_blank"}: Required for management of IBM Cloud
 
     - [Podman Desktop](https://podman-desktop.io/){target="_blank"}: Required for building and running container images.
         - Installed and running on your local machine
@@ -180,7 +180,7 @@
         ```bash
         crc setup
         ```
-    
+
     - Start OpenShift Local
 
         ```bash
@@ -195,7 +195,7 @@
 
     Ensure Minikube is installed. Check out the [Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fhomebrew){target="_blank"} Page.
 
-    - Verify your `driver` is set for `podman`     
+    - Verify your `driver` is set for `podman`
 
         ```bash
         minikube config set driver podman
@@ -205,7 +205,7 @@
 
         ```bash
         minikube start --driver=podman --container-runtime=cri-o
-        ``` 
+        ```
 
     - In case memory is not set, or need to increase set the memory and recreate the VM
 
@@ -220,7 +220,7 @@
         ```bash
         kubectl version
         ```
-    
+
     <InlineNotification kind="warning">
     **Warning:** Make sure you have Cisco VPN turned off when using Minikube.
     </InlineNotification>

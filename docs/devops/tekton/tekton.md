@@ -1,3 +1,9 @@
+---
+Title: Lab CI 1 - Tekton
+hide:
+    - toc
+---
+
 ## Prerequisites
 
 Make sure your OpenShift environment is properly setup.
@@ -567,6 +573,7 @@ spec:
             requests:
               storage: 1Gi
           volumeMode: Filesystem
+          storageClassName: ocs-storagecluster-cephfs
         status: {}
 ```
 

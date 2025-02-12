@@ -49,7 +49,7 @@ Container registries save developers valuable time in the creation and delivery 
       ``` Bash title="Push the image to Quay"
       podman push quay.io/<namespace>/<repository_name>
       ```
-      Your respository has now been pushed to Quay Container Registry!
+      Your repository has now been pushed to Quay Container Registry!
 
       To view your repository, click on the button below:
       
