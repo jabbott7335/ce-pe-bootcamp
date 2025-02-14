@@ -273,6 +273,7 @@ nav:
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
   - Terraform:
     - Terraform 101:  terraform/index.md
+    - Terraform VSphere Lab:  terraform/terraform-vsphere-lab.md
   - Challenge Exercises (Optional): 
     - Cloud Native Challenge: cn-challenge/index.md
     - Deploying OpenShift on IBM Cloud: 
