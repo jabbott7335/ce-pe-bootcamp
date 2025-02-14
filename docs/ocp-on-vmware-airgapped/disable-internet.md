@@ -16,6 +16,7 @@ The aliases and firewall rules for this exercise are available in the Box folder
     64 bytes from a104-69-122-4.deploy.static.akamaitechnologies.com (104.69.122.4): icmp_seq=3 ttl=52 time=1.85 ms
     ```
 
+1. Download the [Firewall Rules :fontawesome-regular-file-zip:](./firewall-rules/pe-bootcamp-firewall-rules.zip){ .md-button target=_blank}. Depending on where your OCP Gym has been deployed, you will need to use the rules for either Washington or Dallas.
 
 1. Open a browser and navigate to https://pfsense.gym.lan{: target="_blank" .external }.
 
