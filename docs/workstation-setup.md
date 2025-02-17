@@ -1,3 +1,8 @@
+---
+hide:
+    - toc
+---
+
 ## Workstation Setup
 
 === "Openshift (MacOS/Linux)"
