@@ -12,18 +12,22 @@ hide:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: energy-shield-service
+  labels:
+    test: liveness
+  name: liveness-example
 spec:
   containers:
-  - name: energy-shield
-    image: ibmcase/energy-shield:1
+  - name: liveness
+    image: docker.io/busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthz; sleep 40; rm -f /tmp/healthz; sleep 700
     livenessProbe:
-      httpGet:
-        path: /healthz
-        port: 8080
-    readinessProbe:
-      httpGet:
-        path: /ready
-        port: 8080
-      initialDelaySeconds: 5
+      exec:
+        command:
+        - cat
+        - /tmp/healthz
+      initialDelaySeconds: 6
+      periodSeconds: 6
 ```
