@@ -8,7 +8,7 @@ hide:
 
 ## Container Health Issues
 
-The first issue is caused by application instances entering an unhealthy state and responding to user requests with error messages. Unfortunately, this state does not cause the container to stop, so the Kubernetes cluster is not able to detect this state and restart the container. Luckily, the application has an internal endpoint that can be used to detect whether or not it is healthy. This endpoint is `/healthz` on port `8080`.
+The first issue is caused by application instances entering an unhealthy state and responding to user requests with error messages. Unfortunately, this state does not cause the container to stop, so the Kubernetes cluster is not able to detect this state and restart the container. Luckily, the application has an internal endpoint that can be used to detect whether or not it is healthy. This endpoint is `/tmp/healthz`.
 
 - Your first task will be to *create a probe* to check this endpoint periodically.
   - If the endpoint returns an **error** or **fails** to respond, the probe will detect this and the cluster will restart the container.
