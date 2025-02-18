@@ -173,6 +173,7 @@
 </span><span id=__span-12-7><a id=__codelineno-12-7 name=__codelineno-12-7 href=#__codelineno-12-7></a>ocpinstall-ntfsr-master-2         Ready    control-plane,master   32m   v1.28.6+6216ea1
 </span><span id=__span-12-8><a id=__codelineno-12-8 name=__codelineno-12-8 href=#__codelineno-12-8></a>ocpinstall-ntfsr-worker-0-mzsp6   Ready    worker                 18m   v1.28.6+6216ea1
 </span><span id=__span-12-9><a id=__codelineno-12-9 name=__codelineno-12-9 href=#__codelineno-12-9></a>ocpinstall-ntfsr-worker-0-n747f   Ready    worker                 18m   v1.28.6+6216ea1
+</span><span id=__span-12-10><a id=__codelineno-12-10 name=__codelineno-12-10 href=#__codelineno-12-10></a>ocpinstall-ntfsr-worker-0-hsh87   Ready    worker                 18m   v1.28.6+6216ea1
 </span></code></pre></div> </li> <li> <p>Display CPU and memory usage of each node.</p> <div class="language-sh highlight"><pre><span></span><code><span id=__span-13-1><a id=__codelineno-13-1 name=__codelineno-13-1 href=#__codelineno-13-1></a>oc<span class=w> </span>adm<span class=w> </span>top<span class=w> </span>nodes
 </span></code></pre></div> <div class="language-text no-copy highlight"><span class=filename>Example Output</span><pre><span></span><code><span id=__span-14-1><a id=__codelineno-14-1 name=__codelineno-14-1 href=#__codelineno-14-1></a>NAME                              CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 </span><span id=__span-14-2><a id=__codelineno-14-2 name=__codelineno-14-2 href=#__codelineno-14-2></a>ocpinstall-ntfsr-infra-0-5bfqj    112m         0%     2071Mi          3%
@@ -183,6 +184,7 @@
 </span><span id=__span-14-7><a id=__codelineno-14-7 name=__codelineno-14-7 href=#__codelineno-14-7></a>ocpinstall-ntfsr-master-2         396m         11%    4457Mi          29%
 </span><span id=__span-14-8><a id=__codelineno-14-8 name=__codelineno-14-8 href=#__codelineno-14-8></a>ocpinstall-ntfsr-worker-0-mzsp6   283m         3%     4301Mi          28%
 </span><span id=__span-14-9><a id=__codelineno-14-9 name=__codelineno-14-9 href=#__codelineno-14-9></a>ocpinstall-ntfsr-worker-0-n747f   408m         5%     4142Mi          27%
+</span><span id=__span-14-10><a id=__codelineno-14-10 name=__codelineno-14-10 href=#__codelineno-14-10></a>ocpinstall-ntfsr-worker-0-hsh87   408m         5%     4142Mi          27% 
 </span></code></pre></div> </li> <li> <p>List the cluster operators.</p> <div class="language-sh highlight"><pre><span></span><code><span id=__span-15-1><a id=__codelineno-15-1 name=__codelineno-15-1 href=#__codelineno-15-1></a>oc<span class=w> </span>get<span class=w> </span>clusteroperators
 </span></code></pre></div> <div class="language-text no-copy highlight"><span class=filename>Example Output</span><pre><span></span><code><span id=__span-16-1><a id=__codelineno-16-1 name=__codelineno-16-1 href=#__codelineno-16-1></a>NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
 </span><span id=__span-16-2><a id=__codelineno-16-2 name=__codelineno-16-2 href=#__codelineno-16-2></a>authentication                             4.17.3    True        False         False      10m     
@@ -228,6 +230,7 @@
 </span><span id=__span-18-7><a id=__codelineno-18-7 name=__codelineno-18-7 href=#__codelineno-18-7></a>ocpinstall-ntfsr-master-2         192.168.252.133
 </span><span id=__span-18-8><a id=__codelineno-18-8 name=__codelineno-18-8 href=#__codelineno-18-8></a>ocpinstall-ntfsr-worker-0-mzsp6   192.168.252.136
 </span><span id=__span-18-9><a id=__codelineno-18-9 name=__codelineno-18-9 href=#__codelineno-18-9></a>ocpinstall-ntfsr-worker-0-n747f   192.168.252.138
+</span><span id=__span-18-10><a id=__codelineno-18-10 name=__codelineno-18-10 href=#__codelineno-18-10></a>ocpinstall-ntfsr-worker-0-hsh87   192.168.252.138 
 </span></code></pre></div> </li> <li> <p>Log in to one of the nodes.</p> <div class="language-sh highlight"><pre><span></span><code><span id=__span-19-1><a id=__codelineno-19-1 name=__codelineno-19-1 href=#__codelineno-19-1></a>ssh<span class=w> </span>-i<span class=w> </span>~/.ssh/id_core<span class=w> </span>core@192.168.252.132
 </span></code></pre></div> <div class="language-text no-copy highlight"><span class=filename>Example Output</span><pre><span></span><code><span id=__span-20-1><a id=__codelineno-20-1 name=__codelineno-20-1 href=#__codelineno-20-1></a>The authenticity of host &#39;192.168.252.132 (192.168.252.132)&#39; can&#39;t be established.
 </span><span id=__span-20-2><a id=__codelineno-20-2 name=__codelineno-20-2 href=#__codelineno-20-2></a>ED25519 key fingerprint is SHA256:39TmjFLNRRmncEWcvEuLV75DTuFVPWQI0G5p0BHTmKA.
