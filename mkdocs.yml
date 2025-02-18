@@ -260,7 +260,7 @@ nav:
     - Lab K8s 10 - Persistent Volumes: k8s/persistent-volumes.md
     - Reference - K8s Lab Solutions: k8s/cheats.md
   - DevOps & GitOps:
-#    - devops/tekton/index.md
+    - devops/index.md
     - Learn CI: devops/tekton/index.md
     - Lab CI 1 - Tekton: devops/tekton/tekton.md
 #    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
