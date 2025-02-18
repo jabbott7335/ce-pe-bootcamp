@@ -24,12 +24,12 @@ Upon completion of this exercise, you will be able to:
 
 A modernization project requires containerizing existing applications using OpenShift, but the client lacks the necessary human resources to build the cluster. As part of our IBM team, you have been tasked with constructing an OpenShift cluster on their behalf.
 
-The required cluster configuration consists of eight nodes:
+The required cluster configuration consists of nine nodes:
 
  | Node type      | vCPU | Memory in GiB | Disk size in GB |
  |:---------------|:----:|:-------------:|:---------------:|
- | Control Plane  | 4    | 16            | 120             |
- | Compute        | 8    | 16            | 120             |
+ | Control Plane  | 8    | 32            | 120             |
+ | Compute        | 8    | 32            | 120             |
  | Infrastructure | 16   | 64            | 120             |
 
 In addition, you will need to deploy a software-defined storage (SDS) solution that meets the following requirements:
