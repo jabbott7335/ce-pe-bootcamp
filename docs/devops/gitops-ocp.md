@@ -9,4 +9,4 @@ GitOps is a set of practices that use Git pull requests to manage infrastructure
 
 GitOps defines infrastructure and application definitions as code. Then, it uses this code to manage multiple workspaces and clusters to simplify the creation of infrastructure and application configurations. By following the principles of the code, you can store the configuration of clusters and applications in Git repositories, and then follow the Git workflow to apply these repositories to your chosen clusters. You can apply the core principles of developing and maintaining software in a Git repository to the creation and management of your cluster and application configuration files.
 
-https://docs.openshift.com/gitops/1.15/understanding_openshift_gitops/about-redhat-openshift-gitops.html
+[Read More About GitOps and ]https://docs.openshift.com/gitops/1.15/understanding_openshift_gitops/about-redhat-openshift-gitops.html
