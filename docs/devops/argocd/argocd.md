@@ -198,12 +198,11 @@ oc create secret generic gitops-token -n $NAMESPACE \
 
 ## Install OpenShift GitOps
 
-- Search for the Red Hat Openshift GitOps operator within the OperatorHub.
+Install the OpenShift GitOps operator from OperatorHub. ([You can follow these instructions](https://docs.openshift.com/gitops/1.15/installing_gitops/installing-openshift-gitops.html))
 
-- Click the install button in the top left hand corner.
 
-- Leave the defaults for the update channel, installation mode, installed namespace and update approval.
-  
+!!! note "OpenShift GitOps vs ArgoCD"
+    You may notice we sometimes use OpenShift Gitops and ArgoCD interchangeably in this guide. OpenShift GitOps is a Red-Hat-provided Operator that installs and manages ArgoCD on OpenShift. All ArgoCD concepts apply to OpenShift GitOps.
 
 ### Edit The app-build pipeline
 

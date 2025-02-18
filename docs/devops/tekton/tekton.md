@@ -37,20 +37,16 @@ If you already have the `tkn` install you can upgrade running
 brew upgrade tektoncd/tools/tektoncd-cli
 ```
 
-### Tekton Pipelines Installation
+### OpenShift Pipelines Operator Installation
 
-Install the tekton operator from OperatorHub:
+Install the OpenShift Pipelines Operator ([You can find some instructions here](https://docs.openshift.com/pipelines/1.17/install_config/installing-pipelines.html))
 
-```
-Channel: stable
-...
-```
 
 !!! Note
     Version will vary based on the version of OpenShift you are running.
  
     
-***Note***: It will take few mins for the Tekton pipeline components to be installed, you an watch the status using the command:
+***Note***: It will take few mins for the OpenShift Pipelines components to be installed, you an watch the status using the command:
 ```
 oc get pods -n openshift-operators -w
 ```
@@ -61,6 +57,10 @@ A successful deployment of Tekton pipelines will show the following pods:
 NAME                                         READY   STATUS    RESTARTS   AGE
 openshift-pipelines-operator-9cdbbb854-x9tvs   1/1     Running   0          25s
 ```
+
+!!! note "OpenShift Pipelines vs Tekton"
+    You may notice we sometimes use Tekton and OpenShift Pipelines interchangeably in this guide. OpenShift Pipelines is a Red-Hat-provided Operator that installs and manages Tekton on OpenShift. All Tekton concepts apply to `OpenShift Pipelines`.
+ 
 
 ## Create Target Namespace
 

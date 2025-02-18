@@ -215,7 +215,6 @@ nav:
     - Optional Lab - APIC Develop: integration/tech-jam-labs/apic-dev.md
     - Optional Lab - APIC Consume: integration/tech-jam-labs/apic-consume.md
     - Optional Lab - APIC Analyze: integration/tech-jam-labs/apic-analyze.md
- 
   - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
@@ -255,21 +254,20 @@ nav:
     - Lab K8s 8 - Creating Services: k8s/creating-services.md
     - Lab K8s 9 - Network Policies: k8s/network-policies.md
     - Learn - Ingresses: k8s/openshift/services-networking/ingress.md
-    - Lab K8s 10 - Ingress IKS: k8s/ingress.md
     - Learn - State Persistence: k8s/openshift/state-persistence/index.md
     - Learn - Volumes: k8s/openshift/state-persistence/volumes.md
     - Learn - Persistent Volumes & Claims: k8s/openshift/state-persistence/pv-pvc.md
-    - Lab K8s 11 - Persistent Volumes: k8s/persistent-volumes.md
+    - Lab K8s 10 - Persistent Volumes: k8s/persistent-volumes.md
     - Reference - K8s Lab Solutions: k8s/cheats.md
   - DevOps & GitOps:
-    - devops/tekton/index.md
+    - devops/index.md
     - Learn CI: devops/tekton/index.md
     - Lab CI 1 - Tekton: devops/tekton/tekton.md
-    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
-    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
-    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
+#    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
+#    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
+#    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
     - Learn CD: devops/argocd/index.md
-    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
+#    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
   - UPDATED DevOps & GitOps:
     - devops/tekton_argocd/overview.md
@@ -279,6 +277,7 @@ nav:
     - devops/tekton_argocd/pipelines-solution.md
   - Terraform:
     - Terraform 101:  terraform/index.md
+    - Terraform VSphere Lab:  terraform/terraform-vsphere-lab.md
   - Challenge Exercises (Optional): 
     - Cloud Native Challenge: cn-challenge/index.md
     - Deploying OpenShift on IBM Cloud: 
