@@ -215,7 +215,6 @@ nav:
     - Optional Lab - APIC Develop: integration/tech-jam-labs/apic-dev.md
     - Optional Lab - APIC Consume: integration/tech-jam-labs/apic-consume.md
     - Optional Lab - APIC Analyze: integration/tech-jam-labs/apic-analyze.md
- 
   - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
@@ -268,7 +267,7 @@ nav:
 #    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
 #    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
     - Learn CD: devops/argocd/index.md
-    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
+#    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
   - Terraform:
     - Terraform 101:  terraform/index.md
