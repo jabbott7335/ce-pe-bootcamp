@@ -12,7 +12,7 @@ The mirror registry will be installed on the bastion host. Mirroring OpenShift p
     1. Expand things until you click on the bastion machine.
     1. Click the Edit Settings button on the top toolbar.
     1. Click Add New Device, choose Hard Disk.
-    1. Change the size to 100 GB for the "New Hard disk", then click OK.
+    1. Change the size to 200 GB for the "New Hard disk", then click OK.
 
 1. Open a Terminal and log in the bastion host.
 
@@ -29,7 +29,7 @@ The mirror registry will be installed on the bastion host. Mirroring OpenShift p
     └─sda3                  8:3    0 48.4G  0 part
       ├─rhel_bastion-root 253:0    0 43.4G  0 lvm  /
       └─rhel_bastion-swap 253:1    0    5G  0 lvm  [SWAP]
-    sdb                     8:16   0  100G  0 disk
+    sdb                     8:16   0  200G  0 disk
     ```
 
 1. List the volume groups.
