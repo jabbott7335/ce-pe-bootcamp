@@ -154,7 +154,7 @@ We will use the create `install-config` wizard to create the install config asse
         platform:
           vsphere:
             cpus: 16
-            memoryMB: 16384
+            memoryMB: 65536
         replicas: 3
       #...
       networking:
