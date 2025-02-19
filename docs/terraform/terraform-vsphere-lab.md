@@ -40,18 +40,8 @@ on darwin_arm64
 
 # Create your terraform module
 
-Create a folder for your project:
+Create a folder for your project and within it create `main.tf` , `variables.tf` and `outputs.tf` files
 
-```bash
-mkdir -p terraform-vpshere-lab && cd terraform-vpshere-lab
-```
-
-Create a `main.tf` , `variables.tf` and `outputs.tf` file:
-
-
-```bash
-touch main.tf variables.tf outputs.tf
-```
 
 In `main.tf` define the following provider block:
 
@@ -74,11 +64,7 @@ provider "vsphere" {
 }
 ```
 
-Run the following command to initialise the provider:
-
-```bash
-terraform init
-```
+Using the `terraform` command, initialise your provider and prepare your working directory.
 
 ```bash
 Initializing the backend...
@@ -102,39 +88,13 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Declare some variables in `variables.tf`:
+Declare the following variables in `variables.tf`:
 
-```hcl
-variable "vsphere_user" {
-  type = string
-  sensitive = true
-  description = "User for the VSphere Account"
-}
-
-variable "vsphere_password" {
-  type = string
-  sensitive = true
-  description = "password for the VSphere Account"
-}
-
-variable "vsphere_server" {
-  type = string
-  sensitive = true
-  description = "The VSphere Server Address"
-}
-
-variable "vsphere_allow_unverified_ssl" {
-  type = bool
-  default = true
-  sensitive = false
-}
-
-variable "vsphere_api_timeout" {
-  type = number
-  default = 10
-  sensitive = false
-}
-```
+* vsphere_user as a *string* with a sensitive value of `true`
+* vsphere_password as a *string* with a sensitive value of `true`
+* vsphere_server as a *string* with a sensitive value of `true`
+* vsphere_allow_unverified_ssl as a *bool* with a default value of `true` and sensitive value of `false`
+* vsphere_api_timeout as a *number* with a default value of `10` and sensitive value of `false`
 
 We can now refactor `main.tf`:
 
@@ -156,11 +116,8 @@ provider "vsphere" {
   api_timeout          = var.vsphere_api_timeout
 }
 ```
-Run a Terraform Plan:
 
-```bash
-terraform plan
-```
+Using the `terraform` command, show the changes to the Terraform Plan
 
 Notice how terraform will now ask you to provide these values at runtime. You can store variables locally in a `terraform.tfvars` file:
 
@@ -170,11 +127,10 @@ vsphere_password="password from vmware-ipi.yaml"
 vsphere_server="ocpgym-vc.techzone.ibm.local"
 ```
 
-Re run a plan and notice that terraform will pick up those variables.
+Re-run a plan and notice that terraform will pick up those variables.
 
 !!! note "`terraform.tfvars` file"
     Always treat your `terraform.tfvars` file as sensitive. Never commit it to git.
-
 
 Add some data sources:
 
@@ -199,24 +155,12 @@ data "vsphere_network" "network" {
 }
 ```
 
-Set some more variables:
+Set some more variables.
 
-```hcl
-variable "vsphere_datacenter_name" {
-  type = string
-  default = "IBMCloud"
-}
+* vsphere_datacenter_name as a *string* with a default value of `IBMCloud`
+* vsphere_environment_id as a *string* with a default value available from your `vmware-ipi.yaml` file
+* vsphere_compute_cluster_name as a *string* with a default value of `ocp-gym`
 
-variable "vsphere_environment_id" {
-  type= string
-  description = "The unique id of your vsphere environment. Find it in your vmware-ipi.yaml"
-}
-
-variable "vsphere_compute_cluster_name" {
-  type = string
-  default = "ocp-gym"
-}
-```
 Run another terraform plan. Notice how terraform will import your data sources:
 
 ```hcl
@@ -234,6 +178,7 @@ No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
 ```
+
 Let's create some resources. Start by adding the following resource block:
 
 ```hcl
@@ -265,62 +210,20 @@ resource "vsphere_virtual_machine" "vm" {
 }
 ```
 
-And the following variables:
+Add the following variables.
 
-```hcl
-variable "vsphere_vm_count" {
-  type    = number
-  default = 2
-}
+* vsphere_vm_count as a *number* with a default value of `2`
+* vsphere_vm_name_prefix as a *string* with a default value of `terraform-lab-vm`
+* vsphere_vm_cpus as a *number* with a default value of `2`
+* vsphere_vm_memory as a *number* with a default value of `2048`
+* vsphere_vm_firmware as a *string* with a default value of `efi`
+* vsphere_vm_nic_adapter_type as a *string* with a default value of `vmxnet3`
+* vsphere_vm_disk_size as a *number* with a default value of `20`
+* vsphere_vm_guest_os_id as a *string* with a default value of `rhel9_64Guest`
+* vsphere_vm_wait_for_guest_ip_timeout as a *number* with a default value of `0`
+* vsphere_vm_wait_for_guest_net_timeout as a *number* with a default value of `0`
 
-variable "vsphere_vm_name_prefix" {
-  type    = string
-  default = "terraform-lab-vm"
-}
-
-variable "vsphere_vm_cpus" {
-  type    = number
-  default = 2
-}
-
-variable "vsphere_vm_memory" {
-  type    = number
-  default = 2048
-}
-
-variable "vsphere_vm_firmware" {
-  type    = string
-  default = "efi"
-}
-
-variable "vsphere_vm_nic_adapter_type" {
-  type    = string
-  default = "vmxnet3"
-}
-
-variable "vsphere_vm_disk_size" {
-  type    = number
-  default = 20
-}
-
-variable "vsphere_vm_guest_os_id" {
-  type    = string
-  default = "rhel9_64Guest"
-}
-
-variable "vsphere_vm_wait_for_guest_ip_timeout" {
-  type    = number
-  default = 0
-
-}
-
-variable "vsphere_vm_wait_for_guest_net_timeout" {
-  type    = number
-  default = 0
-}
-```
-
-Run `terraform plan` again. You will notice that terraform will figure out that some resources need to be created:
+Run `terraform` Plan again. You will notice that terraform will figure out that some resources need to be created:
 
 ```bash
 Terraform used the selected providers to generate the following execution plan. Resource actions
@@ -524,12 +427,7 @@ Terraform will perform the following actions:
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
-
-Create the resource using the `apply` command:
-
-```bash
-terraform apply
-```
+Create the resource using the `terraform` command:
 
 ```bash
 sphere_virtual_machine.vm[1]: Creating...
@@ -542,7 +440,7 @@ vsphere_virtual_machine.vm[1]: Creation complete after 15s [id=421d1278-4682-8bc
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-In `variables.tf` set `vsphere_vm_count` to `3`. Rerun `terraform apply`:
+In `variables.tf` set `vsphere_vm_count` to `3`. Re-run the `terraform` command in the previous step.
 
 ```bash
 Terraform used the selected providers to generate the following execution plan. Resource actions
@@ -662,7 +560,7 @@ Changes to Outputs:
     ]
 ```
 
-Apply those changes using `terraform apply`:
+Apply those changes using `terraform`:
 
 ```bash
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
@@ -701,7 +599,7 @@ cat terraform.tfstate
   ...
 ```
 
-Terraform uses this state to keep track of what resources it is managing and their configuration. By having this file on your machine terraform is able manage these resources, however no one else will be able to do so. 
+Terraform uses this state to keep track of what resources it is managing and their configuration. By having this file on your machine terraform is able manage these resources, however no one else will be able to do so.
 
 ## Setting up Remote State
 
@@ -709,12 +607,9 @@ Remote state enables you to securely share state between team members. There are
 
 Navigate to: [Terraform Cloud](https://app.terraform.io/session)
 
-
 If you do not have a free account, create one. Create an organisation:
 
-
 ![Create Organisation](./images/create-org-terraform-cloud.gif)
-
 
 Create an API Key for Terraform:
 
@@ -746,10 +641,6 @@ terraform {
 ```
 
 Re initialise the module. Terraform will be aware of the new remote provider:
-
-```bash
-terraform init
-```
 
 ```bash
 Initializing the backend...
