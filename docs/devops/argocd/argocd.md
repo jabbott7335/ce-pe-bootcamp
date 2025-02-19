@@ -526,8 +526,14 @@ spec:
     runAfter:
     - clone-repository
     taskRef:
-      kind: Task
-      name: buildah-build
+      params:
+        - name: kind
+          value: task
+        - name: name
+          value: buildah
+        - name: namespace
+          value: openshift-pipelines
+      resolver: cluster
     workspaces:
     - name: source
       workspace: source
