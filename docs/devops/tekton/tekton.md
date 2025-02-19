@@ -322,10 +322,7 @@ spec:
 
 **serviceAccount** - it is always recommended to have a service account associated with `PipelineRun`, which can then be used to define fine grained roles. It's important to understand Service Accounts when working with Tekton and other applications. [Take a minute to review service accounts here](https://docs.openshift.com/container-platform/4.17/authentication/using-service-accounts-in-applications.html)
 
-
-Use the Tekton cli to inspect the created resources
-
-The command should list one PipelineRun as shown below:
+Use the Tekton cli to inspect the created resources, the command should list one PipelineRun as shown below:
 
 ```bash
 NAME                  STARTED          DURATION   STATUS
@@ -335,13 +332,13 @@ app-build-run-2cfbx   1 minutes ago    ---        Running
 Wait for few minutes for your pipeline to complete all the tasks. If it is successful, you will see something like below:
 
 Use the `tkn` cli to check the pipeline has completed successfully:
+
 ```bash
 NAME              AGE              LAST RUN                    STARTED         DURATION    STATUS
 app-build   33 minutes ago         app-build-run-2cfbx         2 minutes ago   2 minutes   Succeeded
 ```
 
-If it is successful, check that the `ImageStream` has been created successfully using the `oc` command.
-
+If it is successful, check that the `ImageStream` has been created successfully using the `oc` command, you will see something like below:
 
 ```bash
 NAME                      IMAGE REPOSITORY     TAGS     UPDATED
@@ -359,9 +356,7 @@ NAME                           READY   STATUS    RESTARTS   AGE
 cloudnative-77df47cfbc-962vx   1/1     Running   0          10s
 ```
 
-* Expose the deployment as a service using the `oc` cli.
-
-* Expose the service as a route using the `oc` cli
+* Expose the deployment as a service on port **9080** and then expose that service as a route using the `oc` cli.
 
 To test you have completed everything successfully, run the following command:
 ```bash

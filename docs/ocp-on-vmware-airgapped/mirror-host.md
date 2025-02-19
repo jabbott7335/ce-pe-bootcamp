@@ -6,7 +6,7 @@ The mirror registry will be installed on the bastion host. Mirroring OpenShift p
 
     Use the vCenter Console URL, username and password from your reservation.
 
-1. Add a 100GB disk to the bastion virtual machine.
+1. Add a 200GB disk to the bastion virtual machine.
 
     1. Click on the second icon at the top of the left tree view.
     1. Expand things until you click on the bastion machine.
