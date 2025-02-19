@@ -132,7 +132,7 @@ oc annotate secret -n $NAMESPACE github-ssh-key tekton.dev/git-0=github.com
 Add `known_hosts` to the secret:
 
 ```bash
-known_hosts_value=$(ssh-keyscan github.com | base64 ) && oc patch -n $NAMESPACE secret github-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
+known_hosts_value=$(ssh-keyscan github.com | base64 -w 0) && oc patch -n $NAMESPACE secret github-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
 ```
 
 Once complete, your secret should look as follows:
