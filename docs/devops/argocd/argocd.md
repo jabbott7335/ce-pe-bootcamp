@@ -719,6 +719,30 @@ Add the public key as a `Deploy` key to the `pe-bootcamp-gitops` Github Repo
 
 **Make sure to check `Allow write access` this time (Setting > Deploy keys)**
 
+## Configure Argo RBAC Permissions
+
+To deploy our application, we need to give the Argo Service account appropriate permissions to deploy in our `tekton-demo` namespace.
+
+Create a `ClusterRoleBinding`:
+
+```YAML
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+```
+
+!!! warning "Careful"
+    This `ClusterRoleBinding` gives `ArgoCD` cluster admin permissions across all namespaces. While this is fine for a demo environment, it is not appropriate for real environments. Role Based Access Control (RBAC) in OpenShift is very granular, and you should always give an application only the permissions it **requires** to run (Principle of Least Privilege). [Read more about RBAC on OpenShift here](https://docs.openshift.com/container-platform/4.17/authentication/using-rbac.html)
+
 
 ### Deploy your Application
 
