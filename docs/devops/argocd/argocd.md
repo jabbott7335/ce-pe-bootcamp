@@ -586,7 +586,7 @@ spec:
     - name: API_PATH_PREFIX
       value: ""
     - name: REPO_FULL_NAME
-      value: SamChinellato/pe-bootcamp-gitops
+      value: $(params.gitops-repo)
     - name: GITHUB_TOKEN_SECRET_NAME
       value: gitops-token
     - name: GITHUB_TOKEN_SECRET_KEY
