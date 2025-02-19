@@ -496,8 +496,14 @@ spec:
     - name: url
       value: $(params.source-repo)
     taskRef:
-      kind: ClusterTask
-      name: git-clone
+      params:
+        - name: kind
+          value: task
+        - name: name
+          value: git-clone
+        - name: namespace
+          value: openshift-pipelines
+      resolver: cluster
     workspaces:
     - name: output
       workspace: source
