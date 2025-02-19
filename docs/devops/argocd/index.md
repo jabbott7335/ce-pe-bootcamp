@@ -50,10 +50,32 @@ We want a single spot to change that updates all of our declarative infrastructu
 This is a departure from traditional models of deployment that typically did not use declarative infrastructure, were exclusively push-based or time-based, and relied heavily on manual processes. This approach also gives an option for isolation of the production environment from developers (for example if required for compliance).
 
 This introduces a number of benefits:
+
 - having a commit log of the production environment is a mechanism for performing fast rollbacks and audits
 - developers already know Git and are comfortable in the tooling
 - centralizes environment configuration while still allowing for parameterization
 - ability to segregate developer access ("left of Image Registry and Environment Repository") versus production access ("only access Image Registry and Environment Repository")
+
+## GitOps at Scale 
+
+GitOps enables easy scaling across different environments by leveraging Git as the single source of truth. 
+
+With infrastructure and application configurations stored in version-controlled repositories, scaling becomes as simple as updating a manifest—whether adding nodes to a cluster, deploying to new regions, or spinning up entirely new environments. 
+
+Argo CD continuously monitors these Git repositories, automatically applying changes to match the declared state. 
+
+This approach ensures that scaling is not only rapid but also consistent, reproducible, and transparent. Real-time synchronization and rollback capabilities allow for precise control, while Git’s commit history provides clear audit trails, making it easy to monitor the state of all environments and ensure they remain aligned with organizational standards.
+
+![GitOps at Scale](../images/gitops-at-scale.png)
+
+!!! note "Push vs Pull at Scale"
+    As you scale your GitOps environment to several clusters you can start thinking of a different kind of 'Pull' and 'Push' model. 
+    
+    As a first approach you might want to design your Continuous Delivery around a single Argo instance that **pushes** deployed applications to different clusters. 
+    
+    However, as your application and infrastructure estate grows, you could consider deploying an Argo instance into each target cluster that **pulls** desired application configurations. This stops ArgoCD becoming a single point of failure, and reduces the workload on a single ArgoCD instance.
+
+    For example, you might work with a client who manages several small OpenShift clusters deployed at the edge. Choosing a highly scalable pattern for application delivery in this environment is increasingly important.
 
 [You can find some more info on GitOps Here](https://www.gitops.tech/)
 
