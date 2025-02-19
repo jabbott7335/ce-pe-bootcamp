@@ -8,10 +8,9 @@ hide:
 
 ## Description
 
-This workshop covers containerising an application and deploying it to OpenShift both manually and using a CI/CD pipeline with OpenShift-Pipelines (Tekton) and OpenShift GitOps (ArgoCD).
+This workshop covers containerising an application and deploying it to OpenShift using a CI/CD pipeline with OpenShift-Pipelines (Tekton) and OpenShift GitOps (ArgoCD).
 
 We will be building the following Pipeline to deploy our cloud native application:
-
 
 ![ArgoCD Pipeline Diagram](../images/argocd-lab.jpg)
 
@@ -25,10 +24,10 @@ We will be building the following Pipeline to deploy our cloud native applicatio
 
 ## Prerequisites
 
-* Access to the OpenShift cluster Deployed during the OpenShift Install Lab
-* ODF installed successfully
-* The OpenShift internal registry deployed successfully
-* Pipelines Lab completed successfully
+- :white_check_mark: Access to the OpenShift cluster Deployed during the OpenShift Install Lab
+- :white_check_mark: ODF installed successfully
+- :white_check_mark: The OpenShift internal registry deployed successfully
+- :white_check_mark: [Tekton Lab completed successfully](../tekton/tekton.md)
 
 Clear up any deployed resources from the previous lab:
 
@@ -126,6 +125,9 @@ Annotate the Secret:
 ```bash
 oc annotate secret -n $NAMESPACE github-ssh-key tekton.dev/git-0=github.com
 ```
+
+!!! question "What does this label do?"
+    This label tells Tekton to monitor this secret, and use it when cloning `github.com` repositories. There are many ways to configure authentication in Tekton. [Take a minute to review them here](https://github.com/tektoncd/pipeline/blob/main/docs/auth.md#configuring-authentication-for-git)
 
 Add `known_hosts` to the secret:
 
@@ -711,7 +713,19 @@ Add the public key as a `Deploy` key to the `pe-bootcamp-gitops` Github Repo
 !!! Note "Prerequisites"
     Ensure the app-build pipeline has run successfully
 
-In ArgoCD go to `Applications > New App`
+Copy your private key:
+
+```
+cat ~/.ssh/argo | pbcopy
+```
+
+From the Argo UI, navigate to `Settings > Repositories`.
+
+Add a new repository. Provide the SSH url for yor GitOps repo and paste in your private key:
+
+![Add gitops repo](../images/argocd-add-repo.gif)
+
+Navigate to `Applications > New App`
 
 Add the following settings and everything else on the default options
 
