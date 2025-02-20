@@ -36,4 +36,7 @@ To fulfill the storage requirements of the applications, installation of OpenShi
 
 ## Provision the lab environment
 
+!!! WARNING "Watch Out"
+    Due to a serious bug in OCP 4.17 with the `oc-mirror` cli, we will need to perform the lab using **OCP 4.16**
+
 Repeat the steps from VMware week.
