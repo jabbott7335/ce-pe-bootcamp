@@ -674,7 +674,11 @@ Navigate back to Terraform Cloud. Notice how a new workspace has been created co
 
 ![TF Cloud Deployed Resources](./images/tf-new-workspace.gif)
 
-On Terraform Cloud you can safely collaborate with others on a Terraform project, controlling who has access to manage resources with Terraform.
+On Terraform Cloud you can safely collaborate with others on a Terraform project, controlling who has access to manage resources with Terraform. 
+
+## Clean up
+
+Use the appropriate `terraform` command to clean up all deployed resources.
 
 !!! success "You have successfully completed the Terraform VSphere Lab!"
 
