@@ -193,7 +193,7 @@ nav:
     - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
     - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
     - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
-    - Add IBM Software Entitlement: ocp-on-vmware/update-golbal-pull-secret.md
+    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
   - IBM Concert:
     - concert/index.md
   - Integration:
