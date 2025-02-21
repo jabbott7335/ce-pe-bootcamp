@@ -1,3 +1,9 @@
+---
+Title: Install the Cluster
+hide:
+    - toc
+---
+
 1. Create the installation directory (by convention named after the cluster).
 
     ```sh

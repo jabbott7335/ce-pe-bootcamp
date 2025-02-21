@@ -1,3 +1,9 @@
+---
+Title: Install OpenShift Data Foundation
+hide:
+    - toc
+---
+
 The infrastructure nodes were not created during cluster installation so we are going to add these nodes post installation. 
 
 1. List the MachineSets.

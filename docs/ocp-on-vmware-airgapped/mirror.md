@@ -1,3 +1,9 @@
+---
+Title: Mirror OpenShift Content
+hide:
+    - toc
+---
+
 For mirroring OpenShift content, Red Hat provides the `oc-mirror` command-line interface. What content is mirrored is configured by defining an `ImageSetConfiguration` in a file.
 
 ## Install the OpenShift CLI and the oc-mirror plugin

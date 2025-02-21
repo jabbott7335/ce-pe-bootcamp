@@ -1,3 +1,9 @@
+---
+Title: Setup the mirror host
+hide:
+    - toc
+---
+
 ## Add storage to the bastion host
 
 The mirror registry will be installed on the bastion host. Mirroring OpenShift platform and operator images and running the mirror registry on the same host requires tens of gigabytes of disk space. The initial disk space on the bastion host is not sufficient, you need to make more storage available.

@@ -1,3 +1,9 @@
+---
+Title: Create Install Config
+hide:
+    - toc
+---
+
 ## Collect Install Config Asset Information
 
 1. Create a pull-secret for the mirror-registry.
