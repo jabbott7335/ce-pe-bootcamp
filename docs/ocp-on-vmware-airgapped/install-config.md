@@ -223,4 +223,4 @@ hide:
 
     The `imageDigestSources` should be copied from `${HOME}/oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml`.
 
-    You should update the sha value of `clusterOSImage` to match the one returned by step 2.
+    Replace the sha value of `clusterOSImage` to match the one returned by **step 2**.
