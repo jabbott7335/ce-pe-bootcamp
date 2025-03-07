@@ -1130,6 +1130,22 @@ mirror:
       defaultChannel: latest
       channels:
       - name: latest
+    - name: odf-operator
+      channels:
+      - name: stable-4.16
+      minVersion: '4.16.0-rhodf'
+    - name: ocs-operator
+      channels:
+      - name: stable-4.16
+      minVersion: '4.16.0-rhodf'
+    - name: odf-csi-addons-operator
+      channels:
+      - name: stable-4.16
+      minVersion: '4.16.0-rhodf'
+    - name: mcg-operator
+      channels: 
+      - name: stable-4.16
+      minVersion: '4.16.0-rhodf'
   additionalImages:
   - name: registry.redhat.io/ubi8/ubi:latest
   helm: {}

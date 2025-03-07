@@ -305,6 +305,6 @@ nav:
       - Create OCP Manifests & Ignition Config: airgapped/14-createocpmanifests.md
       - Deploy OpenShift Cluster: airgapped/15-deployocpcluster.md
       - Configure Infra Nodes: airgapped/16-configinfranodes.md
-      - Configure Storage Nodes: airgapped/17-configstoragenodes.md
-      - Day 2 Operations: airgapped/18-day2ops.md
+      - Day 2 Operations: airgapped/17-day2ops.md 
+      - Configure Storage Nodes: airgapped/18-configstoragenodes.md
       - Success: airgapped/success.md
