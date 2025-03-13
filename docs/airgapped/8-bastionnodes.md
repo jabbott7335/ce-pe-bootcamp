@@ -42,9 +42,9 @@ Now, we shall proceed to create the virtual machine designated as the online bas
 
     | **Type** | **vCPU** | **RAM Memory** | **Storage (system)** | **Storage (data)** |
     |------|------|------------|------------------|----------------|
-    |Bastion    |8 vCPU|32 GB|700 GB|0 GB|
+    |Bastion    |4 vCPU|16 GB|700 GB|0 GB|
 
-    ![11](images/airgap-4-12/11.png){: style="max-height:600px"}
+    ![11](images/bastion-vm-settings.png){: style="max-height:600px"}
 
     On "New CD/DVD Drive" select `Datastore ISO File` and then navigate to the ISO folder where we uploaded the RH 8.7 OS ISO file in the previous section and select such ISO file.
 

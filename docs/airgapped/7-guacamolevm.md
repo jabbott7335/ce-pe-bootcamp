@@ -39,7 +39,7 @@ In order to create the bastion machines, we first must upload a RHEL 8.7 OS ISO 
 
 1. Click on Activities at the top left corner of the desktop and click on Firefox to open the web browser.
 
-1. Download the ISO from Red Hat portal:
+1. Download the full install image ISO from Red Hat portal (You will need a Red Hat Account to access):
 
     - [**Link to RH 8.7 SO ISO file**](https://access.redhat.com/downloads/content/479/ver=/rhel---8/8.7/x86_64/product-software){:target="_blank"}
 
@@ -51,7 +51,7 @@ In order to create the bastion machines, we first must upload a RHEL 8.7 OS ISO 
 
 1. Upload the downloaded ISO file to the vCenter datastore to make it available for the bastion VMs we will create in later sections.
 
-    ![8](images/airgap-4-12/8.png){: style="max-height:600px"}
+    ![8](images/iso-upload-vcenter.png){: style="max-height:600px"}
 
     !!! info
         Name the folder created in step 3 as ISOs folder

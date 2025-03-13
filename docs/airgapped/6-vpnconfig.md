@@ -18,4 +18,4 @@ In order to connect via ssh to the machines created during the OpenShift install
   
   1. Active the VPN.
 
-    ![3](images/airgap-4-12/3.png){: style="max-height:600px"}
+    ![3](images/wireguard-status.png){: style="max-height:600px"}

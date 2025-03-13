@@ -26,8 +26,8 @@ Servers specifications:
 |------|-------------------|------|------------|------------------|----------------|
 |Bastion    |2|4 vCPU|16 GB|700 GB|0 GB|
 |Control Plane     |3|4 vCPU|16 GB|120 GB|0 GB|
-|Compute    |3|8 vCPU|32 GB|300 GB|0 GB|
-|Infra      |3|8 vCPU|32 GB|120 GB|0 GB|
+|Compute    |3|4 vCPU|16 GB|120 GB|0 GB|
+|Infra      |3|4 vCPU|16 GB|120 GB|0 GB|
 |Storage    |3|16 vCPU|64 GB|120 GB|512 GB|
 |Bootstrap  |1|4 vCPU|16 GB|120 GB|0 GB|
 
