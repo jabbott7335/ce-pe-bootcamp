@@ -67,7 +67,7 @@ Once the VM has been created successfully we must start the machine and proceed 
 
 1. Click on launch web console to proceed with the OS installation.
 
-    ![14](images/airgap-4-12/14.png){: style="max-height:300px"}
+    ![14](images/launch-webconsole.png){: style="max-height:300px"}
 
 1. Click on the screen that will pop up and select install Red Hat OS.
 
@@ -100,9 +100,9 @@ Once the VM has been created successfully we must start the machine and proceed 
 
     ![65](images/airgap-4-12/65.png){: style="max-height:400px"}
 
-1. On the main menu, click now on the Software Selection option at the bottom of the center options colunm. Then, select the "Minimal install" and click done.
+1. On the main menu, click now on the Software Selection option at the bottom of the center options colunm. Then, select the "Minimal install", and "Headless Management" and click done.
 
-    ![21](images/airgap-4-12/21.png){: style="max-height:600px"}
+    ![21](images/minimal-software.png){: style="max-height:600px"}
 
 1. Create the root credentials, for example `passw0rd` and click done.
 
