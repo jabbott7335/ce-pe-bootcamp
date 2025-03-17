@@ -218,10 +218,10 @@ Copy the resulting ISO files to the image directory `/root/registry/downloads/im
 1. SCP the final ISO file into the Guacamole VM.
 
     !!! tip
-        The following command is **executed from within the Guacamole VM**. That is, you need to connect to the vCenter, launch the web console for the Guacamole VM, open a terminal window in there and execute the command below. To upload ISO files, as we did in the section [7. Guacamole VM](#7-guacamole-vm) at the begining of the course for uploading the RHEL 8.7 OS ISO file for the online bastion and offline bastion, we must do it from the Guacamole VM because the VPN bandwidth is very limited.
+        The following command is **executed from within the Guacamole VM**. That is, you need to connect to the vCenter, launch the web console for the Guacamole VM, open a terminal window in there and execute the command below. To upload ISO files, as we did in the section [Guacamole VM](7-guacamolevm.md) at the beginning of the course for uploading the RHEL 8.7 OS ISO file for the online bastion and offline bastion, we must do it from the Guacamole VM because the VPN bandwidth is very limited.
 
     !!! tip "Extra tip for free ;-)"
-        To get the `@` symbol typed on the terminal, because the layout of the keyboard set up in the Guacamole VM might very well be different than your laptops keyboard layout, we strongly recommned you open the brower and google "at symbol". From the results displayed by Google, copy the `@` symbol and paste it in your terminal
+        To get the `@` symbol typed on the terminal, because the layout of the keyboard set up in the Guacamole VM might very well be different than your laptops keyboard layout, we strongly recommened you open the browser and google "at symbol". From the results displayed by Google, copy the `@` symbol and paste it in your terminal
 
     ```{ .text .copy title="[Guacamole VM]"}
     scp root@192.168.252.22:/tmp/rhcos-install-cluster.iso ./

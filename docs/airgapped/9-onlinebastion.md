@@ -1130,6 +1130,9 @@ mirror:
       defaultChannel: latest
       channels:
       - name: latest
+    - name: local-storage-operator
+      channels:
+      - name: stable
     - name: odf-operator
       channels:
       - name: stable-4.16

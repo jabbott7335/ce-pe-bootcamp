@@ -7,7 +7,7 @@ hide:
 We need to create the following virtual machines in vCenter according to the following specs:
 
 | **Type** | **Number of servers** | **vCPU** | **RAM Memory** | **Storage (system)** | **Storage (data)** |
-|------|-------------------|------|------------|------------------|----------------|-----|
+|----------|-----------------------|----------|----------------|----------------------|--------------------|
 |**Control Plane**         |3|8 vCPU|32 GB|300 GB|0 GB|
 |**Infra**          |3|8 vCPU|32 GB|300 GB|0 GB|
 |**Compute**    |3|16 vCPU|64 GB|300 GB|0 GB|
