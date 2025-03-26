@@ -4,10 +4,37 @@ hide:
     - toc
 ---
 
-!!! warning "This lab targets Concert v1.0.4.1"
-    This lab exercise was written and tested against a Concert v1.0.4.1 instance. Please ensure you are running the right version.
+!!! warning "This lab targets Concert v1.0.5.0"
+    This lab exercise was written and tested against a Concert v1.0.5.1 instance. Please ensure you are running the right version.
 
 [:fontawesome-solid-play: Reserve an Environment for this Lab](https://techzone.ibm.com/my/reservations/create/677c0eb8d69537400a8df287){ .md-button }
+
+While it is possible to complete this lab from your local machine, these instructions have been tested on the IBM Concert Virtual Machine.
+
+## Connecting to the IBM Concert VM
+
+1. Connect and log in to your Concert instance using the Public IP and credentials from your TechZone reservation page.
+2. From your TechZone reservation page, scroll down and click `Download SSH Key`
+
+3. From your terminal hange the permissions for the ssh key:
+
+```bash
+chmod 400 ~/Downloads/pem_ibmcloudvsi_download.pem
+```
+> The path to your downloaded SSH key may be different on your local machine.
+
+
+SSH into the instance:
+
+```bash
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@<concert-public-ip-from-techzone>
+```
+
+```bash
+[itzuser@itzvsi-667000bg6b-iocyoibm ~]$
+```
+
+You are now sshed onto the Concert instance. Follow the rest of the lab from this terminal!
 
 ## Utilities
 
@@ -176,26 +203,6 @@ hide:
     === "Windows"
 
         You can obtain the pre-compiled binaries in the [jq Documentation](https://jqlang.github.io/jq/download/).
-
-???+ note "podman"
-
-    Docker Desktop is no longer allowed for IBM workstations, so we will use podman. The podman and docker commands are interchangeable throughout this guide.
-
-    === "Linux (RHEL)"
-
-        ```bash
-        sudo dnf install -y podman
-        ```
-
-    === "Mac"
-
-        ```bash
-        brew install podman-desktop
-        ```
-    
-    === "Windows"
-
-        Refer to the [Podman Install Insrtuctions](https://podman-desktop.io/docs/installation) if you havent installed podman in your workstation.
   
 ## Generating SBOMs from command line
 
@@ -204,7 +211,7 @@ hide:
 
 ### concert-utils
 
-[concert-utils](https://github.ibm.com/roja/concert-utils/blob/main/ConcertUtils_Guide.md) is a series of scripts that can aid you in integrating IBM Concert into your existing automation processes.
+[concert-utils](https://github.com/IBM/Concert/tree/main/toolkit-enablement/concert-utils) is a series of scripts that can aid you in integrating IBM Concert into your existing automation processes.
 
 Create a sample environment variable file to simulate a pipeline environment.  Create a `common_variables.sh` script from the sample common_variables.sh below, save it, and source it.
 
@@ -214,7 +221,7 @@ Create a sample environment variable file to simulate a pipeline environment.  C
     ####
     # Concert Toolkit Image
     ####
-    export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:v1.0.3.1
+    export CONCERT_TOOLKIT_IMAGE=icr.io/cpopen/ibm-concert-toolkit:latest
 
     ####
     # Concert details
@@ -321,17 +328,13 @@ Create a sample environment variable file to simulate a pipeline environment.  C
 ???+ success "output"
 
     ```{.bash .no-copy}
-    ➜  lab $ git clone https://github.com/IBM/Concert.git concert-public
     Cloning into 'concert-public'...
-    remote: Enumerating objects: 515, done.
-    remote: Counting objects: 100% (48/48), done.
-    remote: Compressing objects: 100% (37/37), done.
-    remote: Total 515 (delta 21), reused 11 (delta 11), pack-reused 467 (from 2)
-    Receiving objects: 100% (515/515), 5.36 MiB | 13.16 MiB/s, done.
-    Resolving deltas: 100% (167/167), done.
-    ➜  lab $ mv concert-public/toolkit-enablement/concert-utils .
-    ➜  lab $ rm -rf concert-public
-    ➜  lab $
+    remote: Enumerating objects: 646, done.
+    remote: Counting objects: 100% (179/179), done.
+    remote: Compressing objects: 100% (133/133), done.
+    remote: Total 646 (delta 53), reused 127 (delta 37), pack-reused 467 (from 2)
+    Receiving objects: 100% (646/646), 6.91 MiB | 25.56 MiB/s, done.
+    Resolving deltas: 100% (199/199), done.
     ```
 
 ### codescan SBOM
@@ -851,6 +854,38 @@ To generate a deploy SBOM, we use the `create-deploy-sbom.sh` helper script. The
         ➜  lab $
         ```
 
+# Viewing Application Details on Concert
+
+Now we have uploaded SBOM data to IBM Concert, let's take a look at what insights into the application it gives us.
+
+From the Concert Homepage, we can see an overview of the application vulnerabilities:
+
+![Concert Home Page](./images/concert-home-page.png)
+
+Concert will break down Software Composition into outdated dependencies (Versions Behind Recommended), dependencies with vulnerabilities (Versions with Vulnerabilities), denied licenses and unknown versions.
+
+Click on Versions Behind Recommended. Concert will list:
+
+* All of the dependencies installed that need updating
+* The installed version in the application
+* The latest version published for the dependency
+* A reliability Score. A high level score based on the [OpenSSF Scorecard](https://openssf.org/projects/scorecard/)
+
+![Concert Home Page](./images/concert-application-vulnerability.png)
+
+Back on the Concert Home page, select `Vulnerability` to reveal identified CVEs:
+
+![Vulnerability Home Page](./images/home-vulnerability.png)
+
+Select `Total identified CVEs`. Concert will show identified CVEs in your application, their priority, a Risk Score Generated by Concert, and a [Common Vulnerability Scoring System (CVSS)](https://www.first.org/cvss/) score:
+
+![Vulnerability View](./images/vulnerability-view.png)
+
+
+!!! success "Congratulations"
+
+    You have successfully completed the Concert SBOM Lab!
+    
 # Acknowledgments 
 
 This lab was based on: https://pages.github.ibm.com/cs-tel-ibm-concert/training/module2/manual-build/
