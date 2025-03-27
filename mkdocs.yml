@@ -245,6 +245,7 @@ nav:
   - IBM Concert:
     - concert/index.md
     - Concert SBOM Lab: concert/concert-sbom.md
+    - Concert Workflows Lab: concert/concert-workflows.md
   - Integration:
     - integration/index.md
     - CP4I Prereqs: integration/01-prereqs.md
