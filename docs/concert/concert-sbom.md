@@ -4,7 +4,7 @@ hide:
     - toc
 ---
 
-!!! warning "This lab targets Concert v1.0.5.0"
+!!! warning "This lab targets Concert v1.0.5.1"
     This lab exercise was written and tested against a Concert v1.0.5.1 instance. Please ensure you are running the right version.
 
 [:fontawesome-solid-play: Reserve an Environment for this Lab](https://techzone.ibm.com/my/reservations/create/677c0eb8d69537400a8df287){ .md-button }
@@ -43,7 +43,7 @@ You are now sshed onto the Concert instance. Follow the rest of the lab from thi
     `syft` is a command line utility for generating a Software Bill of Materials (SBOM) from container images and filesystems.
 
     === "Linux (RHEL)"
-    
+
         ```bash
         curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
         ```
@@ -203,7 +203,7 @@ You are now sshed onto the Concert instance. Follow the rest of the lab from thi
     === "Windows"
 
         You can obtain the pre-compiled binaries in the [jq Documentation](https://jqlang.github.io/jq/download/).
-  
+
 ## Generating SBOMs from command line
 
 !!! tip "Run commands from Linux or MacOS"
@@ -255,7 +255,7 @@ Create a sample environment variable file to simulate a pipeline environment.  C
     export ENVIRONMANET_NAME_3=prod
 
     ###
-    # inventory specific vaiable 
+    # inventory specific vaiable
     ###
     export REPO_NAME=qotd-web
     export REPO_URL=https://github.ibm.com/cs-tel-ibm-concert-qotd/qotd-web
@@ -267,7 +267,7 @@ Create a sample environment variable file to simulate a pipeline environment.  C
     export IMAGE_DIGEST="sha256:728ca85a2116f001335881d5024f099d50142bc17ff054c5311c4a6ba7956cd2"
 
     ###
-    # deploy/release specific vaiable 
+    # deploy/release specific vaiable
     ###
 
     export ENV_TARGET=production
@@ -302,8 +302,8 @@ Create a sample environment variable file to simulate a pipeline environment.  C
     export OPTIONS="--platform linux/amd64 -it --rm -u 0"
     ```
 
-    !!! warning 
-      
+    !!! warning
+
         If at any point during this training exercise you log off from your IBM Concert VM, or the SSH connection breaks, you need to set your environment variables again with
 
         ```bash
@@ -351,7 +351,7 @@ export REPO_COMMIT_SHA=$(git rev-parse HEAD) # (1)!
 cd ..
 ```
 
-1. Get the latest repository commit hash 
+1. Get the latest repository commit hash
 
 ???+ success "output"
 
@@ -387,7 +387,7 @@ cd ..
           --outputfile codescan-cyclonedx.json --cdxgen-args "--spec-version 1.5"
         podman run --platform linux/amd64 -it --rm -u 0 -v ./qotd-web:/concert-sample -v /Users/ncolon/dev/ibm-concert/lab:/toolkit-data icr.io/cpopen/ibm-concert-toolkit:v1.0.3.1 bash -c code-scan --src /concert-sample --output-file codescan-cyclonedx.json --cdxgen-args "--spec-version 1.5"
 
-        Running command: 
+        Running command:
         cdxgen -o /toolkit-data/codescan-cyclonedx.json --spec-version 1.5
         SBOM has been generated successfully at /toolkit-data/codescan-cyclonedx.json
         ➜  lab $ ls -la
@@ -432,7 +432,7 @@ cd ..
 
 ### imagescan SBOM
 
-We will use the `qotd-web` sample component for this module.  
+We will use the `qotd-web` sample component for this module.
 
 ???+ note "using concert-utils"
 
@@ -477,7 +477,7 @@ We will use the `qotd-web` sample component for this module.
 
 ??? note "using syft"
 
-    To generate the image scan SBOM, we will use `syft`. 
+    To generate the image scan SBOM, we will use `syft`.
     ```bash
     syft scan registry:quay.io/hollisc/qotd-web:1.0.0 -o cyclonedx-json@1.5 > imagescan-cyclonedx-sbom.json
     ```
@@ -581,7 +581,7 @@ To generate an application SBOM, we use the `create-application-sbom.sh` helper 
         services:
         - name: "${ACCESS_POINT_NAME}"
           type: "app_end_point"
-          endpoints: 
+          endpoints:
           - "${APP_ENDPOINT}"
           properties:
             network_exposure: "${APP_ENDPOINT_EXPOSURE}"
@@ -730,7 +730,7 @@ To generate a deploy SBOM, we use the `create-deploy-sbom.sh` helper script. The
         runtime:
         - name: "${K8S_NAME}"
           type: "kubernetes"
-          depends_on: 
+          depends_on:
           - "${COMPONENT_NAME}"
           properties:
             platform: "${K8S_PLATFORM}"
@@ -800,7 +800,7 @@ To generate a deploy SBOM, we use the `create-deploy-sbom.sh` helper script. The
       base_url: "${BASE_URL}"
       instance_id: "0000-0000-0000-0000"
     EOF
-    
+
     if [[ -z ${TOKEN} ]]; then # (1)!
       cat << EOF | envsubst >> config.yaml
       auth:
@@ -885,7 +885,7 @@ Select `Total identified CVEs`. Concert will show identified CVEs in your applic
 !!! success "Congratulations"
 
     You have successfully completed the Concert SBOM Lab!
-    
-# Acknowledgments 
+
+# Acknowledgments
 
 This lab was based on: https://pages.github.ibm.com/cs-tel-ibm-concert/training/module2/manual-build/
