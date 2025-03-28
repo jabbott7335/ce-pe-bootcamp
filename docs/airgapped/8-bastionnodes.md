@@ -144,7 +144,7 @@ Follow the same steps from the previous section in order to create the offline b
 | **Option** | **Configuration** |
 |------------|-------------------|
 |**FQDN hostname** |bastion.ocp4.platformengineers.xyz|
-|**Static IP Address** |192.168.252.23|
+|**Static IP Addresses** |192.168.252.23, 192.168.252.24, 192.168.252.25|
 |**Operating System** |Red Hat Enterprise Linux|
 |**OS Version** |8.7|
 |**OS Language** |English-US|
@@ -168,18 +168,20 @@ We also need to edit the network configuration but this time we need to configur
 
     ![66](images/airgap-4-12/66.png){: style="max-height:600px"}
 
+1. Click '<Add...>' under the addresses field to add the additional IP addresses listed in the table above.
+
 1. Configure the routing so that we simulate no internet connection:
 
     ![67](images/airgap-4-12/67.png){: style="max-height:600px"}
 
-1. Use the arrows and space bar to select the `Automatically connect` option at the bottom.
+2. Use the arrows and space bar to select the `Automatically connect` option at the bottom.
 
     ![25](images/airgap-4-12/25.png){: style="max-height:260px"}
 
-1. Click `<OK>`
-1. Click `<OK>`
-1. Click `<Back>`
-1. Click `<OK>`
+3. Click `<OK>`
+4. Click `<OK>`
+5. Click `<Back>`
+6. Click `<OK>`
 
 After doing this configuration, try the following commands from the offline bastion terminal to check the connection to internet:
 
