@@ -32,7 +32,7 @@ Servers specifications:
 |Bootstrap  |1|4 vCPU|16 GB|120 GB|0 GB|
 
 !!! example "Lab environment"
-    Use this [**link**](https://techzone.ibm.com/my/reservations/create/65ec3d59d539d900110128a1) to the IBM Technology Zone to request an environment to carry out this tutorial. Make sure you select at least 3TB for the DataStore and VPN is enabled:
+    Use this [:fontawesome-solid-play: **link**](https://techzone.ibm.com/my/reservations/create/65ec3d59d539d900110128a1){ .md-button } to the IBM Technology Zone to request an environment to carry out this tutorial. Make sure you select at least 3TB for the DataStore and VPN is enabled:
 
     ![image](images/lab.png){: style="max-height:200px"}
 

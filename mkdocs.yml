@@ -291,7 +291,7 @@ nav:
       - Install the Cluster: ocp-on-vmware-airgapped/install-cluster.md
       - Install ODF: ocp-on-vmware-airgapped/install-odf.md
     - Deploying Air-Gapped OpenShift:
-      - Solution Architecture: airgapped/1-solution.md
+      - airgapped/index.md
       - Infrastructure Services: airgapped/2-infraservices.md
       - Network Configuration: airgapped/3-networkconfig.md
       - DNS Server Entries: airgapped/4-dnsserverentries.md
