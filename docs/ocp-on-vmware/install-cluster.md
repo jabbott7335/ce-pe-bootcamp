@@ -38,7 +38,6 @@ hide:
         - `node-role.kubernetes.io/infra: ''`
     - Add taint `node.ocs.openshift.io/storage` with value of `true` and effect `NoSchedule` to the nodes.
     - Change all values with postfix `-worker-0` to `-infra-0`.
-    - Change the replicas to `3`.
     - Change the value of `machine.openshift.io/cluster-api-machine-role` and `machine.openshift.io/cluster-api-machine-type` to `infra`.
     - Change `memoryMiB` to `65536`.
     - Change `numCPUs` to `16`.
@@ -257,6 +256,7 @@ You can start following the installation progress with the CLI after the API ser
     ocpinstall-ntfsr-master-2         Ready    control-plane,master   32m   v1.28.6+6216ea1
     ocpinstall-ntfsr-worker-0-mzsp6   Ready    worker                 18m   v1.28.6+6216ea1
     ocpinstall-ntfsr-worker-0-n747f   Ready    worker                 18m   v1.28.6+6216ea1
+    ocpinstall-ntfsr-worker-0-hsh87   Ready    worker                 18m   v1.28.6+6216ea1
     ```
 
 3. Display CPU and memory usage of each node.
@@ -275,6 +275,7 @@ You can start following the installation progress with the CLI after the API ser
     ocpinstall-ntfsr-master-2         396m         11%    4457Mi          29%
     ocpinstall-ntfsr-worker-0-mzsp6   283m         3%     4301Mi          28%
     ocpinstall-ntfsr-worker-0-n747f   408m         5%     4142Mi          27%
+    ocpinstall-ntfsr-worker-0-hsh87   408m         5%     4142Mi          27% 
     ```
 
 4. List the cluster operators.
@@ -340,6 +341,7 @@ You can `ssh` into the worker and master nodes once the virtual machines have be
     ocpinstall-ntfsr-master-2         192.168.252.133
     ocpinstall-ntfsr-worker-0-mzsp6   192.168.252.136
     ocpinstall-ntfsr-worker-0-n747f   192.168.252.138
+    ocpinstall-ntfsr-worker-0-hsh87   192.168.252.138 
     ```
 
 2. Log in to one of the nodes.

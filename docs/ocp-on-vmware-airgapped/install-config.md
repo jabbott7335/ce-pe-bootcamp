@@ -1,3 +1,9 @@
+---
+Title: Create Install Config
+hide:
+    - toc
+---
+
 ## Collect Install Config Asset Information
 
 1. Create a pull-secret for the mirror-registry.
@@ -217,4 +223,4 @@
 
     The `imageDigestSources` should be copied from `${HOME}/oc-mirror-workspace/results-*/imageContentSourcePolicy.yaml`.
 
-    You should update the sha value of `clusterOSImage` to match the one returned by step 2.
+    Replace the sha value of `clusterOSImage` to match the one returned by **step 2**.

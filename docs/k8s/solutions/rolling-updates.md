@@ -10,7 +10,7 @@ hide:
 
 Update the deployment to the new version like so:
 ```
-kubectl set image deployment/jedi-deployment jedi-ws=bitnamy/nginx:1.18.1 --record
+kubectl set image deployment/jedi-deployment jedi-ws=bitnami/nginx:1.18.0 --record
 ```
 
 Check the progress of the rolling update:

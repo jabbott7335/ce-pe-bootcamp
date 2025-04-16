@@ -16,6 +16,73 @@ configuration so that teams can benefit from the same assurance as they do for t
   - Changes to the state are made via pull requests
   - Git push reconciled with the state of the running system with the state in the Git repository
 
+# GitOps And Continuous Deployment
+
+## How does GitOps fit within Continuous Delivery?
+
+GitOps organizes the deployment process around code repositories as the central element. There are at least two repositories: the application repository and the environment configuration repository. The application repository contains the source code of the application and the deployment manifests to deploy the application. The environment configuration repository contains all deployment manifests of the currently desired infrastructure of an deployment environment. It describes what applications and infrastructural services (message broker, service mesh, monitoring tool, …) should run with what configuration and version in the deployment environment.
+
+There are two important points:
+
+1. the codebase and deployment manifests live in the application's repository
+1. a second repository contains only the desired state of infrastructure for a given deployment environment
+
+This second point sounds suspicious, it deals with the _desired state_ of a system. That sounds _a lot like something Kubernetes would be great at_.
+
+This diagram from the documentation does a good job of showing the overall concept behind the Push-based model of GitOps:
+
+![GitOps push model](../images/gitops-push-model.png)
+
+Everything flows as a series of triggers, in a single direction. The end result is a deployment. For our course, we will demonstrate this flow using only Tekton to demonstrate the difference between Tekton's approach to CI/CD and using a mixture of Tekton and ArgoCD.
+
+The other model is Pull-based:
+
+![GitOps pull model](../images/gitops-pull-model.png)
+
+In this case our `Operator` will be [ArgoCD](https://argoproj.github.io/argo-cd/) and deployment environment will be OpenShift/Kubernetes.
+
+Finally, the "core idea" statement at the beginning of the documentation sums it up best:
+
+> The core idea of GitOps is having a Git repository that always contains declarative descriptions of the infrastructure currently desired in the production environment and an automated process to make the production environment match the described state in the repository.
+
+We want a single spot to change that updates all of our declarative infrastructure.
+
+This is a departure from traditional models of deployment that typically did not use declarative infrastructure, were exclusively push-based or time-based, and relied heavily on manual processes. This approach also gives an option for isolation of the production environment from developers (for example if required for compliance).
+
+This introduces a number of benefits:
+
+- having a commit log of the production environment is a mechanism for performing fast rollbacks and audits
+- developers already know Git and are comfortable in the tooling
+- centralizes environment configuration while still allowing for parameterization
+- ability to segregate developer access ("left of Image Registry and Environment Repository") versus production access ("only access Image Registry and Environment Repository")
+
+## GitOps at Scale 
+
+GitOps enables easy scaling across different environments by leveraging Git as the single source of truth. 
+
+With infrastructure and application configurations stored in version-controlled repositories, scaling becomes as simple as updating a manifest—whether adding nodes to a cluster, deploying to new regions, or spinning up entirely new environments. 
+
+Argo CD continuously monitors these Git repositories, automatically applying changes to match the declared state. 
+
+This approach ensures that scaling is not only rapid but also consistent, reproducible, and transparent. Real-time synchronization and rollback capabilities allow for precise control, while Git’s commit history provides clear audit trails, making it easy to monitor the state of all environments and ensure they remain aligned with organizational standards.
+
+![GitOps at Scale](../images/gitops-at-scale.png)
+
+!!! note "Push vs Pull at Scale"
+    As you scale your GitOps environment to several clusters you can start thinking of a different kind of 'Pull' and 'Push' model. 
+    
+    As a first approach you might want to design your Continuous Delivery around a single Argo instance that **pushes** deployed applications to different clusters. 
+    
+    However, as your application and infrastructure estate grows, you could consider deploying an Argo instance into each target cluster that **pulls** desired application configurations. This stops ArgoCD becoming a single point of failure, and reduces the workload on a single ArgoCD instance.
+
+    For example, you might work with a client who manages several small OpenShift clusters deployed at the edge. Choosing a highly scalable pattern for application delivery in this environment is increasingly important.
+
+[You can find some more info on GitOps Here](https://www.gitops.tech/)
+
+We will dive deeper into this topic by building our very own GitOps Continuous delivery pipeline in the upcoming lab!
+
+---
+
 ## ArgoCD Overview
 ## Presentations
 
@@ -31,7 +98,7 @@ These tasks assume that you have:
 | Task                            | Description         | Link        | Time    |
 | --------------------------------| ------------------  |:----------- |---------|
 | ***Walkthroughs***                         |         |         |     |
-| GitOps | Introduction to GitOps with OpenShift | [Learn OpenShift GitOps](https://docs.openshift.com/gitops/1.13/understanding_openshift_gitops/about-redhat-openshift-gitops.html){:target="_blank"} | 20 min |
+| GitOps | Introduction to GitOps with OpenShift | [Learn OpenShift GitOps](https://docs.openshift.com/gitops/1.15/understanding_openshift_gitops/about-redhat-openshift-gitops.html){:target="_blank"} | 20 min |
 | ***Try It Yourself***                         |         |         |     |
 | ArgoCD Lab | Learn how to setup ArgoCD and Deploy Application | [ArgoCD](./argocd.md) | 30 min |
 

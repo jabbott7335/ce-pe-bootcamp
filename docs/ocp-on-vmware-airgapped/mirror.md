@@ -1,3 +1,9 @@
+---
+Title: Mirror OpenShift Content
+hide:
+    - toc
+---
+
 For mirroring OpenShift content, Red Hat provides the `oc-mirror` command-line interface. What content is mirrored is configured by defining an `ImageSetConfiguration` in a file.
 
 ## Install the OpenShift CLI and the oc-mirror plugin
@@ -5,29 +11,32 @@ For mirroring OpenShift content, Red Hat provides the `oc-mirror` command-line i
 1. Install the OpenShift CLI. Repeat this step from the VMware week exercise.
 
 1. Download the plugin.
+   
+    !!! WARNING "Watch Out"
+        Due to a serious bug with the 4.17 version of the `oc-mirror` cli, we will need to perform this section of the lab using **4.16** version of the `oc-mirror` cli instead
 
     ```sh
-    OCP_VERSION=stable-4.17
+    OCP_VERSION=stable-4.16
     ```
     ```sh
     curl -Lo oc-mirror.tar.gz \
         https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/${OCP_VERSION}/oc-mirror.tar.gz
     ```
 
-1. Extract the plugin.
+2. Extract the plugin.
 
     ```sh
     tar xf oc-mirror.tar.gz oc-mirror
     ```
 
-1. Move the plugin to `/usr/local/bin`.
+3. Move the plugin to `/usr/local/bin`.
 
     ```sh
     chmod +x oc-mirror
     sudo install oc-mirror /usr/local/bin
     ```
 
-1. Verify.
+4. Verify.
 
     ```sh
     oc mirror version
@@ -37,7 +46,7 @@ For mirroring OpenShift content, Red Hat provides the `oc-mirror` command-line i
     Client Version: version.Info{Major:"", Minor:"", GitVersion:"4.17.0-202410112132.p0.g07714b7.assembly.stream.el9-07714b7", GitCommit:"07714b7c836ec3ad1b776f25b44c3b2c2f083aa2", GitTreeState:"clean", BuildDate:"2024-10-12T03:10:41Z", GoVersion:"go1.22.7 (Red Hat 1.22.7-1.module+el8.10.0+22325+dc584f75) X:strictfipsruntime", Compiler:"gc", Platform:"linux/amd64"}
     ```
 
-1. Clean up.
+5. Clean up.
 
     ```sh
     rm oc-mirror.tar.gz oc-mirror

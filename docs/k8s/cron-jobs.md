@@ -9,9 +9,9 @@ hide:
 ## The Problem
 
 Your commander has a simple data process that is run periodically to check status. They would like to stop doing this manually in order to save time, so you have been asked to implement a cron job in the Kubernetes cluster to run this process. 
- - Create a cron job called xwing-cronjob using the `ibmcase/xwing-status:1.0` image. 
+ - Create a cron job called xwing-cronjob using the `docker.io/nginx:latest` image. 
  - Have the job run every second minute with the following cron expression: `*/2 * * * *`.
- - Pass the argument `/usr/sbin/xwing-status.sh` to the container.
+ - Using the echo command, echo out `Welcome to IBM CE Platform Engineer Bootcamp`.
 
 ## Verification
 

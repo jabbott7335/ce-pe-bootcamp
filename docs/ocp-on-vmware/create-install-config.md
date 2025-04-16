@@ -69,7 +69,7 @@ We will use the create `install-config` wizard to create the install config asse
 
 1. In the editor of your choice, open the `install-config.yaml` created by the wizard and review the parameters created with the openshift-install.You will be required to change / add some of the settings within this file.  Use the highlighted sections in the below **example** to make the required changes.
 
-    ```{ .yaml linenums="1" hl_lines="8-12 17-20 24 30 37 39-59" .no-copy title="Reference install-config.yaml" }
+    ```{ .yaml linenums="1" hl_lines="8-14 19-25 28 34 41 43-63" .no-copy title="Reference install-config.yaml" }
     additionalTrustBundlePolicy: Proxyonly
     apiVersion: v1
     baseDomain: gym.lan
@@ -79,17 +79,21 @@ We will use the create `install-config` wizard to create the install config asse
       name: worker
       platform:
         vsphere:
-          cpus: 8
-          memoryMB: 16384
-      replicas: 2
+          osDisk:
+            diskSizeGB: 120
+          cpus: 16
+          memoryMB: 65536
+      replicas: 3
     controlPlane:
       architecture: amd64
       hyperthreading: Enabled
       name: master
       platform:
         vsphere:
-          cpus: 4
-          memoryMB: 16384
+          osDisk:
+            diskSizeGB: 120
+          cpus: 8
+          memoryMB: 32768
       replicas: 3
     metadata:
       creationTimestamp: null
@@ -149,9 +153,9 @@ We will use the create `install-config` wizard to create the install config asse
         name: worker
         platform:
           vsphere:
-            cpus: 8
-            memoryMB: 16384
-        replicas: 2
+            cpus: 16
+            memoryMB: 65536
+        replicas: 3
       #...
       networking:
         #...
