@@ -47,7 +47,7 @@ Configure the zookeeper storage as follows:
 
 Do not click **Create** just yet.
 
-![cluster-settings](../../images/es/05-cluster-settings.png){style='height: auto;width: 90%;'}
+![cluster-settings](./images/es/05-cluster-settings.png){style='height: auto;width: 90%;'}
 
 Before you continue, it is worth taking a look at the 'yaml' version to see how we will be accessing this Event Streams instance both from inside and outside the cluster.  Click on the `yaml` view. Look for **listeners:**. You will see you are using `tls` with `scram-sha-512` authentication and that access to the Event Streams instance will be via a route (more on all of this to follow).
 
