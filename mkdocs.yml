@@ -185,7 +185,6 @@ nav:
     - index.md
     - Agenda: agenda.md
     - Workstation Setup: workstation-setup.md
-<<<<<<< HEAD
   - Deploying OpenShift on VMware: 
     - ocp-on-vmware/index.md
     - Prepare for Installation: ocp-on-vmware/prepare.md
@@ -223,8 +222,6 @@ nav:
     - Optional Lab - APIC Develop: integration/tech-jam-labs/apic-dev.md
     - Optional Lab - APIC Consume: integration/tech-jam-labs/apic-consume.md
     - Optional Lab - APIC Analyze: integration/tech-jam-labs/apic-analyze.md
-=======
->>>>>>> 3c880ddb58b26f8b38ad576f91fcdd34c9fa0e6e
   - Cloud Native:
     - cn/index.md
     - Learn - Intro to Cloud Native: cn/cloud-native.md
@@ -273,14 +270,11 @@ nav:
     - devops/index.md
     - Learn CI: devops/tekton/index.md
     - Lab CI 1 - Tekton: devops/tekton/tekton.md
-<<<<<<< HEAD
     - Learn IBM ToolChain: devops/ibm-toolchain/index.md
     - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
-=======
 #    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
 #    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
 #    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
->>>>>>> 3c880ddb58b26f8b38ad576f91fcdd34c9fa0e6e
     - Learn CD: devops/argocd/index.md
 #    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
