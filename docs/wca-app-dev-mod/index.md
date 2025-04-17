@@ -62,7 +62,7 @@ Accept the default for the reservation Name (A) or provide a name of your choosi
 While waiting for this reservation to be provisioned, continue on to the next section to request the second
 environment you’ll need.
 
-!!! Tip "If you want a developer system from TechZone
+!!! Tip "If you want a developer system from TechZone..."
     If you chose not to use your local system as your development environment follow the below steps.
 
     The pre-configured development demonstration environment, which includes the following software and sample data:
@@ -158,9 +158,7 @@ After installing java, add java to `PATH` variable and set `JAVA_HOME` envitonme
     %JAVA_HOME%\bin
     ```
 
-
-
-### 2. Install Maven
+### Install Maven
 
 === "For Mac"
     
@@ -192,51 +190,138 @@ After installing java, add java to `PATH` variable and set `JAVA_HOME` envitonme
     <path-to-folder>\maven\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
     ```
 
+## Configure the TechZone WCA Service
 
-### 3. Install VSCode
+There are three things that you will need to do before you can use the WCA service:
+
+1. Join the IBM Cloud account. Your WCA service and other resources have been provisioned for you in this account.
+2. Create an API key. This is how you will identify yourself and your WCA service within the WCA extension of your development environment.
+3. Create a deployment space. This is the serving environment for WCA.
+
+### Join the IBM Cloud Account
+
+Once the environment has been provisioned, it is likely that would have received one additional email asking you to join an IBM Cloud account: “Action required: You are invited to join an account in IBM Cloud”.
+
+The WCA instance you are being given access to is associated with one of many accounts that have been setup (they all have a name like itz-watsonx-###). You must join this account before you can use WCA.
+
+!!! Info "Joining the Account Without Email"
+
+    Access the TechZone reservation you have for "watsonX Code Assistant - Standard (GA) [Approval Gated]" and **Open your IBM Cloud Environment**.
+
+    Check your notifications for the invitation that belongs to this recent reservation.
+
+    ![join-now](./images/tz-join-now.png){width=50%}
+
+    Choose **Join Now**, accept the **Terms and Conditions** and **Join Account**.
+
+    Finally, **Proceed** and switch to this new account within your IBM Cloud environment.
+
+### Create an API Key
+
+You must do the work in this section from the account mentioned in your reservation (which you joined and switched to in the previous section).  The API key you create here will be used later to configure the WCA VSCode extension from your development environment.
+
+Open the Manage dropdown menu (A) and select Access (IAM) (B).
+
+![access-iam](./images/tz-access-iam.png)
+
+Select API keys (A) from the left-side menu. Then, click the Create button (B).
+
+![api-keys-create](./images/tz-api-keys-create.png)
+
+In the Create IBM Cloud API key pop-up window, enter WCA API key for the Name (A) and then click Create (B).
+
+![api-keys-configure](./images/tz-api-keys-configure.png){width=50%}
+
+**Copy** or **Download** the new API Key.  You will need this to sign into the VSCode extension you will configure later.
+
+### Create a Deployment Space
+
+From the TechZone account within IBM Cloud:
+
+Click the Navigation Menu (A) in the upper-left corner of the page. Then select Resource list (B).
+
+![resource-list](./images/itz-resource-list.png){width=25%}
+
+This displays the list of services and resources that have been provisioned within the account – and that you have access to. Expand the AI / Machine Learning section (A). In here is your instance of IBM watsonx Code Assistant. Note the name; it will be in the form of
+itzwca-**your unique identifier**. Click the name of your WCA instance (B).
+
+![choose-ai-service](./images/tz-choose-ai-service.png)
+
+Click the **Launch watsonx Code Assistant** button at the bottom of the page. If prompted, log in with your IBMid.
+
+In the pop-up window, click the **Set up** button.
+
+For the Type of installation, ensure that **Single user** is selected.
+
+Scroll down to the Steps to complete section. Click the blue arrow icon (A) to the right of Create a deployment space.
+
+![create-deployment-space](./images/tz-create-deployment-space.png)
+
+In the Create a deployment space pop-up window, specify a Name (A) – for example, WCA deployment space. This is part of a global namespace, however, and has to be unique. So, if you’re told that what you specified is already in use, change the name to something unique.
+    
+Next, select your WCA service from the Code assistant service dropdown list (B). Only one service should be listed, and it should match the name of your service that you noted earlier.
+    
+Then, select your object storage instance from the Select storage service dropdown list (C). There will be many instances listed (belonging to others also using this account), so find the one that starts with `itzcos` and includes the identifier found in your WCA service name.
+    
+Finally, click the **Create** button.
+
+After you are informed that the deployment space has been created, click the **X** in the upper-right corner of the pop-up window to close it.
+
+The Create a deployment space step will now be marked as complete.
+
+Click the blue arrow icon (A) to the right of Select your license preference for response generation.
+
+![tz-select-license](./images/tz-select-license.png)
+
+This opens a new browser tab or window that allow you to configure how to display code suggestions. Review the information if you wish, but do not change anything. Simply close the browser tab to return to the page with the Steps to complete section.
+
+Manually check the box for Select your license preference for response generations (A) to indicate that this step has been completed. Then, click the Go to home page button (B).
+
+You can review the information on the home page if you like (don’t change anything!) but at this point you
+are done with WCA setup and can close the browser window.
+
+![go-home](./images/tz-goto-homepage.png)
+
+## Install VSCode
 
 [VSCode Official Website](https://code.visualstudio.com/download){target="_blank"} for installation
 
-### 4. WCA4EJ API Key
+### Add the watsonx Code Assistant Extension to VSCode
 
-XXXXXX Need instructions for getting from Gated env on TZ XXXXXXXX
+Open VSCode and add the watsonx Code Assistant extension from the Visual Studio Code Marketplace.
 
-### 5. Download WCA4EJ Extension
+!!! Tip "Never installed VSC extensions?"
+    The Visual Studio Code team has documented [this process in a tutorial here](https://code.visualstudio.com/docs/getstarted/extensions#:~:text=To%20browse%20the%20extension%20Marketplace,to%20filter%20by%20extension%20category.){target="_blank"}
 
-Download watsonx Code Assistant extension from Marketplace
+Search for the `watsonx Code Assistant` extension.
 
-![alt text](./images/wca-marketplace-image.png){width=50%}
+![alt text](./images/wca-extension.png){width=75%}
 
-Click Install.
+Choose **Install**.
 
-Then you will see the product page.
-
-![alt text](./images/wca-product-image.png)
-
-### 6. Log in to the WCA
-
-
-#### After installing the extension from **Step 5**, login into the extension via following steps:
+After adding the extension, you will need to **Sign In* to the WCA Service via following steps:
 
 - Login with WCA4EJ API Key at the bottom left corner of VSCode. After successfully signed in, the number indicator should be gone.
 
-![screenshot](./images/VSC_WCA4J_Sign_in.png)
+    ![screenshot](./images/VSC_WCA4J_Sign_in.png)
 
 - If you encoutner issue during autherization that says **"administrator needs to associate you with a deployment space"**, please reach out to IBMers to setup deployment space again for your API Key. 
 
-![screenshot](./images/VSC_WCA4J_Sign_in_error_1.png)
+    ![screenshot](./images/VSC_WCA4J_Sign_in_error_1.png)
 
 
-### 7. Installing Liberty Tools and Java Extension
+### Installing Liberty Tools and Java Extension
 
-Install the Liberty Tools and extension Pack for Java extensions from VSCode marketplace as shown below.
+Install the **Liberty Tools** and extension Pack for Java extensions from VSCode marketplace as shown below.
 
 ![screenshot](./images/VSC_LibertyTools.png)
 
+Next, install the **Extension Pack for Java**
+
 ![screenshot](./images/VSCode-pack-for-java.png)
 
-### 8. Start Using WCA4EJ
+### Start Using WCA
 
-You can check by navigating to the **watsonx Code Assistant** tab if your API Key is setup correctly by opening the chat window of WCA4EJ and chat with the model.
+You can verify the code assistant is correctly configured by navigating to the **watsonx Code Assistant**  chat window and beginning a chat.
 
 ![screenshot](./images/VSC_chat_with_model.png)
