@@ -80,8 +80,8 @@ We will use the create `install-config` wizard to create the install config asse
       platform:
         vsphere:
           osDisk:
-            diskSizeGB: 200
-          cpus: 32
+            diskSizeGB: 120
+          cpus: 16
           memoryMB: 65536
       replicas: 3
     controlPlane:
@@ -91,9 +91,9 @@ We will use the create `install-config` wizard to create the install config asse
       platform:
         vsphere:
           osDisk:
-            diskSizeGB: 200
-          cpus: 32
-          memoryMB: 65536
+            diskSizeGB: 120
+          cpus: 8
+          memoryMB: 32768
       replicas: 3
     metadata:
       creationTimestamp: null
@@ -153,9 +153,9 @@ We will use the create `install-config` wizard to create the install config asse
         name: worker
         platform:
           vsphere:
-            cpus: 8
-            memoryMB: 16384
-        replicas: 2
+            cpus: 16
+            memoryMB: 65536
+        replicas: 3
       #...
       networking:
         #...

@@ -12,21 +12,22 @@ hide:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: xwing-cronjob
+  name: pe-bootcamp
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/2 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: xwing-status
-            image: ibmcase/xwing-status:1.0
-            args:
-            - /usr/sbin/xwing-status.sh
+            - name: cron-pe-bootcamp
+              image: nginx:latest
+              command:
+                - /bin/sh
+                - -c
+                - echo Welcome to IBM CE Platform Engineer Bootcamp
           restartPolicy: OnFailure
 ```
-
 
 ```
 kubectl get cronjob xwing-cronjob

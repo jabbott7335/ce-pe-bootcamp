@@ -1,3 +1,9 @@
+---
+Title: Prepare the Installation
+hide:
+    - toc
+---
+
 Repeat the steps from the VMware week exercise.
 
 1. Verify DNS records.

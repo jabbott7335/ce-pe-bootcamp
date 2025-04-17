@@ -8,87 +8,95 @@ hide:
 
 The following agenda is designed for a five-day bootcamp experience.
 
-## Day 1 - Deploying OpenShift on VMware
+## Day 1 - Cloud Native and Kubernetes
 
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
-| Introductions                     |                             |
-| [Hands-On Exercise Introduction](./ocp-on-vmware/index.md)                     |          |
-| [Prepare for Installation](./ocp-on-vmware/prepare.md)                          | Hands-On |
-| [Create the Install Config Asset](./ocp-on-vmware/create-install-config.md)     | Hands-On |
-| [Install the Cluster](ocp-on-vmware/./install-cluster.md)                       | Hands-On |
-| [Configure the Identity Provider](./ocp-on-vmware/config-identity-provider.md)  | Hands-On |
-| [Install OpenShift Data Foundation](./ocp-on-vmware/install-data-foundation.md) | Hands-On |
-| [Configure Internal Image Registry](./ocp-on-vmware/config-image-registry.md)   | Hands-On |
+| Time | Session |
+| --- | --------- |
+| 10:00 - 10:30 | Introductions |
+| 10:30 - 11:00 | [App Dev and Containers Presentation](./cn/materials/02-Containers-Basics.pdf) |
+| Breakout Session - START | |
+| 11:00 - 12:00 | [Image Registries & Podman Hands on Lab](./cn/imageregistry.md) |
+| 12:00 - 12:15 | Break |
+| 12:15 - 13:00 | Image Registries & Podman Hands on Lab - Continued |
+| Breakout Session - PAUSE | |
+| 13:00 - 14:00 | [K8s Basics Presentation](./k8s/openshift/materials/03-Kubernetes-Basics.pdf) |
+| 14:00 - 14:30 | Lunch Break |
+| Breakout Session - START | |  
+| 14:30 - 16:00 | [K8s Hands on Lab](./k8s/pod-creation.md) |
+| 16:00 - 16:30 | Break |
+| 16:30 - 17:30 | K8s Hands on Lab - Continued | 
+| Breakout Session - END | | 
+|17:30 - 18:00 | Office Hours |
 
-## Day 2 - IBM Concert
+---
+## Day 2 - OpenShift Install on VMware
 
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
-| [IBM Concert Overview](./concert/index.md)           |          |
-| [IBM Concert Deployment](./concert/index.md)              | Hands-On |
+| Time | Session |
+| --- | --------- |
+|10:00 - 11:00 | Environment Onboarding |
+|Breakout Session - START  | |
+| 11:00 - 14:00 | [OpenShift Install Lab](./ocp-on-vmware/index.md) |
+| 14:00 - 14:30 | Lunch Break |
+| 14:15 - 16:00 | OpenShift Install Lab - Continued |
+| 16:00 - 16:15 | Break | 
+| 16:15 - 17:30 | OpenShift Install Lab - Continued  |
+| Breakout Session - END | | 
+| 17:30 - 18:00 | Office Hours |
 
-## Day 3 - Integration
+---
 
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
-| [IBM Integration Overview](./integration/index.md)    | Presentation            |
-| [Build Your Pilot](./integration/index.md)                       | Hands-On |
+## Day 3 - DevOps, Gitops and Terraform
 
-## Day 4 - Kubernetes & OpenShift
+| Time | Session |
+| --- | --------- |
+| 10:00 - 10:30 | [Tekton Introduction - Presentation](./devops/materials/04-Tekton-Overview.pdf) | 
+| Breakout Session - START  | |
+| 10:30 - 12:30 | [Tekton Lab](./devops/tekton/index.md) |
+| 12:30 - 12:45 | Break |  
+| Breakout Session - PAUSE  | |
+| 12:45 - 13:15 | GitOps Introduction - Presentation |
+| Breakout Session - START  | |
+| 13:15 - 14:00 | [GitOps Lab](./devops/argocd/argocd.md) |
+| 14:00 - 14:30 | Lunch Break |
+| 14:30 - 15:30 | GitOps Lab - Continued |
+| Breakout Session - PAUSE  | |
+| 15:30 - 16:00 | [Terraform  - Presentation](./terraform/materials/terraform-introduction.pdf) |
+| 16:00 - 16:15 | Break | 
+| Breakout Session - START  | |
+| 16:15 - 17:30 | [Terraform VSphere Lab](./terraform/terraform-vsphere-lab.md) |
+| Breakout Session - END  | |
+| 17:00 - 18:00 | Office Hours |
 
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
-| [App Dev](./cn/app-dev.md)                           | Presentation |
-| [Containers](./cn/containers.md)                      | Presentation |
-| [Image Registries](./cn/imageregistry.md)            | Hands-On |
-| [Podman](./cn/podman.md)                             | Hands-On |
-| [Running a Container Locally](./cn/running-containers.md)       | Hands-On |
-| [K8s & OpenShift Intro](./k8s/openshift/index.md)                                   | Presentation |
-| [API Primitives](./k8s/openshift/core-concepts/index.md)                            | Presentation |
-| [Namespaces & Projects](./k8s/openshift/core-concepts/namespaces-projects/index.md) | Presentation |
-| [Pod Basics](./k8s/openshift/pods/index.md)                                         | Presentation |
-| [Labels-Selectors](./k8s/openshift/pods/tagging/index.md)                           | Presentation |
-| [Pod Creation](./k8s/pod-creation.md)                                               | Hands-On     |
-| [Multi-Container](./k8s/openshift/pods/multi-container/index.md)                    | Presentation |
-| [Multiple Containers](./k8s/multi-containers.md)                                    | Hands-On     |
-| [Health & Monitoring](./k8s/openshift/pods/health-checks/index.md)                  | Presentation |
-| [Probes](./k8s/probes.md)                                                           | Hands-On     |
-| [Troubleshooting](./k8s/openshift/pods/troubleshooting/index.md)                    | Presentation |
-| [Debugging](./k8s/debugging.md)                                                     | Hands-On     | 
-| [Configuration](./k8s/openshift/configuration/index.md)                        | Presentation |
-| [Config Maps](./k8s/openshift/configuration/config-map/index.md)               | Presentation |
-| [Secrets](./k8s/openshift/configuration/secrets/index.md)                      | Presentation |
-| [Security Contexts](./k8s/openshift/configuration/security-contexts/index.md)  | Presentation |
-| [Service Accounts](./k8s/openshift/configuration/service-accounts/index.md)    | Presentation |
-| [Pod Configuration](./k8s/pod-config.md)                                       | Hands-On     |
-| [Deployments](./k8s/openshift/deployments/index.md)                            | Presentation |
-| [Rolling Updates](./k8s/openshift/deployments/updates/index.md)                | Presentation |
-| [Lab K8s 6 - Rolling Updates](./k8s/rolling-updates.md)                        | Hands-On     |
-| [Jobs & CronJobs](./k8s/openshift/pods/jobs/index.md)                          | Presentation |
-| [Lab K8s 7 - Cron Jobs](./k8s/cron-jobs.md)                                    | Hands-On     |
-| [Networking](./k8s/openshift/services-networking/index.md)                 | Presentation |
-| [Services](./k8s/openshift/services-networking/services.md)                | Presentation |
-| [Routes](./k8s/openshift/services-networking/routes.md)                    | Presentation |
-| [Creating Services](./k8s/creating-services.md)                            | Hands-On     |
-| [Network Policies](./k8s/network-policies.md)                              | Hands-On     |
-| [Ingresses](./k8s/openshift/services-networking/ingress.md)                | Presentation |
-| [Ingress IKS](./k8s/ingress.md)                                            | Hands-On     |
-| [State Persistence](./k8s/openshift/state-persistence/index.md)            | Presentation |
-| [Volumes](./k8s/openshift/state-persistence/volumes.md)                    | Presentation |
-| [Persistent Volumes & Claims](./k8s/openshift/state-persistence/pv-pvc.md) | Presentation |
-| [Persistent Volumes](./k8s/persistent-volumes.md)                          | Hands-On     |
-| [K8s Lab Solutions](./k8s/cheats.md)                                       | Reference     |
+---
 
-## Day 5 - DevOps
+## Day 4 - IBM Concert
+| Time | Session |
+| --- | --------- |  
+| 10:00 - 11:00 | IBM Concert Overview |
+| Breakout Session - START | |
+|11:00 - 12:00 | [IBM Concert Hands on Lab](./concert/index.md) |  
+| 12:00 - 12:15 | Break |
+| 12:15 - 14:00 | IBM Concert Hands on Lab - Continued | 
+| 14:00 - 14:30 | Lunch Break | 
+| 14:45 - 16:00 | IBM Concert Hands on Lab - Continued |
+| 16:00 - 16:15 | Break  |
+| 16:15 - 17:00 | Cluster Teardown |
+| Breakout Session - END  | |
+| 17:00 - 17:30 | Office Hours | 
 
-| Task                              | Activity Type               |
-| :-------------------------------- | :-------------------------- |
-| [DevOps & GitOps](./devops/tekton/index.md)  | Presentation |
-| [Tekton](./devops/tekton/tekton.md)          | Hands-On     |
-| [ToolChain](./devops/ibm-toolchain/index.md) | Presentation |
-| [Tekton on IBM Cloud](./devops/ibm-toolchain/ibm-toolchain.md) | Hands-On     |
-| [CD](./devops/argocd/index.md)                                 | Presentation |
-| [GitOps & OCP](./devops/gitops-ocp.md)                         | Presentation |
-| [ArgoCD](./devops/argocd/argocd.md)                            | Hands-On     |
-| [Cloud Native Challenge (Optional)](./cn-challenge/index.md)   | Presentation |
+---
+
+## Day 5 - Air-Gapped OpenShift
+
+| Time | Session |
+| --- | --------- |
+|Breakout Session - START  | |
+| 10:00 - 14:00 | [OpenShift Air-Gapped Install Lab](./ocp-on-vmware-airgapped/index.md)|
+| 14:00 - 14:30 | Lunch Break |
+| 14:15 - 16:00 | OpenShift Air-Gapped Install Lab - Continued |
+| 16:00 - 16:15 | Break | 
+| 16:15 - 17:30 | OpenShift Air-Gapped Install Lab - Continued  |
+| Breakout Session - END | | 
+| 17:30 - 18:00 | Office Hours |
+
+---
