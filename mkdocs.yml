@@ -203,6 +203,9 @@ nav:
     - Lab 3 - Upgrade Java: wca-app-dev-mod/lab-3-upgrade.md
     - Lab 4 - Unit Test: wca-app-dev-mod/lab-4-unit-test.md
     - Lab 5 - General Programming: wca-app-dev-mod/lab-5-general-programming.md
+  - Event Automation:
+    - ea/index.md
+    - Labs 1 - 6: ea/labs.md
   - Integration:
     - integration/index.md
     - CP4I Prereqs: integration/01-prereqs.md
