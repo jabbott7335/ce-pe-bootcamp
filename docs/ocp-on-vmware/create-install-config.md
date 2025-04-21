@@ -80,10 +80,10 @@ We will use the create `install-config` wizard to create the install config asse
       platform:
         vsphere:
           osDisk:
-            diskSizeGB: 120
+            diskSizeGB: 200
           cpus: 16
           memoryMB: 65536
-      replicas: 3
+      replicas: 5
     controlPlane:
       architecture: amd64
       hyperthreading: Enabled
@@ -91,9 +91,9 @@ We will use the create `install-config` wizard to create the install config asse
       platform:
         vsphere:
           osDisk:
-            diskSizeGB: 120
-          cpus: 8
-          memoryMB: 32768
+            diskSizeGB: 200
+          cpus: 16
+          memoryMB: 65536
       replicas: 3
     metadata:
       creationTimestamp: null
