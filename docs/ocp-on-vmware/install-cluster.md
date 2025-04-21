@@ -42,8 +42,9 @@ hide:
     - Change `memoryMiB` to `65536`.
     - Change `numCPUs` to `16`.
     - Change `numCoresPerSocket` to `2`.
+    - Change `replicas` to `3`
     
-    ```{.text .no-copy title="Reference infrastructure MachineSet" linenums=1 hl_lines="7 14 19-21 24-31 39 45-46"} 
+    ```{.text .no-copy title="Reference infrastructure MachineSet" linenums=1 hl_lines="7 10 14 19-21 24-31 39 45-46"} 
     apiVersion: machine.openshift.io/v1beta1
     kind: MachineSet
     metadata:
