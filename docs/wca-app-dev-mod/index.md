@@ -1,4 +1,3 @@
-
 ---
 Title: App Development & Modernization with WCA
 hide:
