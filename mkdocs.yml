@@ -194,8 +194,6 @@ nav:
 #    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
 #    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
 #    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
-  - IBM Concert:
-    - concert/index.md
   - App Dev & Mod w/ WCA:
     - wca-app-dev-mod/index.md
     - Lab 1 - Explain: wca-app-dev-mod/lab-1-explain.md
@@ -206,6 +204,15 @@ nav:
   - Event Automation:
     - ea/index.md
     - Labs 1 - 6: ea/labs.md
+  - IBM Concert:
+    - concert/index.md
+    - Installing Concert:
+      - Overview: concert/installing/install-overview.md
+      - Installing on VM: concert/installing/install-vm.md
+      # - Installing on OpenShift: concert/installing/install-openshift.md
+    - Labs:
+      - Concert SBOM Lab: concert/concert-sbom.md
+      - Concert Workflows Lab: concert/concert-workflows.md
   - Integration:
     - integration/index.md
     - CP4I Prereqs: integration/01-prereqs.md
@@ -284,10 +291,6 @@ nav:
   - HashiCorp:
     - Terraform 101:  terraform/index.md
     - Terraform VSphere Lab:  terraform/terraform-vsphere-lab.md
-  - IBM Concert:
-    - concert/index.md
-    - Concert SBOM Lab: concert/concert-sbom.md
-    - Concert Workflows Lab: concert/concert-workflows.md
   - Integration:
     - integration/index.md
     - CP4I Prereqs: integration/01-prereqs.md

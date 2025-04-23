@@ -8,13 +8,17 @@ hide:
 
 For the IBM Concert hands-on Lab we will be following certain sections from the [CS & TEL IBM Concert Training](https://pages.github.ibm.com/cs-tel-ibm-concert/training/){target="_blank"} GitHub Pages site.
 
-IBM Concert provides capabilities for tackling three main use cases:
+IBM Concert provides capabilities for tackling five main use cases:
 
-- Prioritization and mitigation of CVEs: IBM Concert computes a custom CVE score that aims to facilitate the priorization process by answering the question "which CVEs should be remedifated first?". Concert also provides recommendations for remediatng CVEs.
-- Reviewal of the steps for compliance: IBM Concert uses Gen AI to help you determine whether the steps for addressing a compliance control item are meaningful.
+- Prioritization and mitigation of CVEs: IBM Concert computes a custom CVE score that aims to facilitate the priorization process by answering the question "which CVEs should be remediated first?". Concert also provides recommendations for remediatng CVEs.
+- Reviewal of the steps (evidence) for compliance: IBM Concert uses Gen AI to help you determine whether the steps/evidence for addressing a compliance control item are meaningful.
 - Certificate management: IBM Concert identifies certificates that are about to expire to avoid outages in your environment.
+- Software composition: Understand the packages and components that make up your applications. Identify and mitigate risks associated with those packages and components based on several key indicators of reliability, maintainability, and security. Get recommended actions to address risks, such as those related to outdated or unsupported packages, licenses compliance issues, and vulnerabilities.
+- Resilence posture: Assess the resilience of your applications and environments. Track the resilience of your applications over time.
 
-## Installing on Concert 
+In addition to the above, you can leverage Concert Workflows to create custom, low-code integrations for data ingestion and for remediation.
+
+## Installing Concert 
 
 IBM Concert can be deployed in 3 different configurations.
 
@@ -22,9 +26,10 @@ IBM Concert can be deployed in 3 different configurations.
 - OpenShift based install: IBM Concert is installed on top of OpenShift, and leverages the CPFS framework for authentication. Much more resilient and ready for production deployments.
 - SaaS deployment: IBM Concert is deployed as a services on either IBM Cloud or AWS.
 
-[Installing Concert: Installing on Openshift](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module1/install-openshift/){target="_blank"}
+## Playbook
+[IBM Concert Playbook](https://pages.github.ibm.com/skol/ce-platform-engineering/playbooks/concert/){target="_blank"}
 
-## Integrations
+<!-- ## Integrations
 [WatsonX](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module3/watsonx-integration/){target="_blank"}
 [GitHub](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module3/github-integration/){target="_blank"}
 [Concert Workflows](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module3/concert-workflows/){target="_blank"}
@@ -46,4 +51,4 @@ IBM Concert can be deployed in 3 different configurations.
 
 ## Certificates
 
-[Overview](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module5/overview/){target="_blank"}
+[Overview](https://pages.github.ibm.com/cs-tel-ibm-concert/training/module5/overview/){target="_blank"} -->
