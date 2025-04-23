@@ -185,15 +185,15 @@ nav:
     - index.md
     - Agenda: agenda.md
     - Workstation Setup: workstation-setup.md
-  - Deploying OpenShift on VMware: 
-    - ocp-on-vmware/index.md
-    - Prepare for Installation: ocp-on-vmware/prepare.md
-    - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
-    - Install the Cluster: ocp-on-vmware/install-cluster.md
-    - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
-    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
-    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
-    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
+#  - Deploying OpenShift on VMware: 
+#    - ocp-on-vmware/index.md
+#    - Prepare for Installation: ocp-on-vmware/prepare.md
+#    - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
+#    - Install the Cluster: ocp-on-vmware/install-cluster.md
+#    - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
+#    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
+#    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
+#    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
   - App Dev & Mod w/ WCA:
     - wca-app-dev-mod/index.md
     - Lab 1 - Explain: wca-app-dev-mod/lab-1-explain.md

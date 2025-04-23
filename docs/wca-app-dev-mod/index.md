@@ -1,4 +1,3 @@
-
 ---
 Title: App Development & Modernization with WCA
 hide:
@@ -309,6 +308,15 @@ After adding the extension, you will need to **Sign In* to the WCA Service via f
 
     ![screenshot](./images/VSC_WCA4J_Sign_in_error_1.png)
 
+### Install the watsonx Code Assistant for Enterprise Java Applications
+
+Open VSCode and add the watsonx Code Assistant for Enterprise Java Applications extension from the Visual Studio Code Marketplace.
+
+Search for `watsonx Code Assistant for Enterprise Java Applications` extension.
+
+![wca-ej](./images/wca-for-java-applications.png)
+
+Choose **Install**.
 
 ### Installing Liberty Tools and Java Extension
 
@@ -319,6 +327,7 @@ Install the **Liberty Tools** and extension Pack for Java extensions from VSCode
 Next, install the **Extension Pack for Java**
 
 ![screenshot](./images/VSCode-pack-for-java.png)
+
 
 ### Start Using WCA
 
