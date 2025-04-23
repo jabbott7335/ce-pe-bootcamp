@@ -7,7 +7,7 @@ hide:
 !!! warning "This lab targets Concert v1.0.5.1"
     This lab exercise was written and tested against a Concert v1.0.5.1 instance. Please ensure you are running the right version.
 
-[:fontawesome-solid-play: Reserve an Environment for this Lab](https://techzone.ibm.com/my/reservations/create/677c0eb8d69537400a8df287){ .md-button }
+<!-- [:fontawesome-solid-play: Reserve an Environment for this Lab](https://techzone.ibm.com/my/reservations/create/677c0eb8d69537400a8df287){ .md-button }
 
 While it is possible to complete this lab from your local machine, these instructions have been tested on the IBM Concert Virtual Machine.
 
@@ -34,7 +34,7 @@ ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@<concert-public-
 [itzuser@itzvsi-667000bg6b-iocyoibm ~]$
 ```
 
-You are now sshed onto the Concert instance. Follow the rest of the lab from this terminal!
+You are now sshed onto the Concert instance. Follow the rest of the lab from this terminal! -->
 
 ## Utilities
 
@@ -345,10 +345,10 @@ Create a sample environment variable file to simulate a pipeline environment.  C
 We first need to pull down the microservice application code from GitHub.  We will use the `qotd-web` sample component for this module. Open the [`qotd-web`](https://github.ibm.com/cs-tel-ibm-concert-qotd/qotd-web) in your browser, click on the green `<> Code` dropdown button, click on the HTTP tab, and copy the repository reference.
 
 ```bash
-git clone https://github.ibm.com/cs-tel-ibm-concert-qotd/qotd-web.git
+git clone git@github.ibm.com:cs-tel-ibm-concert-qotd/qotd-web.git
 cd qotd-web
-export REPO_COMMIT_SHA=$(git rev-parse HEAD) # (1)!
-cd ..
+export REPO_COMMIT_SHA=$(git rev-parse HEAD) 
+cd -
 ```
 
 1. Get the latest repository commit hash
