@@ -1,4 +1,8 @@
-The aliases and firewall rules for this exercise are available in the Box folder. When prompted to select a file in the steps below, choose the file with the name that matches the data center of your environment.
+---
+Title: Disable Internet access
+hide:
+    - toc
+---
 
 1. Validate that the bastion can currently access the internet.
 

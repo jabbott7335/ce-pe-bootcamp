@@ -8,10 +8,9 @@ hide:
 
 ## Description
 
-This workshop covers containerising an application and deploying it to OpenShift both manually and using a CI/CD pipeline with OpenShift-Pipelines (Tekton) and OpenShift GitOps (ArgoCD).
+This workshop covers containerising an application and deploying it to OpenShift using a CI/CD pipeline with OpenShift-Pipelines (Tekton) and OpenShift GitOps (ArgoCD).
 
 We will be building the following Pipeline to deploy our cloud native application:
-
 
 ![ArgoCD Pipeline Diagram](../images/argocd-lab.jpg)
 
@@ -25,10 +24,10 @@ We will be building the following Pipeline to deploy our cloud native applicatio
 
 ## Prerequisites
 
-* Access to the OpenShift cluster Deployed during the OpenShift Install Lab
-* ODF installed successfully
-* The OpenShift internal registry deployed successfully
-* Pipelines Lab completed successfully
+- :white_check_mark: Access to the OpenShift cluster Deployed during the OpenShift Install Lab
+- :white_check_mark: ODF installed successfully
+- :white_check_mark: The OpenShift internal registry deployed successfully
+- :white_check_mark: [Tekton Lab completed successfully](../tekton/tekton.md)
 
 Clear up any deployed resources from the previous lab:
 
@@ -127,10 +126,13 @@ Annotate the Secret:
 oc annotate secret -n $NAMESPACE github-ssh-key tekton.dev/git-0=github.com
 ```
 
+!!! question "What does this label do?"
+    This label tells Tekton to monitor this secret, and use it when cloning `github.com` repositories. There are many ways to configure authentication in Tekton. [Take a minute to review them here](https://github.com/tektoncd/pipeline/blob/main/docs/auth.md#configuring-authentication-for-git)
+
 Add `known_hosts` to the secret:
 
 ```bash
-known_hosts_value=$(ssh-keyscan github.com | base64 ) && oc patch -n $NAMESPACE secret github-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
+known_hosts_value=$(ssh-keyscan github.com | base64 -w 0) && oc patch -n $NAMESPACE secret github-ssh-key --type='json' -p="[{'op': 'add', 'path': '/data/known_hosts', 'value': '${known_hosts_value}'}]"
 ```
 
 Once complete, your secret should look as follows:
@@ -469,131 +471,143 @@ metadata:
   name: app-build
 spec:
   params:
-  - description: username/repo-name, e.g. JohnDoe/pe-bootcamp-gitops
-    name: gitops-repo
-    type: string
-  - description: SSH url for the source repository
-    name: source-repo
-    type: string
-  - name: image_registry
-    type: string
-  - description: Application name
-    name: app-name
-    type: string
-  - default: gitops-token
-    description: A secret containing the PAT for the gitops repo
-    name: gitops-secret-name
-    type: string
-  - default: GH_TOKEN
-    description: The secret key for the PAT
-    name: gitops-secret-key
-    type: string
+    - description: username/repo-name, e.g. JohnDoe/pe-bootcamp-gitops
+      name: gitops-repo
+      type: string
+    - description: SSH url for the source repository
+      name: source-repo
+      type: string
+    - name: image_registry
+      type: string
+    - description: Application name
+      name: app-name
+      type: string
+    - default: gitops-token
+      description: A secret containing the PAT for the gitops repo
+      name: gitops-secret-name
+      type: string
+    - default: GH_TOKEN
+      description: The secret key for the PAT
+      name: gitops-secret-key
+      type: string
   tasks:
-  - name: clone-repository
-    params:
-    - name: url
-      value: $(params.source-repo)
-    taskRef:
-      kind: ClusterTask
-      name: git-clone
-    workspaces:
-    - name: output
-      workspace: source
-  - name: buildah-build
-    params:
-    - name: IMAGE
-      value: $(params.image_registry):$(tasks.clone-repository.results.commit)
-    - name: DOCKERFILE
-      value: ./Dockerfile
-    - name: CONTEXT
-      value: .
-    - name: STORAGE_DRIVER
-      value: vfs
-    - name: FORMAT
-      value: oci
-    - name: BUILD_EXTRA_ARGS
-      value: ""
-    - name: PUSH_EXTRA_ARGS
-      value: ""
-    - name: SKIP_PUSH
-      value: "false"
-    - name: TLS_VERIFY
-      value: "true"
-    - name: VERBOSE
-      value: "false"
-    runAfter:
-    - clone-repository
-    taskRef:
-      kind: Task
-      name: buildah-build
-    workspaces:
-    - name: source
-      workspace: source
-  - name: kustomize-build
-    params:
-    - name: app-name
-      value: $(params.app-name)
-    - name: app-namespace
-      value: $(context.pipelineRun.namespace)
-    - name: image-with-tag
-      value: $(params.image_registry):$(tasks.clone-repository.results.commit)
-    runAfter:
-    - buildah-build
-    taskRef:
-      kind: Task
-      name: kustomize-build
-    workspaces:
-    - name: source
-      workspace: source
-  - name: gitops-create-new-branch
-    params:
-    - name: directory
-      value: $(params.app-name)
-    - name: gitops-repo
-      value: $(params.gitops-repo)
-    - name: new-branch
-      value: feature-$(context.pipelineRun.name)
-    - name: GITHUB_TOKEN_SECRET_NAME
-      value: $(params.gitops-secret-name)
-    - name: GITHUB_TOKEN_SECRET_KEY
-      value: $(params.gitops-secret-key)
-    runAfter:
-    - kustomize-build
-    taskRef:
-      kind: Task
-      name: gitops-create-new-branch
-    workspaces:
-    - name: source
-      workspace: source
-  - name: github-open-pr
-    params:
-    - name: GITHUB_HOST_URL
-      value: api.github.com
-    - name: API_PATH_PREFIX
-      value: ""
-    - name: REPO_FULL_NAME
-      value: SamChinellato/pe-bootcamp-gitops
-    - name: GITHUB_TOKEN_SECRET_NAME
-      value: gitops-token
-    - name: GITHUB_TOKEN_SECRET_KEY
-      value: GH_TOKEN
-    - name: AUTH_TYPE
-      value: Bearer
-    - name: BRANCH
-      value: feature-$(context.pipelineRun.name)
-    - name: BASE
-      value: main
-    - name: BODY
-      value: Automated Pull request created by Tekton
-    - name: TITLE
-      value: Automated Pull request created by Tekton
-    runAfter:
-    - gitops-create-new-branch
-    taskRef:
-      kind: Task
-      name: github-open-pr
+    - name: clone-repository
+      params:
+        - name: URL
+          value: $(params.source-repo)
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: output
+          workspace: source
+    - name: buildah-build
+      params:
+        - name: IMAGE
+          value: $(params.image_registry):$(tasks.clone-repository.results.COMMIT)
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: FORMAT
+          value: oci
+        - name: BUILD_EXTRA_ARGS
+          value: ""
+        - name: PUSH_EXTRA_ARGS
+          value: ""
+        - name: SKIP_PUSH
+          value: "false"
+        - name: TLS_VERIFY
+          value: "true"
+        - name: VERBOSE
+          value: "false"
+      runAfter:
+        - clone-repository
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: buildah
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: source
+          workspace: source
+    - name: kustomize-build
+      params:
+        - name: app-name
+          value: $(params.app-name)
+        - name: app-namespace
+          value: $(context.pipelineRun.namespace)
+        - name: image-with-tag
+          value: $(params.image_registry):$(tasks.clone-repository.results.COMMIT)
+      runAfter:
+        - buildah-build
+      taskRef:
+        kind: Task
+        name: kustomize-build
+      workspaces:
+        - name: source
+          workspace: source
+    - name: gitops-create-new-branch
+      params:
+        - name: directory
+          value: $(params.app-name)
+        - name: gitops-repo
+          value: $(params.gitops-repo)
+        - name: new-branch
+          value: feature-$(context.pipelineRun.name)
+        - name: GITHUB_TOKEN_SECRET_NAME
+          value: $(params.gitops-secret-name)
+        - name: GITHUB_TOKEN_SECRET_KEY
+          value: $(params.gitops-secret-key)
+      runAfter:
+        - kustomize-build
+      taskRef:
+        kind: Task
+        name: gitops-create-new-branch
+      workspaces:
+        - name: source
+          workspace: source
+    - name: github-open-pr
+      params:
+        - name: GITHUB_HOST_URL
+          value: api.github.com
+        - name: API_PATH_PREFIX
+          value: ""
+        - name: REPO_FULL_NAME
+          value: $(params.gitops-repo)
+        - name: GITHUB_TOKEN_SECRET_NAME
+          value: gitops-token
+        - name: GITHUB_TOKEN_SECRET_KEY
+          value: GH_TOKEN
+        - name: AUTH_TYPE
+          value: Bearer
+        - name: BRANCH
+          value: feature-$(context.pipelineRun.name)
+        - name: BASE
+          value: main
+        - name: BODY
+          value: Automated Pull request created by Tekton
+        - name: TITLE
+          value: Automated Pull request created by Tekton
+      runAfter:
+        - gitops-create-new-branch
+      taskRef:
+        kind: Task
+        name: github-open-pr
   workspaces:
-  - name: source
+    - name: source
 ```
 
 ### Run Your Pipeline (CI)
@@ -705,13 +719,49 @@ Add the public key as a `Deploy` key to the `pe-bootcamp-gitops` Github Repo
 
 **Make sure to check `Allow write access` this time (Setting > Deploy keys)**
 
+## Configure Argo RBAC Permissions
+
+To deploy our application, we need to give the Argo Service account appropriate permissions to deploy in our `tekton-demo` namespace.
+
+Create a `ClusterRoleBinding`:
+
+```YAML
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+```
+
+!!! warning "Careful"
+    This `ClusterRoleBinding` gives `ArgoCD` cluster admin permissions across all namespaces. While this is fine for a demo environment, it is not appropriate for real environments. Role Based Access Control (RBAC) in OpenShift is very granular, and you should always give an application only the permissions it **requires** to run (Principle of Least Privilege). [Read more about RBAC on OpenShift here](https://docs.openshift.com/container-platform/4.17/authentication/using-rbac.html)
+
 
 ### Deploy your Application
 
 !!! Note "Prerequisites"
     Ensure the app-build pipeline has run successfully
 
-In ArgoCD go to `Applications > New App`
+Copy your private key:
+
+```
+cat ~/.ssh/argo | pbcopy
+```
+
+From the Argo UI, navigate to `Settings > Repositories`.
+
+Add a new repository. Provide the SSH url for yor GitOps repo and paste in your private key:
+
+![Add gitops repo](../images/argocd-add-repo.gif)
+
+Navigate to `Applications > New App`
 
 Add the following settings and everything else on the default options
 

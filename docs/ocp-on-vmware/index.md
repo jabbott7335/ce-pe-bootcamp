@@ -26,11 +26,11 @@ A modernization project requires containerizing existing applications using Open
 
 The required cluster configuration consists of nine nodes:
 
- | Node type      | vCPU | Memory in GiB | Disk size in GB |
- |:---------------|:----:|:-------------:|:---------------:|
- | Control Plane  | 8    | 32            | 120             |
- | Compute        | 8    | 32            | 120             |
- | Infrastructure | 16   | 64            | 120             |
+  | Node type      | vCPU | Memory in GiB | Disk size in GB |
+  |:---------------|:----:|:-------------:|:---------------:|
+  | Control Plane  | 16   | 64            | 200             |
+  | Compute        | 16   | 64            | 200             |
+  | Infrastructure | 16   | 64            | 200             |
 
 In addition, you will need to deploy a software-defined storage (SDS) solution that meets the following requirements:
 

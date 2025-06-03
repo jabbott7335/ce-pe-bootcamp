@@ -185,17 +185,34 @@ nav:
     - index.md
     - Agenda: agenda.md
     - Workstation Setup: workstation-setup.md
-  - Deploying OpenShift on VMware: 
-    - ocp-on-vmware/index.md
-    - Prepare for Installation: ocp-on-vmware/prepare.md
-    - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
-    - Install the Cluster: ocp-on-vmware/install-cluster.md
-    - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
-    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
-    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
-    - Add IBM Software Entitlement: ocp-on-vmware/update-golbal-pull-secret.md
+#  - Deploying OpenShift on VMware: 
+#    - ocp-on-vmware/index.md
+#    - Prepare for Installation: ocp-on-vmware/prepare.md
+#    - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
+#    - Install the Cluster: ocp-on-vmware/install-cluster.md
+#    - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
+#    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
+#    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
+#    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
+  - App Dev & Mod w/ WCA:
+    - wca-app-dev-mod/index.md
+    - Lab 1 - Explain: wca-app-dev-mod/lab-1-explain.md
+    - Lab 2 - Modernize: wca-app-dev-mod/lab-2-modernize.md
+    - Lab 3 - Upgrade Java: wca-app-dev-mod/lab-3-upgrade.md
+    - Lab 4 - Unit Test: wca-app-dev-mod/lab-4-unit-test.md
+    - Lab 5 - General Programming: wca-app-dev-mod/lab-5-general-programming.md
+  - Event Automation:
+    - ea/index.md
+    - Labs 1 - 6: ea/labs.md
   - IBM Concert:
     - concert/index.md
+    - Installing Concert:
+      - Overview: concert/installing/install-overview.md
+      - Installing on VM: concert/installing/install-vm.md
+      # - Installing on OpenShift: concert/installing/install-openshift.md
+    - Labs:
+      - Concert SBOM Lab: concert/concert-sbom.md
+      - Concert Workflows Lab: concert/concert-workflows.md
   - Integration:
     - integration/index.md
     - CP4I Prereqs: integration/01-prereqs.md
@@ -263,28 +280,52 @@ nav:
     - devops/index.md
     - Learn CI: devops/tekton/index.md
     - Lab CI 1 - Tekton: devops/tekton/tekton.md
+    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
+    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
 #    - Learn IBM ToolChain: devops/ibm-toolchain/index.md
 #    - Lab CI 2 - Tekton on IBM Cloud: devops/ibm-toolchain/ibm-toolchain.md
 #    - Lab CI 3 - Jenkins: devops/jenkins/jenkins.md
     - Learn CD: devops/argocd/index.md
 #    - Walkthrough - GitOps & OCP: devops/gitops-ocp.md
     - Lab CD 1 - ArgoCD: devops/argocd/argocd.md
-  - UPDATED DevOps & GitOps:
-    - devops/tekton_argocd/overview.md
-    - devops/tekton_argocd/gitops-lab.md
-    - devops/tekton_argocd/gitops-solution.md
-    - devops/tekton_argocd/pipelines-lab.md
-    - devops/tekton_argocd/pipelines-solution.md
-  - Terraform:
+  - HashiCorp:
     - Terraform 101:  terraform/index.md
     - Terraform VSphere Lab:  terraform/terraform-vsphere-lab.md
-  - Challenge Exercises (Optional): 
-    - Cloud Native Challenge: cn-challenge/index.md
+  - Integration:
+    - integration/index.md
+    - CP4I Prereqs: integration/01-prereqs.md
+    - CP4I Base: integration/02-base-deploy.md
+    - APIC: integration/03-apic.md
+    - Event Automation: integration/04-event-automation.md
+    - Messaging: integration/05-mq.md
+    - App Connect: integration/06-ace.md
+    - Additional Steps: integration/07-demo-config.md
+    - Other Integration Prereqs: integration/tech-jam-labs/prereq-general.md
+    - Optional Lab - MQ: integration/tech-jam-labs/mq.md
+    - Optional Lab - Event Streams: integration/tech-jam-labs/event-streams.md
+    - Optional Lab - ACE Prereqs: integration/tech-jam-labs/prereq-ace-toolkit.md
+    - Optional Lab - ACE & MQ Node: integration/tech-jam-labs/ace-mq.md
+    - Optional Lab - ACE & Kafka: integration/tech-jam-labs/ace-es.md
+    - Optional Lab - APIC for Dev: integration/tech-jam-labs/apic-prep.md
+    - Optional Lab - APIC Develop: integration/tech-jam-labs/apic-dev.md
+    - Optional Lab - APIC Consume: integration/tech-jam-labs/apic-consume.md
+    - Optional Lab - APIC Analyze: integration/tech-jam-labs/apic-analyze.md
+  - Deploying OpenShift: 
+    #- Cloud Native Challenge: cn-challenge/index.md
     - Deploying OpenShift on IBM Cloud: 
       - ocp-on-ibm-cloud/index.md
       - Prepare for Installation: ocp-on-ibm-cloud/prepare.md
       - Install the Cluster: ocp-on-ibm-cloud/install-cluster.md
       - Backup etcd: ocp-on-ibm-cloud/backup-etcd.md
+    - Deploying OpenShift on VMware: 
+      - ocp-on-vmware/index.md
+      - Prepare for Installation: ocp-on-vmware/prepare.md
+      - Create the Install Config Asset: ocp-on-vmware/create-install-config.md
+      - Install the Cluster: ocp-on-vmware/install-cluster.md
+      - Configure the Identity Provider: ocp-on-vmware/config-identity-provider.md
+      - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
+      - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
+      - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
     - Deploying Air-Gapped OpenShift on VMware: 
       - ocp-on-vmware-airgapped/index.md
       - Setup the mirror host: ocp-on-vmware-airgapped/mirror-host.md
@@ -294,3 +335,23 @@ nav:
       - Create Install Config: ocp-on-vmware-airgapped/install-config.md
       - Install the Cluster: ocp-on-vmware-airgapped/install-cluster.md
       - Install ODF: ocp-on-vmware-airgapped/install-odf.md
+    - Deploying Air-Gapped OpenShift:
+      - airgapped/index.md
+      - Infrastructure Services: airgapped/2-infraservices.md
+      - Network Configuration: airgapped/3-networkconfig.md
+      - DNS Server Entries: airgapped/4-dnsserverentries.md
+      - Load Balancer Configuration: airgapped/5-lbconfig.md
+      - VPN Configuration: airgapped/6-vpnconfig.md
+      - Guacamole VM: airgapped/7-guacamolevm.md
+      - Bastion Nodes: airgapped/8-bastionnodes.md
+      - Configure Online Bastion: airgapped/9-onlinebastion.md
+      - Configure Offline Bastion: airgapped/10-offlinebastion.md
+      - Create custom Red Hat CoreOS ISO: airgapped/11-coreosisomaker.md
+      - Create OpenShift VMs: airgapped/12-createocpvms.md
+      - Create OpenShift Install Config: airgapped/13-createocpinstallconfig.md
+      - Create OCP Manifests & Ignition Config: airgapped/14-createocpmanifests.md
+      - Deploy OpenShift Cluster: airgapped/15-deployocpcluster.md
+      - Configure Infra Nodes: airgapped/16-configinfranodes.md
+      - Day 2 Operations: airgapped/17-day2ops.md 
+      - Configure Storage Nodes: airgapped/18-configstoragenodes.md
+      - Success: airgapped/success.md

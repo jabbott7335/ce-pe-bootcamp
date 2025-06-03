@@ -131,7 +131,7 @@ Use the `jgrmqapiv2` OpenAPI (Swagger) document in the `templates` part of the r
 
 ![API Manager from exiting API](./images/apic/13-AM-FROM-EXISTING-API-SVC.png){ style='height: auto;width: 50%;'}
 
-Next drag the [template-apic-api-def-jgrmqapiv2.yaml](templates/template-apic-api-def-jgrmqapiv2.yaml) document into the `File upload` box and select `Next`.
+Next drag the templates/template-apic-api-def-jgrmqapiv2.yaml document into the `File upload` box and select `Next`.
 
 ![API Manager API Upload](./images/apic/14-AM-API-UPLOAD.png){ style='height: auto;width: 90%;'}
 
@@ -501,7 +501,7 @@ Click **Products**. A blank list is displayed.
 
 Click **Add** and select `Product`. Then select `Existing Product` and click **Next**.
 
-Drag and drop [artifacts/03-jgr-mqapi-product.yaml](artifacts/03-jgr-mqapi-product.yaml) product from your file system to the box below `Import from file`.
+Drag and drop artifacts/03-jgr-mqapi-product.yaml product from your file system to the box below `Import from file`.
 
 ![Import Product](./images/apic/49-AM-IMPORT-PRODUCT-01.png){ style='height: auto;width: 90%;'}
 
