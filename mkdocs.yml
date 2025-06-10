@@ -355,3 +355,9 @@ nav:
       - Day 2 Operations: airgapped/17-day2ops.md 
       - Configure Storage Nodes: airgapped/18-configstoragenodes.md
       - Success: airgapped/success.md
+  - Asset Management - Maximo:
+      - Maximo Overview: eam/overview.md
+      - OneClick Install Prereqs: eam/lab_prereqs.md
+      - OneClick Lab Solution: eam/lab_solution.md 
+      - Learning Next Steps: eam/next_steps.md
+      - Additional Learning Resources: eam/additional_resources.md
