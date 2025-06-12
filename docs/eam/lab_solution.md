@@ -1,5 +1,5 @@
 
-# MAS Core and Manage Deploy
+# MAS Core and Manage Installation    
 
 ## OpenShift Gym request in Techzone
 
@@ -9,7 +9,7 @@
 
 2. Cluster Build Details in the OpenShift Gym
     - Worker Node Count: 5
-    - Worker Node Flavor: (16 vCPU v 64GB -- 300GB Secondary Storage)
+    - Worker Node Flavor: (16 vCPU v 64GB -- 300GB Operating System Disk)
     - Open Shift Version: 4.16 (Tested with this version) our
 3. Agree with the Terms and Conditions for the cluster
 4. Click Submit.
@@ -42,9 +42,7 @@
 **Note: Links to assist building the OpenShift Cluster** 
 
 [Deploying OpenShift on VMware](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/)  
-
 [Install ODF](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/install-data-foundation/)   
-
 [Configure Local Image Repository](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/config-image-registry/)
 
 ## Bastion or Workstation Setup for MAS Install
