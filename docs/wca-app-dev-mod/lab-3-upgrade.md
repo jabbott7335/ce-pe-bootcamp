@@ -1,13 +1,8 @@
 # Lab3: Upgrade Java Version
 
-This document gives step-by-step guide to finish Lab3. You will find the steps very similar to Lab2.
+This document gives step-by-step guide to finish Lab3. You will find the steps very similar to Lab2.  This lab walks through the upgrade from Java8 to Java21
 
-## Lab3 covers:
-
-- Upgrade from Java8 to Java21
-
-
-### 1. Application analysis
+## 1. Application analysis
 
 Right click on the `modresorts-twas-j8` folder and select `watsonx Code Assistant` - `Upgrade Java Version`.
 
@@ -21,7 +16,7 @@ After analysis, the report will show you issues with this application to be fixe
 
 ![screenshot](./images/VSC_upgrade_java_analysis_result.png){width=75%}
 
-### 2. Apply Fixes
+## 2. Apply Fixes
 
 For the assisted fixes, you can click the `Instructions` dropdown to see the step which we will guide you. Now we expand the dropdowns of the first issue as shown. There are clear instructions on how to fix this issue at the bottom.
 
@@ -40,7 +35,7 @@ Here we change the code in the `DMbeanUtils.java` file using the copy code from 
 We can ignore the second issue for now as it is a deprecation warning. Or if the rebuild still have error, you can go through the same process and fix the warning as well.
 
 
-### 3. Rebuild Application
+## 3. Rebuild Application
 
 Now that we have all the fixes applied, we can `Rebuild and refresh` to see that there are no more critical issues with the application.
 

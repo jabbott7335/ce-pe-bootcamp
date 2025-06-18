@@ -194,7 +194,12 @@ nav:
 #    - Install OpenShift Data Foundation: ocp-on-vmware/install-data-foundation.md
 #    - Configure Internal Image Registry: ocp-on-vmware/config-image-registry.md
 #    - Add IBM Software Entitlement: ocp-on-vmware/update-global-pull-secret.md
-  - App Dev & Mod w/ WCA:
+  - App-Mod with AMA:
+    - ama-app-mod/index.md
+    - AMA Installation: ama-app-mod/ama-install.md
+    - Scanning: ama-app-mod/ama-run-scan.md
+    - Scan Results: ama-app-mod/ama-scan-results.md
+  - App Dev & Mod WCA:
     - wca-app-dev-mod/index.md
     - Lab 1 - Explain: wca-app-dev-mod/lab-1-explain.md
     - Lab 2 - Modernize: wca-app-dev-mod/lab-2-modernize.md

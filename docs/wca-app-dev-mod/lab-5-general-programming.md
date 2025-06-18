@@ -2,9 +2,7 @@
 
 This document gives step-by-step guide to finish Lab5, but feel to add in a few of your own attempts.
 
-## Lab5 covers:
-
-- General programming with other languages, including
+The lab covers general programming with other languages, including
     - code auto completion
     - code explanation
     - code documentation
@@ -20,13 +18,13 @@ They align with options starting with backslash provided in the chat window.
 ![screenshot](./images/VSC_gp_options.png){width=30%}
 
 
-### Code Auto Completion
+## Code Auto Completion
 
 When developers write code, WCA will provide real-time inline suggestions.
 
 ![screenshot](./images/VSC_gp_auto_completion.png){width=60%}
 
-### Code Explanation
+## Code Explanation
 
 WCA can help explain the details and functions defined in the code sample.
 
@@ -38,19 +36,19 @@ Or, you can explain the entire file by typing the following in chat:
 /explain @UseCase_Code_Palindrome.py
 ```
 
-### Code Documentation
+## Code Documentation
 
 WCA can help generate documentation strings for a given code sample.
 
 ![screenshot](./images/VSC_gp_documentation.png){width=35%}
 
-### Unit test generation
+## Unit test generation
 
 Similar to what we see for Java, unit test generation is available for other languages.
 
 ![screenshot](./images/VSC_gp_unit_test.png){width=35%}
 
-### Code Translation
+## Code Translation
 
 Code translation is provided via the following syntex:
 

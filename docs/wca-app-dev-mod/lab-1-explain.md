@@ -1,19 +1,17 @@
 # Lab1: Code Explanation 
 
-This document gives step-by-step guide to finish Lab1.
-
-## Lab1 covers:
+This document gives step-by-step guide to finish Lab1. Topics included: 
 
 - Download recommended code assets.
 - Explore the example `modresrots` application
 - Explain `modresrots` application.
 
 
-### 1. Code Asset Download
+## 1. Code Asset Download
 
 Git clone [GitHub repository](https://github.com/sidharthmittal25/wca4ej-workshop/tree/main){target="_blank"} to your location of choice.
 
-### 2. Build Application Project
+## 2. Build Application Project
 
 Open a terminal, and go to your project folder, and navigate to `was_dependency` folder.
 
@@ -35,7 +33,7 @@ mvn install:install-file -Dfile=was_public.jar -DpomFile=was_public-9.0.0.pom
     ![screenshot](./images/VSC-windows-build-app-full-path.png){width=75%}
 
 
-### 3. View Liberty App
+## 3. View Liberty App
 
 After you installed LibertyTools from VSCode marketplace, there should be a Liberty Dashboard section in your explorer. Click `Add project to Liberty Dashboard` and put the path to the `modresort-twas-j8` folder (this would be automatic if you open in this project).
 
@@ -66,8 +64,7 @@ The Second one, the `Logout` buttom does not work if you click on it.
 
 We will **fix these errors** in the later labs.
 
-
-### 4. Explain Project Code
+## 4. Explain Project Code
 
 To understand the whole project, right click on the `modresorts-twas-j8` folder and select `watsonx Code Assistant` - `Explain Application`.
 
