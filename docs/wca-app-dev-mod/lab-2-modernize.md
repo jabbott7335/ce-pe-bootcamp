@@ -1,13 +1,9 @@
 # Lab2: Code Modernization
 
-This document gives step-by-step guide to finish Lab2.
-
-## Lab2 covers:
-
-Modernize code from WebSphere to Liberty
+This document gives step-by-step guide to finish Lab2. This lab includes the step to Modernize code from WebSphere to Liberty
 
 
-### 1. Application analysis
+## 1. Application analysis
 
 Right click on the `modresorts-twas-j8` folder and select `watsonx Code Assistant` - `Modernize to Liberty`.
 
@@ -25,7 +21,7 @@ After analysis, the report will show you issues with this application to be fixe
 
 ![screenshot](./images/VSC_modernize_to_liberty_analysis_result.png){width=75%}
 
-### 2. Apply Fixes
+## 2. Apply Fixes
 
 For the assisted fixes, you can click the `Instructions` dropdown to see the step which we will guide you. Now we expand the dropdowns of the issue as shown. There are clear instructions on how to fix this issue at the bottom.
 
@@ -46,7 +42,7 @@ There are 2 action items here.
 ![screenshot](./images/VSC_modernize_to_liberty_pom_update.png){width=75%}
 
 
-### 3. Rebuild Application
+## 3. Rebuild Application
 
 Now that we have all the fixes applied. If your `modresort` application is still running, please stop it by going to `TERMINAL` and `CTRL+C`. You can `Rebuild and refresh` to see that there are no more issues with the application.
 
