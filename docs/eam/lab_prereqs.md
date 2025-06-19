@@ -14,7 +14,7 @@ This document and solution were prepared using a Techzone Gym.  These notes are 
 
 ## Installation Methods 
 
-There are a number of ways to install MAS in this lab you will be using the MAS One Click method. Please review the MAS One Click process at [OneClick Install for MAS Core](https://ibm-mas.github.io/ansible-devops/playbooks/oneclick-core/)
+There are a number of ways to install MAS in this lab you will be using the MAS One Click method. Please review the MAS One Click process at [OneClick Install for MAS Core](https://ibm-mas.github.io/ansible-devops/playbooks/oneclick-core/){target="_blank"}
 
 ## Lab Overview 
 
@@ -29,7 +29,7 @@ In this lab you will install MAS Core, MAS Manage with demo data. The install wi
     - 5 worker nodes
     - 3 infra nodes (OpenShift Data Foundation)
 
-    **Note:** All nodes have 300GB OS disk, 65566GB RAM and 16.  The IPI Install will enable platform integration so ODF will use the default 'thin' storage class to build the storage cluster.
+    **Note:** All nodes have 300GB OS disk, 65536 MB RAM and 32 VCPU.  The IPI Install will enable platform integration so ODF will use the default 'thin' storage class to build the storage cluster.
 
     **Note:** This lab describes the installation and configuration of the required tools on the RHEL 8 Linux bastion node that is included with the OpenShift Gym.
 

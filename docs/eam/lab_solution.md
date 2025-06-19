@@ -3,54 +3,68 @@
 
 ## OpenShift Gym request in Techzone
 
-1. This example is using an OpenShift Gym.  The details to install OCP are out of scope for this document.  In this case the gym was requested and an OpenShift cluster has been provisioned using the VMware IPI installation method.
+### Techzone Request
 
-    **Note:** [Link for OpenShift Install Examples](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/)
+1. This example is using an OpenShift Gym.  The details to install OCP are out of scope for this document.  In this case the gym was requested and an OpenShift cluster has been provisioned using the VMware IPI installation method. Techzone Gym [reservation](https://techzone.ibm.com/my/reservations/create/6421e3b3198c4332a346e403){target="_blank"}
+
+    **Note:** [Link for OpenShift Install Examples](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/){target="_blank"}
 
 2. Cluster Build Details in the OpenShift Gym
     - Worker Node Count: 5
-    - Worker Node Flavor: (16 vCPU v 64GB -- 300GB Operating System Disk)
+    - Worker Node Flavor: (32 vCPU v 64GB -- 300GB Operating System Disk)
     - Open Shift Version: 4.16 (Tested with this version) our
-3. Agree with the Terms and Conditions for the cluster
-4. Click Submit.
-5. You will receive a secondary email once the OCP Cluster is ready for access.  
-**NOTE:** This could take 1 to 2 hours. Further this is not a perfect world, provisioning sometimes fails, or you may get a cluster with networking issues. The answer was to resubmit and/or delete the cluster then reprovision another one.
-6. Install the following cli commands from RedHat.
+
+3. You will receive a secondary email once the OCP Cluster is ready for access.  
+
+    **NOTE:** This could take 1 to 2 hours. Further this is not a perfect world, provisioning sometimes fails, or you may get a cluster with networking issues. The answer was to resubmit and/or delete the cluster then reprovision another one.
+
+### Bastion Node prep for OpenShift Install
+
+1. Install the following cli commands from RedHat on the Linux bastion node.
 
     - [Download the OpenShift CLI](https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.37/)
 
-      | File                                              | CPU           | Operating System  |
-      |---------------------------------------------------|---------------|-------------------|
-      | openshift-client-linux-amd64-rhel8-4.16.37.tar.gz | Intel/AMD     | RHEL 8 or lower   |
-      | openshift-client-linux-amd64-rhel9-4.16.37.tar.gz | Intel/AMD     | RHEL 9 or above   |
-      | openshift-client-linux-arm64-rhel8-4.16.37.tar.gz | ARM           | RHEL 8 or lower   |
-      | openshift-client-linux-arm64-rhel9-4.16.37.tar.gz | ARM           | RHEL 9 or above   |
-      | openshift-client-mac-4.16.37.tar.gz               | Intel         | MacOS             |
-      | openshift-client-mac-arm64-4.16.37.tar.gz         | Apple Silicon | MacOS             |
-      | openshift-client-windows-4.16.37.zip              | Intel/AMD     | Microsoft Windows |
+     | File                                              | CPU           | Operating System  | Description        |
+     |---------------------------------------------------|---------------|-------------------|--------------------|
+     | openshift-client-linux-amd64-rhel8-4.16.37.tar.gz | Intel/AMD     | RHEL 8 or lower   | oc command x86     |
+     | openshift-client-linux-amd64-rhel9-4.16.37.tar.gz | Intel/AMD     | RHEL 9 or above   | oc command x86     |
+     | openshift-client-linux-arm64-rhel8-4.16.37.tar.gz | ARM           | RHEL 8 or lower   | oc command arm     |
+     | openshift-client-linux-arm64-rhel9-4.16.37.tar.gz | ARM           | RHEL 9 or above   | oc command arm     |
+     | openshift-client-mac-4.16.37.tar.gz               | Intel         | MacOS             | oc command x86     |
+     | openshift-client-mac-arm64-4.16.37.tar.gz         | Apple Silicon | MacOS             | oc command arm     |
+     | openshift-client-windows-4.16.37.zip              | Intel/AMD     | Microsoft Windows | oc command windows |
 
-      - Example commands from the bastion node in the OpenShift Gym
+    **Note:** These commands need to be downloaded from Red Hat and extract the contents to /usr/local/bin which should be in your PATH environment variable.
 
-          **Note:** These commands will dowload the file from Red Hat and extract the contents to /usr/local/bin which should be in your PATH environment variable.
+    ```bash
+    wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.37/openshift-client-mac-4.16.37.tar.gz
+    tar xvzf openshift-client-mac-4.16.37.tar.gz -C /usr/lcal/bin
+    ```
 
-      ```bash
-      wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.37/openshift-client-mac-4.16.37.tar.gz
-      tar xvzf openshift-client-mac-4.16.37.tar.gz -C /usr/lcal/bin
-      ```
-7. Install the OpenShift Cluster using the IPI install method.
+2. Repeate the above commands to download and install the following files required to build the OpenShift cluster.
 
-**Note: Links to assist building the OpenShift Cluster** 
+     | File                                              | Command           |
+     |---------------------------------------------------|-------------------|
+     | openshift-client-linux-amd64-rhel8-4.16.37.tar.gz | oc                |
+     | openshift-install-linux-4.16.37.tar.gz            | openshift-install |
+     | opm-linux-4.16.37.tar.gz                          | opm               |
 
-[Deploying OpenShift on VMware](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/)  
-[Install ODF](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/install-data-foundation/)   
-[Configure Local Image Repository](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/config-image-registry/)
+3. Install the OpenShift Cluster using the IPI install method.
+
+    - [Deploying OpenShift on VMware](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/){target="_blank"} 
+
+4. Ensure that the following dependencies have been installed and/or enabled on the OpenShift cluster.
+
+    - [Install ODF](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/install-data-foundation/){target="_blank"}   
+    - [Configure Local Image Repository](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/config-image-registry/){target="_blank"}
 
 ## Bastion or Workstation Setup for MAS Install
 
 This installation will use Python Virtual Environments to install the required dependencies and Ansible.  This process should work very similarly on most unix/linux computers and even Windows with little or no modification.
 
 1. Setup the bastion node in the gym.
-    - Perhaps the most difficult part in the installation now is getting your environment configured to execute the Ansible scripts against the OCP cluster. To utilize the Ansible one-click install you must do one of the following:  
+
+    Perhaps the most difficult part in the installation now is getting your environment configured to execute the Ansible scripts against the OCP cluster. To utilize the Ansible one-click install you must do the following:  
 
 2. Perform the remainder of the steps as the `root` user.
 
@@ -153,7 +167,7 @@ export KUBECONFIG=~/build2/auth/kubeconf
     ]
 ```
 
-15. Log in useing these temporary Admin credentials. Chrome seems to work better than Safari for some reason.
+15. Log in useing these temporary Admin credentials. Chrome seems to work better than Safari.
 
 **Note:** If you get a blue spinning circle after entering follow these steps.
 

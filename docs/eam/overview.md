@@ -6,25 +6,79 @@ Maximo offers a comprehensive set of features for managing assets, work orders, 
 
 ## Key features of Maximo include:
 
-- Asset Management: Track and manage assets, including their location, condition, and maintenance history.
-- Work Management: Create, assign, and track work orders, including preventive maintenance, corrective maintenance, and service requests.
-- Inventory Management: Monitor and control inventory levels, including stock, consumables, and direct materials.
-- Contract Management: Manage contracts, including vendor information, pricing, and performance metrics.
-- Procurement: Streamline the purchasing process, from requisition to receipt and invoicing.
-- Service Management: Manage service requests, including incidents, problems, and changes.
-- Mobile Access: Access Maximo functionality through mobile devices, enabling field technicians to perform tasks and update records in real-time.
-- Reporting and Analytics: Generate custom reports and use analytics to gain insights into asset performance, maintenance costs, and other key metrics.
-- Integration: Integrate Maximo with other enterprise systems, such as ERP, CMMS, and GIS, to ensure data consistency and streamline processes.
+- **Asset Management:** Track and manage assets, including their location, condition, and maintenance history.
+- **Work Management:** Create, assign, and track work orders, including preventive maintenance, corrective maintenance, and service requests.
+- **Inventory Management:** Monitor and control inventory levels, including stock, consumables, and direct materials.
+- **Contract Management:** Manage contracts, including vendor information, pricing, and performance metrics.
+- **Procurement:** Streamline the purchasing process, from requisition to receipt and invoicing.
+- **Service Management:** Manage service requests, including incidents, problems, and changes.
+- **Mobile Access:** Access Maximo functionality through mobile devices, enabling field technicians to perform tasks and update records in real-time.
+- **Reporting and Analytics:** Generate custom reports and use analytics to gain insights into asset performance, maintenance costs, and other key metrics.
+- **Integration:** Integrate Maximo with other enterprise systems, such as ERP, CMMS, and GIS, to ensure data consistency and streamline processes.
 
 ## Maximo Visual Inspection
 
-- Maximo Visual Inspection helps organizations improve asset reliability, reduce maintenance costs, and enhance safety by providing a structured approach to visual inspections.
-- Inspection Planning: Create and manage inspection plans, including defining inspection routes, frequencies, and required documentation.
-- Mobile Inspections: Conduct inspections using mobile devices, allowing field technicians to capture photos, videos, and other visual data directly in the application.
-- Defect Management: Document and track defects found during inspections, including their location, severity, and corrective actions.
-- Reporting and Analytics: Generate custom reports and use analytics to gain insights into inspection trends, asset performance, and maintenance costs.
-- Integration: Integrate Maximo Visual Inspection with other enterprise systems, such as Maximo Asset Management and GIS, to ensure data consistency and streamline processes.
-- Maximo Visual Inspection helps organizations standardize their inspection processes, improve data accuracy, and make informed decisions based on visual inspection data.
+Maximo Visual Inspection helps organizations improve asset reliability, reduce maintenance costs, and enhance safety by providing a structured approach to visual inspections. MVI also helps organizations standardize their inspection processes, improve data accuracy, and make informed decisions based on visual inspection data.
+
+- **Inspection Planning:** Create and manage inspection plans, including defining inspection routes, frequencies, and required documentation.
+- **Mobile Inspections:** Conduct inspections using mobile devices, allowing field technicians to capture photos, videos, and other visual data directly in the application.
+- **Defect Management:** Document and track defects found during inspections, including their location, severity, and corrective actions.
+- **Reporting and Analytics:** Generate custom reports and use analytics to gain insights into inspection trends, asset performance, and maintenance costs.
+- **Integration:** Integrate Maximo Visual Inspection with other enterprise systems, such as Maximo Asset Management and GIS, to ensure data consistency and streamline processes.
+
+## What is Maximo
+
+### Introduction to MAS Video
+
+[MAS Introduction Video](https://mediacenter.ibm.com/media/t/1_jg5ynql0){target="_blank"}
+
+### Maximo Application Suite
+
+Journey to the New Operating Model including Generative AI
+
+![Maximo Application Suite](../images/mas_journey.png){width=80%}
+
+### Notes
+
+1. Moving from left to right moves up the chain from Basic asset management to Predictive asset management by infusing the operational data with generative AI.
+2. Each of the blue circles is a module that can be added to Maximo Core and Maximo Manage to add features to a very powerful suite of asset management tools.
+
+### A Different View of MAS
+
+![Integrating AI And Asset Management](../images/ai.png){width=80%}
+
+### Notes
+
+1. Notice the asset data and sensor data flow to the Monitor application.  This is where AI begins to analyze the data.  This image like the previous one show the move from basic asset management to predictive management by infusing AI.
+
+### Maintenance Strategies
+
+![Maintenance Strategies](../images/maintenance_strategies.png){width=80%}
+
+### Multi-Cloud Deployment Model
+
+IBM Maximo Application Suite (MAS) can be installed on-premise or in cloud environments like Amazon Web Services (AWS) and Microsoft Azure. It requires a Red Hat OpenShift cluster as a prerequisite. MAS can be deployed anywhere OpenShift can be deployed, including on-prem or on a public cloud. 
+
+![Multi Cloud Deployment](../images/deployment_model.png){width=80%}
+
+## Content Contributors
+
+### Americas Technical Sales Leader
+
+**Ed Neubecker**  
+Principal Automation Technical Specialist  
+E-mail: Ed.Neubecker@us.ibm.com  
+Slack: ed.neubecker  
+[YouTube Channel](https://www.youtube.com/@mviguy)  
+[MVI Community Page](https://w3.ibm.com/w3publisher/mvi-techsalescommunity)  
+[The Pursuit of Zero Defect](https://ibm.seismic.com/app?ContentId=6e593be2-49c2-46a8-b94d-b9fc99bb8230#/doccenter/861ea1fd-99e0-44d7-9135-85412e5c28d1/doc/%252Fdd3359e5f7-a856-a91b-7688-41024b2ac637%252FdfNTY4NmVhOWItY2RkNS04ZWY3LTZkNzItZTQwZjczMWUyMjk1%252CPT0%253D%252CQXV0b21hdGlvbiBQbGF0Zm9ybQ%253D%253D%252FdfNDRmODBlMzMtY2ViMC0zMDI1LTVhNDEtNzg2OTg4MWVmZDBl%252CPT0%253D%252CTWF4aW1v%252FdfOTRiYmU4NTQtNWY4NC03Y2QyLWZjYWUtOGIxYmFmZjkyZThk%252CPT0%253D%252CU2FsZXMga2l0%252Flf0ed6dd1b-bc77-422b-8100-6329902854c5/grid/?anchorId=1d634cef-5d41-4768-b058-e2037a23cb6b)  
+
+### BTS Asset Lifecycle Management 
+
+**Hannah Carr**  
+E-mail: Hannah.Carr@ibm.com  
+Slack: Hannah Carr  
+[Mobile and Health Scripted Demo and Slides](https://ibm.ent.box.com/folder/315514715311?s=0g00glkf82z4wbmzi0lt855qqrtw0h88)
 
 ## Maximo Vocabulary
 
@@ -111,38 +165,3 @@ Maximo offers a comprehensive set of features for managing assets, work orders, 
 
 `Work Order`
 : A request for service, inspection, or general knowledge put in by any user, client or customer care representative
-
-## What is Maximo
-
-### Introduction to MAS Video
-
-[MAS Introduction Video](https://mediacenter.ibm.com/media/t/1_jg5ynql0)
-
-### Maximo Application Suite
-
-Journey to the New Operating Model
-
-![Maximo Application Suite](../images/mas_journey.png){width=50%}
-
-### Notes
-
-1. Moving from left to right moves up the chain from Basic asset management to Predictive asset management by infusing the operational data with generative AI.
-2. Each of the blue circles is a module that can be added to Maximo Core and Maximo Manage to add features to a very powerful suite of asset management tools.
-
-### A Different View of MAS
-
-![Integrating AI And Asset Management](../images/ai.png){width=50%}
-
-### Notes
-
-1. Notice the asset data and sensor data flow to the Monitor application.  This is where AI begins to analyze the data.  This image like the previous one show the move from basic asset management to predictive management by infusing AI.
-
-### Maintenance Strategies
-
-![Maintenance Strategies](../images/maintenance_strategies.png){width=80%}
-
-### Multi-Cloud Deployment Model
-
-IBM Maximo Application Suite (MAS) can be installed on-premise or in cloud environments like Amazon Web Services (AWS) and Microsoft Azure. It requires a Red Hat OpenShift cluster as a prerequisite. MAS can be deployed anywhere OpenShift can be deployed, including on-prem or on a public cloud. 
-
-![Multi Cloud Deployment](../images/deployment_model.png){width=80%}
