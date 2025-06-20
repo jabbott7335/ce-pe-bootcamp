@@ -27,11 +27,11 @@ Rework cost is much higher and if not captured recalls and customer satisfaction
 
 ## MVI Architecture
 
-![MVI](../images/MVI.png){width=80%}
+![MVI](./images/MVI.png){width=80%}
 
 ## MVI Reference Architecture
 
-![MVI_RefArch](../images/MVI_RefArch.png){width=100%}
+![MVI_RefArch](./images/MVI_RefArch.png){width=100%}
 
 **Notes**
 
@@ -60,7 +60,7 @@ Rework cost is much higher and if not captured recalls and customer satisfaction
 
 ## MVI Workflow
 
-![MVI Workflow](../images/MVI_workflow.png){width=80%}
+![MVI Workflow](./images/MVI_workflow.png){width=80%}
 
 ## Pilot Delivery Timeline
 
@@ -164,14 +164,4 @@ The above slides came from this deck, [CE MVI Presentation](https://ibm.ent.box.
 
 [Main MVI Seismic Page](https://ibm.seismic.com/Link/Content/DCddWcBd7Dm488C2mT3cDj3hh8j8){target="_blank"}  
 [MAS POC / Demo Request](https://forms.monday.com/forms/e1c991bd71ae959e450c4c5937e449be?r=use1){target="_blank"}  
-
-## Americas Technical Sales Leader
-
-**Ed Neubecker**  
-Principal Automation Technical Specialist  
-E-mail: Ed.Neubecker@us.ibm.com  
-Slack: ed.neubecker  
-[YouTube Channel](https://www.youtube.com/@mviguy)  
-[MVI Community Page](https://w3.ibm.com/w3publisher/mvi-techsalescommunity)  
-[The Pursuit of Zero Defect](https://ibm.seismic.com/app?ContentId=6e593be2-49c2-46a8-b94d-b9fc99bb8230#/doccenter/861ea1fd-99e0-44d7-9135-85412e5c28d1/doc/%252Fdd3359e5f7-a856-a91b-7688-41024b2ac637%252FdfNTY4NmVhOWItY2RkNS04ZWY3LTZkNzItZTQwZjczMWUyMjk1%252CPT0%253D%252CQXV0b21hdGlvbiBQbGF0Zm9ybQ%253D%253D%252FdfNDRmODBlMzMtY2ViMC0zMDI1LTVhNDEtNzg2OTg4MWVmZDBl%252CPT0%253D%252CTWF4aW1v%252FdfOTRiYmU4NTQtNWY4NC03Y2QyLWZjYWUtOGIxYmFmZjkyZThk%252CPT0%253D%252CU2FsZXMga2l0%252Flf0ed6dd1b-bc77-422b-8100-6329902854c5/grid/?anchorId=1d634cef-5d41-4768-b058-e2037a23cb6b) 
 

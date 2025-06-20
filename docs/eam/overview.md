@@ -36,7 +36,7 @@ Maximo Visual Inspection helps organizations improve asset reliability, reduce m
 
 Journey to the New Operating Model including Generative AI
 
-![Maximo Application Suite](../images/mas_journey.png){width=80%}
+![Maximo Application Suite](./images/mas_journey.png){width=80%}
 
 ### Notes
 
@@ -45,7 +45,7 @@ Journey to the New Operating Model including Generative AI
 
 ### A Different View of MAS
 
-![Integrating AI And Asset Management](../images/ai.png){width=80%}
+![Integrating AI And Asset Management](./images/ai.png){width=80%}
 
 ### Notes
 
@@ -53,13 +53,30 @@ Journey to the New Operating Model including Generative AI
 
 ### Maintenance Strategies
 
-![Maintenance Strategies](../images/maintenance_strategies.png){width=80%}
+![Maintenance Strategies](./images/maintenance_strategies.png){width=80%}
 
 ### Multi-Cloud Deployment Model
 
 IBM Maximo Application Suite (MAS) can be installed on-premise or in cloud environments like Amazon Web Services (AWS) and Microsoft Azure. It requires a Red Hat OpenShift cluster as a prerequisite. MAS can be deployed anywhere OpenShift can be deployed, including on-prem or on a public cloud. 
 
-![Multi Cloud Deployment](../images/deployment_model.png){width=80%}
+![Multi Cloud Deployment](./images/deployment_model.png){width=80%}
+
+## MAS Upgrade and Planning Links
+
+[MAS Sizing Calculator](https://www.ibm.com/docs/en/masv-and-l/cd?topic=premises-requirements-capacity-planning)  
+**Note:** The sizing calculator is an Excel spreadsheet that is downloaded and executed locally.
+
+[MAS Installation Upgrade and Deployment](https://ibm.seismic.com/app?ContentId=a4a97158-e87e-4765-a282-6d3bc10f6844#/doccenter/861ea1fd-99e0-44d7-9135-85412e5c28d1/doc/%252Fdd3359e5f7-a856-a91b-7688-41024b2ac637%252FdfNTY4NmVhOWItY2RkNS04ZWY3LTZkNzItZTQwZjczMWUyMjk1%252CPT0%253D%252CQXV0b21hdGlvbiBQbGF0Zm9ybQ%253D%253D%252FdfNDRmODBlMzMtY2ViMC0zMDI1LTVhNDEtNzg2OTg4MWVmZDBl%252COthers%252FdfOTRiYmU4NTQtNWY4NC03Y2QyLWZjYWUtOGIxYmFmZjkyZThk%252CPT0%253D%252CQ2xpZW50IHByZXNlbnRhdGlvbg%253D%253D%252Flfb2f86b61-9cb5-449c-8d7d-f286c660422f/grid/)  
+
+[Client Engineering MAS Upgrade Template](https://techzone.ibm.com/collection/client-engineering-mas-upgrade-template)  
+- [Day 1 OCP Installation on VMWare Gym](https://techzone.ibm.com/collection/client-engineering-mas-upgrade-template)  
+- [Day 2 - Ansible playbooks Collection for Maximo Application Suite](https://ibm-mas.github.io/ansible-devops/)  
+    **Note:** One Click Install page  
+- [MAS Upgrade Process](https://ibm.se ismic.com/app?ContentId=a4a97158-e87e-4765-a282-6d3bc10f6844#/doccenter/861ea1fd-99e0-44d7-9135-85412e5c28d1/doc/%252Fdd3359e5f7-a856-a91b-7688-41024b2ac637%252FdfNTY4NmVhOWItY2RkNS04ZWY3LTZkNzItZTQwZjczMWUyMjk1%252CPT0%253D%252CQXV0b21hdGlvbiBQbGF0Zm9ybQ%253D%253D%252FdfNDRmODBlMzMtY2ViMC0zMDI1LTVhNDEtNzg2OTg4MWVmZDBl%252COthers%252FdfOTRiYmU4NTQtNWY4NC03Y2QyLWZjYWUtOGIxYmFmZjkyZThk%252CPT0%253D%252CQ2xpZW50IHByZXNlbnRhdGlvbg%253D%253D%252Flfb2f86b61-9cb5-449c-8d7d-f286c660422f/grid/)  
+    **Note:** Same as the first link in this section  
+- [Presentation Slides for Day1/Day2](https://ibm.ent.box.com/s/xhgw3zw87njznsgax95bt0007glndaxu)  
+- [Q & A for MAS Upgrades](https://github.ibm.com/client-eng-apps/mas-install-faq)  
+- [EAM to MAS Upgrade Training](https://www.ibm.com/training/collection/maximo-application-suite-375)  
 
 ## Content Contributors
 
@@ -79,6 +96,12 @@ Slack: ed.neubecker
 E-mail: Hannah.Carr@ibm.com  
 Slack: Hannah Carr  
 [Mobile and Health Scripted Demo and Slides](https://ibm.ent.box.com/folder/315514715311?s=0g00glkf82z4wbmzi0lt855qqrtw0h88)
+
+### IBM Distinguished Engineer; CTO - Sustainability - Data & AI, IBM Client Engineering
+
+**Janki Vora**
+E-mail: janki@us.ibm.com
+Slack: @Janki
 
 ## Maximo Vocabulary
 

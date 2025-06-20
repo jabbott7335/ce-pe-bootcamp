@@ -1,11 +1,11 @@
 
 # MAS Core and Manage Installation    
 
-## OpenShift Gym request in Techzone
+## OpenShift Gym request in TechZone
 
-### Techzone Request
+### TechZone Request
 
-1. This example is using an OpenShift Gym.  The details to install OCP are out of scope for this document.  In this case the gym was requested and an OpenShift cluster has been provisioned using the VMware IPI installation method. Techzone Gym [reservation](https://techzone.ibm.com/my/reservations/create/6421e3b3198c4332a346e403){target="_blank"}
+1. This example is using an OpenShift Gym.  The details to install OCP are out of scope for this document.  In this case the gym was requested and an OpenShift cluster has been provisioned using the VMware IPI installation method. TechZone Gym [reservation](https://techzone.ibm.com/my/reservations/create/6421e3b3198c4332a346e403){target="_blank"}
 
     **Note:** [Link for OpenShift Install Examples](https://pages.github.ibm.com/skol/pe-bootcamp/ocp-on-vmware/){target="_blank"}
 
