@@ -38,17 +38,17 @@ In this lab you will install MAS Core, MAS Manage with demo data. The install wi
 1. IBM Rational Key Store Account (IBM Employees Only), Business Partners must have purchased the "Value Package" or renew if they have purchased one in the past. If the BP has purchased and/or renewed they will have access to the License Key Store. The process of license generation is the same. [IBM employees follow guidance here to create account](https://w3.ibm.com/w3publisher/ibm-license-key-mgmt/license-key-management/internal-use-license-keys)
 
 2. Request Access First, then open the License Key Center  
-    ![LKC1](../images/lkc1.png){width=80%}
+    ![LKC1](./images/lkc1.png){width=80%}
 
 3. Log in to License Key Center  
-    ![LKC2](../images/lkc2.png){width=80%}
+    ![LKC2](./images/lkc2.png){width=80%}
 
 4. In the 'Get keys' screen scroll down to the bottom for IBM AppPoint Suites.  
-    ![LCK3](../images/lkc3.png){width=80%}
-    ![LKC4](../images/lkc4.png){width=80%}
+    ![LCK3](./images/lkc3.png){width=80%}
+    ![LKC4](./images/lkc4.png){width=80%}
 
 5. Select 'IBM Maximo Application Suite AppPoint Lic'
-    ![LKC5](../images/lkc5.png){width=80%}
+    ![LKC5](./images/lkc5.png){width=80%}
 
 6. Request License Key.  Use the example below for generating the license file.
 
@@ -60,7 +60,7 @@ In this lab you will install MAS Core, MAS Manage with demo data. The install wi
     | 4. Hostname       | ocpinstall.gym.lan (set to the hostname of the OCP Instance) |
     | 5. Port           | Set to 27000                                                 |
 
-    ![LKC6](../images/lkc6.png){width=80%}
+    ![LKC6](./images/lkc6.png){width=80%}
 
 7. Click the 'Generate' Button and Download the AppPoint License.  This license file is also referred to as the SLS License file.
 
