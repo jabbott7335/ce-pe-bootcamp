@@ -8,9 +8,9 @@ hide:
 
 ## Lab 0 - Creating an Event Stream from an IBM MQ Message Queue
 
-To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered, and the application development process can be decoupled from data retention processes.
+To take advantage of the message queue data available from IBM MQ, Company's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered, and the application development process can be decoupled from data retention processes.
 
-To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high-value promotions for newly-acquired customers in a timely manner.
+To do so, Company's integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high-value promotions for newly-acquired customers in a timely manner.
 
 ### Configuring IBM MQ to Clone Customer Order Data
 
@@ -84,13 +84,11 @@ back, check if you are receiving new messages in the TO.KAFKA queue.
 ![To Kafka detail](./images/to-kafka-messages.png)
 
 ### Cloning order queues with IBM Event Streams
-Focus Corporation's integration team will now need to create an event stream called Orders using IBM 
+Integration team will now need to create an event stream called Orders using IBM 
 Event Streams. This will serve as the repository where messages, cloned from IBM MQ, are published and 
 made available to other parts of the organization.
 
-The integration team will need to make decisions about how to replicate the data (with or without 
-modification) and also determine the appropriate retention settings for this data. Given the governance 
-policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries 
+The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at company, they will need to retain data for up to 1 week and replicate entries 
 for high availability.
 
 #### MQ-KAFKA CONNECTOR
@@ -125,7 +123,7 @@ Next (B) button to continue.
 
 ### Configuring a message bridge between IBM MQ and IBM Event Streams
 
-Using the Apache Kafka connector framework, Focus Corporation's integration team will now need to 
+Using the Apache Kafka connector framework, integration team will now need to 
 configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the 
 OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ 
 and IBM Event Streams.
@@ -175,7 +173,7 @@ When ready, click Create (A). Full deployment should only take a moment.
 ![OpenShift Import YAML](./images/openshift-import-yaml.png)
 
 
-3. Switch over to the IBM Event Streams tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in previous step), Focus Corporation's integration team now wants to view the orders that have been generated so far.
+3. Switch over to the IBM Event Streams tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in previous step), Integration team now wants to view the orders that have been generated so far.
 From the home dashboard of the IBM Event Streams service, click the Topic (A) tab (left-hand 
 side) and then click on the name OldOrders (B) to drill down into the topic details.
 ![OldOrders Topic](./images/oldorders-topic.png)
@@ -186,27 +184,31 @@ side) and then click on the name OldOrders (B) to drill down into the topic deta
 ![OldOrders Topic Message Details](./images/oldOrder-topic-message-detail.png)
 These fields will be valuable later for the marketing team as they look to perform outreach on 
 customers meeting certain criteria.
-6. Switch back to Event Streams home page (A) and click Connect to this cluster (B).
+
+### Configuring SCRAM credentials for Event Streams
+
+1. Switch back to Event Streams home page (A) and click Connect to this cluster (B).
 ![Connect to this cluster](./images/connect-to-cluster.png)
-7. Details about your Kafka cluster, including URL and authentication details, are summarized on the 
+2. Details about your Kafka cluster, including URL and authentication details, are summarized on the 
 page. For our use case, use external. 
 ![Generate Scarm](./images/generate-scram.png)
-8. Record the Kafka SCRAM URL to a notepad for reference later (A). Then click Generate SCRAM credentials (B).
+3. Record the Kafka SCRAM URL to a notepad for reference later (A). Then click Generate SCRAM credentials (B).
 ![Scarm detail](./images/scram-cred.png)
-9. To connect securely to Event Streams, your application needs credentials with permissions to access the cluster and resources, such as topics. Set the Credential name to es-demo (A). Keep Produce messages, consume messages and create topics and schemas (B). Then click Next (C) to continue.
+4. To connect securely to Event Streams, your application needs credentials with permissions to access the cluster and resources, such as topics. Set the Credential name to es-demo (A). Keep Produce messages, consume messages and create topics and schemas (B). Then click Next (C) to continue.
 ![Scarm detail](./images/scram-name.png)
-10. Select All topics(A) and click Next (B) to continue.
+5. Select All topics(A) and click Next (B) to continue.
 ![Scarm access](./images/scram-access.png)
-11. Select All consumer groups (A) and click Next (B)
+6. Select All consumer groups (A) and click Next (B)
 ![Scarm consumer groups](./images/scram-consumer-group.png)
-12. Select No transactional IDs (A) and click Generate credentials (B).
+7. Select No transactional IDs (A) and click Generate credentials (B).
 ![Scarm transactional IDs](./images/scram-transactional-ids.png)
-13. Record the SCRAM username (A) and SCRAM password (B) to a notepad for reference later.
+8. Record the SCRAM username (A) and SCRAM password (B) to a notepad for reference later.
 ![Scarm username and password](./images/scram-credential.png)
 
 ### Produce data to kafka topic
 
-Focus Corporation's integration team will now need to produce data to the OldOrders topic in IBM Event Streams. This will allow the marketing team to access the data and perform their analysis. 
+Integration team will now need to produce data to the kafka topic in IBM Event Streams. This will allow the marketing team to access the data and perform their analysis.
+
 1. save this code as `kafka_producer.py`:
 ```python
 import json
