@@ -103,6 +103,21 @@ The integration team will need to make decisions about how to replicate the data
 7. Under the Replicas tab, accept the default recommendation (A) of Replication factor: 3 and confirm your selections by clicking the Create Topic (B) button.
 ![kafka create topic replicas](./images/kafka-replica.png)
 
+!!! Info
+    :white_check_mark: Replication Factor
+    In Kafka (or similar systems), replication factor is the number of copies of each partition stored across different brokers.
+
+    - Example: If you set replication.factor = 3, each partition will have 1 leader and 2 followers — total 3 copies.
+
+    - Purpose: Provides fault tolerance. If one broker goes down, replicas on others ensure no data loss.
+
+    :white_check_mark: min.insync.replicas
+    This is the minimum number of replicas (including the leader) that must acknowledge a write for it to be considered successful.
+
+    - Example: If min.insync.replicas = 2 and acks=all, then at least 2 replicas (leader + 1 follower) must confirm the write.
+    
+    - Purpose: Ensures data durability. If too many replicas are down, Kafka will reject writes to avoid data loss.
+
 ### Configuring a message bridge between IBM MQ and IBM Event Streams
 
 Using the Apache Kafka connector framework, integration team will now need to 
