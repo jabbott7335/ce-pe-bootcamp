@@ -23,7 +23,7 @@ with one or more Cloud Pak for Integration operators installed and one or more i
 UI deployed.  In this section we will follow the steps below to install Event Automation on CP4I.
 
 !!! Note "Which OCP Environment?"
-    In most PE Bootcamps we will use the IPI installation of OCP that we create as part of another lab.  If this environment is not available, request an [OpenShift Cluster on VMware on IBM Cloud from TechZone](https://techzone.ibm.com/my/reservations/create/65366cbbc0d4aa0017e23fb8){target="_blank"}. Use the below specifications:
+    In most PE Bootcamps we will use the IPI installation of OCP that we create as part of another lab.  If this environment is not available, request an [OpenShift Cluster on VMware on IBM Cloud from TechZone](https://techzone.ibm.com/my/reservations/create/67fd762c701ec2a8e6e0ecd9){target="_blank"}. Use the below specifications:
 
     ![ocp-specs](./images/ocp-specs.png){width=50%}
 
@@ -46,13 +46,13 @@ This repo is intended to simplify the process to get a full CP4I demo environmen
 You will need to clone the demo repo to your workstation.  Open a terminal window and run the command below:
 
 ```bash
-git clone https://github.com/gomezrjo/cp4i-tz-deployer-yl.git
+git clone github.ibm.com/joel-gomez/cp4i-tz-deployer
 ```
 
 Open the cp4i-tz-deployer-yl folder:
 
 ```bash
-cd cp4i-tz-deployer-yl
+cd cp4i-tz-deployer
 ```
 
 This repo is intended to simplify the process to get a full CP4I demo environment for the latest versions of CP4I.
@@ -74,6 +74,9 @@ tkn pipeline start cp4i-demo \
 --use-param-defaults \
 --workspace name=cp4i-ws,volumeClaimTemplateFile=artifacts/workspace-template.yaml \
 --pod-template artifacts/pod-template.yaml \
+--param DEFAULT_SC="ocs-storagecluster-ceph-rbd" \
+--param OCP_BLOCK_STORAGE="ocs-storagecluster-ceph-rbd" \
+--param OCP_FILE_STORAGE="ocs-storagecluster-cephfs" \
 --param DEPLOY_ASSET_REPOSITORY_OPERATOR=false \
 --param DEPLOY_API_CONNECT_OPERATOR=false \
 --param DEPLOY_APP_CONNECT_OPERATOR=false \
