@@ -25,13 +25,10 @@ Both the order management system and its payment gateway system are currently us
 3. Select the Queues tab along the top of the page.
 ![Queue Tab](./images/qm-queues.png)
 
-4. Scroll down the page until you reach a table, which at this time should show several queues that 
-are already a part of the environment.
-Create a new queue by clicking the Create button in the top-right corner of the table.
+4. Scroll down the page until you reach a table, which at this time should show several queues that are already a part of the environment.Create a new queue by clicking the Create button in the top-right corner of the table.
 ![Create Queue](./images/qm-queue-create.png)
 
-5. Wait for the Queue creation wizard to load, then select Local from Choose queue type (A), and 
-click Next (B).
+5. Wait for the Queue creation wizard to load, then select Local from Choose queue type (A), and click Next (B).
 ![Create Queue](./images/qm-queue-create-local.png)
 
 6. The Quick create (A) option should be selected by default.
@@ -54,21 +51,17 @@ click Next (B).
 9. Back on the PAYMENT.REQ orders summary table, locate the Actions button in the top-right corner of the page (A). Click to open a drop-down menu and then select View configuration (B)
 ![Queue Config](./images/queue-config.png)
 
-10. Multiple attributes of the PAYMENT.REQ order queue can be configured from this page. Click the 
-grey Edit (A) button to the right side of the General page.
+10. Multiple attributes of the PAYMENT.REQ order queue can be configured from this page. Click the grey Edit (A) button to the right side of the General page.
 ![Queue Edit Config](./images/queue-edit-config.png)
 
 11. From the tabs on the left side of the page, drill down into Storage (A).
     - Scroll down until you reach the Streaming queue name (B) field and change the value to TO.KAFKA
     - This will direct IBM MQ to clone messages from the PAYMENT.REQ queue into the TO.KAFKA
 streaming queue created in previous step..
-    - When satisfied, click the blue Save (C) button in the top-right of the page to confirm the 
-configuration changes
+    - When satisfied, click the blue Save (C) button in the top-right of the page to confirm the configuration changes
 ![Queue Streaming](./images/queue-streaming.png)
 
-12. Once confirmed, the new configuration will immediately take effect and cloned order messages 
-will promptly begin filling the TO.KAFKA queue. Scroll back up to the top of the page and locate 
-the blue Manage (A) text in the top-left corner of the screen. Click the text to return back to the Manage page for Orders
+12. Once confirmed, the new configuration will immediately take effect and cloned order messages will promptly begin filling the TO.KAFKA queue. Scroll back up to the top of the page and locate the blue Manage (A) text in the top-left corner of the screen. Click the text to return back to the Manage page for Orders
 ![Queue Manage](./images/qm-manage-page.png)
 
 13. From the tabs along the top of the page, click the Queues tab (A). From the table of queues, drill down into the TO.KAFKA queue (B)
@@ -86,11 +79,9 @@ the blue Manage (A) text in the top-left corner of the screen. Click the text to
 
 ### Cloning order queues with IBM Event Streams
 Integration team will now need to create an event stream called Orders using IBM 
-Event Streams. This will serve as the repository where messages, cloned from IBM MQ, are published and 
-made available to other parts of the organization.
+Event Streams. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.
 
-The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at company, they will need to retain data for up to 1 week and replicate entries 
-for high availability.
+The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at company, they will need to retain data for up to 1 week and replicate entries for high availability.
 
 !!! Info MQ-KAFKA CONNECTOR
     IBM MQ allows applications, systems, services, and files to request and coordinate processing tasks —sending and receiving message data via messaging queues. IBM Event Automation's Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.
@@ -103,8 +94,7 @@ for high availability.
 ![es demo](./images/es-demo.png)
 3. From the IBM Event Streams dashboard, click the Create a topic (A) tile.
 ![kafka create topic](./images/kafka-create-topic.png)
-4. The team must first decide on a Topic Name. Set the value to OldOrders (A) and then click the blue 
-Next (B) button to continue.
+4. The team must first decide on a Topic Name. Set the value to OldOrders (A) and then click the blue Next (B) button to continue.
 ![kafka create topic name](./images/create-topic.png)
 5. Under the Partitions tab, accept the default recommendation of 1 by clicking Next
 ![kafka create topic partitions](./images/kafka-partition.png)
@@ -116,21 +106,13 @@ Next (B) button to continue.
 ### Configuring a message bridge between IBM MQ and IBM Event Streams
 
 Using the Apache Kafka connector framework, integration team will now need to 
-configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the 
-OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ 
-and IBM Event Streams.
+configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ and IBM Event Streams.
 
-Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read 
-messages from the TO.KAFKA message queue and then publish those to the newly-created Orders event 
-stream.
+Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read messages from the TO.KAFKA message queue and then publish those to the newly-created Orders event stream.
 
 1. Return to the OpenShift container platform dashboard. From the Home page, click the +icon (A) located in the top-right corner of the interface.
 ![OpenShift Add](./images/openshift-add.png)
-2. The interface will load an Import YAML configuration tool, with a black canvas awaiting input. 
-Here you can supply YAML (Yet Another Markup Language) or JSON files to define new 
-deployments on the OpenShift cluster.
-The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. 
-Copy and paste the following YAML exactly as written into the Import YAML canvas:
+2. The interface will load an Import YAML configuration tool, with a black canvas awaiting input. Here you can supply YAML (Yet Another Markup Language) or JSON files to define new deployments on the OpenShift cluster.The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. Copy and paste the following YAML exactly as written into the Import YAML canvas:
 ```yaml
 apiVersion: eventstreams.ibm.com/v1beta2
 kind: KafkaConnector
@@ -165,15 +147,14 @@ When ready, click Create (A). Full deployment should only take a moment.
 ![OpenShift Import YAML](./images/openshift-import-yaml.png)
 
 
-3. Switch over to the IBM Event Streams tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in previous step), Integration team now wants to view the orders that have been generated so far.
-From the home dashboard of the IBM Event Streams service, click the Topic (A) tab (left-hand 
-side) and then click on the name OldOrders (B) to drill down into the topic details.
+3. Switch over to the IBM Event Streams tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in previous step), Integration team now wants to view the orders that have been generated so far. From the home dashboard of the IBM Event Streams service, click the Topic (A) tab (left-hand side) and then click on the name OldOrders (B) to drill down into the topic details.
 ![OldOrders Topic](./images/oldorders-topic.png)
  
 4. Granular details about the ORDERS topic will be loaded within the browser. From this page, you can inspect all of the messages (orders) generated from the time you set up the IBM MQ streaming queue configuration earlier
 ![OldOrders Topic Details](./images/oldOrder-topic-detail.png)
 5. Click any one of the orders to pull up additional details on the payload and its contents
 ![OldOrders Topic Message Details](./images/oldOrder-topic-message-detail.png)
+
 These fields will be valuable later for the marketing team as they look to perform outreach on 
 customers meeting certain criteria.
 
@@ -181,8 +162,7 @@ customers meeting certain criteria.
 
 1. Switch back to Event Streams home page (A) and click Connect to this cluster (B).
 ![Connect to this cluster](./images/connect-to-cluster.png)
-2. Details about your Kafka cluster, including URL and authentication details, are summarized on the 
-page. For our use case, use external. 
+2. Details about your Kafka cluster, including URL and authentication details, are summarized on the page. For our use case, use external. 
 ![Generate Scarm](./images/generate-scram.png)
 3. Record the Kafka SCRAM URL to a notepad for reference later (A). Then click Generate SCRAM credentials (B).
 ![Scarm detail](./images/scram-cred.png)
