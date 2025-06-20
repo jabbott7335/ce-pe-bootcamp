@@ -75,12 +75,13 @@ the blue Manage (A) text in the top-left corner of the screen. Click the text to
 ![To Kafka](./images/to-kafka.png)
 
 14. Take note of the customer order messages that are now populating the TO.KAFKA message queue table. You can click the circular refresh icon (to the left of the blue Create button) to reload the queue contents
-***
-If you don’t see any message available on TO.KAFKA queue, maybe your datagen
-application is not working. Go back to the OpenShift web console and on Workloads > 
-Pods page, search and delete the jgr-connect-cluster. As soon as the pod is running 
-back, check if you are receiving new messages in the TO.KAFKA queue.
-*** 
+
+!!! error "Error"
+    If you don’t see any message available on TO.KAFKA queue, maybe your datagen
+    application is not working. Go back to the OpenShift web console and on Workloads > 
+    Pods page, search and delete the jgr-connect-cluster. As soon as the pod is running 
+    back, check if you are receiving new messages in the TO.KAFKA queue.
+
 ![To Kafka detail](./images/to-kafka-messages.png)
 
 ### Cloning order queues with IBM Event Streams
@@ -91,19 +92,10 @@ made available to other parts of the organization.
 The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at company, they will need to retain data for up to 1 week and replicate entries 
 for high availability.
 
-#### MQ-KAFKA CONNECTOR
+!!! Info MQ-KAFKA CONNECTOR
+    IBM MQ allows applications, systems, services, and files to request and coordinate processing tasks —sending and receiving message data via messaging queues. IBM Event Automation's Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.
 
-IBM MQ allows applications, systems, services, and files to request and coordinate processing tasks —
-sending and receiving message data via messaging queues. IBM Event Automation's Kafka integrations 
-makes it possible to capture a continuous stream of events, representing state changes across one or 
-multiple environments, and makes those events persistently available for retrieval.
-
-In combination, IBM MQ and Event Automation enable business-critical communications originating 
-over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise 
-for fueling more responsive applications. IBM MQ-Kafka connectors support bi-directional connectivity 
-between these two architectures. Clients of IBM Event Automation are fully supported for using MQ-
-Kafka connectors with the Event Streams capability of the platform. Support for the MQ-Kafka connector 
-is also available for IBM clients with MQ Advanced entitlements.
+    In combination, IBM MQ and Event Automation enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications. IBM MQ-Kafka connectors support bi-directional connectivity between these two architectures. Clients of IBM Event Automation are fully supported for using MQ-Kafka connectors with the Event Streams capability of the platform. Support for the MQ-Kafka connector is also available for IBM clients with MQ Advanced entitlements.
 
 1. On the left navigator, select Run > Kafka clusters
 ![Kafka Clusters](./images/kafka-cluster.png)
@@ -185,7 +177,7 @@ side) and then click on the name OldOrders (B) to drill down into the topic deta
 These fields will be valuable later for the marketing team as they look to perform outreach on 
 customers meeting certain criteria.
 
-### Configuring SCRAM credentials for Event Streams
+## Configuring SCRAM credentials for Event Streams
 
 1. Switch back to Event Streams home page (A) and click Connect to this cluster (B).
 ![Connect to this cluster](./images/connect-to-cluster.png)
@@ -205,7 +197,7 @@ page. For our use case, use external.
 8. Record the SCRAM username (A) and SCRAM password (B) to a notepad for reference later.
 ![Scarm username and password](./images/scram-credential.png)
 
-### Produce data to kafka topic
+## Produce data to kafka topic
 
 Integration team will now need to produce data to the kafka topic in IBM Event Streams. This will allow the marketing team to access the data and perform their analysis.
 
