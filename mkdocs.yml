@@ -20,14 +20,14 @@
 
 # Project information
 site_name: "CE Platform Engineer Bootcamp"
-site_url: https://github.ibm.com/skol/pe-bootcamp
+site_url: https://github.com/jabbott7335/ce-pe-bootcamp
 site_author: John Webb
 site_description: >-
     This bootcamp is designed to build on the techniques and skills for Platform Engineers during their enablement journey.  creates a merger of the previous Cloud Native Bootcamp and OCP Install Cohort experiences.
 
 # Repository
 repo_name: skol/pe-bootcamp/
-repo_url: https://github.ibm.com/skol/pe-bootcamp
+repo_url: https://github.com/jabbott7335/ce-pe-bootcamp
 
 # Copyright
 copyright: Copyright © 2025 IBM Client Engineering
